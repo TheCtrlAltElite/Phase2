@@ -15,6 +15,8 @@ public class Account {
 	 * Instance variables.
 	 */
 	String firstName, lastName, email, profilePic, status, type, password;
+	AccountController controller;
+	boolean loginStatus;
 	
 	public Account() {
 		// TODO Auto-generated constructor stub
@@ -23,37 +25,37 @@ public class Account {
 	/**
 	 * 
 	 */
-//	public void login(String username, String password) {
-//		
-//	}
-//	
-//	/**
-//	 * 
-//	 */
-//	public boolean isLoggedIn() {
-//		
-//	}
-//	
-//	/**
-//	 * 
-//	 */
-//	public void logOut() {
-//		
-//	}
-//	
-//	/**
-//	 * 
-//	 */
-////public void resetPassword(o, n1, n2) {
-//		
-//	}
-//	
-//	/**
-//	 * 
-//	 */
-//	public List<String> getDetails(){
-//		
-//	}
+	public void login(String username, String password) {
+		controller.login(username, password);
+	}
+	
+	/**
+	 * 
+	 */
+	public void isLoggedIn(boolean stat) {
+		this.loginStatus = stat;
+	}
+	
+	/**
+	 * 
+	 */
+	public void logOut() {
+		
+	}
+	
+	/**
+	 * 
+	 */
+    public void resetPassword(String o, String n1, String n2) {
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public List<String> getDetailsProfile(){
+		return null;
+	}
 	
 	/**
 	 * Returns the email.

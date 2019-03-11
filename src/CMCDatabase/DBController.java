@@ -22,7 +22,7 @@ public class DBController {
 	 * 
 	 * @return
 	 */
-	public List getDetailsProfile(){
+	public List getDetailsProfile(String username){
 		return null;
 	}
 	/**
@@ -99,7 +99,7 @@ public class DBController {
 	 * 
 	 * @return
 	 */
-	public String getPassword(String user.getEmail()) {
+	public String getPassword(String username) {
 		return null;
 	}
 	/**
@@ -158,7 +158,7 @@ public class DBController {
 	 * @return
 	 */
 	public boolean checkPasswordRequirements(String password) {
-		return false;
+		return true;
 	}
 	/**
 	 * 
@@ -166,7 +166,7 @@ public class DBController {
 	 * @return
 	 */
 	public boolean containsLowerCase(String[] array) {
-		return false;
+		return true;
 	}
 	/**
 	 * 
@@ -174,7 +174,7 @@ public class DBController {
 	 * @return
 	 */
 	public boolean containsUpperCase(String[] array) {
-		return false;
+		return true;
 	}
 	/**
 	 * 
@@ -182,7 +182,7 @@ public class DBController {
 	 * @return
 	 */
 	public boolean containsSpecialCharacter(String[] array) {
-		return false;
+		return true;
 	}
 	/**
 	 * 
@@ -190,7 +190,7 @@ public class DBController {
 	 * @return
 	 */
 	public boolean containsNumber(String[] array) {
-		return false;
+		return true;
 	}
 	/**
 	 * 

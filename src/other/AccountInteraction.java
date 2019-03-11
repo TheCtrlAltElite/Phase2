@@ -10,6 +10,9 @@ package other;
 
 public class AccountInteraction {
 
+	AccountController accController;
+
+	
 	/**
 	 * 
 	 */
@@ -18,12 +21,15 @@ public class AccountInteraction {
 	}
 	
 	/**
+	 * Checks the username and password against the database
+	 * Grants account access to the website or alerts them that their credentials were
+	 * incorrect.
 	 * 
 	 * @param username
 	 * @param password
 	 */
 	public void login(String username, String password) {
-		//TODO
+		accController.login(username, password);
 	}
 
 	/**
@@ -52,11 +58,12 @@ public class AccountInteraction {
 	}
 	
 	/**
+	 * Displays a page with the account profile information
 	 * 
 	 * @param username
 	 */
 	public void viewProfile(String username) {
-		//TODO
+		accController.viewProfile(username);
 	}
 	
 	/**
@@ -64,7 +71,7 @@ public class AccountInteraction {
 	 * @param username
 	 */
 	public void editProfile(String username) {
-		//TODO
+		accController.editProfile(username);
 	}
 	
 	/**
