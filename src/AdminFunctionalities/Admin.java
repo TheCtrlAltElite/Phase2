@@ -3,6 +3,9 @@
  */
 package AdminFunctionalities;
 
+import other.*;
+import AdminFunctionalities.*;
+
 /**
  * @author lneuensch001
  *
