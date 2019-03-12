@@ -32,7 +32,7 @@ public class AccountController {
 		if(database.isUserReal(username)) {
 			String pw = database.getPassword(username);
 			if(pw.equals(password)) {
-				account = new Account(getDetailsUser(username));
+				account = new Account(database.getDetailsProfile(username));
 				account.isLoggedIn(true);
 				if(account.status == "N") {
 					System.out.println("Your account has been deactivated.");

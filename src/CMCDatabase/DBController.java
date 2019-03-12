@@ -7,6 +7,7 @@ import java.awt.List;
 import java.util.Collection;
 import other.*;
 import UniversityFunctionalities.*;
+import dblibrary.project.csci230.*;
 
 /**
  * @author lneuensch001
@@ -14,6 +15,7 @@ import UniversityFunctionalities.*;
  */
 public class DBController {
 
+	UniversityDBLibrary library;
 	/**
 	 * 
 	 */
@@ -47,8 +49,8 @@ public class DBController {
 	 * 
 	 * @param username
 	 */
-	public void updateAccount(String username, String firstName, String lastName, String password) {
-		
+	public void editUser(String username, String firstName, String lastName, String password, char type, char status) {
+		this.library.user_editUser(username, firstName, lastName, password, type, status);
 	}
 	/**
 	 * 
@@ -72,9 +74,9 @@ public class DBController {
 	}
 	/**
 	 * 
-	 * @param list
+	 * @param list of UserSchool's
 	 */
-	public void updateSavedSschoolsList(List<UserSchool> list) {
+	public void updateSavedSschoolsList(List list) {
 		//TODO
 	}
 	/**
@@ -131,7 +133,7 @@ public class DBController {
 	 * @param lastName
 	 * @return
 	 */
-	public boolean compareAccountInfo(String email, String firstName, String lastName,) {
+	public boolean compareAccountInfo(String email, String firstName, String lastName) {
 		return false;
 	}
 	/**
@@ -142,9 +144,9 @@ public class DBController {
 	}
 	/**
 	 * 
-	 * @param list
+	 * @param list of UserSchool's
 	 */
-	public void emailSavedSchoolsList(List<UserSchool> list) {
+	public void emailSavedSchoolsList(List list) {
 		//TODO
 	}
 	/**

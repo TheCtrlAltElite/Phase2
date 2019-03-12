@@ -18,8 +18,10 @@ public class Account {
 	AccountController controller;
 	boolean loginStatus;
 	
-	public Account() {
-		// TODO Auto-generated constructor stub
+	public Account(List<String> accountDetails) {
+		for(int i = 0; i < accountDetails.size(); i++) {
+			
+		}
 	}
 	
 	/**
