@@ -14,7 +14,7 @@ public class Account {
 	/**
 	 * Instance variables.
 	 */
-	String firstName, lastName, email, profilePic, status, type, password;
+	String email, firstName, lastName, profilePic, status, type, password;
 	AccountController controller;
 	boolean loginStatus;
 	
@@ -22,6 +22,7 @@ public class Account {
 		for(int i = 0; i < accountDetails.size(); i++) {
 			
 		}
+		
 	}
 	
 	/**

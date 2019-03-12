@@ -9,6 +9,8 @@ package AdminFunctionalities;
 
 public class AdminInteraction {
 	
+	AdminFunctionalityController adminFController;
+	
 	public AdminInteraction() {
 		// TODO Auto-generated constructor stub
 	}
@@ -33,7 +35,7 @@ public class AdminInteraction {
 	 * 
 	 */
 	public void viewUniversities() {
-		//TODO
+		adminFController.viewUniversities();
 	}
 	
 	/**

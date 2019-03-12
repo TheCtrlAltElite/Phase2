@@ -56,7 +56,8 @@ public class DBController {
 	 * 
 	 */
 	public void loadUniversities() {
-		//TODO
+		String[][] listUnis = library.university_getUniversities();
+		System.out.println(listUnis[0][0]);
 	}
 	/**
 	 * 

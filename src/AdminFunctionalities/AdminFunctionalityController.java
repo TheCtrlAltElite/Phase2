@@ -1,7 +1,11 @@
 package AdminFunctionalities;
 
+import CMCDatabase.*;
+
 public class AdminFunctionalityController {
 
+	DBController database;
+	
 	public AdminFunctionalityController() {
 		// TODO Auto-generated constructor stub
 	}
@@ -24,7 +28,7 @@ public class AdminFunctionalityController {
 	 * 
 	 */
 	public void viewUniversities() {
-		//TODO
+		database.loadUniversities();
 	}
 	
 	/**
