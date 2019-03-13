@@ -14,18 +14,23 @@ public class Account {
 	/**
 	 * Instance variables.
 	 */
-	String email, firstName, lastName, password, status, type, profilePic;
+	String email, firstName, lastName, password,profilePic;
+	private char status, type;
 	AccountController controller;
 	boolean loginStatus;
 
-	@SuppressWarnings("unchecked")
-	public Account(java.awt.List list) {
-		this.email = ((List<String>) list).get(0);
-		this.firstName = ((List<String>) list).get(1);
-		this.lastName = ((List<String>) list).get(2);
-		this.password = ((List<String>) list).get(3);
-		this.status = ((List<String>) list).get(4);
-		this.type = ((List<String>) list).get(5);
+	/**
+	 * Creates an Account object and sets the parameters to the items in the list parameter.
+	 * 
+	 * @param userDetails
+	 */
+	public Account(java.awt.List userDetails) {
+		this.email = ((List<String>) userDetails).get(0);
+		this.firstName = ((List<String>) userDetails).get(1);
+		this.lastName = ((List<String>) userDetails).get(2);
+		this.password = ((List<String>) userDetails).get(3);
+		this.status = ((List<String>) userDetails).get(4);
+		this.type = ((List<String>) userDetails).get(5);
 	}
 	
 	/**
@@ -94,14 +99,14 @@ public class Account {
 	/**
 	 * Returns the type.
 	 */
-	public String getType(){
+	public char getType(){
 		return this.type;
 	}
 	
 	/**
 	 * Returns the status.
 	 */
-	public String getStatus() {
+	public char getStatus() {
 		return this.status;
 	}
 	

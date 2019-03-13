@@ -7,6 +7,7 @@ import java.awt.List;
 import java.util.Collection;
 import other.*;
 import UniversityFunctionalities.*;
+import UserFunctionalities.*;
 import dblibrary.project.csci230.*;
 
 /**
@@ -16,41 +17,47 @@ import dblibrary.project.csci230.*;
 public class DBController {
 
 	UniversityDBLibrary library;
+	
 	/**
-	 * 
+	 * Creates a DBController object.
 	 */
 	public DBController() {
 		// TODO Auto-generated constructor stub
 	}
 	/**
+	 * Gets the details for the profile of username.
 	 * 
-	 * @return
+	 * @param String username
+	 * @return List with all the details of the profile
 	 */
 	public List getDetailsProfile(String username){
 		return null;
 	}
 	/**
+	 * Gets the details for the university with name school.
 	 * 
-	 * @param school
-	 * @return
+	 * @param String school the name of the school
+	 * @return a Collection of the details for that University
 	 */
 	public Collection getDetailsUni(String school) {
 		return null;
 	}
 	/**
+	 * Checks the database to see if that username exists in the database.
 	 * 
 	 * @param username
-	 * @return
+	 * @return boolean true if the username is in the database or false if the username is not in the database
 	 */
 	public boolean isUserReal(String username) {
 		return false;
 	}
 	/**
 	 * 
+	 * 
 	 * @param username
 	 */
-	public void editUser(String username, String firstName, String lastName, String password, char type, char status) {
-		this.library.user_editUser(username, firstName, lastName, password, type, status);
+	public void editUser(User user) {
+		this.library.user_editUser(user.getEmail(), user.getFirstName(), user.getLastName(), user.getPasssword(), user.getType(), user.getStatus());
 	}
 	/**
 	 * 
