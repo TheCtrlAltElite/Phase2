@@ -16,7 +16,7 @@ public class AdminInteraction {
 	}
 
 	/**
-	 * 
+	 * Logs in the admin
 	 * @param username
 	 * @param password
 	 */
@@ -25,7 +25,7 @@ public class AdminInteraction {
 	}
 	
 	/**
-	 * 
+	 * Logs out the admin
 	 */
 	public void logOut() {
 		//TODO
@@ -39,21 +39,21 @@ public class AdminInteraction {
 	}
 	
 	/**
-	 * 
+	 * Adds a new university to the database
 	 */
 	public void addUniversity() {
 		//TODO
 	}
 	
 	/**
-	 * 
+	 * Displays all users and their information in the database
 	 */
 	public void viewUsers() {
 		//TODO
 	}
 	
 	/**
-	 * 
+	 * Updates the status of users in database
 	 * @param status
 	 */
 	public void updateStatus(String status) {
@@ -61,7 +61,7 @@ public class AdminInteraction {
 	}
 	
 	/**
-	 * 
+	 * Updates type of user in database
 	 * @param Type
 	 */
 	public void updateType(String Type) {
@@ -69,14 +69,14 @@ public class AdminInteraction {
 	}
 	
 	/**
-	 * 
+	 * Adds a new user to the database
 	 */
 	public void addUser() {
 		//TODO
 	}
 	
 	/**
-	 * 
+	 * Updates something (??) might be deleted
 	 * @param type
 	 */
 	public void update(String type) {
@@ -84,7 +84,7 @@ public class AdminInteraction {
 	}
 	
 	/**
-	 * 
+	 * Removes a stored university from the database (must not have emphases)
 	 * @param schoolName
 	 */
 	public void removeUniversityDB(String schoolName) {

@@ -18,35 +18,35 @@ public class AdminFunctionalityController {
 	}
 	
 	/**
-	 * 
+	 *  Sets Type for an account
 	 */
 	public void setType() {
 		//TODO
 	}
 	
 	/**
-	 * 
+	 * Retrieves universities from database
 	 */
 	public void viewUniversities(String state, int numStudents) {
 		database.loadUniversities(state, numStudents);
 	}
 	
 	/**
-	 * 
+	 * Edits the info stored for a university
 	 */
 	public void editUniversity() {
 		//TODO
 	}
 	
 	/**
-	 * 
+	 * Retrieves user info from database 
 	 */
 	public void viewUsers() {
 		//TODO
 	}
 	
 	/**
-	 * 
+	 * Updates account status in database (active or deactive)
 	 * @param status
 	 */
 	public void updateStatus(String status) {
@@ -54,7 +54,7 @@ public class AdminFunctionalityController {
 	}
 	
 	/**
-	 * 
+	 * Updates account type stored in database
 	 * @param type
 	 */
 	public void updateType(String type) {
@@ -62,14 +62,14 @@ public class AdminFunctionalityController {
 	}
 	
 	/**
-	 * 
+	 * Adds a user to the database
 	 */
 	public void addUser() {
 		//TODO
 	}
 	
 	/**
-	 * 
+	 * Updates something (??)
 	 * @param type
 	 */
 	public void update(String type) {
@@ -77,7 +77,7 @@ public class AdminFunctionalityController {
 	}
 	
 	/**
-	 * 
+	 * Removes university from the database
 	 */
 	public void removeUniversityDB(String schoolName) {
 		//TODO

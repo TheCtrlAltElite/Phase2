@@ -34,7 +34,7 @@ public class DBController {
 	 * @param school
 	 * @return
 	 */
-	public Collection getDetailsUni(String school) {
+	public Collection<String> getDetailsUni(String school) {
 		return null;
 	}
 	/**
