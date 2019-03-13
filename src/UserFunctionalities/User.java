@@ -1,6 +1,6 @@
 package UserFunctionalities;
 
-import java.util.List;
+import java.awt.*;
 import UniversityFunctionalities.*;
 import other.*;
 
@@ -13,17 +13,17 @@ import other.*;
  * and methods for searching schools.
  *
  */
-public class User {
+public class User extends Account{
 
 	/**
 	 * Instance Variables
 	 */
-	List<UserSchool> savedSchoolsList;
+	List savedSchoolsList;
 	UserInteraction userInteract;
 	
 	//
-	public User() {
-		
+	public User(List userDetails) {
+		super(userDetails);
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class User {
 	 * Fetches the user's savedSchoolsList and return it.
 	 * @return List<UserSchool> - A list of the schools the user has saved.  
 	 */	
-	public List<UserSchool> getSavedSchoolsList(){
+	public List getSavedSchoolsList(){
 		return null;
 	}
 

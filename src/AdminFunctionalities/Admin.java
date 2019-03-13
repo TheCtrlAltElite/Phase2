@@ -4,19 +4,24 @@
 package AdminFunctionalities;
 
 import other.*;
+
+import java.awt.*;
+
 import AdminFunctionalities.*;
 
 /**
  * @author lneuensch001
  *
  */
-public class Admin {
+public class Admin extends Account{
 
 	/**
+	 * Creates an Admin object
 	 * 
+	 * @param List adDetails
 	 */
-	public Admin() {
-		
+	public Admin(List adDetails) {
+		super(adDetails);
 	}
 	 /**
 	  * Sets the type for an account
