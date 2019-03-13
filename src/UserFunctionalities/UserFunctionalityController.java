@@ -1,4 +1,10 @@
+package UserFunctionalities;
+
 import java.util.List;
+
+import CMCDatabase.*;
+import UniversityFunctionalities.*;
+import other.*;
 
 /**
  * 
@@ -13,6 +19,8 @@ public class UserFunctionalityController {
 	/**
 	 * Instance Variables
 	 */
+	University university;
+	DBController database;
 	String firstName;
 	String lastName;
 	String email;
@@ -29,8 +37,18 @@ public class UserFunctionalityController {
 	 * Searches schools based on the criteria the user gave.
 	 * @param SearchCriteria searchCriteria - an object containing the search information
 	 */
-	public void searchSchools(SearchCriteria search) {
-
+	public void searchSchools(String state, int numStudents) {
+		String[][] listUnis = database.loadUniversities(state, numStudents);
+		int counter =0;
+		int x = 0;
+		while (counter > listUnis.length) {
+			if (university.getSchoolState() == listUnis[x][1] && university.getNumberStudents() == listUnis[x][4]) {
+				System.out.println(university.getSchoolName());
+			}
+			x++;
+			counter++;
+		}
+		
 	}
 	
 	/**

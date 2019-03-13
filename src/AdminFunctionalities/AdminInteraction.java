@@ -34,8 +34,8 @@ public class AdminInteraction {
 	/**
 	 * 
 	 */
-	public void viewUniversities() {
-		adminFController.viewUniversities();
+	public void viewUniversities(String state, int numStudents) {
+		adminFController.viewUniversities(state, numStudents);
 	}
 	
 	/**

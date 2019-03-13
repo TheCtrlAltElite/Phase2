@@ -55,9 +55,10 @@ public class DBController {
 	/**
 	 * 
 	 */
-	public void loadUniversities() {
+	public String[][] loadUniversities(String state, int numStudents) {
 		String[][] listUnis = library.university_getUniversities();
 		System.out.println(listUnis[0][0]);
+		return listUnis;
 	}
 	/**
 	 * 

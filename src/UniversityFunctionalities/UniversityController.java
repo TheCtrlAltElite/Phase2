@@ -5,6 +5,8 @@ package UniversityFunctionalities;
 
 import java.util.Collection;
 
+import other.*;
+
 /**
  * @author lneuensch001
  *

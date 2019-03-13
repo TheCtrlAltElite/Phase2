@@ -1,4 +1,8 @@
+package UserFunctionalities;
+
 import java.util.List;
+import UniversityFunctionalities.*;
+import other.*;
 
 /**
  * 
@@ -15,17 +19,18 @@ public class User {
 	 * Instance Variables
 	 */
 	List<UserSchool> savedSchoolsList;
+	UserInteraction userInteract;
 	
 	//
 	public User() {
-		Account user = new User();
+		
 	}
 
 	/**
 	 * Searches schools based on the criteria the user gave.
 	 */
-	public void searchSchools() {
-
+	public void searchSchools(String state, int numStudents) {
+		userInteract.searchSchools(state, numStudents);
 	}
 	
 	/**

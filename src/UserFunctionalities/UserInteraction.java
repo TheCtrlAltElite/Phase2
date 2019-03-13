@@ -1,6 +1,6 @@
-/**
- * 
- */
+package UserFunctionalities;
+
+import other.*;
 
 /**
  * @author rclintsma001
@@ -8,6 +8,8 @@
  */
 public class UserInteraction {
 
+	UserFunctionalityController userController;
+	
 	/**
 	 * 
 	 */
@@ -19,8 +21,8 @@ public class UserInteraction {
 	 * Searches schools based on the criteria the user gave.
 	 * @param SearchCriteria searchCriteria - an object containing the search information
 	 */
-	public void searchSchools(SearchCriteria search) {
-		
+	public void searchSchools(String state, int numStudents) {
+		userController.searchSchools(state, numStudents);
 	}
 
 	/**

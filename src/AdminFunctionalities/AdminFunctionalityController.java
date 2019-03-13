@@ -27,8 +27,8 @@ public class AdminFunctionalityController {
 	/**
 	 * 
 	 */
-	public void viewUniversities() {
-		database.loadUniversities();
+	public void viewUniversities(String state, int numStudents) {
+		database.loadUniversities(state, numStudents);
 	}
 	
 	/**

@@ -1,3 +1,5 @@
+package UniversityFunctionalities;
+
 import java.util.Date;
 
 /**

@@ -19,7 +19,7 @@ public class University {
 	String schoolState;
 	String schoolLocation;
 	String schoolControl;
-	int numberStudents;
+	String numberStudents;
 	int percentFemale;
 	int verbalSAT;
 	int mathSAT;
@@ -72,7 +72,7 @@ public class University {
 	/**
 	 * @return the numberStudents
 	 */
-	public int getNumberStudents() {
+	public String getNumberStudents() {
 		return numberStudents;
 	}
 

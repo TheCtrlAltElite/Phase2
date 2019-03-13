@@ -16,7 +16,7 @@ public class Admin {
 	 * 
 	 */
 	public Admin() {
-		Account admin = new Admin();
+		
 	}
 	 /**
 	  * Sets the type for an account

@@ -14,15 +14,18 @@ public class Account {
 	/**
 	 * Instance variables.
 	 */
-	String email, firstName, lastName, profilePic, status, type, password;
+	String email, firstName, lastName, password, status, type, profilePic;
 	AccountController controller;
 	boolean loginStatus;
-	
-	public Account(List<String> accountDetails) {
-		for(int i = 0; i < accountDetails.size(); i++) {
-			
-		}
-		
+
+	@SuppressWarnings("unchecked")
+	public Account(java.awt.List list) {
+		this.email = ((List<String>) list).get(0);
+		this.firstName = ((List<String>) list).get(1);
+		this.lastName = ((List<String>) list).get(2);
+		this.password = ((List<String>) list).get(3);
+		this.status = ((List<String>) list).get(4);
+		this.type = ((List<String>) list).get(5);
 	}
 	
 	/**
