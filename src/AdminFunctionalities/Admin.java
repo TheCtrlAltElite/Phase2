@@ -20,8 +20,8 @@ public class Admin extends Account{
 	 * 
 	 * @param List adDetails
 	 */
-	public Admin(List adDetails) {
-		super(adDetails);
+	public Admin(String email, String firstName, String lastName, String password, char type, char status) {
+		super(email, firstName, lastName, password, type, status);
 	}
 	 /**
 	  * Sets the type for an account

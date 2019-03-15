@@ -1,6 +1,6 @@
 package UserFunctionalities;
 
-import java.awt.*;
+import java.util.*;
 import UniversityFunctionalities.*;
 import other.*;
 
@@ -22,8 +22,8 @@ public class User extends Account{
 	UserInteraction userInteract;
 	
 	//
-	public User(List userDetails) {
-		super(userDetails);
+	public User(String email, String firstName, String lastName, String password, char type, char status) {
+		super(email, firstName, lastName, password, type, status);
 	}
 
 	/**

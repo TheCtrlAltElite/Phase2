@@ -3,8 +3,9 @@
  */
 package other;
 
-import java.awt.List;
-import java.util.Scanner;
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 import CMCDatabase.DBController;
 
@@ -35,7 +36,7 @@ public class AccountController {
 				this.account = new Account(database.getDetailsProfile(username));
 				this.account.isLoggedIn(true);
 				System.out.println("You have been successfully logged in.");
-				if(this.account.getStatus() == "N") {
+				if(this.account.getStatus() == 'N') {
 					System.out.println("Your account has been deactivated.");
 				}
 			}
@@ -86,10 +87,10 @@ public class AccountController {
 		Scanner console = new Scanner(System.in);
 		while(console.nextLine() != "Stop") {
 			System.out.println("Please enter a field you would like to change. CAPS LOCK MATTERS.");
-			if(account.getType() == "u") {
+			if(account.getType() == 'u') {
 				System.out.println("First Name, Last Name, Password, or Stop to End Editing.");
 			}
-			else if(account.getType() == "a") {
+			else if(account.getType() == 'a') {
 				System.out.println("First Name, Last Name, Password, Type, Status or Stop to End Editing.");
 			}
 			String input = console.nextLine();
@@ -118,15 +119,15 @@ public class AccountController {
 					editProfile(username);
 				}
 			}
-			else if(input.equals("Type") && account.getType() == "a") {
+			else if(input.equals("Type") && account.getType() == 'a') {
 					System.out.println("Enter New Type");
 					input = console.nextLine();
-					account.type = input;
+					account.type = input.charAt(0);
 			}
-			else if(input.equals("Status") && account.getType() == "a") {
+			else if(input.equals("Status") && account.getType() == 'a') {
 					System.out.println("Enter New Status");
 					input = console.nextLine();
-					account.status = input;
+					account.status = input.charAt(0);
 			}
 		}
 		console.close();

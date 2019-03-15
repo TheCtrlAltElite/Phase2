@@ -42,7 +42,7 @@ public class UserFunctionalityController {
 		if(!schoolName.isEmpty()) {
 			for(int i = 0; i <= listUnis.size(); i++) {
 				if(listUnis.get(i).getSchoolName().equals(schoolName)) {
-					matchingUnis.add();
+					//matchingUnis.add();
 				}
 			}
 		}

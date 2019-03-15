@@ -83,7 +83,6 @@ public class DBController {
 		int socialScale;
 		int qualityScale;
 		for(int i = 0; i <= arrayUnis.length; i++) {
-			//for(int j = 0; j < arrayUnis[i].length; j++) {
 			schoolName = arrayUnis[i][0];
 			schoolState = arrayUnis[i][1];
 			schoolLocation = arrayUnis[i][2];
@@ -101,8 +100,7 @@ public class DBController {
 			socialScale = Integer.parseInt(arrayUnis[i][14]);
 			qualityScale = Integer.parseInt(arrayUnis[i][15]);
 			University uni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
-			listUnis.add(uni);	
-			//}
+			listUnis.add(uni);
 		}
 		return listUnis;
 	}

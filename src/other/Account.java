@@ -3,8 +3,8 @@
  */
 package other;
 
-import java.util.List;
 import java.util.*;
+import java.util.List;
 import java.awt.*;
 
 /**
@@ -16,7 +16,8 @@ public class Account {
 	/**
 	 * Instance variables.
 	 */
-	String email, firstName, lastName, password, type, status, profilePic;
+	String email, firstName, lastName, password, profilePic;
+	char type, status;
 	AccountController controller;
 	boolean loginStatus;
 
@@ -25,13 +26,13 @@ public class Account {
 	 * 
 	 * @param list
 	 */
-	public Account(List list) {
-		this.email = ((List<String>) list).get(0);
-		this.firstName = ((List<String>) list).get(1);
-		this.lastName = ((List<String>) list).get(2);
-		this.password = ((List<String>) list).get(3);
-		this.status = ((List<String>) list).get(4);
-		this.type = ((List<String>) list).get(5);
+	public Account(String email, String firstName, String lastName, String password, char type, char status) {
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.status = type;
+		this.type = status;
 	}
 	
 	/**
@@ -100,14 +101,14 @@ public class Account {
 	/**
 	 * Returns the type.
 	 */
-	public String getType(){
+	public char getType(){
 		return this.type;
 	}
 	
 	/**
 	 * Returns the status.
 	 */
-	public String getStatus() {
+	public char getStatus() {
 		return this.type;
 	}
 	
@@ -135,14 +136,14 @@ public class Account {
 	/**
 	 * Sets the type to the parameter type.
 	 */
-	public void setType(String type) {
+	public void setType(char type) {
 		this.type = type;
 	}
 	
 	/**
 	 * Sets the status to the parameter status.
 	 */
-	public void setStatus(String status) {
+	public void setStatus(char status) {
 		this.status = status;
 	}
 
