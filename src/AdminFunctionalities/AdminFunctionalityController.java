@@ -4,7 +4,7 @@ import CMCDatabase.*;
 
 public class AdminFunctionalityController {
 
-	DBController database;
+	private DBController database;
 	
 	public AdminFunctionalityController() {
 		// TODO Auto-generated constructor stub

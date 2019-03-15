@@ -17,7 +17,7 @@ import dblibrary.project.csci230.*;
  */
 public class DBController {
 
-	UniversityDBLibrary library;
+	private UniversityDBLibrary library;
 	
 	/**
 	 * Creates a DBController object.
@@ -70,7 +70,7 @@ public class DBController {
 		String schoolState;
 		String schoolLocation;
 		String schoolControl;
-		String numberStudents;
+		int numberStudents;
 		int percentFemale;
 		int verbalSAT;
 		int mathSAT;
@@ -87,7 +87,7 @@ public class DBController {
 			schoolState = arrayUnis[i][1];
 			schoolLocation = arrayUnis[i][2];
 			schoolControl = arrayUnis[i][3];
-			numberStudents = arrayUnis[i][4];
+			numberStudents = Integer.parseInt(arrayUnis[i][4]);
 			percentFemale = Integer.parseInt(arrayUnis[i][5]);
 			verbalSAT = Integer.parseInt(arrayUnis[i][6]);
 			mathSAT = Integer.parseInt(arrayUnis[i][7]);

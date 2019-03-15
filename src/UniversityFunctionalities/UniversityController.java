@@ -21,6 +21,7 @@ public class UniversityController {
 	 * 
 	 */
 	private DBController database;
+	private List<University> listUnis = database.loadUniversities();
 	
 	public UniversityController() {
 		// TODO Auto-generated constructor stub
@@ -38,27 +39,48 @@ public class UniversityController {
 	 * 
 	 * @param university
 	 */
-	public void compareUniversity(University university) {
-		List<University> listUnis = database.loadUniversities();
-		
+	
+	public int maxNumStudents() {
 		List<Integer> listOfStudents = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.length; j++) {
-			if(Integer.parseInt(listUnis[j][4]) != -1) {
-				listOfStudents.add(Integer.parseInt(listUnis[j][4]));
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getNumberStudents() != -1) {
+				listOfStudents.add(listUnis.get(j).getNumberStudents());
+			}
+		}
+		Collections.sort(listOfStudents);
+		int maxStudents = listOfStudents.get(listOfStudents.size() - 1);	//Subtracts 1 to ensure that the 
+		return maxStudents;													//index of the array is realigned
+	}
+	
+	public int minNumStudents() {
+		List<Integer> listOfStudents = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getNumberStudents() != -1) {
+				listOfStudents.add(listUnis.get(j).getNumberStudents());
 			}
 		}
 		Collections.sort(listOfStudents);
 		int minStudents = listOfStudents.get(0);
-		int maxStudents = listOfStudents.get(listOfStudents.size() - 1); //Subtracts 1 to ensure that the 
-																		 //index of the array is realigned
-		 
-		
+		return minStudents;
+	}
+	
+	public int maxFemale() {
 		List<Integer> percentFemale = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.length; j++) {
-			if(Integer.parseInt(listUnis[j][5]) != -1) {
-				percentFemale.add(Integer.parseInt(listUnis[j][5]));
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getPercentFemale() != -1) {
+				percentFemale.add(listUnis.get(j).getPercentFemale());
 			}
 		}
+		Collections.sort(percentFemale);
+		int maxFemale = percentFemale.get(percentFemale.size() - 1); //Subtracts 1 to ensure that the 
+		return maxFemale;											 //index of the array is realigned
+	}
+	
+	
+	public void compareUniversity(University university) {			     
+		 
+		
+
 		Collections.sort(percentFemale);
 		int minFemale = percentFemale.get(0);
 		int maxFemale = percentFemale.get(percentFemale.size() - 1); //Subtracts 1 to ensure that the 

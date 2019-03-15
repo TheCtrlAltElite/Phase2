@@ -16,10 +16,10 @@ public class Account {
 	/**
 	 * Instance variables.
 	 */
-	String email, firstName, lastName, password, profilePic;
-	char type, status;
-	AccountController controller;
-	boolean loginStatus;
+	private String email, firstName, lastName, password, profilePic;
+	private char type, status;
+	private AccountController controller;
+	private boolean loginStatus;
 
 	/**
 	 * Creates an Account object and sets the parameters to the items in the list parameter.

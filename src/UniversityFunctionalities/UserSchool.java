@@ -16,8 +16,8 @@ public class UserSchool {
 	/**
 	 * Instance Variables
 	 */
-	Date dateAdded;
-	University school;
+	private Date dateAdded;
+	private University school;
 	
 	/**
 	 * 

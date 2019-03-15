@@ -14,10 +14,10 @@ public class SearchCriteria {
 	/**
 	 * Instance variables.
 	 */
-	String schoolName, schoolState, schoolLocation, schoolControl;
-	int numberStudents, percentFemale, verbalSAT, mathSat, schoolExpenses, percentFinancialAid, numApplicants;
-	int percentAdmitted, percentEnrolled, academicsScale, scocialScale, qualityScale;
-	List emphasis;
+	private String schoolName, schoolState, schoolLocation, schoolControl;
+	private int numberStudents, percentFemale, verbalSAT, mathSat, schoolExpenses, percentFinancialAid, numApplicants;
+	private int percentAdmitted, percentEnrolled, academicsScale, scocialScale, qualityScale;
+	private List emphasis;
 	
 	/**
 	 * 

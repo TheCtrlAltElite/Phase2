@@ -8,7 +8,7 @@ import other.*;
  */
 public class UserInteraction {
 
-	UserFunctionalityController userController;
+	private UserFunctionalityController userController;
 	
 	/**
 	 * 
