@@ -4,6 +4,8 @@
 package other;
 
 import java.util.List;
+import java.util.*;
+import java.awt.*;
 
 /**
  * @author omatias001
@@ -14,23 +16,22 @@ public class Account {
 	/**
 	 * Instance variables.
 	 */
-	String email, firstName, lastName, password,profilePic;
-	private char status, type;
+	String email, firstName, lastName, password, type, status, profilePic;
 	AccountController controller;
 	boolean loginStatus;
 
 	/**
 	 * Creates an Account object and sets the parameters to the items in the list parameter.
 	 * 
-	 * @param userDetails
+	 * @param list
 	 */
-	public Account(java.awt.List userDetails) {
-		this.email = ((List<String>) userDetails).get(0);
-		this.firstName = ((List<String>) userDetails).get(1);
-		this.lastName = ((List<String>) userDetails).get(2);
-		this.password = ((List<String>) userDetails).get(3);
-		this.status = ((List<String>) userDetails).get(4);
-		this.type = ((List<String>) userDetails).get(5);
+	public Account(List list) {
+		this.email = ((List<String>) list).get(0);
+		this.firstName = ((List<String>) list).get(1);
+		this.lastName = ((List<String>) list).get(2);
+		this.password = ((List<String>) list).get(3);
+		this.status = ((List<String>) list).get(4);
+		this.type = ((List<String>) list).get(5);
 	}
 	
 	/**
@@ -99,15 +100,15 @@ public class Account {
 	/**
 	 * Returns the type.
 	 */
-	public char getType(){
+	public String getType(){
 		return this.type;
 	}
 	
 	/**
 	 * Returns the status.
 	 */
-	public char getStatus() {
-		return this.status;
+	public String getStatus() {
+		return this.type;
 	}
 	
 	/**

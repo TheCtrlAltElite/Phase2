@@ -32,12 +32,12 @@ public class University {
 	int socialScale;
 	int qualityScale;
 	List<String> emphasis;
-	
+																																					
 	
 	/**
-	 * 
+	 * Creates a University Object
 	 */
-	public University() {
+	public University(String schoolName, String schoolState, String schoolLocation, String schoolControl, String numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
 		// TODO Auto-generated constructor stub
 	}
 

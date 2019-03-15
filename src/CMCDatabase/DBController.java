@@ -3,8 +3,9 @@
  */
 
 package CMCDatabase;
-import java.awt.List;
-import java.util.Collection;
+import java.util.*;
+import java.util.List;
+import java.awt.*;
 import other.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
@@ -62,9 +63,47 @@ public class DBController {
 	/**
 	 * 
 	 */
-	public String[][] loadUniversities(String state, int numStudents) {
-		String[][] listUnis = library.university_getUniversities();
-		System.out.println(listUnis[0][0]);
+	public  List<University> loadUniversities() {
+		String[][] arrayUnis = library.university_getUniversities();
+		List<University> listUnis= new ArrayList<University>();
+		String schoolName;
+		String schoolState;
+		String schoolLocation;
+		String schoolControl;
+		String numberStudents;
+		int percentFemale;
+		int verbalSAT;
+		int mathSAT;
+		int schoolExpenses;
+		int percentFinancialAid;
+		int numApplicants;
+		int percentAdmitted;
+		int percentEnrolled;
+		int academicScale;
+		int socialScale;
+		int qualityScale;
+		for(int i = 0; i <= arrayUnis.length; i++) {
+			//for(int j = 0; j < arrayUnis[i].length; j++) {
+			schoolName = arrayUnis[i][0];
+			schoolState = arrayUnis[i][1];
+			schoolLocation = arrayUnis[i][2];
+			schoolControl = arrayUnis[i][3];
+			numberStudents = arrayUnis[i][4];
+			percentFemale = Integer.parseInt(arrayUnis[i][5]);
+			verbalSAT = Integer.parseInt(arrayUnis[i][6]);
+			mathSAT = Integer.parseInt(arrayUnis[i][7]);
+			schoolExpenses = Integer.parseInt(arrayUnis[i][8]);
+			percentFinancialAid = Integer.parseInt(arrayUnis[i][9]);
+			numApplicants = Integer.parseInt(arrayUnis[i][10]);
+			percentAdmitted = Integer.parseInt(arrayUnis[i][11]);
+			percentEnrolled = Integer.parseInt(arrayUnis[i][12]);
+			academicScale = Integer.parseInt(arrayUnis[i][13]);
+			socialScale = Integer.parseInt(arrayUnis[i][14]);
+			qualityScale = Integer.parseInt(arrayUnis[i][15]);
+			University uni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
+			listUnis.add(uni);	
+			//}
+		}
 		return listUnis;
 	}
 	/**
