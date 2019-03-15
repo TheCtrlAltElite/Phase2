@@ -18,6 +18,7 @@ import dblibrary.project.csci230.*;
 public class DBController {
 
 	private UniversityDBLibrary library;
+	private List<University> listUnis;
 	
 	/**
 	 * Creates a DBController object.
@@ -65,7 +66,7 @@ public class DBController {
 	 */
 	public  List<University> loadUniversities() {
 		String[][] arrayUnis = library.university_getUniversities();
-		List<University> listUnis= new ArrayList<University>();
+		this.listUnis= new ArrayList<University>();
 		String schoolName;
 		String schoolState;
 		String schoolLocation;
@@ -249,4 +250,223 @@ public class DBController {
 	public void removeUniversityDB(String schoolName) {
 		//TODO
 	}
+	
+	public int maxNumStudents() {
+		List<Integer> listOfStudents = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getNumberStudents() != -1) {
+				listOfStudents.add(listUnis.get(j).getNumberStudents());
+			}
+		}
+		Collections.sort(listOfStudents);
+		int maxStudents = listOfStudents.get(listOfStudents.size() - 1);	//Subtracts 1 to ensure that the 
+		return maxStudents;													//index of the array is realigned
+	}
+	
+	public int minNumStudents() {
+		List<Integer> listOfStudents = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getNumberStudents() != -1) {
+				listOfStudents.add(listUnis.get(j).getNumberStudents());
+			}
+		}
+		Collections.sort(listOfStudents);
+		int minStudents = listOfStudents.get(0);
+		return minStudents;
+	}
+	
+	public int maxFemale() {
+		List<Integer> percentFemale = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getPercentFemale() != -1) {
+				percentFemale.add(listUnis.get(j).getPercentFemale());
+			}
+		}
+		Collections.sort(percentFemale);
+		int maxFemale = percentFemale.get(percentFemale.size() - 1); //Subtracts 1 to ensure that the 
+		return maxFemale;											 //index of the array is realigned
+	}
+	
+	public int minFemale() {
+		List<Integer> percentFemale = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getPercentFemale() != -1) {
+				percentFemale.add(listUnis.get(j).getPercentFemale());
+			}
+		}
+		Collections.sort(percentFemale);
+		int minFemale = percentFemale.get(0);  
+		return minFemale;											 
+	}
+	
+	public int maxSATVerbal() {
+		List<Integer> satVerbal = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getVerbalSAT() != -1) {
+				satVerbal.add(listUnis.get(j).getVerbalSAT());
+			}
+		}
+		Collections.sort(satVerbal);
+		int maxSATVerbal = satVerbal.get(satVerbal.size() - 1); //Subtracts 1 to ensure that the 
+		return maxSATVerbal;									//index of the array is realigned										 
+	}
+	
+	public int minSATVerbal() {
+		List<Integer> satVerbal = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getVerbalSAT() != -1) {
+				satVerbal.add(listUnis.get(j).getVerbalSAT());
+			}
+		}
+		Collections.sort(satVerbal);
+		int minSATVerbal = satVerbal.get(0); 					
+		return minSATVerbal;																		 
+	}
+	
+	public int maxSATMath() {
+		List<Integer> satMath = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getMathSAT() != -1) {
+				satMath.add(listUnis.get(j).getMathSAT());
+			}
+		}
+		Collections.sort(satMath);
+		int maxSATMath = satMath.get(satMath.size() - 1); //Subtracts 1 to ensure that the 
+		return maxSATMath;									//index of the array is realigned										 
+	}
+	
+	public int minSATMath() {
+		List<Integer> satMath = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getMathSAT() != -1) {
+				satMath.add(listUnis.get(j).getMathSAT());
+			}
+		}
+		Collections.sort(satMath);
+		int minSATMath = satMath.get(0); 					
+		return minSATMath;																		 
+	}
+	
+	public int maxExpenses() {
+		List<Integer> expenses = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getSchoolExpenses() != -1) {
+				expenses.add(listUnis.get(j).getSchoolExpenses());
+			}
+		}
+		Collections.sort(expenses);
+		int maxExpenses = expenses.get(expenses.size() - 1); //Subtracts 1 to ensure that the 
+		return maxExpenses;									//index of the array is realigned										 
+	}
+	
+	public int minExpenses() {
+		List<Integer> expenses = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getSchoolExpenses() != -1) {
+				expenses.add(listUnis.get(j).getSchoolExpenses());
+			}
+		}
+		Collections.sort(expenses);
+		int minExpenses = expenses.get(0); 
+		return minExpenses;																		 
+	}
+	
+	public int maxFinancialAid() {
+		List<Integer> aid = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getPercentFinancialAid() != -1) {
+				aid.add(listUnis.get(j).getPercentFinancialAid());
+			}
+		}
+		Collections.sort(aid);
+		int maxAid = aid.get(aid.size() - 1); 			//Subtracts 1 to ensure that the 
+		return maxAid;									//index of the array is realigned										 
+	}
+	
+	public int minFinancialAid() {
+		List<Integer> aid = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getPercentFinancialAid() != -1) {
+				aid.add(listUnis.get(j).getPercentFinancialAid());
+			}
+		}
+		Collections.sort(aid);
+		int minAid = aid.get(0); 						
+		return minAid;																			 
+	}
+	
+	public int maxNumApplicants() {
+		List<Integer> numApps = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getNumApplicants() != -1) {
+				numApps.add(listUnis.get(j).getNumApplicants());
+			}
+		}
+		Collections.sort(numApps);
+		int maxApps = numApps.get(numApps.size() - 1);  //Subtracts 1 to ensure that the 
+		return maxApps;									//index of the array is realigned										 
+	}
+	
+	public int minNumApplicants() {
+		List<Integer> numApps = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getNumApplicants() != -1) {
+				numApps.add(listUnis.get(j).getNumApplicants());
+			}
+		}
+		Collections.sort(numApps);
+		int minApps = numApps.get(0); 					
+		return minApps;																		 
+	}
+	
+	public int maxPercentAdmitted() {
+		List<Integer> percentAdmitted = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getPercentAdmitted() != -1) {
+				percentAdmitted .add(listUnis.get(j).getPercentAdmitted());
+			}
+		}
+		Collections.sort(percentAdmitted );
+		int maxAdmitted = percentAdmitted.get(percentAdmitted .size() - 1);  //Subtracts 1 to ensure that the 
+		return maxAdmitted;									//index of the array is realigned										 
+	}
+	
+	public int minPercentAdmitted() {
+		List<Integer> percentAdmitted = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getPercentAdmitted() != -1) {
+				percentAdmitted .add(listUnis.get(j).getPercentAdmitted());
+			}
+		}
+		Collections.sort(percentAdmitted );
+		int minAdmitted = percentAdmitted.get(0);  //Subtracts 1 to ensure that the 
+		return minAdmitted;									//index of the array is realigned										 
+	}
+	
+	public int maxPercentEnrolled() {
+		List<Integer> percentEnrolled = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getPercentEnrolled() != -1) {
+				percentEnrolled .add(listUnis.get(j).getPercentEnrolled());
+			}
+		}
+		Collections.sort(percentEnrolled);
+		int maxEnrolled = percentEnrolled.get(percentEnrolled .size() - 1);  //Subtracts 1 to ensure that the 
+		return maxEnrolled;													 //index of the array is realigned										 
+	}
+	
+	public int minPercentEnrolled() {
+		List<Integer> percentEnrolled = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getPercentEnrolled() != -1) {
+				percentEnrolled .add(listUnis.get(j).getPercentEnrolled());
+			}
+		}
+		Collections.sort(percentEnrolled);
+		int maxEnrolled = percentEnrolled.get(0);  			//Subtracts 1 to ensure that the 
+		return maxEnrolled;									//index of the array is realigned										 
+	}
+	
+	
+	
 }
