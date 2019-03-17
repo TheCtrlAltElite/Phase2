@@ -4,7 +4,7 @@ import CMCDatabase.*;
 
 public class AdminFunctionalityController {
 
-	DBController database;
+	private DBController database;
 	
 	public AdminFunctionalityController() {
 		// TODO Auto-generated constructor stub
@@ -27,8 +27,8 @@ public class AdminFunctionalityController {
 	/**
 	 * Retrieves universities from database
 	 */
-	public void viewUniversities(String state, int numStudents) {
-		database.loadUniversities(state, numStudents);
+	public void viewUniversities() {
+		database.loadUniversities();
 	}
 	
 	/**

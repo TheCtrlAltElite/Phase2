@@ -1,7 +1,6 @@
 package UserFunctionalities;
 
-import java.util.List;
-
+import java.util.*;
 import CMCDatabase.*;
 import UniversityFunctionalities.*;
 import other.*;
@@ -19,15 +18,15 @@ public class UserFunctionalityController {
 	/**
 	 * Instance Variables
 	 */
-	University university;
-	DBController database;
-	String firstName;
-	String lastName;
-	String email;
-	String profilePic;
-	String status;
-	String type;
-	String password;
+	private University university;
+	private DBController database;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String profilePic;
+	private String status;
+	private String type;
+	private String password;
 	
 	public UserFunctionalityController() {
 		// TODO Auto-generated constructor stub
@@ -37,16 +36,15 @@ public class UserFunctionalityController {
 	 * Searches schools based on the criteria the user gave.
 	 * @param SearchCriteria searchCriteria - an object containing the search information
 	 */
-	public void searchSchools(String state, int numStudents) {
-		String[][] listUnis = database.loadUniversities(state, numStudents);
-		int counter =0;
-		int x = 0;
-		while (counter > listUnis.length) {
-			if (university.getSchoolState() == listUnis[x][1] && university.getNumberStudents() == listUnis[x][4]) {
-				System.out.println(university.getSchoolName());
+	public void searchSchools(String schoolName, String schoolState, String schoolLocation, String schoolControl, String numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
+		List<University> listUnis = database.loadUniversities();
+		List<University> matchingUnis = new ArrayList<University>();
+		if(!schoolName.isEmpty()) {
+			for(int i = 0; i <= listUnis.size(); i++) {
+				if(listUnis.get(i).getSchoolName().equals(schoolName)) {
+					//matchingUnis.add();
+				}
 			}
-			x++;
-			counter++;
 		}
 		
 	}

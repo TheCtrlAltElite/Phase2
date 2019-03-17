@@ -15,29 +15,29 @@ public class University {
 	/**
 	 * Instance Variables
 	 */
-	String schoolName;
-	String schoolState;
-	String schoolLocation;
-	String schoolControl;
-	String numberStudents;
-	int percentFemale;
-	int verbalSAT;
-	int mathSAT;
-	int schoolExpenses;
-	int percentFinancialAid;
-	int numApplicants;
-	int percentAdmitted;
-	int percentEnrolled;
-	int academicScale;
-	int socialScale;
-	int qualityScale;
-	List<String> emphasis;
-	
+	private String schoolName;
+	private String schoolState;
+	private String schoolLocation;
+	private String schoolControl;
+	private int numberStudents;
+	private int percentFemale;
+	private int verbalSAT;
+	private int mathSAT;
+	private int schoolExpenses;
+	private int percentFinancialAid;
+	private int numApplicants;
+	private int percentAdmitted;
+	private int percentEnrolled;
+	private int academicScale;
+	private int socialScale;
+	private int qualityScale;
+	private List<String> emphasis;
+																																					
 	
 	/**
-	 * 
+	 * Creates a University Object
 	 */
-	public University() {
+	public University(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -72,7 +72,7 @@ public class University {
 	/**
 	 * @return the numberStudents
 	 */
-	public String getNumberStudents() {
+	public int getNumberStudents() {
 		return numberStudents;
 	}
 

@@ -10,7 +10,7 @@ package other;
 
 public class AccountInteraction {
 
-	AccountController accController;
+	private AccountController accController;
 
 	
 	/**

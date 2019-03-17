@@ -1,6 +1,6 @@
 package UserFunctionalities;
 
-import java.awt.*;
+import java.util.*;
 import UniversityFunctionalities.*;
 import other.*;
 
@@ -18,19 +18,19 @@ public class User extends Account{
 	/**
 	 * Instance Variables
 	 */
-	List savedSchoolsList;
-	UserInteraction userInteract;
+	private List savedSchoolsList;
+	private UserInteraction userInteract;
 	
 	//
-	public User(List userDetails) {
-		super(userDetails);
+	public User(String email, String firstName, String lastName, String password, char type, char status) {
+		super(email, firstName, lastName, password, type, status);
 	}
 
 	/**
 	 * Searches schools based on the criteria the user gave.
 	 */
-	public void searchSchools(String state, int numStudents) {
-		userInteract.searchSchools(state, numStudents);
+	public void searchSchools(String schoolName, String schoolState, String schoolLocation, String schoolControl, String numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
+		userInteract.searchSchools(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale,  socialScale, qualityScale);
 	}
 	
 	/**

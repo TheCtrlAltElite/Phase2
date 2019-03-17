@@ -3,8 +3,9 @@
  */
 package other;
 
-import java.awt.List;
-import java.util.Scanner;
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 import CMCDatabase.DBController;
 
@@ -14,8 +15,8 @@ import CMCDatabase.DBController;
  */
 public class AccountController {
 
-	DBController database;
-	Account account;
+	private DBController database;
+	private Account account;
 	
 	/**
 	 * 
@@ -120,13 +121,13 @@ public class AccountController {
 			}
 			else if(input.equals("Type") && account.getType() == 'a') {
 					System.out.println("Enter New Type");
-					char chInput = console.nexChar();
-					this.account.getType() = input;
+					input = console.nextLine();
+					account.type = input.charAt(0);
 			}
 			else if(input.equals("Status") && account.getType() == 'a') {
 					System.out.println("Enter New Status");
-					char chInput = console.nextChar();
-					this.account.getStatus() = input;
+					input = console.nextLine();
+					account.status = input.charAt(0);
 			}
 		}
 		console.close();

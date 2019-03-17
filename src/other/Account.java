@@ -3,7 +3,9 @@
  */
 package other;
 
+import java.util.*;
 import java.util.List;
+import java.awt.*;
 
 /**
  * @author omatias001
@@ -14,23 +16,23 @@ public class Account {
 	/**
 	 * Instance variables.
 	 */
-	String email, firstName, lastName, password,profilePic;
-	private char status, type;
-	AccountController controller;
-	boolean loginStatus;
+	private String email, firstName, lastName, password, profilePic;
+	private char type, status;
+	private AccountController controller;
+	private boolean loginStatus;
 
 	/**
 	 * Creates an Account object and sets the parameters to the items in the list parameter.
 	 * 
-	 * @param userDetails
+	 * @param list
 	 */
-	public Account(java.awt.List userDetails) {
-		this.email = ((List<String>) userDetails).get(0);
-		this.firstName = ((List<String>) userDetails).get(1);
-		this.lastName = ((List<String>) userDetails).get(2);
-		this.password = ((List<String>) userDetails).get(3);
-		this.status = ((List<String>) userDetails).get(4);
-		this.type = ((List<String>) userDetails).get(5);
+	public Account(Collection accountDetails) {
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.status = type;
+		this.type = status;
 	}
 	
 	/**
@@ -107,7 +109,7 @@ public class Account {
 	 * Returns the status.
 	 */
 	public char getStatus() {
-		return this.status;
+		return this.type;
 	}
 	
 	/**
@@ -134,14 +136,14 @@ public class Account {
 	/**
 	 * Sets the type to the parameter type.
 	 */
-	public void setType(String type) {
+	public void setType(char type) {
 		this.type = type;
 	}
 	
 	/**
 	 * Sets the status to the parameter status.
 	 */
-	public void setStatus(String status) {
+	public void setStatus(char status) {
 		this.status = status;
 	}
 
