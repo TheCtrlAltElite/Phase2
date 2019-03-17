@@ -34,8 +34,8 @@ public class DBLibraryDriver {
     	
     	
 //**Jake use this**
-    	//UniversityController unc = new UniversityController();
-    	//unc.addUniversity(asdgfsfg);
+    	UniversityController unc = new UniversityController();
+    	unc.addUniversityInfo();
     	
     	
     	

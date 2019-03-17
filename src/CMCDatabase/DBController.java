@@ -142,7 +142,7 @@ public class DBController {
 	 * @param newUni
 	 */
 	public void addUniversity(University newUni) {
-		this.library.university_addUniversity(newUni.getSchoolName(), newUni.getSchoolState(), 
+		library.university_addUniversity(newUni.getSchoolName(), newUni.getSchoolState(), 
 											  newUni.getSchoolLocation(), newUni.getSchoolControl(), 
 											  newUni.getNumberStudents(), newUni.getPercentFemale(), 
 											  newUni.getVerbalSAT(), newUni.getMathSAT(), newUni.getSchoolExpenses(), 

@@ -176,8 +176,12 @@ public class UniversityController {
 	 * 
 	 * @param search
 	 */
-	public void addUniversity() {
+	public void addUniversityInfo() {
+		
+		DBController dbc = new DBController();
+		
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter School Name");
 		String schoolName = sc.nextLine();
 		String schoolState = sc.nextLine();
 	    String schoolLocation = sc.nextLine();
@@ -198,7 +202,7 @@ public class UniversityController {
 		University newUni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, 
 										   percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, 
 										   numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
-		database.addUniversity(newUni);
+		dbc.addUniversity(newUni);
 		
 	}
 }
