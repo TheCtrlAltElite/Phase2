@@ -34,37 +34,37 @@ public class Account {
 		this.status = type;
 		this.type = status;
 	}
-	
+
 	/**
-	 * 
+	 * Logs in user/admin
 	 */
 	public void login(String username, String password) {
 		controller.login(username, password);
 	}
 	
 	/**
-	 * 
+	 * Checks if user is already logged in
 	 */
 	public void isLoggedIn(boolean stat) {
 		this.loginStatus = stat;
 	}
 	
 	/**
-	 * 
+	 * Logs out the user/admin
 	 */
 	public void logOut() {
 		
 	}
 	
 	/**
-	 * 
+	 * Resets password of user/admin
 	 */
     public void resetPassword(String o, String n1, String n2) {
 		
 	}
 	
 	/**
-	 * 
+	 * Retrieves the details of a users profile and puts them in a list
 	 */
 	public List<String> getDetailsProfile(){
 		return null;
@@ -78,7 +78,7 @@ public class Account {
 	}
 	
 	/**
-	 * 
+	 * Sets the accounts profile picture
 	 */
 	public void setProfilePic(String newPic) {
 		this.profilePic = newPic;
