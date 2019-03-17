@@ -4,6 +4,7 @@
 
 package CMCDatabase;
 import java.util.*;
+
 import java.util.List;
 import java.awt.*;
 import other.*;
@@ -24,8 +25,19 @@ public class DBController {
 	 * Creates a DBController object.
 	 */
 	public DBController() {
-		// TODO Auto-generated constructor stub
+		  library = new UniversityDBLibrary("ctrlaltd","csci230");	
 	}
+	
+	
+	public UniversityDBLibrary getUnivDBlib(){
+	    return library;
+	}
+
+	public void rMethod() {
+	    System.out.println("Hiiiiii");
+	}
+	
+	
 	/**
 	 * Gets the details for the profile of username.
 	 * 
@@ -83,8 +95,9 @@ public class DBController {
 		int academicScale;
 		int socialScale;
 		int qualityScale;
-		for(int i = 0; i <= arrayUnis.length; i++) {
+		for(int i = 0; i < arrayUnis.length; i++) {
 			schoolName = arrayUnis[i][0];
+			//System.out.println(schoolName);
 			schoolState = arrayUnis[i][1];
 			schoolLocation = arrayUnis[i][2];
 			schoolControl = arrayUnis[i][3];
@@ -101,8 +114,12 @@ public class DBController {
 			socialScale = Integer.parseInt(arrayUnis[i][14]);
 			qualityScale = Integer.parseInt(arrayUnis[i][15]);
 			University uni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
+			//System.out.println(uni.getSchoolName());
 			listUnis.add(uni);
+			
 		}
+		//System.out.println(listUnis.get(1).getSchoolName());
+		System.out.println((listUnis.get(1)));
 		return listUnis;
 	}
 	/**

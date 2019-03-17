@@ -4,12 +4,15 @@
 package testDriver;
 
 import dblibrary.project.csci230.*;
+import other.*;
+
 import java.io.*;
 import java.util.*; 
 import CMCDatabase.*;
+import UniversityFunctionalities.*;
 
 public class DBLibraryDriver {
-  private UniversityDBLibrary DBlib;
+  private UniversityDBLibrary library;
   
   public DBLibraryDriver() {
 	 
@@ -21,9 +24,31 @@ public class DBLibraryDriver {
     	System.out.println("hello");
 
     	DBController dbc = new DBController();
-    	dbc.loadUniversities();
+    	dbc.rMethod();
+    	//dbc.loadUniversities();
+    	
+    	
+    	
+    	//AccountController acc = new AccountController();
+    	//acc.login("sfd","assword");
+    	
+    	
+//**Jake use this**
+    	//UniversityController unc = new UniversityController();
+    	//unc.addUniversity(asdgfsfg);
+    	
+    	
+    	
 
 
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
 //    	AdminInteraction adint = new AdminInteraction ();
 //    	adint.rMethod();
     	
