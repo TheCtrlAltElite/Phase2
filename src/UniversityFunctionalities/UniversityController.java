@@ -3,10 +3,8 @@
  */
 package UniversityFunctionalities;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+
+import java.util.*;
 
 import CMCDatabase.DBController;
 import other.*;
@@ -21,7 +19,8 @@ public class UniversityController {
 	 * 
 	 */
 	private DBController database;
-	private List<University> listUnis = database.loadUniversities();
+	private List<University> listUnis;
+	private TreeMap<Float, University> scores;
 	
 	public UniversityController() {
 		// TODO Auto-generated constructor stub
@@ -37,22 +36,14 @@ public class UniversityController {
 
 	
 	
-	public void compareUniversity(University university) {			     
-		 
-		
-
-		
-		
+	public Map<Float, University> compareUniversity(University university) {	
+		this.listUnis = database.loadUniversities();
+		this.scores = new TreeMap<>();
 		for (int i = 0; i < listUnis.size(); i++) {
 			float score = 0;
 			if(!university.getSchoolState().equals(listUnis.get(i).getSchoolState())) { 		//State
 				score += 1;
 			}
-			
-			
-			//Location
-			// Urban: 3, Suburban: 2, Small-city: 1 
-			// If '-1', then increase score by 1.
 			if(!university.getSchoolLocation().equals(listUnis.get(i).getSchoolLocation())) { 
 				score += 1;
 			}
@@ -114,8 +105,20 @@ public class UniversityController {
 				int qualityScale = listUnis.get(i).getQualityScale();			           
 				score += (Math.abs(university.getVerbalSAT() - qualityScale)) / (database.maxQualityOfLifeScale() - database.minQualityOfLifeScale()); 
 			}
+			scores.put(score, listUnis.get(i));
 		}
-		
+		return scores;
+	}
+	
+	public List<University> recommendedSchools(University university) {
+		compareUniversity(university);
+		List<University> recommendedSchools = new ArrayList<University>();
+			for(int i = 0; i < 5; i++) {
+				float key = this.scores.firstKey();
+				recommendedSchools.add(this.scores.get(key));
+				this.scores.remove(key);
+		}
+		return recommendedSchools;
 	}
 	
 	/**
@@ -137,7 +140,29 @@ public class UniversityController {
 	 * 
 	 * @param search
 	 */
-	public void addUniversity(SearchCriteria search) {
+	public void addUniversity() {
+		Scanner sc = new Scanner(System.in);
+		String schoolName = sc.nextLine();
+		String schoolState = sc.nextLine();
+	    String schoolLocation = sc.nextLine();
+	    String schoolControl = sc.nextLine();
+		int numberStudents = Integer.parseInt(sc.nextLine());
+		int percentFemale = Integer.parseInt(sc.nextLine());
+		int verbalSAT = Integer.parseInt(sc.nextLine());
+		int mathSAT = Integer.parseInt(sc.nextLine());
+		int schoolExpenses = Integer.parseInt(sc.nextLine());
+		int percentFinancialAid = Integer.parseInt(sc.nextLine());
+		int numApplicants = Integer.parseInt(sc.nextLine());
+		int percentAdmitted = Integer.parseInt(sc.nextLine());
+		int percentEnrolled = Integer.parseInt(sc.nextLine());
+		int academicScale = Integer.parseInt(sc.nextLine());
+		int socialScale = Integer.parseInt(sc.nextLine());
+		int qualityScale = Integer.parseInt(sc.nextLine());
+		//List<String> emphasis = sc.nextLine();
+		University newUni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, 
+										   percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, 
+										   numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
+		database.addUniversity(newUni);
 		
 	}
 }

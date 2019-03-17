@@ -121,6 +121,20 @@ public class DBController {
 	}
 	/**
 	 * 
+	 * @param newUni
+	 */
+	public void addUniversity(University newUni) {
+		this.library.university_addUniversity(newUni.getSchoolName(), newUni.getSchoolState(), 
+											  newUni.getSchoolLocation(), newUni.getSchoolControl(), 
+											  newUni.getNumberStudents(), newUni.getPercentFemale(), 
+											  newUni.getVerbalSAT(), newUni.getMathSAT(), newUni.getSchoolExpenses(), 
+											  newUni.getPercentFinancialAid(), newUni.getNumApplicants(), 
+											  newUni.getPercentAdmitted(), newUni.getPercentEnrolled(), 
+											  newUni.getAcademicScale(), newUni.getSocialScale(), newUni.getQualityScale());
+	}
+	
+	/**
+	 * 
 	 * @param list of UserSchool's
 	 */
 	public void updateSavedSschoolsList(List list) {
