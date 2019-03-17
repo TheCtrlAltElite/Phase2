@@ -29,8 +29,8 @@ public class User extends Account{
 	/**
 	 * Searches schools based on the criteria the user gave.
 	 */
-	public void searchSchools(String state, int numStudents) {
-		userInteract.searchSchools(state, numStudents);
+	public void searchSchools(String schoolName, String schoolState, String schoolLocation, String schoolControl, String numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
+		userInteract.searchSchools(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale,  socialScale, qualityScale);
 	}
 	
 	/**

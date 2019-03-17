@@ -1,106 +1,53 @@
 /**
- * 
+ * Author: Osbaldo Matias
  */
 package testDriver;
 
 import dblibrary.project.csci230.*;
 import java.io.*;
 import java.util.*; 
-
-/** 
- * Before you compile in DrJava, go to Edit > Preferences > Resource Locations 
- * Press the Add button under Extra Path to add the following two jars:
- * 
- * 1- /usr/people/classes/CS230/handouts/project/DatabaseLibrary/csci230databaselibrary.jar
- * 2- /usr/people/classes/Java/mysql-connector-java-3.1.10-bin.jar
- * 
- * 
- * To run, issue: java DBLibraryDriver "YourDatabaseUsername" "YourDatabasePassword" 
- * in the Interactions Pane in Dr. Java
- * 
- */ 
+import CMCDatabase.*;
 
 public class DBLibraryDriver {
-  private UniversityDBLibrary univDBlib;
+  private UniversityDBLibrary DBlib;
   
-  public  DBLibraryDriver(String username, String password){
-    univDBlib = new UniversityDBLibrary(username,password);
+  public DBLibraryDriver() {
+	 
   }
-  
-  public UniversityDBLibrary getUnivDBlib(){
-    return univDBlib;
-  }
-  
-  public void display(String[][] table, PrintWriter pw, int topx) {
-    
-    if(table!=null){
-      if (topx == -1 || topx > table.length)
-        topx = table.length;      
-      for (int row = 0; row < topx; row++) {         
-        for (int col = 0; col < table[0].length; col++) {
-          pw.print(table[row][col] + ",");
-        }
-        pw.println();
-      }     
-    }
-    else{
-      pw.println("Nothing to display");
-    }
-  }
-  
   
   
   public static void main(String[] args) {
     try{
-      int topx = -1;
-      DBLibraryDriver dbld = new DBLibraryDriver(args[0],args[1]);
-      
-      String[][] listUniv = dbld.getUnivDBlib().university_getUniversities();
-      
-      Scanner scan = new Scanner(System.in);
-      System.out.println("Enter school state: ");
-      String state = scan.nextLine();
-      
-      System.out.println("Enter number of students: ");
-      int students = scan.nextInt();
-      
-      for(int i = 0; i < listUniv.length; i++ ){
-    	  if(listUniv[i][1].equals(state.toUpperCase()) || (students + 5000) >= Integer.parseInt(listUniv[i][4]) && 
-    			  (students - 5000) <= Integer.parseInt(listUniv[i][4])  ) {
-    		  System.out.println(listUniv[i][0]);
-    	  }
-    	  else {
-    		  System.out.println("Not a match.");
-    	  }
-    		  
-      }
-      
-      
-//      System.out.println("university_addUniversity(x,x,x,x,1,1,1,1,1,1,1,1,1,1,1,1) : " + dbld.getUnivDBlib().university_addUniversity("x","x","x","x",1,1,1,1,1,1,1,1,1,1,1,1));
-//      System.out.println("university_deleteUniversity(x) : " + dbld.getUnivDBlib().university_deleteUniversity("x"));
-//      System.out.println("university_addUniversity(x,x,x,x,1,1,1,1,1,1,1,1,1,1,1,1) : " + dbld.getUnivDBlib().university_addUniversity("x","x","x","x",1,1,1,1,1,1,1,1,1,1,1,1));
-//      System.out.println("university_addUniversityEmphasis(x, 1224):"+dbld.getUnivDBlib().university_addUniversityEmphasis("x","1224"));
-//      System.out.println("university_addUniversityEmphasis(x, 1122):"+dbld.getUnivDBlib().university_addUniversityEmphasis("x","1122"));
-//      System.out.println("university_deleteUniversity(x) : " + dbld.getUnivDBlib().university_deleteUniversity("x"));
-//      System.out.println("university_removeUniversityEmphasis(x, 1224):"+dbld.getUnivDBlib().university_removeUniversityEmphasis("x","1224"));
-//      System.out.println("university_removeUniversityEmphasis(x, 1122):"+dbld.getUnivDBlib().university_removeUniversityEmphasis("x","1122"));      
-//      System.out.println("university_deleteUniversity(x) : " + dbld.getUnivDBlib().university_deleteUniversity("x"));      
-//      System.out.println("university_addUniversity(x,x,x,x,1,1,1,1,1,1,1,1,1,1,1,1) : " + dbld.getUnivDBlib().university_addUniversity("x","x","x","x",1,1,1,1,1,1,1,1,1,1,1,1));      
-//     
-//      System.out.println("user_addUser(yy, yy, yy, yy, 'a'): " + dbld.getUnivDBlib().user_addUser("yy", "yy", "yy", "yy", 'a'));
-//      System.out.println("user_deleteUser(yy) : " + dbld.getUnivDBlib().user_deleteUser("yy"));
-//      System.out.println("user_addUser(yy, yy, yy, yy, 'a'): " + dbld.getUnivDBlib().user_addUser("yy", "yy", "yy", "yy", 'a'));
-//
-//      System.out.println("user_saveSchool(yy, BARD):" + dbld.getUnivDBlib().user_saveSchool("yy","BARD") );
-//      System.out.println("user_saveSchool(yy, x):" + dbld.getUnivDBlib().user_saveSchool("yy","x") );
-//      System.out.println("user_deleteUser(yy) : " + dbld.getUnivDBlib().user_deleteUser("yy"));
-//      System.out.println("university_deleteUniversity(x) : " + dbld.getUnivDBlib().university_deleteUniversity("x"));      
-//      System.out.println("user_removeSchool(yy, BARD):" + dbld.getUnivDBlib().user_removeSchool("yy","BARD") );
-//      System.out.println("user_removeSchool(yy, x):" + dbld.getUnivDBlib().user_removeSchool("yy","x") );
-//      System.out.println("user_deleteUser(yy) : " + dbld.getUnivDBlib().user_deleteUser("yy"));
-//      System.out.println("university_deleteUniversity(x) : " + dbld.getUnivDBlib().university_deleteUniversity("x"));
-      
-     
+    	System.out.println("hello");
+
+    	DBController dbc = new DBController();
+    	dbc.loadUniversities();
+
+
+//    	AdminInteraction adint = new AdminInteraction ();
+//    	adint.rMethod();
+    	
+  
+//      DBLibraryDriver dbld = new DBLibraryDriver(args[0],args[1]);
+//      
+//      String[][] listUniv = dbld.getUnivDBlib().university_getUniversities();
+//      
+//      Scanner scan = new Scanner(System.in);
+//      System.out.println("Enter school state: ");
+//      String state = scan.nextLine();
+//      
+//      System.out.println("Enter number of students: ");
+//      int students = scan.nextInt();
+//      
+//      for(int i = 0; i < listUniv.length; i++ ){
+//    	  if(listUniv[i][1].equals(state.toUpperCase()) || (students + 5000) >= Integer.parseInt(listUniv[i][4]) && 
+//    			  (students - 5000) <= Integer.parseInt(listUniv[i][4])  ) {
+//    		  System.out.println(listUniv[i][0]);
+//    	  }
+//    	  else {
+//    		  System.out.println("Not a match.");
+//    	  }	  
+//      }
       //System.out.println(Arrays.deepToString(dbld.getUnivDBlib().university_getUniversities()));
     }
     catch(Exception e){

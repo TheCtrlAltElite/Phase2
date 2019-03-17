@@ -26,7 +26,7 @@ public class Account {
 	 * 
 	 * @param list
 	 */
-	public Account(String email, String firstName, String lastName, String password, char type, char status) {
+	public Account(Collection accountDetails) {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
