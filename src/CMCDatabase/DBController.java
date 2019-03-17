@@ -463,10 +463,79 @@ public class DBController {
 			}
 		}
 		Collections.sort(percentEnrolled);
-		int maxEnrolled = percentEnrolled.get(0);  			//Subtracts 1 to ensure that the 
-		return maxEnrolled;									//index of the array is realigned										 
+		int maxEnrolled = percentEnrolled.get(0);  		 
+		return maxEnrolled;																			 
 	}
 	
+	public int maxAcademicScale() {
+		List<Integer> academicScale = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getAcademicScale() != -1) {
+				academicScale .add(listUnis.get(j).getAcademicScale());
+			}
+		}
+		Collections.sort(academicScale);
+		int maxAcademicScale = academicScale.get(academicScale .size() - 1); 		 //Subtracts 1 to ensure that the 
+		return maxAcademicScale;													 //index of the array is realigned										 
+	}
 	
+	public int minAcademicScale() {
+		List<Integer> academicScale = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getAcademicScale() != -1) {
+				academicScale .add(listUnis.get(j).getAcademicScale());
+			}
+		}
+		Collections.sort(academicScale);
+		int minAcademicScale = academicScale.get(0); 		 
+		return minAcademicScale;													 										 
+	}
 	
+	public int maxSocialScale() {
+		List<Integer> socialScale = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getSocialScale() != -1) {
+				socialScale .add(listUnis.get(j).getSocialScale());
+			}
+		}
+		Collections.sort(socialScale);
+		int maxSocialScale = socialScale.get(socialScale .size() - 1); 		 //Subtracts 1 to ensure that the 
+		return maxSocialScale;													 //index of the array is realigned										 
+	}
+	
+	public int minSocialScale() {
+		List<Integer> socialScale = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getSocialScale() != -1) {
+				socialScale .add(listUnis.get(j).getSocialScale());
+			}
+		}
+		Collections.sort(socialScale);
+		int minSocialScale = socialScale.get(0); 		  
+		return minSocialScale;																					 
+	}
+	
+	public int maxQualityOfLifeScale() {
+		List<Integer> qualityScale = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getQualityScale() != -1) {
+				qualityScale .add(listUnis.get(j).getQualityScale());
+			}
+		}
+		Collections.sort(qualityScale);
+		int maxQualityScale = qualityScale.get(qualityScale .size() - 1); 		 //Subtracts 1 to ensure that the 
+		return maxQualityScale;													 //index of the array is realigned										 
+	}
+	
+	public int minQualityOfLifeScale() {
+		List<Integer> qualityScale = new ArrayList<Integer>();
+		for (int j = 0; j < listUnis.size(); j++) {
+			if(listUnis.get(j).getQualityScale() != -1) {
+				qualityScale .add(listUnis.get(j).getQualityScale());
+			}
+		}
+		Collections.sort(qualityScale);
+		int minQualityScale = qualityScale.get(0); 		 
+		return minQualityScale;													 									 
+	}
 }
