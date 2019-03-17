@@ -9,7 +9,7 @@ package AdminFunctionalities;
 
 public class AdminInteraction {
 	
-	AdminFunctionalityController adminFController;
+	private AdminFunctionalityController adminFController;
 	
 	public AdminInteraction() {
 		// TODO Auto-generated constructor stub

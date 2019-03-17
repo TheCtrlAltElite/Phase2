@@ -18,15 +18,15 @@ public class UserFunctionalityController {
 	/**
 	 * Instance Variables
 	 */
-	University university;
-	DBController database;
-	String firstName;
-	String lastName;
-	String email;
-	String profilePic;
-	String status;
-	String type;
-	String password;
+	private University university;
+	private DBController database;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String profilePic;
+	private String status;
+	private String type;
+	private String password;
 	
 	public UserFunctionalityController() {
 		// TODO Auto-generated constructor stub

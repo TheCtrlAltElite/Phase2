@@ -18,8 +18,8 @@ public class User extends Account{
 	/**
 	 * Instance Variables
 	 */
-	List savedSchoolsList;
-	UserInteraction userInteract;
+	private List savedSchoolsList;
+	private UserInteraction userInteract;
 	
 	//
 	public User(String email, String firstName, String lastName, String password, char type, char status) {

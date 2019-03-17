@@ -15,8 +15,8 @@ import CMCDatabase.DBController;
  */
 public class AccountController {
 
-	DBController database;
-	Account account;
+	private DBController database;
+	private Account account;
 	
 	/**
 	 * 
