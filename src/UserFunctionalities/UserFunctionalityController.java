@@ -39,14 +39,13 @@ public class UserFunctionalityController {
 	public void searchSchools(String schoolName, String schoolState, String schoolLocation, String schoolControl, String numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
 		List<University> listUnis = database.loadUniversities();
 		List<University> matchingUnis = new ArrayList<University>();
-		if(!schoolName.isEmpty()) {
-			for(int i = 0; i <= listUnis.size(); i++) {
-				if(listUnis.get(i).getSchoolName().equals(schoolName)) {
-					//matchingUnis.add();
+		for(int i = 0; i < listUnis.size(); i++){
+			if(schoolName != null) {
+				if(schoolName.equals(listUnis.get(i).getSchoolName())){
+					
 				}
 			}
 		}
-		
 	}
 	
 	/**

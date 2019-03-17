@@ -20,6 +20,7 @@ public class DBController {
 
 	private UniversityDBLibrary library;
 	private List<University> listUnis;
+	private List<User> listUsers;
 	
 	/**
 	 * Creates a DBController object.
@@ -53,7 +54,7 @@ public class DBController {
 	 * @param String school the name of the school
 	 * @return a Collection of the details for that University
 	 */
-	public Collection getDetailsUni(String school) {
+	public Collection<String> getDetailsUni(String school) {
 		return null;
 	}
 	/**
@@ -138,16 +139,48 @@ public class DBController {
 	}
 	/**
 	 * 
+	 * @param newUni
+	 */
+	public void addUniversity(University newUni) {
+		this.library.university_addUniversity(newUni.getSchoolName(), newUni.getSchoolState(), 
+											  newUni.getSchoolLocation(), newUni.getSchoolControl(), 
+											  newUni.getNumberStudents(), newUni.getPercentFemale(), 
+											  newUni.getVerbalSAT(), newUni.getMathSAT(), newUni.getSchoolExpenses(), 
+											  newUni.getPercentFinancialAid(), newUni.getNumApplicants(), 
+											  newUni.getPercentAdmitted(), newUni.getPercentEnrolled(), 
+											  newUni.getAcademicScale(), newUni.getSocialScale(), newUni.getQualityScale());
+	}
+	
+	/**
+	 * 
 	 * @param list of UserSchool's
 	 */
 	public void updateSavedSschoolsList(List list) {
 		//TODO
 	}
 	/**
-	 * 
+	 * Pulls user information from database, creates a user object, and adds the object to a list that is returned. 
 	 */
-	public void loadUsers() {
-		//TODO
+	public List<User> loadUsers() {
+		String [][] arrayUsers = library.user_getUsers();
+		this.listUsers = new ArrayList<User>();
+		String email;
+		String firstName;
+		String lastName;
+		String password;
+		String type;
+		String status; 
+		for(int i = 0; i <= arrayUsers.length; i++) {
+		email = arrayUsers[i][0];
+		firstName = arrayUsers[i][1];
+		lastName = arrayUsers[i][2];
+		password = arrayUsers[i][3];
+		type = arrayUsers[i][4];
+		status = arrayUsers[i][5];	
+		User user = new User(email, firstName, lastName, password, type.charAt(0), status.charAt(0));
+		listUsers.add(user);
+		}
+		return listUsers;
 	}
 	/**
 	 * 

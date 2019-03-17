@@ -3,10 +3,8 @@
  */
 package UniversityFunctionalities;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+
+import java.util.*;
 
 import CMCDatabase.DBController;
 import other.*;
@@ -21,7 +19,8 @@ public class UniversityController {
 	 * 
 	 */
 	private DBController database;
-	private List<University> listUnis = database.loadUniversities();
+	private List<University> listUnis;
+	private TreeMap<Float, University> scores;
 	
 	public UniversityController() {
 		// TODO Auto-generated constructor stub
@@ -35,283 +34,27 @@ public class UniversityController {
 		
 	}
 
-	/**
-	 * 
-	 * @param university
-	 */
-	/**
-	public int maxNumStudents() {
-		List<Integer> listOfStudents = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getNumberStudents() != -1) {
-				listOfStudents.add(listUnis.get(j).getNumberStudents());
-			}
-		}
-		Collections.sort(listOfStudents);
-		int maxStudents = listOfStudents.get(listOfStudents.size() - 1);	//Subtracts 1 to ensure that the 
-		return maxStudents;													//index of the array is realigned
-	}
 	
 	
-	public int minNumStudents() {
-		List<Integer> listOfStudents = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getNumberStudents() != -1) {
-				listOfStudents.add(listUnis.get(j).getNumberStudents());
-			}
-		}
-		Collections.sort(listOfStudents);
-		int minStudents = listOfStudents.get(0);
-		return minStudents;
-	}
-	
-	public int maxFemale() {
-		List<Integer> percentFemale = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getPercentFemale() != -1) {
-				percentFemale.add(listUnis.get(j).getPercentFemale());
-			}
-		}
-		Collections.sort(percentFemale);
-		int maxFemale = percentFemale.get(percentFemale.size() - 1); //Subtracts 1 to ensure that the 
-		return maxFemale;											 //index of the array is realigned
-	}
-	
-	public int minFemale() {
-		List<Integer> percentFemale = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getPercentFemale() != -1) {
-				percentFemale.add(listUnis.get(j).getPercentFemale());
-			}
-		}
-		Collections.sort(percentFemale);
-		int minFemale = percentFemale.get(0);  
-		return minFemale;											 
-	}
-	
-	public int maxSATVerbal() {
-		List<Integer> satVerbal = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getVerbalSAT() != -1) {
-				satVerbal.add(listUnis.get(j).getVerbalSAT());
-			}
-		}
-		Collections.sort(satVerbal);
-		int maxSATVerbal = satVerbal.get(satVerbal.size() - 1); //Subtracts 1 to ensure that the 
-		return maxSATVerbal;									//index of the array is realigned										 
-	}
-	
-	public int minSATVerbal() {
-		List<Integer> satVerbal = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getVerbalSAT() != -1) {
-				satVerbal.add(listUnis.get(j).getVerbalSAT());
-			}
-		}
-		Collections.sort(satVerbal);
-		int minSATVerbal = satVerbal.get(0); 					
-		return minSATVerbal;																		 
-	}
-	
-	public int maxSATMath() {
-		List<Integer> satMath = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getMathSAT() != -1) {
-				satMath.add(listUnis.get(j).getMathSAT());
-			}
-		}
-		Collections.sort(satMath);
-		int maxSATMath = satMath.get(satMath.size() - 1); //Subtracts 1 to ensure that the 
-		return maxSATMath;									//index of the array is realigned										 
-	}
-	
-	public int minSATMath() {
-		List<Integer> satMath = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getMathSAT() != -1) {
-				satMath.add(listUnis.get(j).getMathSAT());
-			}
-		}
-		Collections.sort(satMath);
-		int minSATMath = satMath.get(0); 					
-		return minSATMath;																		 
-	}
-	
-	public int maxExpenses() {
-		List<Integer> expenses = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getSchoolExpenses() != -1) {
-				expenses.add(listUnis.get(j).getSchoolExpenses());
-			}
-		}
-		Collections.sort(expenses);
-		int maxExpenses = expenses.get(expenses.size() - 1); //Subtracts 1 to ensure that the 
-		return maxExpenses;									//index of the array is realigned										 
-	}
-	
-	public int minExpenses() {
-		List<Integer> expenses = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getSchoolExpenses() != -1) {
-				expenses.add(listUnis.get(j).getSchoolExpenses());
-			}
-		}
-		Collections.sort(expenses);
-		int minExpenses = expenses.get(0); 
-		return minExpenses;																		 
-	}
-	
-	public int maxFinancialAid() {
-		List<Integer> aid = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getPercentFinancialAid() != -1) {
-				aid.add(listUnis.get(j).getPercentFinancialAid());
-			}
-		}
-		Collections.sort(aid);
-		int maxAid = aid.get(aid.size() - 1); 			//Subtracts 1 to ensure that the 
-		return maxAid;									//index of the array is realigned										 
-	}
-	
-	public int minFinancialAid() {
-		List<Integer> aid = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getPercentFinancialAid() != -1) {
-				aid.add(listUnis.get(j).getPercentFinancialAid());
-			}
-		}
-		Collections.sort(aid);
-		int minAid = aid.get(0); 						
-		return minAid;																			 
-	}
-	
-	public int maxNumApplicants() {
-		List<Integer> numApps = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getNumApplicants() != -1) {
-				numApps.add(listUnis.get(j).getNumApplicants());
-			}
-		}
-		Collections.sort(numApps);
-		int maxApps = numApps.get(numApps.size() - 1);  //Subtracts 1 to ensure that the 
-		return maxApps;									//index of the array is realigned										 
-	}
-	
-	public int minNumApplicants() {
-		List<Integer> numApps = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.size(); j++) {
-			if(listUnis.get(j).getNumApplicants() != -1) {
-				numApps.add(listUnis.get(j).getNumApplicants());
-			}
-		}
-		Collections.sort(numApps);
-		int minApps = numApps.get(0); 					
-		return minApps;																		 
-	}
-	*/
-	
-	public void compareUniversity(University university) {			     
-		 
-		
-
-		/*
-		List<Integer> satVerbal = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.length; j++) {
-			if(Integer.parseInt(listUnis[j][6]) != -1) {
-				satVerbal.add(Integer.parseInt(listUnis[j][6]));
-			}
-		}
-		Collections.sort(satVerbal);
-		int minSatVerbal = satVerbal.get(0);
-		int maxSatVerbal = satVerbal.get(satVerbal.size() - 1); //Subtracts 1 to ensure that the 
-															    //index of the array is realigned
-		
-		List<Integer> satMath = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.length; j++) {
-			if(Integer.parseInt(listUnis[j][7]) != -1) {
-				satMath.add(Integer.parseInt(listUnis[j][7]));
-			}
-		}
-		Collections.sort(satMath);
-		int minSatMath = satMath.get(0);
-		int maxSatMath = satMath.get(satMath.size() - 1); //Subtracts 1 to ensure that the 
-														  //index of the array is realigned
-		
-		List<Integer> expenses = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.length; j++) {
-			if(Integer.parseInt(listUnis[j][8]) != -1) {
-				expenses.add(Integer.parseInt(listUnis[j][8]));
-			}
-		}
-		Collections.sort(expenses);
-		int minExpenses = expenses.get(0);
-		int maxExpenses = expenses.get(expenses.size() - 1); //Subtracts 1 to ensure that the 
-															 //index of the array is realigned
-		
-		List<Integer> financialAid = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.length; j++) {
-			if(Integer.parseInt(listUnis[j][9]) != -1) {
-				financialAid.add(Integer.parseInt(listUnis[j][9]));
-			}
-		}
-		Collections.sort(financialAid);
-		int minAid = financialAid.get(0);
-		int maxAid = financialAid.get(financialAid.size() - 1); //Subtracts 1 to ensure that the 
-															    //index of the array is realigned
-		
-		List<Integer> applicants = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.length; j++) {
-			if(Integer.parseInt(listUnis[j][10]) != -1) {
-				applicants.add(Integer.parseInt(listUnis[j][10]));
-			}
-		}
-		Collections.sort(applicants);
-		int minApps = applicants.get(0);
-		int maxApps = applicants.get(applicants.size() - 1); //Subtracts 1 to ensure that the 
-															 //index of the array is realigned
-		
-		List<Integer> percentAdmitted = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.length; j++) {
-			if(Integer.parseInt(listUnis[j][11]) != -1){
-				percentAdmitted.add(Integer.parseInt(listUnis[j][11]));
-			}
-		}
-		Collections.sort(percentAdmitted);
-		int minAdmitted = percentAdmitted.get(0);
-		int maxAdmitted = percentAdmitted.get(percentAdmitted.size() - 1); //Subtracts 1 to ensure that the 
-															               //index of the array is realigned
-		
-		List<Integer> percentEnrolled = new ArrayList<Integer>();
-		for (int j = 0; j < listUnis.length; j++) {
-			if(Integer.parseInt(listUnis[j][12]) != -1) {
-				percentEnrolled.add(Integer.parseInt(listUnis[j][12]));
-			}
-		}
-		Collections.sort(percentEnrolled);
-		int minEnrolled = percentEnrolled.get(0);
-		int maxEnrolled = percentEnrolled.get(percentEnrolled.size() - 1); //Subtracts 1 to ensure that the 
-															               //index of the array is realigned
-			*/	
-		
+	public Map<Float, University> compareUniversity(University university) {	
+		this.listUnis = database.loadUniversities();
+		this.scores = new TreeMap<>();
 		for (int i = 0; i < listUnis.size(); i++) {
 			float score = 0;
 			if(!university.getSchoolState().equals(listUnis.get(i).getSchoolState())) { 		//State
 				score += 1;
 			}
-			
-			/*
-			//Location
-			// Urban: 3, Suburban: 2, Small-city: 1 
-			// If '-1', then increase score by 1.
-			if(!university.getSchoolLocation().equals()) { 	
+			if(!university.getSchoolLocation().equals(listUnis.get(i).getSchoolLocation())) { 
+				score += 1;
 			}
 			else if(university.getSchoolLocation().equals("-1")) { 	//When the university passed location is '-1'
 				score += 1;											//awards 1 because data is insufficient
 			}	
-			*/
-			
-			if(!university.getSchoolControl().equals(listUnis[i][3])) { 	//Control
+			if(!university.getSchoolControl().equals(listUnis.get(i).getSchoolControl())) { 	//Control
 				score += 1;
+			}
+			else if(university.getSchoolControl().equals("-1")) { 	//When the university passed location is '-1'
+				score += 1;											//awards 1 because data is insufficient
 			}
 			if(university.getNumberStudents() != listUnis.get(i).getNumberStudents()) { //NumberOfStudents
 				int students = (listUnis.get(i).getNumberStudents());					                    //int students is the numberOfStudents for listUnis[i][4]
@@ -362,8 +105,20 @@ public class UniversityController {
 				int qualityScale = listUnis.get(i).getQualityScale();			           
 				score += (Math.abs(university.getVerbalSAT() - qualityScale)) / (database.maxQualityOfLifeScale() - database.minQualityOfLifeScale()); 
 			}
+			scores.put(score, listUnis.get(i));
 		}
-		
+		return scores;
+	}
+	
+	public List<University> recommendedSchools(University university) {
+		compareUniversity(university);
+		List<University> recommendedSchools = new ArrayList<University>();
+			for(int i = 0; i < 5; i++) {
+				float key = this.scores.firstKey();
+				recommendedSchools.add(this.scores.get(key));
+				this.scores.remove(key);
+		}
+		return recommendedSchools;
 	}
 	
 	/**
@@ -385,7 +140,29 @@ public class UniversityController {
 	 * 
 	 * @param search
 	 */
-	public void addUniversity(SearchCriteria search) {
+	public void addUniversity() {
+		Scanner sc = new Scanner(System.in);
+		String schoolName = sc.nextLine();
+		String schoolState = sc.nextLine();
+	    String schoolLocation = sc.nextLine();
+	    String schoolControl = sc.nextLine();
+		int numberStudents = Integer.parseInt(sc.nextLine());
+		int percentFemale = Integer.parseInt(sc.nextLine());
+		int verbalSAT = Integer.parseInt(sc.nextLine());
+		int mathSAT = Integer.parseInt(sc.nextLine());
+		int schoolExpenses = Integer.parseInt(sc.nextLine());
+		int percentFinancialAid = Integer.parseInt(sc.nextLine());
+		int numApplicants = Integer.parseInt(sc.nextLine());
+		int percentAdmitted = Integer.parseInt(sc.nextLine());
+		int percentEnrolled = Integer.parseInt(sc.nextLine());
+		int academicScale = Integer.parseInt(sc.nextLine());
+		int socialScale = Integer.parseInt(sc.nextLine());
+		int qualityScale = Integer.parseInt(sc.nextLine());
+		//List<String> emphasis = sc.nextLine();
+		University newUni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, 
+										   percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, 
+										   numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
+		database.addUniversity(newUni);
 		
 	}
 }
