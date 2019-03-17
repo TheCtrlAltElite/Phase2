@@ -19,6 +19,7 @@ public class DBController {
 
 	private UniversityDBLibrary library;
 	private List<University> listUnis;
+	private List<User> listUsers;
 	
 	/**
 	 * Creates a DBController object.
@@ -85,6 +86,7 @@ public class DBController {
 		int qualityScale;
 		for(int i = 0; i <= arrayUnis.length; i++) {
 			schoolName = arrayUnis[i][0];
+			System.out.println(schoolName);
 			schoolState = arrayUnis[i][1];
 			schoolLocation = arrayUnis[i][2];
 			schoolControl = arrayUnis[i][3];
@@ -127,10 +129,28 @@ public class DBController {
 		//TODO
 	}
 	/**
-	 * 
+	 * Pulls user information from database, creates a user object, and adds the object to a list that is returned. 
 	 */
-	public void loadUsers() {
-		//TODO
+	public List<User> loadUsers() {
+		String [][] arrayUsers = library.user_getUsers();
+		this.listUsers = new ArrayList<User>();
+		String email;
+		String firstName;
+		String lastName;
+		String password;
+		String type;
+		String status; 
+		for(int i = 0; i <= arrayUsers.length; i++) {
+		email = arrayUsers[i][0];
+		firstName = arrayUsers[i][1];
+		lastName = arrayUsers[i][2];
+		password = arrayUsers[i][3];
+		type = arrayUsers[i][4];
+		status = arrayUsers[i][5];	
+		User user = new User(email, firstName, lastName, password, type.charAt(0), status.charAt(0));
+		listUsers.add(user);
+		}
+		return listUsers;
 	}
 	/**
 	 * 

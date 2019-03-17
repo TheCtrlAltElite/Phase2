@@ -34,7 +34,7 @@ public class Account {
 		this.status = type;
 		this.type = status;
 	}
-	
+
 	/**
 	 * Logs in user/admin
 	 */
