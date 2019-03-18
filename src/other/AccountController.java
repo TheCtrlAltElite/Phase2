@@ -86,7 +86,7 @@ public class AccountController {
 	 */
 	public void editProfile(String username) {
 		Scanner console = new Scanner(System.in);
-		List<String> profileDetails = new ArrayList<String>(database.getDetailsProfile(username))
+		List<String> profileDetails = new ArrayList<String>(database.getDetailsProfile(username));
 		this.account = new Account(profileDetails.get(0), profileDetails.get(1), profileDetails.get(2), profileDetails.get(3), profileDetails.get(4).charAt(0), profileDetails.get(5).charAt(0));
 		while(console.nextLine() != "Stop") {
 			System.out.println("Please enter a field you would like to change. CAPS LOCK MATTERS.");
@@ -100,12 +100,12 @@ public class AccountController {
 			if(input.equals("First Name")) {
 				System.out.println("Enter First Name");
 				input = console.nextLine();
-				account.getFirstName() = input;
+				account.setFirstName(input);			//account.getFirstName() = input;
 			}
 			else if(input.equals("Last Name")) {
 				System.out.println("Enter Last Name");
 				input = console.nextLine();
-				account.getLastName() = input;
+				account.setLastName(input);				//account.getLastName() = input;
 			}
 			else if(input.equals("Password")) {
 				System.out.println("Enter your password");
@@ -125,12 +125,12 @@ public class AccountController {
 			else if(input.equals("Type") && account.getType() == 'a') {
 					System.out.println("Enter New Type");
 					input = console.nextLine();
-					account.getType() = input.charAt(0);
+					account.setType(input.charAt(0));					//account.getType() = input.charAt(0);
 			}
 			else if(input.equals("Status") && account.getType() == 'a') {
 					System.out.println("Enter New Status");
 					input = console.nextLine();
-					account.getStatus() = input.charAt(0);
+					account.setStatus(input.charAt(0));					//account.getStatus() = input.charAt(0);
 			}
 		}
 		console.close();

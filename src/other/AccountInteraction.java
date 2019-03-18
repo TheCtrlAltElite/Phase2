@@ -80,8 +80,8 @@ public class AccountInteraction {
 	 * @param n1
 	 * @param n2
 	 */
-	public void resetPassword(String O, String n1, String n2) {
-		//TODO
+	public void resetPassword(String o, String n1, String n2) {
+		accController.resetPassword(o, n1, n2);
 	}
 	
 	/**
