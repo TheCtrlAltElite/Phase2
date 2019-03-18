@@ -18,7 +18,7 @@ public class User extends Account{
 	/**
 	 * Instance Variables
 	 */
-	private List savedSchoolsList;
+	private List<University> savedSchoolsList;
 	private UserInteraction userInteract;
 	
 	//
@@ -45,8 +45,8 @@ public class User extends Account{
 	 * Fetches the user's savedSchoolsList and return it.
 	 * @return List<UserSchool> - A list of the schools the user has saved.  
 	 */	
-	public List getSavedSchoolsList(){
-		return null;
+	public List<University> getSavedSchoolsList(){
+		return this.savedSchoolsList;
 	}
 
 	/**
