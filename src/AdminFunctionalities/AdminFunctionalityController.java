@@ -1,8 +1,11 @@
 package AdminFunctionalities;
 
-import CMCDatabase.*;
 import java.util.*;
+
+import CMCDatabase.*;
 import UniversityFunctionalities.*;
+import UserFunctionalities.*;
+
 
 public class AdminFunctionalityController {
 
@@ -101,6 +104,15 @@ public class AdminFunctionalityController {
 	 * Removes university from the database
 	 */
 	public void removeUniversityDB(String schoolName) {
-		//TODO
+		List<User> users = database.loadUsers();
+		List<University> unis;		
+		for (int i = 0; i < users.size(); i++) {
+			unis = users.get(i).getSavedSchoolsList();
+			if(unis.contains(unis.get(i))) {
+				System.out.println("This School Cannot be Removed");
+				break;
+			}
+		}
+		database.removeUniversityDB(schoolName);
 	}
 }

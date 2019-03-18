@@ -7,6 +7,7 @@ package UniversityFunctionalities;
 import java.util.*;
 
 import CMCDatabase.DBController;
+import UserFunctionalities.User;
 import other.*;
 
 /**
@@ -30,9 +31,16 @@ public class UniversityController {
 	 * 
 	 * @param university
 	 */
-	public void addToList(University university) {
+	public void addToList(User user, University university) {
 		
+		database.addToSavedSchoolsList(user.getEmail(), university.getSchoolName());
 	}
+	
+	public void removeFromList(User user, University university) {
+		
+		database.removeFromSavedSchoolsList(user.getEmail(), university.getSchoolName());
+	}
+	
 
 	
 	

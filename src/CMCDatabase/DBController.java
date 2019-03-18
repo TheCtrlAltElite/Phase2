@@ -197,9 +197,15 @@ public class DBController {
 	 * 
 	 * @param list of UserSchool's
 	 */
-	public void updateSavedSschoolsList(List list) {
-		//TODO
+	public void addToSavedSchoolsList(String username, String school) {
+		library.user_saveSchool(username, school);
 	}
+	
+	public void removeFromSavedSchoolsList(String username, String school) {
+		library.user_removeSchool(username, school);
+	}
+	
+	
 	/**
 	 * Pulls user information from database, creates a user object, and adds the object to a list that is returned. 
 	 * 
@@ -253,13 +259,7 @@ public class DBController {
 	public void addUser(String password, String firstName, String lastName, String email, char type) {
 		library.user_addUser(firstName, lastName, email, password, type);
 	}
-	/**
-	 * 
-	 * @param type
-	 */
-	public void update(String type) {
-		
-	}
+
 	/**
 	 * 
 	 * @param email
@@ -296,6 +296,7 @@ public class DBController {
 	 * @return
 	 */
 	public boolean checkPasswordRequirements(String password) {
+		this.containsLowerCase(password);
 		return true;
 	}
 	/**
@@ -303,39 +304,61 @@ public class DBController {
 	 * @param array
 	 * @return
 	 */
-	public boolean containsLowerCase(String[] array) {
-		return true;
+	public boolean containsLowerCase(String password) {
+		for(int i = 0; i < password.length(); i++) {
+			if(Character.isLowerCase(password.charAt(i))){
+				return true;
+			}
+		}
+		System.out.println("Password must contain a lower case letter.");
+		return false;
 	}
 	/**
 	 * 
 	 * @param array
 	 * @return
 	 */
-	public boolean containsUpperCase(String[] array) {
-		return true;
+	public boolean containsUpperCase(String password) {
+		for(int i = 0; i < password.length(); i++) {
+			if(Character.isUpperCase(password.charAt(i))){
+				return true;
+			}
+		}
+		System.out.println("Password must contain an upper case letter.");
+		return false;
 	}
 	/**
 	 * 
 	 * @param array
 	 * @return
 	 */
-	public boolean containsSpecialCharacter(String[] array) {
-		return true;
+	public boolean passwordLength(String password) {
+		if(password.length() >= 10) {
+			return true;
+		}
+		System.out.println("Password must be 10 characters long.");
+		return false;
 	}
 	/**
 	 * 
 	 * @param array
 	 * @return
 	 */
-	public boolean containsNumber(String[] array) {
-		return true;
+	public boolean containsNumber(String password) {
+		for(int i = 0; i < password.length(); i++) {
+			if(Character.isDigit(password.charAt(i))){
+				return true;
+			}
+		}
+		System.out.println("Password must contain a number.");
+		return false;
 	}
 	/**
 	 * 
 	 * @param schoolName
 	 */
 	public void removeUniversityDB(String schoolName) {
-		//TODO
+		library.university_deleteUniversity(schoolName);
 	}
 	
 	public int maxNumStudents() {
@@ -625,4 +648,5 @@ public class DBController {
 		int minQualityScale = qualityScale.get(0); 		 
 		return minQualityScale;													 									 
 	}
+
 }
