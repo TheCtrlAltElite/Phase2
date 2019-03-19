@@ -1,9 +1,6 @@
 package UniversityFunctionalities;
-import java.util.List;
 
-/**
- * 
- */
+import java.util.List;
 
 /**
  * @author Ctrl Alt Elite
@@ -54,7 +51,7 @@ public class University {
 		this.academicScale = academicScale;
 		this.socialScale = socialScale;
 		this.qualityScale = qualityScale;
-		this.emphasis = emphasis;
+		this.emphasis = null;
 	}
 
 

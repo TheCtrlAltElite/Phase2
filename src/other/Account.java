@@ -4,7 +4,7 @@
 package other;
 
 //imports
-import java.util.*;
+//import java.util.*;
 
 /**
  * @author Ctrl Alt Elite
@@ -15,9 +15,10 @@ public class Account {
 	/**
 	 * Instance variables.
 	 */
-	private String email, firstName, lastName, password, profilePic;
+	private String email, firstName, lastName, password;
+	private String profilePic;
 	private char type, status;
-	private AccountController controller;
+	//private AccountController controller;
 	private boolean loginStatus;
 
 	/**
@@ -26,22 +27,30 @@ public class Account {
 	 * @param email, firstName, lastName, password, type, status
 	 */
 	public Account(String email, String firstName, String lastName, String password, char type, char status) {
+		
+		//controller = new AccountController();
+		
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
 		this.status = type;
 		this.type = status;
+		this.loginStatus = false;
 	}
 	
 	/**
 	 * Sets the users status to logged in
 	 * @param stat
 	 */
-	public void isLoggedIn(boolean stat) {
-		this.loginStatus = stat;
+	public boolean getLoginStatus() {
+		return this.loginStatus;
 	}
-
+	
+	public void setLoginStatus(boolean enterStatus) {
+		this.loginStatus = enterStatus;
+	}
+		 
 	
 	/**
 	 * Returns the email of the user.
@@ -58,6 +67,9 @@ public class Account {
 		this.profilePic = newPic;
 	}
 	
+	public String getProfilePic() {
+		return this.profilePic;
+	}
 	/**
 	 * Returns the first name.
 	 * @return firstName, the name of the Account

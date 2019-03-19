@@ -3,7 +3,7 @@
  */
 package other;
 
-import java.util.List;
+//import java.util.List;
 
 /**
  * @author omatias001
@@ -14,10 +14,10 @@ public class SearchCriteria {
 	/**
 	 * Instance variables.
 	 */
-	private String schoolName, schoolState, schoolLocation, schoolControl;
-	private int numberStudents, percentFemale, verbalSAT, mathSat, schoolExpenses, percentFinancialAid, numApplicants;
-	private int percentAdmitted, percentEnrolled, academicsScale, scocialScale, qualityScale;
-	private List emphasis;
+//	private String schoolName, schoolState, schoolLocation, schoolControl;
+//	private int numberStudents, percentFemale, verbalSAT, mathSat, schoolExpenses, percentFinancialAid, numApplicants;
+//	private int percentAdmitted, percentEnrolled, academicsScale, scocialScale, qualityScale;
+//	private List emphasis;
 	
 	/**
 	 * 
