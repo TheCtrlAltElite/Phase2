@@ -35,7 +35,12 @@ public class DBController {
 	}
 
 	public void rMethod() {
-	    System.out.println("Hiiiiii");
+	    System.out.println("Driver is Working and is communicating with DBController \n");
+	}
+	
+	
+	public void testAdd() {
+		library.university_addUniversity("ZTESTUNI", "MN", "RURAL", "Private", 10000, 99, 1600, 1600, 2, 100, 1000, 999, 4000, 5, 5, 5);
 	}
 	
 	
@@ -98,7 +103,6 @@ public class DBController {
 		int qualityScale;
 		for(int i = 0; i < arrayUnis.length; i++) {
 			schoolName = arrayUnis[i][0];
-			//System.out.println(schoolName);
 			schoolState = arrayUnis[i][1];
 			schoolLocation = arrayUnis[i][2];
 			schoolControl = arrayUnis[i][3];
@@ -119,8 +123,7 @@ public class DBController {
 			listUnis.add(uni);
 			
 		}
-		//System.out.println(listUnis.get(1).getSchoolName());
-		System.out.println((listUnis.get(1)));
+		//System.out.println(listUnis.get(54).getSchoolName());   //will return university at index 54 which is Harvard
 		return listUnis;
 	}
 	/**
@@ -134,9 +137,11 @@ public class DBController {
 	 * 
 	 * @param search
 	 */
-	public void updateUniversity(SearchCriteria search) {
-		//TODO
+	public void updateUniversity(String school, String state, String location, java.lang.String control, int numberOfStudents, double percentFemales, double SATVerbal, double SATMath, double expenses, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
+		
+		library.university_editUniversity(school, state, location,control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
 	}
+	
 	/**
 	 * 
 	 * @param newUni
@@ -385,7 +390,7 @@ public class DBController {
 		return maxSATMath;									//index of the array is realigned										 
 	}
 	
-	public int minSATMath() {
+	public int minSATMath() {arg0
 		List<Integer> satMath = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getMathSAT() != -1) {

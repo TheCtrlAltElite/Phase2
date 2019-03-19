@@ -126,7 +126,70 @@ public class UniversityController {
 	 */
 	public void editUniversity() {
 		
-	}
+		DBController dbc = new DBController();
+		
+		Scanner scan = new Scanner(System.in);
+    	System.out.println("Enter school to be edited: \n");
+    	String nameToFind = scan.nextLine().toUpperCase();
+    	//Boolean exists = false;	
+    	int i = 0;
+    		
+    	boolean e = false;
+    	
+    		while(i<dbc.loadUniversities().size()) {
+    			
+    			String name = dbc.loadUniversities().get(i).getSchoolName();
+    			if (name.equals(nameToFind)){
+    				e= true;
+       			System.out.println("YES, " + nameToFind + " exists.");   			
+        		break;
+    			}
+    			
+    			if(i == (dbc.loadUniversities().size())-1) {
+    		System.out.print(nameToFind + " does NOT exist.");
+    		System.out.print(dbc.loadUniversities().get(i).getSchoolName());
+    	}
+    			i++;
+    			
+    		}
+    		if(e) {
+    			
+    			System.out.println("Enter state: \n");
+    			String editstate = scan.nextLine();
+    			System.out.println("Enter location: ");
+    			String editlocation = scan.nextLine();
+    			System.out.println("Enter control: ");
+    			String editcontrol =scan.nextLine();
+    			System.out.println("Enter number of students: ");
+    			int editnumberOfStudents = scan.nextInt();
+    			System.out.println("Enter percent females: ");
+    			double editpercentFemales = scan.nextDouble();
+    			System.out.println("Enter SATVerbal: ");
+    			double editSATVerbal = scan.nextDouble();
+    			System.out.println("Enter SATMath: ");
+    			double editSATMath = scan.nextDouble();
+    			System.out.println("Enter expenses: ");
+    			double editexpenses = scan.nextDouble();
+    			System.out.println("Enter percent Financal Aid: ");
+    			double editpercentFinancialAid = scan.nextDouble();
+    			System.out.println("Enter number of applicants: ");
+    			int editnumberOfApplicants = scan.nextInt();
+    			System.out.println("Enter percent admitted: ");
+    			double editpercentAdmitted = scan.nextDouble();
+    			System.out.println("Enter percent enrolled: ");
+    			double editpercentEnrolled = scan.nextDouble();
+    			System.out.println("Enter academics scale: ");
+    			int editacademicsScale = scan.nextInt();
+    			System.out.println("Enter social scale: ");
+    			int editsocialScale = scan.nextInt();
+    			System.out.println("Enter quality of life: ");
+    			int editqualityOfLifeScale = scan.nextInt();
+    			
+    			
+    			dbc.updateUniversity(nameToFind, editstate, editlocation, editcontrol, editnumberOfStudents, editpercentFemales, editSATVerbal, editSATMath, editexpenses, editpercentFinancialAid, editnumberOfApplicants, editpercentAdmitted, editpercentEnrolled, editacademicsScale, editsocialScale, editqualityOfLifeScale);
+    		}
+    	scan.close();
+    	}
 	
 	/**
 	 * 
