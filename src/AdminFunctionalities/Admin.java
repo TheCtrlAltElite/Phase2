@@ -23,20 +23,17 @@ public class Admin extends Account{
 	public Admin(String email, String firstName, String lastName, String password, char type, char status) {
 		super(email, firstName, lastName, password, type, status);
 	}
-	 /**
-	  * Sets the type for an account
-	  * 
-	  * @param type
-	  */
-	public void setType(String type) {
-			//TODO 
-	}
-	/**
-	 * Sets the status for an account
-	 * 
-	 * @param status
-	 */
-	public void setStatus(String status) {
-			//TODO
-	}
+//	/**
+//	 * Sets the type to the parameter type.
+//	 */
+//	public void setType(char type) {
+//		this.type = type;
+//	}
+//	
+//	/**
+//	 * Sets the status to the parameter status.
+//	 */
+//	public void setStatus(char status) {
+//		this.status = status;
+//	}
 }
