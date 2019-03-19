@@ -1,10 +1,9 @@
 package UserFunctionalities;
 
 import java.util.*;
-
 import CMCDatabase.*;
 import UniversityFunctionalities.*;
-import other.*;
+//import other.*;
 
 /**
  * 
@@ -19,19 +18,20 @@ public class UserFunctionalityController {
 	/**
 	 * Instance Variables
 	 */
-	private User user;
-	private University university;
+//	private User user;
+//	private University university;
 	private DBController database;
-	private UniversityController uniController;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String profilePic;
-	private String status;
-	private String type;
-	private String password;
+//	private UniversityController uniController;
+//	private String firstName;
+//	private String lastName;
+//	private String email;
+//	private String profilePic;
+//	private String status;
+//	private String type;
+//	private String password;
 	
 	public UserFunctionalityController() {
+		database = new DBController();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -171,8 +171,8 @@ public class UserFunctionalityController {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */	
-	public int addToSavedSchoolsList3(String userName) {	
-		//return uniController.addToSavedSchoolsList2(userName);
+	public void addToSavedSchoolsList3(String userName) {	
+		//uniController.addToSavedSchoolsList2(userName);
 	}
 
 	/**

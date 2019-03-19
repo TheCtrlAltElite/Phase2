@@ -19,7 +19,7 @@ public class DBLibraryDriver {
   
   public static void main(String[] args) {
     try{
-    	System.out.println("THIS IS THE DRIVER, TO TEST METHODS UNCOMMENT THEM AND RUN DRIVER. BE CAREFUL BEFORE YOU CHANGE ANYTHING. ");
+    	System.out.println("THIS IS THE DRIVER, TO TEST METHODS UNCOMMENT THEM AND RUN DRIVER. BE CAREFUL BEFORE YOU CHANGE ANYTHING. \n\n");
 
     	DBController dbc = new DBController();
     	
@@ -37,6 +37,9 @@ public class DBLibraryDriver {
     	//dbc.addUniversity(newUni);          //Can only be tested through addUniversityInfo in UniversityController
     	//dbc.getDetailsUni("HARVARD");		//Can only be ran here. Method in UniversityController probably not necessary.
     	//dbc.viewAllUnis();
+    	
+    	//dbc.viewAllUsers();
+    	
     	
     	//dbc.testSaveUni();
     	
@@ -114,6 +117,9 @@ public class DBLibraryDriver {
     	//afc.addUniversity();				//Must be ran from university controller
     	
 //ALL METHODS:    	
+    	
+    	
+    	afc.addToSavedSchoolsList3();
     	
     	//afc.editUniversity();
     	//afc.equals(obj);

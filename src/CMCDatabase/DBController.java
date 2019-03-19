@@ -3,10 +3,9 @@
  */
 
 package CMCDatabase;
+
 import java.util.*;
 import java.util.List;
-import java.awt.*;
-import other.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
 import dblibrary.project.csci230.*;
@@ -44,8 +43,8 @@ public class DBController {
 	}
 	
 	public void testSaveUni() {
-		String name = "tux69@csbsju.edu";
-		String uni = "SJU";
+		String name = "juser";
+		String uni = "BROWN";
 		library.user_saveSchool(name, uni);
 		//return 1;
 	}
@@ -234,8 +233,9 @@ public class DBController {
 	 * 
 	 * @param list of UserSchool's
 	 */
-	public int addToSavedSchoolsList1(String username, String school) {
-		return library.user_saveSchool(username, school);
+	public void addToSavedSchoolsList1(String username, String school) {
+		library.user_saveSchool(username, school);
+		System.out.println("reached addSavedToSchoolsList in dbc");
 	}
 	
 	
@@ -255,27 +255,32 @@ public class DBController {
 	public List<User> loadUsers() {
 		String [][] arrayUsers = library.user_getUsers();
 		this.listUsers = new ArrayList<User>();
-		String email;
 		String firstName;
 		String lastName;
+		String emailUserName;
 		String password;
 		String type;
 		String status; 
 		for(int i = 0; i < arrayUsers.length; i++) {
-		email = arrayUsers[i][0];
-		firstName = arrayUsers[i][1];
-		lastName = arrayUsers[i][2];
+		firstName = arrayUsers[i][0];
+		lastName = arrayUsers[i][1];
+		emailUserName = arrayUsers[i][2];
 		password = arrayUsers[i][3];
 		type = arrayUsers[i][4];
 		status = arrayUsers[i][5];	
-		User user = new User(email, firstName, lastName, password, type.charAt(0), status.charAt(0));
+		User user = new User(emailUserName, firstName, lastName, password, type.charAt(0), status.charAt(0));
 		listUsers.add(user);
 		}
-		System.out.println(listUsers.get(2).getStatus());
-		System.out.println(listUsers.get(2).getType());
+
 		return listUsers;
 	}
 	
+	
+	public void viewAllUsers() {
+		for(int i = 0; i < loadUsers().size(); i++) {
+			System.out.println(listUsers.get(i).getEmail());
+		}		
+	}
 	
 	
 	

@@ -23,25 +23,28 @@ public class UniversityController {
 	private List<University> listUnis;
 	private TreeMap<Float, University> scores;
 	
+	
+	
+	
+	
 	public UniversityController() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
-	
-	
+
+
 	
 	
 	/**
 	 * 
 	 * @param university
 	 */
-	public int addToSavedSchoolsList2(String user) {
-		
+	public void addToSavedSchoolsList2(String user) {
 		DBController dbc = new DBController();
-		Scanner scan = new Scanner(System.in);
-    	System.out.println("Enter school to be edited: \n");
-    	String uniToFind = scan.nextLine().toUpperCase();
-    	scan.close();
+		Scanner scan2 = new Scanner(System.in);
+    	System.out.println("Enter school to be added to " + user + "'s list: \n");
+    	String uniToFind = scan2.nextLine().toUpperCase();
+    	scan2.close();
     	
     	int i = 0;  		
     	boolean e = false;
@@ -56,17 +59,16 @@ public class UniversityController {
     		}
     			
     		if(i == (dbc.loadUniversities().size())-1) {
-		   		System.out.print(uniToFind + " does NOT exist.");
-	    		System.out.print(dbc.loadUniversities().get(i).getSchoolName());
+		   		System.out.print(uniToFind + " does NOT exist. \n");
+	    		System.out.print(dbc.loadUniversities().get(i).getSchoolName());   //prints last uni in list
     		}
    			i++;    			
    		}
     	
    		if(e) {
-   			return database.addToSavedSchoolsList1(user, uniToFind);
+   			//System.out.println("reached 2nd if");
+   			dbc.addToSavedSchoolsList1(user, uniToFind);
     	}
-   		
-   		throw new NullPointerException("That school does not exist.");
 	}
 	
 	
@@ -74,11 +76,11 @@ public class UniversityController {
 	
 	
 	public void removeFromList(User user, University university) {
-		
 		database.removeFromSavedSchoolsList(user.getEmail(), university.getSchoolName());
 	}
 	
 
+	
 	
 	
 	public Map<Float, University> compareUniversity(University university) {	
@@ -155,6 +157,10 @@ public class UniversityController {
 		return scores;
 	}
 	
+	
+	
+	
+	
 	public List<University> recommendedSchools(University university) {
 		compareUniversity(university);
 		List<University> recommendedSchools = new ArrayList<University>();
@@ -165,6 +171,10 @@ public class UniversityController {
 		}
 		return recommendedSchools;
 	}
+	
+	
+	
+	
 	
 	/**
 	 * 
@@ -234,7 +244,11 @@ public class UniversityController {
     			dbc.updateUniversity(nameToFind, editstate, editlocation, editcontrol, editnumberOfStudents, editpercentFemales, editSATVerbal, editSATMath, editexpenses, editpercentFinancialAid, editnumberOfApplicants, editpercentAdmitted, editpercentEnrolled, editacademicsScale, editsocialScale, editqualityOfLifeScale);
     		}
     	scan.close();
-    	}
+    }
+	
+	
+	
+	
 	
 	/**
 	 * 
@@ -282,6 +296,6 @@ public class UniversityController {
 										   percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, 
 										   numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
 		dbc.addUniversity(newUni);
-		
+		sc.close();
 	}
 }

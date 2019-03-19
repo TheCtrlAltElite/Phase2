@@ -1,7 +1,7 @@
 package UserFunctionalities;
 
-import UniversityFunctionalities.University;
-import other.*;
+//import UniversityFunctionalities.University;
+//import other.*;
 
 
 
@@ -18,7 +18,7 @@ public class UserInteraction {
 	 * 
 	 */
 	public UserInteraction() {
-		// TODO Auto-generated constructor stub
+		userController = new UserFunctionalityController();
 	}
 
 	/**
@@ -33,8 +33,8 @@ public class UserInteraction {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */		
-	public int addToSavedSchoolsList4(String school) {
-		//return userController.addToSavedSchoolsList3(school);
+	public void addToSavedSchoolsList4(String school) {
+		userController.addToSavedSchoolsList3(school);
 	}
 	
 	/**

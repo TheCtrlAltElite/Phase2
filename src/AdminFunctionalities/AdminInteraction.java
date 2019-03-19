@@ -15,9 +15,15 @@ public class AdminInteraction {
 	private AdminFunctionalityController adminFController;
 	
 	public AdminInteraction() {
-		// TODO Auto-generated constructor stub
+		adminFController = new AdminFunctionalityController();
 	}
 
+	
+	
+	public void addToSavedSchoolsList4(){
+		adminFController.addToSavedSchoolsList3();
+	}
+	
 	/**
 	 * 
 	 */
