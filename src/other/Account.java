@@ -6,7 +6,7 @@ package other;
 import java.util.*;
 
 /**
- * @author omatias001
+ * @author Ctrl Alt Elite
  *
  */
 public class Account {
@@ -39,13 +39,7 @@ public class Account {
 	public void isLoggedIn(boolean stat) {
 		this.loginStatus = stat;
 	}
-	
-	/**
-	 * Retrieves the details of a users profile and puts them in a list
-	 */
-	public List<String> getDetailsProfile(){
-		return null;
-	}
+
 	
 	/**
 	 * Returns the email.

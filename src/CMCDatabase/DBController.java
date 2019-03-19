@@ -12,7 +12,7 @@ import UserFunctionalities.*;
 import dblibrary.project.csci230.*;
 
 /**
- * @author lneuensch001
+ * @author Ctrl Alt Elite
  *
  */
 public class DBController {

@@ -6,7 +6,7 @@ package other;
 import javax.mail.MessagingException;
 
 /**
- * @author lneuensch001
+ * @author Ctrl Alt Elite
  *
  */
 
@@ -102,6 +102,6 @@ public class AccountInteraction {
 	 * @param jpeg
 	 */
 	public void addProfilePicture(String jpeg) {
-		//TODO
+		accController.addProfilePicture(jpeg);
 	}
 }

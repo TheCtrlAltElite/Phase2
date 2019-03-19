@@ -7,7 +7,7 @@ import java.util.Date;
  */
 
 /**
- * @author rclintsma001
+ * @author Ctrl Alt Elite
  *
  */
 public class UserSchool {
