@@ -26,7 +26,7 @@ public class DBLibraryDriver {
 //WORKS:   
     	//dbc.testAdd();                      //Do Not Uncomment; will add a duplicate ZTESTUNI unless you edit testAdd in DBController. 
     	//dbc.rMethod();
-    	dbc.loadUniversities();
+    	//dbc.loadUniversities();
     	//dbc.loadUsers();
     	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);        //Cannot be tested here. Test from AdminFunctionalityController.
     	//dbc.checkPasswordRequirements(password)
@@ -36,6 +36,9 @@ public class DBLibraryDriver {
     	//dbc.passwordLength(password);
     	//dbc.addUniversity(newUni);          //Can only be tested through addUniversityInfo in UniversityController
     	//dbc.getDetailsUni("HARVARD");		//Can only be ran here. Method in UniversityController probably not necessary.
+    	//dbc.viewAllUnis();
+    	
+    	//dbc.testSaveUni();
     	
 //ALL METHODS: 
     	//dbc.compareAccountInfo(email, firstName, lastName);

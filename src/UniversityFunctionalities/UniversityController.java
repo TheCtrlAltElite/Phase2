@@ -27,6 +27,10 @@ public class UniversityController {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+	
+	
 	/**
 	 * 
 	 * @param university
@@ -34,39 +38,40 @@ public class UniversityController {
 	public int addToSavedSchoolsList2(String user) {
 		
 		DBController dbc = new DBController();
-		String university;
 		Scanner scan = new Scanner(System.in);
     	System.out.println("Enter school to be edited: \n");
-    	String nameToFind = scan.nextLine().toUpperCase();
+    	String uniToFind = scan.nextLine().toUpperCase();
     	scan.close();
-    	int i = 0;
-    		
+    	
+    	int i = 0;  		
     	boolean e = false;
     	
     	while(i<dbc.loadUniversities().size()) {
-    			
     		String name = dbc.loadUniversities().get(i).getSchoolName();
-   			if (name.equals(nameToFind)){
+   			
+    		if (name.equals(uniToFind)){
    				e= true;
-   				System.out.println("YES, " + nameToFind + " exists.");   			
+   				System.out.println("YES, " + uniToFind + " exists.");   			
    				break;
     		}
     			
     		if(i == (dbc.loadUniversities().size())-1) {
-		   		System.out.print(nameToFind + " does NOT exist.");
+		   		System.out.print(uniToFind + " does NOT exist.");
 	    		System.out.print(dbc.loadUniversities().get(i).getSchoolName());
     		}
    			i++;    			
    		}
+    	
    		if(e) {
-   			university = nameToFind;
-   			return database.addToSavedSchoolsList1(user, university);
+   			return database.addToSavedSchoolsList1(user, uniToFind);
     	}
    		
    		throw new NullPointerException("That school does not exist.");
-	
-	
 	}
+	
+	
+	
+	
 	
 	public void removeFromList(User user, University university) {
 		

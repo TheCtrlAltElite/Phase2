@@ -26,6 +26,7 @@ public class DBController {
 	 */
 	public DBController() {
 		  library = new UniversityDBLibrary("ctrlaltd","csci230");	
+		  
 	}
 	
 	
@@ -39,7 +40,14 @@ public class DBController {
 	
 	
 	public void testAdd() {
-		library.university_addUniversity("ZTESTUNI", "MN", "RURAL", "Private", 10000, 99, 1600, 1600, 2, 100, 1000, 999, 4000, 5, 5, 5);
+		library.university_addUniversity("ZCSB", "MN", "RURAL", "Private", 10000, 99, 1600, 1600, 2, 100, 1000, 999, 4000, 5, 5, 5);
+	}
+	
+	public void testSaveUni() {
+		String name = "tux69@csbsju.edu";
+		String uni = "SJU";
+		library.user_saveSchool(name, uni);
+		//return 1;
 	}
 	
 	
@@ -122,6 +130,11 @@ public class DBController {
 	public void editUser(User user) {
 		this.library.user_editUser(user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getType(), user.getStatus());
 	}
+	
+	
+	
+	
+	
 	/**
 	 * Returns a list of all of the universities in the database.
 	 * 
@@ -172,9 +185,19 @@ public class DBController {
 		return listUnis;
 	}
 	
+	
+	
+	
+	
+	/**
+	 * Prints a list of all of the universities(just names) in the database.
+	 */
 	public void viewAllUnis() {
-		
+		for(int i = 0; i < loadUniversities().size(); i++) {
+			System.out.println(listUnis.get(i).getSchoolName());
+		}		
 	}
+	
 	
 	
 	
@@ -203,14 +226,21 @@ public class DBController {
 											  newUni.getAcademicScale(), newUni.getSocialScale(), newUni.getQualityScale());
 	}
 	
+	
+	
+	
+	
 	/**
 	 * 
 	 * @param list of UserSchool's
 	 */
 	public int addToSavedSchoolsList1(String username, String school) {
 		return library.user_saveSchool(username, school);
-	
 	}
+	
+	
+	
+	
 	
 	public void removeFromSavedSchoolsList(String username, String school) {
 		library.user_removeSchool(username, school);

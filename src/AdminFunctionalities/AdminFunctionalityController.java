@@ -29,7 +29,7 @@ public class AdminFunctionalityController {
 //		//TODO
 //	}
 	
-	public int addToSavedSchoolsList1(){
+	public int addToSavedSchoolsList6(){
 		String user = "user that uni will be saved to.";
 		return uniController.addToSavedSchoolsList2(user);
 		
