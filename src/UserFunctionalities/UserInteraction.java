@@ -42,14 +42,14 @@ public class UserInteraction {
 	 * @param String schoolName - name of the school
 	 */	
 	public void viewSchool(String schoolName) {
-		
+		userController.viewSchool(schoolName);
 	}
 	
 	/**
 	 * Presents the user with the list of saved schools
 	 */		
 	public void viewSavedSchools() {
-		
+		userController.getSavedSchoolsList();
 	}
 	
 	/**
@@ -57,13 +57,13 @@ public class UserInteraction {
 	 * @param String schoolName - name of the school
 	 */	
 	public void removeSavedSchool(String schoolName) {
-		
+		userController.removeSavedSchool(schoolName);
 	}
 	
 	/**
 	 * Emails the user's savedSchoolsList to the user's email
 	 */	
 	public void emailSavedSchools() {
-		
+		userController.emailSavedSchools();
 	}
 }

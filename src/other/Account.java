@@ -41,13 +41,6 @@ public class Account {
 	}
 	
 	/**
-	 * Resets password of user/admin
-	 */
-    public void resetPassword(String o, String n1, String n2) {
-		
-	}
-	
-	/**
 	 * Retrieves the details of a users profile and puts them in a list
 	 */
 	public List<String> getDetailsProfile(){

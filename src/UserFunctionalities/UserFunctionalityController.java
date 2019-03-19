@@ -181,14 +181,7 @@ public class UserFunctionalityController {
 	 * @param String schoolName - name of the school
 	 */	
 	public void viewSchool(String schoolName) {
-		
-	}
-
-	/**
-	 * Presents the user with the list of saved schools
-	 */		
-	public void viewSavedSchools() {
-		
+		database.getDetailsUni(schoolName);
 	}
 	
 	/**
@@ -204,14 +197,6 @@ public class UserFunctionalityController {
 	 * @param List<UserSchool> list - list of the user's saved schools
 	 */			
 	public void updateSavedSchoolsList(List<UserSchool> list) {
-		
-	}
-	
-	/**
-	 * Adds User to view all users
-	 * @param User user - a user
-	 */		
-	public void addUserToList(User user) {
 		
 	}
 	

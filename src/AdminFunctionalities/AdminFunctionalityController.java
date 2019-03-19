@@ -41,34 +41,14 @@ public class AdminFunctionalityController {
 	 * Adds a new university to the database.
 	 */
 	public void addUniversity() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter the data for the school.");
-		String schoolName = sc.nextLine();
-		String schoolState = sc.nextLine();
-		String schoolLocation = sc.nextLine();
-		String schoolControl = sc.nextLine();
-		int numberStudents = sc.nextInt();
-		int percentFemale = sc.nextInt();
-		int verbalSAT = sc.nextInt();
-		int mathSAT = sc.nextInt();
-		int schoolExpenses = sc.nextInt();
-		int percentFinancialAid = sc.nextInt();
-		int numApplicants = sc.nextInt();
-		int percentAdmitted = sc.nextInt();
-		int percentEnrolled = sc.nextInt();
-		int academicScale = sc.nextInt();
-		int socialScale = sc.nextInt();
-		int qualityScale = sc.nextInt();
-		University newUni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
-		database.addUniversity(newUni);
-		sc.close();
+		uniController.addUniversityInfo();
 	}
 	
 	/**
 	 * Edits the info stored for a university
 	 */
 	public void editUniversity() {
-		uniController.addUniversityInfo();
+		uniController.editUniversity();;
 	}
 	
 	/**
@@ -96,14 +76,6 @@ public class AdminFunctionalityController {
 		char type = sc.next().charAt(0); 
 		dbc.addUser(firstName, lastName, username, password, type);
 		sc.close();
-	}
-	
-	/**
-	 * Updates something (??)
-	 * @param type
-	 */
-	public void update(String type) {
-		//TODO
 	}
 	
 	/**

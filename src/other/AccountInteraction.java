@@ -44,7 +44,7 @@ public class AccountInteraction {
 	 * @param username
 	 */
 	public void isUserReal(String username) {
-		//TODO
+		accController.isUserReal(username);
 	}
 	
 	/**
@@ -53,8 +53,8 @@ public class AccountInteraction {
 	 * @return
 	 */
 	public String getPassword(String username) {
-		//TODO
-		return "";
+		return accController.getPassword(username);
+		
 	}
 	
 	/**
@@ -91,7 +91,7 @@ public class AccountInteraction {
 	 * @param lastName
 	 */
 	public void recoverPassword(String email, String firstName, String lastName) {
-		//TODO
+		accController.recoverPassword(email, firstName, lastName);
 	}
 	
 	/**

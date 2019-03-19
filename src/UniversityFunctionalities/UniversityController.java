@@ -9,7 +9,6 @@ import java.util.*;
 
 import CMCDatabase.DBController;
 import UserFunctionalities.User;
-import other.*;
 
 /**
  * @author lneuensch001
@@ -199,50 +198,6 @@ public class UniversityController {
     		}
     	scan.close();
     	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public List<String> getDetailsUni(University university) {
-		
-		List<String> details = new ArrayList<>();
-		String schoolName = university.getSchoolName();
-		details.add(schoolName);
-		String schoolState = university.getSchoolState();
-		details.add(schoolState);
-		String schoolLocation = university.getSchoolLocation();
-		details.add(schoolLocation);
-		String schoolControl = university.getSchoolControl();
-		details.add(schoolControl);
-	    int numberStudents = university.getNumberStudents();
-	    details.add(Integer.toString(numberStudents));
-		int percentFemale = university.getPercentFemale();
-		details.add(Integer.toString(percentFemale));
-		int verbalSAT = university.getVerbalSAT();
-		details.add(Integer.toString(verbalSAT));
-		int mathSAT = university.getMathSAT();
-		details.add(Integer.toString(mathSAT));
-		int schoolExpenses = university.getSchoolExpenses();
-		details.add(Integer.toString(schoolExpenses));
-		int percentFinancialAid = university.getPercentFinancialAid();
-		details.add(Integer.toString(percentFinancialAid));
-		int numApplicants = university.getNumApplicants();
-		details.add(Integer.toString(numApplicants));
-		int percentAdmitted = university.getPercentAdmitted();
-		details.add(Integer.toString(percentAdmitted));
-		int percentEnrolled = university.getPercentEnrolled();
-		details.add(Integer.toString(percentEnrolled));
-		int academicScale = university.getAcademicScale();
-		details.add(Integer.toString(academicScale));
-		int socialScale = university.getSocialScale();
-		details.add(Integer.toString(socialScale));
-		int qualityScale = university.getQualityScale();
-		details.add(Integer.toString(qualityScale));
-				
-	
-		return details;
-	}
 	
 	/**
 	 * 

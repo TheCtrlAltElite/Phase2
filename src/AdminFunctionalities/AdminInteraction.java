@@ -1,5 +1,9 @@
 package AdminFunctionalities;
 
+
+import java.util.*;
+import UserFunctionalities.*;
+
 /**
  * 
  * @author lneuensch001
@@ -16,22 +20,6 @@ public class AdminInteraction {
 	}
 
 	/**
-	 * Logs in the admin
-	 * @param username
-	 * @param password
-	 */
-	public void login(String username, String password) {
-		//TODO
-	}
-	
-	/**
-	 * Logs out the admin
-	 */
-	public void logOut() {
-		//TODO
-	}
-	
-	/**
 	 * 
 	 */
 	public void viewUniversities() {
@@ -42,45 +30,37 @@ public class AdminInteraction {
 	 * Adds a new university to the database
 	 */
 	public void addUniversity() {
-		//TODO
+		adminFController.addUniversity();
 	}
 	
 	/**
 	 * Displays all users and their information in the database
 	 */
-	public void viewUsers() {
-		//TODO
+	public List<User> viewUsers() {
+		return adminFController.viewUsers();
 	}
 	
-	/**
-	 * Updates the status of users in database
-	 * @param status
-	 */
-	public void updateStatus(String status) {
-		//TODO
-	}
-	
-	/**
-	 * Updates type of user in database
-	 * @param Type
-	 */
-	public void updateType(String Type) {
-		//TODO
-	}
+//	/**
+//	 * Updates the status of users in database
+//	 * @param status
+//	 */
+//	public void updateStatus(String status) {
+//		//TODO
+//	}
+//	
+//	/**
+//	 * Updates type of user in database
+//	 * @param Type
+//	 */
+//	public void updateType(String Type) {
+//		//TODO
+//	}
 	
 	/**
 	 * Adds a new user to the database
 	 */
 	public void addUser() {
-		//TODO
-	}
-	
-	/**
-	 * Updates something (??) might be deleted
-	 * @param type
-	 */
-	public void update(String type) {
-		//TODO
+		adminFController.addUser();
 	}
 	
 	/**
