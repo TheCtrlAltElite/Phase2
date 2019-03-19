@@ -5,7 +5,9 @@ import CMCDatabase.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
 
-
+/**
+ * @author Ctrl Alt Elite
+ */
 public class AdminFunctionalityController {
 
 	private DBController database;

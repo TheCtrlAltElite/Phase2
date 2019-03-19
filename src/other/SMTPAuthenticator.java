@@ -1,12 +1,12 @@
 /**
- * 
+ *
  */
 package other;
 
 import javax.mail.PasswordAuthentication;
 
 /**
- * @author rclintsma001
+ * @author Ctrl Alt Elite
  *
  */
 	public class SMTPAuthenticator extends javax.mail.Authenticator {

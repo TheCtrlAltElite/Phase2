@@ -10,7 +10,7 @@ import java.awt.*;
 import AdminFunctionalities.*;
 
 /**
- * @author lneuensch001
+ * @author Ctrl Alt Elite
  *
  */
 public class Admin extends Account{

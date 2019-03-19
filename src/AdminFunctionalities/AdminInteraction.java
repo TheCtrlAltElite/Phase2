@@ -6,8 +6,7 @@ import UserFunctionalities.*;
 
 /**
  * 
- * @author lneuensch001
- * @version February 28, 2019
+ * @author Ctrl Alt Elite
  * 
  */
 

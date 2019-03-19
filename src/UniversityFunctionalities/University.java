@@ -6,7 +6,7 @@ import java.util.List;
  */
 
 /**
- * @author rclintsma001
+ * @author Ctrl Alt Elite
  *
  */
 public class University {

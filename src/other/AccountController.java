@@ -15,8 +15,8 @@ import CMCDatabase.DBController;
 import UserFunctionalities.User;
 
 /**
- * @author lneuensch001
- *
+ * @author Ctrl Alt Elite
+ *		 
  */
 public class AccountController {
 
@@ -30,9 +30,9 @@ public class AccountController {
 		// TODO Auto-generated constructor stub
 	}
 	/**
-	 * 
-	 * @param username
-	 * @param password
+	 * Logs in the user
+	 * @param username - username associated with the profile to be logged in (Same as email).
+	 * @param password - password associated with the profile to be logged in.
 	 */
 	public void login(String username, String password) {
 		if(database.isUserReal(username)) {
@@ -60,34 +60,34 @@ public class AccountController {
 	}
 	
 	/**
-	 * 
-	 * @param username
+	 * Checks to make sure the passed username is real in the database.
+	 * @param username - checked to make sure it exists in the database.
 	 */
 	public void isUserReal(String username) {
 		database.isUserReal(username);
 	}
 	
 	/**
-	 * 
-	 * @param username
-	 * @return
+	 * The method returns the password associated with the username.
+	 * @param username - returns the password for the associated username.
+	 * @return String which is the password for the profile.
 	 */
 	public String getPassword(String username) {
 		return database.getPassword(username);
 	}
 	
 	/**
-	 * 
-	 * @param username
+	 * Displays the selected profile.
+	 * @param username - the profile that will be viewed
 	 */
 	public List<String> viewProfile(String username) {
-		List<String> accDetails = account.getDetailsProfile();
+		List<String> accDetails = database.getDetailsProfile(username);
 		return accDetails;
 	}
 	
 	/**
-	 * 
-	 * @param username
+	 * Edit/Updates the profile in the selected fields.
+	 * @param username - the profile that will be edited
 	 */
 	public void editProfile(String username) {
 		Scanner console = new Scanner(System.in);
@@ -142,10 +142,11 @@ public class AccountController {
 	}
 	
 	/**
-	 * 
+	 * Resets the password of the user. Checks to make sure old password is current with database, the new password is 
+	 * the same in n1 and n2, then sets n2 as the new password.
 	 * @param o - old password
-	 * @param n1
-	 * @param n2
+	 * @param n1 - new password, must be the same as n2
+	 * @param n2 - new password, must be the same as n1
 	 */
 	public void resetPassword(String o, String n1, String n2) {
 		List<User> listUsers = database.loadUsers();
@@ -207,15 +208,15 @@ public class AccountController {
 	//}
 	
 	/**
-	 * 
-	 * @param jpeg
+	 * Sets a jpeg the user wants as their profile pic. Will be named their email to simplify process.
+	 * @param jpeg - the name of the jpeg the user wants as their profile pic. Will be named their email to simplify process.
 	 */
 	public void addProfilePicture(String jpeg) {
-		//TODO
+		account.setProfilePic(jpeg);
 	}
 	/**
-	 * 
-	 * @param password
+	 * This method is called in resetPassword(). It checks the passed parameter 'password' to make sure it's up to security standards.
+	 * @param password - the new password that will replace the old password.
 	 */
 	public boolean passwordRequirements(String password){
 		if(database.checkPasswordRequirements(password)) {
