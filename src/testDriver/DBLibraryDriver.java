@@ -51,7 +51,6 @@ public class DBLibraryDriver {
     	//dbc.getUnivDBlib();
     	//dbc.isUserReal(username);
     	//dbc.removeUniversityDB(schoolName);
-    	//dbc.removeUniversityDB(schoolName);
     	//dbc.sendRecoverEmail();
     	//dbc.toString();
     	//dbc.update(type);
@@ -100,7 +99,7 @@ public class DBLibraryDriver {
     	//acc.login("username", "password");
     	//acc.logOut();
     	//acc.passwordRequirements(password);
-    	acc.recoverPassword("email", "firstName", "lastName");
+    	//acc.recoverPassword("email", "firstName", "lastName");
     	//acc.resetPassword(o, n1, n2);
     	//acc.toString();
     	//acc.viewProfile(username);

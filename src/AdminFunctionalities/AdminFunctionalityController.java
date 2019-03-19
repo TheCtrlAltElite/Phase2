@@ -32,8 +32,39 @@ public class AdminFunctionalityController {
 //	}
 	
 	public int addToSavedSchoolsList6(){
-		String user = "user that uni will be saved to.";
-		return uniController.addToSavedSchoolsList2(user);
+		DBController dbc = new DBController();
+		Scanner scan = new Scanner(System.in);
+    	System.out.println("Enter username to add University to: \n");
+    	String userToFind = scan.nextLine().toUpperCase();
+    	scan.close();
+    	
+    	int i = 0;  		
+    	boolean e = false;
+    	
+    	while(i<dbc.loadUsers().size()) {
+    		String name = dbc.loadUsers().get(i).getEmail();
+   			
+    		if (name.equals(userToFind)){
+   				e= true;
+   				System.out.println("YES, " + userToFind + " exists.");   			
+   				break;
+    		}
+    			
+    		if(i == (dbc.loadUsers().size())-1) {
+		   		System.out.print(userToFind + " does NOT exist.");
+	    		System.out.print(dbc.loadUsers().get(i).getEmail());
+    		}
+   			i++;    			
+   		}
+    	
+   		if(e) {
+   			return uniController.addToSavedSchoolsList2(userToFind);
+    	}
+   		
+   		throw new NullPointerException("That school does not exist.");
+		
+		
+	
 		
 	}
 	
