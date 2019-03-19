@@ -8,6 +8,7 @@ import java.util.*;
 import java.util.List;
 
 import CMCDatabase.DBController;
+import UserFunctionalities.User;
 
 /**
  * @author lneuensch001
@@ -33,7 +34,8 @@ public class AccountController {
 		if(database.isUserReal(username)) {
 			String pw = database.getPassword(username);
 			if(pw.equals(password)) {
-				this.account = new Account(database.getDetailsProfile(username));
+				List<String> details = database.getDetailsProfile(username);
+				this.account = new Account(details.get(0), details.get(1), details.get(2), details.get(3), details.get(4).charAt(0), details.get(5).charAt(0));
 				this.account.isLoggedIn(true);
 				System.out.println("You have been successfully logged in.");
 				if(this.account.getStatus() == 'N') {
@@ -58,7 +60,7 @@ public class AccountController {
 	 * @param username
 	 */
 	public void isUserReal(String username) {
-		//TODO
+		database.isUserReal(username);
 	}
 	
 	/**
@@ -67,16 +69,16 @@ public class AccountController {
 	 * @return
 	 */
 	public String getPassword(String username) {
-		//TODO
-		return "";
+		return database.getPassword(username);
 	}
 	
 	/**
 	 * 
 	 * @param username
 	 */
-	public void viewProfile(String username) {
-		List accDetails = (List) account.getDetailsProfile();
+	public List<String> viewProfile(String username) {
+		List<String> accDetails = account.getDetailsProfile();
+		return accDetails;
 	}
 	
 	/**
@@ -85,6 +87,8 @@ public class AccountController {
 	 */
 	public void editProfile(String username) {
 		Scanner console = new Scanner(System.in);
+		List<String> profileDetails = new ArrayList<String>(database.getDetailsProfile(username));
+		this.account = new Account(profileDetails.get(0), profileDetails.get(1), profileDetails.get(2), profileDetails.get(3), profileDetails.get(4).charAt(0), profileDetails.get(5).charAt(0));
 		while(console.nextLine() != "Stop") {
 			System.out.println("Please enter a field you would like to change. CAPS LOCK MATTERS.");
 			if(account.getType() == 'u') {
@@ -97,12 +101,12 @@ public class AccountController {
 			if(input.equals("First Name")) {
 				System.out.println("Enter First Name");
 				input = console.nextLine();
-				account.firstName = input;
+				account.setFirstName(input);			//account.getFirstName() = input;
 			}
 			else if(input.equals("Last Name")) {
 				System.out.println("Enter Last Name");
 				input = console.nextLine();
-				account.lastName = input;
+				account.setLastName(input);				//account.getLastName() = input;
 			}
 			else if(input.equals("Password")) {
 				System.out.println("Enter your password");
@@ -122,12 +126,12 @@ public class AccountController {
 			else if(input.equals("Type") && account.getType() == 'a') {
 					System.out.println("Enter New Type");
 					input = console.nextLine();
-					account.type = input.charAt(0);
+					account.setType(input.charAt(0));					//account.getType() = input.charAt(0);
 			}
 			else if(input.equals("Status") && account.getType() == 'a') {
 					System.out.println("Enter New Status");
 					input = console.nextLine();
-					account.status = input.charAt(0);
+					account.setStatus(input.charAt(0));					//account.getStatus() = input.charAt(0);
 			}
 		}
 		console.close();
@@ -135,12 +139,24 @@ public class AccountController {
 	
 	/**
 	 * 
-	 * @param O
+	 * @param o - old password
 	 * @param n1
 	 * @param n2
 	 */
 	public void resetPassword(String o, String n1, String n2) {
-		database.checkPasswordRequirements(n2);
+		List<User> listUsers = database.loadUsers();
+		for (int i = 0; i < listUsers.size(); i++) {
+			if(this.account.getEmail().equals(listUsers.get(i).getEmail())) {
+				if(listUsers.get(i).getPassword().equals(o)) {
+					if (n1.equals(n2)) {
+						if(this.passwordRequirements(n2)) {
+							this.account.setPassword(n2);
+							database.editUser(listUsers.get(i));
+						}
+					}
+				}	
+			}
+		}
 	}
 	
 	/**
@@ -150,7 +166,7 @@ public class AccountController {
 	 * @param lastName
 	 */
 	public void recoverPassword(String email, String firstName, String lastName) {
-		//TODO
+
 	}
 	
 	/**
@@ -164,7 +180,10 @@ public class AccountController {
 	 * 
 	 * @param password
 	 */
-	public void passwordRequirements(String password){
-		//TODO
+	public boolean passwordRequirements(String password){
+		if(database.checkPasswordRequirements(password)) {
+			return true;
+		}
+		return false;
 	}
 }

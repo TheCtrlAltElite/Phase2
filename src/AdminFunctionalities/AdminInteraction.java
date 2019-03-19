@@ -88,6 +88,6 @@ public class AdminInteraction {
 	 * @param schoolName
 	 */
 	public void removeUniversityDB(String schoolName) {
-		//TODO
+		adminFController.removeUniversityDB(schoolName);
 	}
 }

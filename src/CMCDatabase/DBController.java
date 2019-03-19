@@ -4,7 +4,6 @@
 
 package CMCDatabase;
 import java.util.*;
-
 import java.util.List;
 import java.awt.*;
 import other.*;
@@ -50,8 +49,20 @@ public class DBController {
 	 * @param String username
 	 * @return List with all the details of the profile
 	 */
-	public List getDetailsProfile(String username){
-		return null;
+	public List<String> getDetailsProfile(String username){
+		List<String> details = new ArrayList<String>();
+		List<User> users = loadUsers();
+		for(int i = 0; i < users.size(); i++) {
+			if(username.equals(users.get(i).getEmail())) {
+				details.add(users.get(i).getEmail());
+				details.add(users.get(i).getFirstName());
+				details.add(users.get(i).getLastName());
+				details.add(users.get(i).getPassword());
+				details.add(Character.toString(users.get(i).getType()));
+				details.add(Character.toString(users.get(i).getStatus()));
+			}
+		}
+		return details;
 	}
 	/**
 	 * Gets the details for the university with name school.
@@ -59,8 +70,30 @@ public class DBController {
 	 * @param String school the name of the school
 	 * @return a Collection of the details for that University
 	 */
-	public Collection<String> getDetailsUni(String school) {
-		return null;
+	public List<String> getDetailsUni(String schoolName) {
+		List<String> details = new ArrayList<String>();
+		List<University> universities = loadUniversities();
+		for(int i = 0; i < universities.size(); i++) {
+			if(schoolName.equals(universities.get(i).getSchoolName())) {
+				details.add(universities.get(i).getSchoolName());
+				details.add(universities.get(i).getSchoolState());
+				details.add(universities.get(i).getSchoolLocation());
+				details.add(universities.get(i).getSchoolControl());
+				details.add(Integer.toString(universities.get(i).getNumberStudents()));
+				details.add(Integer.toString(universities.get(i).getPercentFemale()));
+				details.add(Integer.toString(universities.get(i).getVerbalSAT()));
+				details.add(Integer.toString(universities.get(i).getMathSAT()));
+				details.add(Integer.toString(universities.get(i).getSchoolExpenses()));
+				details.add(Integer.toString(universities.get(i).getPercentFinancialAid()));
+				details.add(Integer.toString(universities.get(i).getNumApplicants()));
+				details.add(Integer.toString(universities.get(i).getPercentAdmitted()));
+				details.add(Integer.toString(universities.get(i).getPercentEnrolled()));
+				details.add(Integer.toString(universities.get(i).getAcademicScale()));
+				details.add(Integer.toString(universities.get(i).getSocialScale()));
+				details.add(Integer.toString(universities.get(i).getQualityScale()));
+			}
+		}
+		return details;
 	}
 	/**
 	 * Checks the database to see if that username exists in the database.
@@ -69,6 +102,12 @@ public class DBController {
 	 * @return boolean true if the username is in the database or false if the username is not in the database
 	 */
 	public boolean isUserReal(String username) {
+		List<User> users = loadUsers();
+		for(int i =0; i < users.size(); i++) {
+			if(username.equals(users.get(i).getEmail())) {
+				return true;
+			}
+		}
 		return false;
 	}
 	/**
@@ -77,10 +116,12 @@ public class DBController {
 	 * @param username
 	 */
 	public void editUser(User user) {
-		this.library.user_editUser(user.getEmail(), user.getFirstName(), user.getLastName(), user.getPasssword(), user.getType(), user.getStatus());
+		this.library.user_editUser(user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getType(), user.getStatus());
 	}
 	/**
+	 * Returns a list of all of the universities in the database.
 	 * 
+	 * @return List of universities
 	 */
 	public  List<University> loadUniversities() {
 		String[][] arrayUnis = library.university_getUniversities();
@@ -143,6 +184,7 @@ public class DBController {
 	}
 	
 	/**
+	 * Adds a new university to the database
 	 * 
 	 * @param newUni
 	 */
@@ -160,11 +202,19 @@ public class DBController {
 	 * 
 	 * @param list of UserSchool's
 	 */
-	public void updateSavedSschoolsList(List list) {
-		//TODO
+	public void addToSavedSchoolsList(String username, String school) {
+		library.user_saveSchool(username, school);
 	}
+	
+	public void removeFromSavedSchoolsList(String username, String school) {
+		library.user_removeSchool(username, school);
+	}
+	
+	
 	/**
 	 * Pulls user information from database, creates a user object, and adds the object to a list that is returned. 
+	 * 
+	 * @return List of all users in the database
 	 */
 	public List<User> loadUsers() {
 		String [][] arrayUsers = library.user_getUsers();
@@ -187,26 +237,19 @@ public class DBController {
 		}
 		return listUsers;
 	}
-	/**
-	 * 
-	 * @param status
-	 */
-	public void updateStatus(String status) {
-		//TODO
-	}
-	/**
-	 * 
-	 * @param type
-	 */
-	public void updateType(String type) {
-		//TODO
-	}
+
 	/**
 	 * 
 	 * @return
 	 */
 	public String getPassword(String username) {
-		return null;
+		List<User> users = loadUsers();
+		for(int i = 0; i < users.size(); i++) {
+			if(username.equals(users.get(i).getEmail())) {
+				return users.get(i).getPassword();
+			}
+		}
+		return "That user does not exist.";
 	}
 	/**
 	 * 
@@ -218,16 +261,10 @@ public class DBController {
 	 * @param Type
 	 * @param Status
 	 */
-	public void addUser(String password, String firstName, String lastName, String email, String profilePic, String Type, String Status) {
-		//TODO
+	public void addUser(String password, String firstName, String lastName, String email, char type) {
+		library.user_addUser(firstName, lastName, email, password, type);
 	}
-	/**
-	 * 
-	 * @param type
-	 */
-	public void update(String type) {
-		
-	}
+
 	/**
 	 * 
 	 * @param email
@@ -264,46 +301,72 @@ public class DBController {
 	 * @return
 	 */
 	public boolean checkPasswordRequirements(String password) {
-		return true;
+		if(this.containsLowerCase(password) && this.containsUpperCase(password) && this.containsNumber(password) && this.passwordLength(password)) {
+			return true;
+		}
+		System.out.println("Did not meet password requirements.");
+		return false;
 	}
 	/**
 	 * 
 	 * @param array
 	 * @return
 	 */
-	public boolean containsLowerCase(String[] array) {
-		return true;
+	public boolean containsLowerCase(String password) {
+		for(int i = 0; i < password.length(); i++) {
+			if(Character.isLowerCase(password.charAt(i))){
+				return true;
+			}
+		}
+		System.out.println("Password must contain a lower case letter.");
+		return false;
 	}
 	/**
 	 * 
 	 * @param array
 	 * @return
 	 */
-	public boolean containsUpperCase(String[] array) {
-		return true;
+	public boolean containsUpperCase(String password) {
+		for(int i = 0; i < password.length(); i++) {
+			if(Character.isUpperCase(password.charAt(i))){
+				return true;
+			}
+		}
+		System.out.println("Password must contain an upper case letter.");
+		return false;
 	}
 	/**
 	 * 
 	 * @param array
 	 * @return
 	 */
-	public boolean containsSpecialCharacter(String[] array) {
-		return true;
+	public boolean passwordLength(String password) {
+		if(password.length() >= 10) {
+			return true;
+		}
+		System.out.println("Password must be 10 characters long.");
+		return false;
 	}
 	/**
 	 * 
 	 * @param array
 	 * @return
 	 */
-	public boolean containsNumber(String[] array) {
-		return true;
+	public boolean containsNumber(String password) {
+		for(int i = 0; i < password.length(); i++) {
+			if(Character.isDigit(password.charAt(i))){
+				return true;
+			}
+		}
+		System.out.println("Password must contain a number.");
+		return false;
 	}
 	/**
 	 * 
 	 * @param schoolName
 	 */
 	public void removeUniversityDB(String schoolName) {
-		//TODO
+		library.university_deleteUniversity(schoolName);
 	}
 	
 	public int maxNumStudents() {
@@ -593,4 +656,5 @@ public class DBController {
 		int minQualityScale = qualityScale.get(0); 		 
 		return minQualityScale;													 									 
 	}
+
 }

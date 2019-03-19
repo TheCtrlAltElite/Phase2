@@ -18,7 +18,7 @@ public class User extends Account{
 	/**
 	 * Instance Variables
 	 */
-	private List savedSchoolsList;
+	private List<University> savedSchoolsList;
 	private UserInteraction userInteract;
 	
 	//
@@ -29,7 +29,7 @@ public class User extends Account{
 	/**
 	 * Searches schools based on the criteria the user gave.
 	 */
-	public void searchSchools(String schoolName, String schoolState, String schoolLocation, String schoolControl, String numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
+	public void searchSchools(String schoolName, String schoolState, String schoolLocation, String schoolControl, String numberStudents, String percentFemale, String verbalSAT, String mathSAT, String schoolExpenses, String percentFinancialAid, String numApplicants, String percentAdmitted, String percentEnrolled, String academicScale, String socialScale, String qualityScale) {
 		userInteract.searchSchools(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale,  socialScale, qualityScale);
 	}
 	
@@ -45,8 +45,8 @@ public class User extends Account{
 	 * Fetches the user's savedSchoolsList and return it.
 	 * @return List<UserSchool> - A list of the schools the user has saved.  
 	 */	
-	public List getSavedSchoolsList(){
-		return null;
+	public List<University> getSavedSchoolsList(){
+		return this.savedSchoolsList;
 	}
 
 	/**

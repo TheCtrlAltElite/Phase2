@@ -4,8 +4,6 @@
 package other;
 
 import java.util.*;
-import java.util.List;
-import java.awt.*;
 
 /**
  * @author omatias001
@@ -26,7 +24,7 @@ public class Account {
 	 * 
 	 * @param list
 	 */
-	public Account(Collection accountDetails) {
+	public Account(String email, String firstName, String lastName, String password, char type, char status) {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -109,13 +107,13 @@ public class Account {
 	 * Returns the status.
 	 */
 	public char getStatus() {
-		return this.type;
+		return this.status;
 	}
 	
 	/**
 	 * Returns the password.
 	 */
-	public String getPasssword() {
+	public String getPassword() {
 		return this.password;
 	}
 	
