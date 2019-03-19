@@ -225,7 +225,7 @@ public class DBController {
 		String password;
 		String type;
 		String status; 
-		for(int i = 0; i <= arrayUsers.length; i++) {
+		for(int i = 0; i < arrayUsers.length; i++) {
 		email = arrayUsers[i][0];
 		firstName = arrayUsers[i][1];
 		lastName = arrayUsers[i][2];
@@ -235,6 +235,8 @@ public class DBController {
 		User user = new User(email, firstName, lastName, password, type.charAt(0), status.charAt(0));
 		listUsers.add(user);
 		}
+		System.out.println(listUsers.get(2).getStatus());
+		System.out.println(listUsers.get(2).getType());
 		return listUsers;
 	}
 
@@ -261,8 +263,8 @@ public class DBController {
 	 * @param Type
 	 * @param Status
 	 */
-	public void addUser(String password, String firstName, String lastName, String email, char type) {
-		library.user_addUser(firstName, lastName, email, password, type);
+	public void addUser(String firstName, String lastName, String username, String password, char type) {
+		library.user_addUser(firstName, lastName, username, password, type);
 	}
 
 	/**

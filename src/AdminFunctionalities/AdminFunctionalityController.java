@@ -81,14 +81,19 @@ public class AdminFunctionalityController {
 	 * Adds a user to the database
 	 */
 	public void addUser() {
+		DBController dbc = new DBController();
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter the information for the new user.");
-		String email = sc.nextLine();
+		System.out.println("Please enter first name: ");
 		String firstName = sc.nextLine();
+		System.out.println("Please enter last name: ");
 		String lastName = sc.nextLine();
+		System.out.println("Please enter email/username: ");
+		String username = sc.nextLine();
+		System.out.println("Please enter password: ");
 		String password = sc.nextLine();
-		String type = sc.nextLine();
-		database.addUser(email, firstName, lastName, password, type.charAt(0));
+		System.out.println("Please enter type:.");
+		char type = sc.next().charAt(0); 
+		dbc.addUser(firstName, lastName, username, password, type);
 		sc.close();
 	}
 	

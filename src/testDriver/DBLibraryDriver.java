@@ -30,14 +30,15 @@ public class DBLibraryDriver {
     	DBController dbc = new DBController();
     	
 //WORKS:   
-    	//dbc.testAdd();                      Do Not Uncomment; will add a duplicate ZTESTUNI unless you edit testAdd in DBController. 
+    	//dbc.testAdd();                      //Do Not Uncomment; will add a duplicate ZTESTUNI unless you edit testAdd in DBController. 
     	//dbc.rMethod();
     	//dbc.loadUniversities();
+    	//dbc.loadUsers();
+    	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);        //Cannot be tested here. Test from AdminFunctionalityController.
     	
 //ALL METHODS: 
     	
     	//dbc.addUniversity(newUni);
-    	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);
     	//dbc.checkPasswordRequirements(password)
     	//dbc.compareAccountInfo(email, firstName, lastName);
     	//dbc.compareSearchCriteria(search);
@@ -55,8 +56,6 @@ public class DBLibraryDriver {
     	//dbc.getUnivDBlib();
     	//dbc.hashCode();
     	//dbc.isUserReal(username);
-    	//dbc.loadUniversities();
-    	//dbc.loadUsers();
     	//dbc.notify();
     	//dbc.notifyAll();
     	//dbc.removeUniversityDB(schoolName);
@@ -140,11 +139,10 @@ public class DBLibraryDriver {
     	AdminFunctionalityController afc = new AdminFunctionalityController();
 
 //WORKS:   
-    	
+    	//afc.addUser();
     	
 //ALL METHODS:    	
     	
-    	//afc.addUser();
     	//afc.editUniversity();
     	//afc.equals(obj);
     	//afc.getClass();
