@@ -35,9 +35,9 @@ public class AccountController {
 	 * @param password - password associated with the profile to be logged in.
 	 */
 	public void login(String username, String password) {
-		if(database.isUserReal(username)) {
+		if(database.isUserReal(username)) {					//makes sure user is real
 			String pw = database.getPassword(username);
-			if(pw.equals(password)) {
+			if(pw.equals(password)) {						//checks that the password enter is correct and corresponds with the account
 				List<String> details = database.getDetailsProfile(username);
 				this.account = new Account(details.get(0), details.get(1), details.get(2), details.get(3), details.get(4).charAt(0), details.get(5).charAt(0));
 				this.account.isLoggedIn(true);
@@ -95,10 +95,10 @@ public class AccountController {
 		this.account = new Account(profileDetails.get(0), profileDetails.get(1), profileDetails.get(2), profileDetails.get(3), profileDetails.get(4).charAt(0), profileDetails.get(5).charAt(0));
 		while(console.nextLine() != "Stop") {
 			System.out.println("Please enter a field you would like to change. CAPS LOCK MATTERS.");
-			if(account.getType() == 'u') {
+			if(account.getType() == 'u') {			//'u' for user
 				System.out.println("First Name, Last Name, Password, or Stop to End Editing.");
 			}
-			else if(account.getType() == 'a') {
+			else if(account.getType() == 'a') {		//'a' for admin
 				System.out.println("First Name, Last Name, Password, Type, Status or Stop to End Editing.");
 			}
 			String input = console.nextLine();
@@ -151,12 +151,12 @@ public class AccountController {
 	public void resetPassword(String o, String n1, String n2) {
 		List<User> listUsers = database.loadUsers();
 		for (int i = 0; i < listUsers.size(); i++) {
-			if(this.account.getEmail().equals(listUsers.get(i).getEmail())) {
-				if(listUsers.get(i).getPassword().equals(o)) {
-					if (n1.equals(n2)) {
-						if(this.passwordRequirements(n2)) {
-							this.account.setPassword(n2);
-							database.editUser(listUsers.get(i));
+			if(this.account.getEmail().equals(listUsers.get(i).getEmail())) {  //goes through users in database and finds which one corresponds with the account email
+				if(listUsers.get(i).getPassword().equals(o)) {				   //compares the old password with the current
+					if (n1.equals(n2)) {									   //checks that n1 is the same as n2 to avoid error
+						if(this.passwordRequirements(n2)) {					   //checks that the new password (n2) meets the password requirements
+							this.account.setPassword(n2);					   //sets the password for the account
+							database.editUser(listUsers.get(i));			   //sets the password in database
 						}
 					}
 				}	
@@ -177,29 +177,28 @@ public class AccountController {
 		
 		try {
             Properties props = new Properties();
-            props.put("mail.smtp.user", "cmcdatabase2019@gmail.com");
-            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.user", "cmcdatabase2019@gmail.com");	//sets email to be sent from cmcdatabase2019@gmail.com
+            props.put("mail.smtp.host", "smtp.gmail.com");				//sets server host as gmail
             props.put("mail.smtp.starttls.enable", "true");
             props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.port", "587");
+            props.put("mail.smtp.port", "587");							//sets the port
             
-            System.out.println(props);
+            System.out.println(props);									//displays server information
             
             Authenticator auth = new SMTPAuthenticator();
             Session session = Session.getInstance(props, auth);
         
-        String mail_body = "Here's your new password: ";
-        //String encodingOptions = "text/html; charset=UTF-8";
+        String mail_body = "Here's your new password: ";				//body of email
 		
-		MimeMessage message= new MimeMessage(session);  
-		message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com"));  
-		message.addRecipient(Message.RecipientType.TO, new InternetAddress("jmuehls@gmail.com"));
-		message.setSubject("Password Recovery");  
-		message.setText(mail_body); 
+		MimeMessage message= new MimeMessage(session);  				//creates MimeMessage object to send email
+		message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com"));  					//sets from email which is cmcdatabase2019@gmail.com
+		message.addRecipient(Message.RecipientType.TO, new InternetAddress("jmuehls@gmail.com"));	//receiver of the email
+		message.setSubject("Password Recovery");  						//subject of the email
+		message.setText(mail_body); 									//sets the body of the email to mail_body
 
-        System.out.println(message);
-        	Transport.send(message);
-        	System.out.println("Message sent!");
+        System.out.println(message);									//shows email has begun to send out
+        	Transport.send(message);									//Sends out email
+        	System.out.println("Message sent!");						//Informs message is sent
         	
     } catch (Exception e) {
         e.printStackTrace();
@@ -220,7 +219,7 @@ public class AccountController {
 	 */
 	public boolean passwordRequirements(String password){
 		if(database.checkPasswordRequirements(password)) {
-			return true;
+			return true;								//returns true if checkPasswordRequirements(password) returned true
 		}
 		return false;
 	}

@@ -16,9 +16,14 @@ import AdminFunctionalities.*;
 public class Admin extends Account{
 
 	/**
-	 * Creates an Admin object
+	 * Creates an Admin object under the super class Account
 	 * 
-	 * @param List adDetails
+	 * @param email - email (username) for the Admin profile
+	 * @param firstName - firstName for the Admin profile
+	 * @param lastName - lastName for the Admin profile
+	 * @param password - password for the Admin profile
+	 * @param type - type of profile which will be 'a' to verify account is an Admin
+	 * @param status - status for the Admin profile
 	 */
 	public Admin(String email, String firstName, String lastName, String password, char type, char status) {
 		super(email, firstName, lastName, password, type, status);

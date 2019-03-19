@@ -1,6 +1,6 @@
 package AdminFunctionalities;
 
-
+//imports
 import java.util.*;
 import UserFunctionalities.*;
 
@@ -12,8 +12,10 @@ import UserFunctionalities.*;
 
 public class AdminInteraction {
 	
+	//instance variable
 	private AdminFunctionalityController adminFController;
 	
+	//constructor
 	public AdminInteraction() {
 		adminFController = new AdminFunctionalityController();
 	}
@@ -25,14 +27,16 @@ public class AdminInteraction {
 	}
 	
 	/**
-	 * 
+	 *shows the admin the list of universities by calling
+	 *viewUniversities() in the AdminFunctionalityController 
 	 */
 	public void viewUniversities() {
 		adminFController.viewUniversities();
 	}
 	
 	/**
-	 * Adds a new university to the database
+	 * Adds a new university to the database by calling
+	 * addUniversity() in AdminFunctionalityController  
 	 */
 	public void addUniversity() {
 		adminFController.addUniversity();
@@ -40,6 +44,7 @@ public class AdminInteraction {
 	
 	/**
 	 * Displays all users and their information in the database
+	 * by calling viewUsers() in AdminFunctionalityController 
 	 */
 	public List<User> viewUsers() {
 		return adminFController.viewUsers();
@@ -63,13 +68,15 @@ public class AdminInteraction {
 	
 	/**
 	 * Adds a new user to the database
+	 * by calling addUser() in AdminFunctionalityController 
 	 */
 	public void addUser() {
 		adminFController.addUser();
 	}
 	
 	/**
-	 * Removes a stored university from the database (must not have emphases)
+	 * Removes a stored university from the database by
+	 * calling removeUniversityDB(String) in AdminFunctionalityController 
 	 * @param schoolName
 	 */
 	public void removeUniversityDB(String schoolName) {

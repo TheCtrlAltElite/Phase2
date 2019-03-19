@@ -117,7 +117,7 @@ public class UniversityController {
 				score += (Math.abs(university.getVerbalSAT() - verbSat)) / (database.maxSATVerbal() - database.minSATVerbal()); 
 			}
 			if(university.getMathSAT() != listUnis.get(i).getMathSAT()) {  //Verbal SAT Score
-				int mathSat = listUnis.get(i).getMathSAT();					 //int verbMath is the math SAT score for listUnis[i][7]
+				int mathSat = listUnis.get(i).getMathSAT();					 //int mathSAT is the math SAT score for listUnis[i][7]
 				score += (Math.abs(university.getVerbalSAT() - mathSat)) / (database.maxSATMath() - database.minSATMath()); 
 			}
 			if(university.getSchoolExpenses() != listUnis.get(i).getSchoolExpenses()) {  //Expenses
@@ -252,7 +252,7 @@ public class UniversityController {
 	
 	/**
 	 * 
-	 * @param search
+	 * 
 	 */
 	public void addUniversityInfo() {
 		
