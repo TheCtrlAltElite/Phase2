@@ -175,13 +175,6 @@ public class DBController {
 	 * 
 	 * @param search
 	 */
-	public void compareSearchCriteria(SearchCriteria search) {
-		//TODO
-	}
-	/**
-	 * 
-	 * @param search
-	 */
 	public void updateUniversity(String school, String state, String location, java.lang.String control, int numberOfStudents, double percentFemales, double SATVerbal, double SATMath, double expenses, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
 		
 		library.university_editUniversity(school, state, location,control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
@@ -459,7 +452,7 @@ public class DBController {
 		return maxSATMath;									//index of the array is realigned										 
 	}
 	
-	public int minSATMath() {arg0
+	public int minSATMath() {
 		List<Integer> satMath = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getMathSAT() != -1) {

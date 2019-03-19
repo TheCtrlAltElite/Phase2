@@ -33,36 +33,25 @@ public class DBLibraryDriver {
     	//dbc.testAdd();                      //Do Not Uncomment; will add a duplicate ZTESTUNI unless you edit testAdd in DBController. 
     	//dbc.rMethod();
     	//dbc.loadUniversities();
-<<<<<<< HEAD
     	//dbc.loadUsers();
     	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);        //Cannot be tested here. Test from AdminFunctionalityController.
-    	
-//ALL METHODS: 
-    	
-    	//dbc.addUniversity(newUni);
     	//dbc.checkPasswordRequirements(password)
-=======
-
-    	//dbc.checkPasswordRequirements(password);    	
     	//dbc.containsLowerCase(password);
     	//dbc.containsNumber(password);
     	//dbc.containsUpperCase(password);
     	//dbc.passwordLength(password);
     	//dbc.addUniversity(newUni);          Can only be tested through addUniversityInfo in UniversityController
+    	//dbc.getDetailsUni("HARVARD");		Can only be ran here. Method in UniversityController probably not necessary.
 
     	
 //ALL METHODS: 
     	
-    	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);
->>>>>>> 05a789088e77e3b600d7abd15ffd9e7a4fb5119a
     	//dbc.compareAccountInfo(email, firstName, lastName);
-    	//dbc.compareSearchCriteria(search);
-    	//dbc.editUser(user);
+    	//dbc.editUser(juser);
     	//dbc.emailSavedSchoolsList(list);
     	//dbc.equals(obj);
     	//dbc.getClass();
     	//dbc.getDetailsProfile(username);
-    	//dbc.getDetailsUni(school);
     	//dbc.getPassword(username);
     	//dbc.getUnivDBlib();
     	//dbc.hashCode();
@@ -92,11 +81,11 @@ public class DBLibraryDriver {
     	
 //WORKS:    	
     	//unc.editUniversity();           //use "testzuni"
-    	//unc.addUniversityInfo();        Must be ran in UniversityController
+    	//unc.addUniversityInfo();        //Must be ran HERE
+    	//unc.getDetailsUni();			//Not needed here (?)
 
 //ALL METHODS:
-    	
-    	//unc.getDetailsUni();
+ 
     	//unc.addToList(university);
     	//unc.compareUniversity(university);
     	//unc.editUniversity();
@@ -152,6 +141,7 @@ public class DBLibraryDriver {
 
 //WORKS:   
     	//afc.addUser();
+    	//afc.addUniversity();				//Must be ran from university controller
     	
 //ALL METHODS:    	
     	

@@ -240,7 +240,7 @@ public class UniversityController {
 		int qualityScale = university.getQualityScale();
 		details.add(Integer.toString(qualityScale));
 				
-	
+		System.out.println(details);
 		return details;
 	}
 	
