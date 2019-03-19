@@ -164,13 +164,21 @@ public class DBController {
 			socialScale = Integer.parseInt(arrayUnis[i][14]);
 			qualityScale = Integer.parseInt(arrayUnis[i][15]);
 			University uni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
-			//System.out.println(uni.getSchoolName());
 			listUnis.add(uni);
+			//System.out.println(listUnis.get(i).getSchoolName());    //prints all universities
 			
 		}
 		//System.out.println(listUnis.get(54).getSchoolName());   //will return university at index 54 which is Harvard
 		return listUnis;
 	}
+	
+	public void viewAllUnis() {
+		
+	}
+	
+	
+	
+	
 	/**
 	 * 
 	 * @param search
@@ -199,7 +207,7 @@ public class DBController {
 	 * 
 	 * @param list of UserSchool's
 	 */
-	public int addToSavedSchoolsList(String username, String school) {
+	public int addToSavedSchoolsList1(String username, String school) {
 		return library.user_saveSchool(username, school);
 	
 	}
@@ -237,6 +245,10 @@ public class DBController {
 		System.out.println(listUsers.get(2).getType());
 		return listUsers;
 	}
+	
+	
+	
+	
 
 	/**
 	 * 

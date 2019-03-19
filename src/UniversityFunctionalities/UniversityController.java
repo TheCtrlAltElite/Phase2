@@ -31,14 +31,14 @@ public class UniversityController {
 	 * 
 	 * @param university
 	 */
-	public int addToList(String user) {
+	public int addToSavedSchoolsList2(String user) {
 		
 		DBController dbc = new DBController();
 		String university;
 		Scanner scan = new Scanner(System.in);
     	System.out.println("Enter school to be edited: \n");
     	String nameToFind = scan.nextLine().toUpperCase();
-    	//Boolean exists = false;	
+    	scan.close();
     	int i = 0;
     		
     	boolean e = false;
@@ -60,9 +60,12 @@ public class UniversityController {
    		}
    		if(e) {
    			university = nameToFind;
-   			return database.addToSavedSchoolsList(user, university);
+   			return database.addToSavedSchoolsList1(user, university);
     	}
+   		
    		throw new NullPointerException("That school does not exist.");
+	
+	
 	}
 	
 	public void removeFromList(User user, University university) {

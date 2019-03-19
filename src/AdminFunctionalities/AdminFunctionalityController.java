@@ -1,7 +1,6 @@
 package AdminFunctionalities;
 
 import java.util.*;
-
 import CMCDatabase.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
@@ -29,6 +28,13 @@ public class AdminFunctionalityController {
 //	public void setType() {
 //		//TODO
 //	}
+	
+	public int addToSavedSchoolsList1(){
+		String user = "user that uni will be saved to.";
+		return uniController.addToSavedSchoolsList2(user);
+		
+	}
+	
 	
 	/**
 	 * Retrieves universities from database
