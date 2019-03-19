@@ -171,13 +171,6 @@ public class DBController {
 		//System.out.println(listUnis.get(54).getSchoolName());   //will return university at index 54 which is Harvard
 		return listUnis;
 	}
-//	/**
-//	 * 
-//	 * @param search
-//	 */
-//	public void compareSearchCriteria(SearchCriteria search) {
-//		//TODO
-//	}
 	/**
 	 * 
 	 * @param search
