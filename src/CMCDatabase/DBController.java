@@ -296,8 +296,11 @@ public class DBController {
 	 * @return
 	 */
 	public boolean checkPasswordRequirements(String password) {
-		this.containsLowerCase(password);
-		return true;
+		if(this.containsLowerCase(password) && this.containsUpperCase(password) && this.containsNumber(password) && this.passwordLength(password)) {
+			return true;
+		}
+		System.out.println("Did not meet password requirements.");
+		return false;
 	}
 	/**
 	 * 
