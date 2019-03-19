@@ -3,11 +3,11 @@
  */
 package other;
 
+//imports
 import javax.mail.MessagingException;
 
 /**
  * @author Ctrl Alt Elite
- *
  */
 
 public class AccountInteraction {
@@ -16,7 +16,7 @@ public class AccountInteraction {
 
 	
 	/**
-	 * 
+	 * Constructor for Account interaction
 	 */
 	public AccountInteraction() {
 		// TODO Auto-generated constructor stub
@@ -35,14 +35,14 @@ public class AccountInteraction {
 	}
 
 	/**
-	 * 
+	 * Calls the logOut() method from AccountController
 	 */
 	public void logOut() {
 		accController.logOut();
 	}
 	
 	/**
-	 * 
+	 * Calls the isUserReal() Method in AccountContoller
 	 * @param username
 	 */
 	public void isUserReal(String username) {
@@ -50,9 +50,9 @@ public class AccountInteraction {
 	}
 	
 	/**
-	 * 
+	 * returns the password for the username given by calling getPassword() in AccountController
 	 * @param username
-	 * @return
+	 * @return the password for the account
 	 */
 	public String getPassword(String username) {
 		return accController.getPassword(username);
@@ -60,7 +60,7 @@ public class AccountInteraction {
 	}
 	
 	/**
-	 * Displays a page with the account profile information
+	 * Displays a page with the account profile information by calling view profile in AccountController
 	 * 
 	 * @param username
 	 */
@@ -69,7 +69,7 @@ public class AccountInteraction {
 	}
 	
 	/**
-	 * 
+	 *allows the user to edit their profile by calling edit profile in AccountController
 	 * @param username
 	 */
 	public void editProfile(String username) {
@@ -77,7 +77,7 @@ public class AccountInteraction {
 	}
 	
 	/**
-	 * 
+	 * Allows the user to reset their password by calling resetPassword() in AccountController
 	 * @param O
 	 * @param n1
 	 * @param n2
@@ -87,7 +87,8 @@ public class AccountInteraction {
 	}
 	
 	/**
-	 * 
+	 * sends the user an email to allow them to change their password by
+	 * calling recoverPassword in AccountController
 	 * @param email
 	 * @param firstName
 	 * @param lastName
@@ -98,7 +99,8 @@ public class AccountInteraction {
 	}
 	
 	/**
-	 * 
+	 * adds a profile picture by finding the string  JPEG the picture is saved as by
+	 * calling addProfile picture in Account Controller
 	 * @param jpeg
 	 */
 	public void addProfilePicture(String jpeg) {

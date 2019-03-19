@@ -1,5 +1,6 @@
 package AdminFunctionalities;
 
+//imports
 import java.util.*;
 import CMCDatabase.*;
 import UniversityFunctionalities.*;
@@ -10,9 +11,11 @@ import UserFunctionalities.*;
  */
 public class AdminFunctionalityController {
 
+	//instance variables
 	private DBController database;
 	private UniversityController uniController;
 	
+	//constructor
 	public AdminFunctionalityController() {
 		// TODO Auto-generated constructor stub
 	}
@@ -31,6 +34,9 @@ public class AdminFunctionalityController {
 //		//TODO
 //	}
 	
+	/*
+	 * adds a university to a User's saves schools list
+	 */
 	public int addToSavedSchoolsList6(){
 		DBController dbc = new DBController();
 		Scanner scan = new Scanner(System.in);
@@ -60,17 +66,13 @@ public class AdminFunctionalityController {
    		if(e) {
    			return uniController.addToSavedSchoolsList2(userToFind);
     	}
-   		
    		throw new NullPointerException("That school does not exist.");
-		
-		
-	
-		
 	}
 	
 	
 	/**
 	 * Retrieves universities from database
+	 * by calling loadUniversities() in DBController
 	 */
 	public void viewUniversities() {
 		database.loadUniversities();
@@ -78,6 +80,7 @@ public class AdminFunctionalityController {
 	
 	/**
 	 * Adds a new university to the database.
+	 * by calling addUniversityInfo() in UniversityController 
 	 */
 	public void addUniversity() {
 		uniController.addUniversityInfo();
@@ -85,6 +88,7 @@ public class AdminFunctionalityController {
 	
 	/**
 	 * Edits the info stored for a university
+	 * by calling editUniversity() in UniversityController
 	 */
 	public void editUniversity() {
 		uniController.editUniversity();;
@@ -92,6 +96,8 @@ public class AdminFunctionalityController {
 	
 	/**
 	 * Retrieves user info from database 
+	 * by calling loadUsers() on a DBController object and returning it
+	 * @return List of Users
 	 */
 	public List<User> viewUsers() {
 		return database.loadUsers();
@@ -99,6 +105,7 @@ public class AdminFunctionalityController {
 	
 	/**
 	 * Adds a user to the database
+	 * by getting the information from the user
 	 */
 	public void addUser() {
 		DBController dbc = new DBController();
@@ -119,6 +126,9 @@ public class AdminFunctionalityController {
 	
 	/**
 	 * Removes university from the database
+	 * by making sure the University is not in the 
+	 * saved schools list of any users
+	 * then calls removeUniversity() in DBController
 	 */
 	public void removeUniversityDB(String schoolName) {
 		List<User> users = database.loadUsers();
