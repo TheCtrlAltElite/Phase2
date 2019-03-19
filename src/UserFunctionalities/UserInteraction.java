@@ -1,14 +1,18 @@
 package UserFunctionalities;
 
+import UniversityFunctionalities.University;
 import other.*;
 
+
+
 /**
- * @author rclintsma001
+ * @author CtrlAltElite
  *
  */
 public class UserInteraction {
 
 	private UserFunctionalityController userController;
+
 	
 	/**
 	 * 
@@ -29,8 +33,8 @@ public class UserInteraction {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */		
-	public void saveSchool(String schoolName) {
-		
+	public void saveSchool(String school) {
+			userController.saveSchool(school);
 	}
 	
 	/**

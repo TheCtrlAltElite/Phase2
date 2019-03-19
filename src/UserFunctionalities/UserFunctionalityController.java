@@ -19,8 +19,10 @@ public class UserFunctionalityController {
 	/**
 	 * Instance Variables
 	 */
+	private User user;
 	private University university;
 	private DBController database;
+	private UniversityController uniController;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -153,8 +155,9 @@ public class UserFunctionalityController {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */	
-	public void saveSchool(String schoolName) {
-		
+	public void saveSchool(String schoolName) {			//NEEDS WORK
+		uniController.addToList(user, university);		//NEEDS WORK
+		user.appendList(university);					//NEEDS WORK
 	}
 
 	/**
@@ -192,7 +195,7 @@ public class UserFunctionalityController {
 	 * Adds User to view all users
 	 * @param User user - a user
 	 */		
-	public void addToList(User user) {
+	public void addUserToList(User user) {
 		
 	}
 	
