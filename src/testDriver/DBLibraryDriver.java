@@ -33,10 +33,10 @@ public class DBLibraryDriver {
     	//dbc.testAdd();                      Do Not Uncomment; will add a duplicate ZTESTUNI unless you edit testAdd in DBController. 
     	//dbc.rMethod();
     	//dbc.loadUniversities();
+    	//dbc.addUniversity(newUni);          Can only be tested through addUniversityInfo in UniversityController
     	
 //ALL METHODS: 
     	
-    	//dbc.addUniversity(newUni);
     	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);
     	//dbc.checkPasswordRequirements(password)
     	//dbc.compareAccountInfo(email, firstName, lastName);
@@ -71,7 +71,7 @@ public class DBLibraryDriver {
     	//dbc.updateUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
     	//dbc.wait();
     	//dbc.wait(timeout);
-    	//dbc.wait(timeout, nanos);;
+    	//dbc.wait(timeout, nanos);
     	
     	
     	
@@ -81,13 +81,12 @@ public class DBLibraryDriver {
     	
 //WORKS:    	
     	//unc.editUniversity();           //use "testzuni"
-    	
+    	//unc.addUniversityInfo();        Must be ran in UniversityController
 
 //ALL METHODS:
     	
     	//unc.getDetailsUni();
     	//unc.addToList(university);
-    	//unc.addUniversityInfo();
     	//unc.compareUniversity(university);
     	//unc.editUniversity();
     	//unc.equals(obj);
@@ -100,7 +99,8 @@ public class DBLibraryDriver {
     	//unc.toString();
     	//unc.wait();
     	//unc.wait(timeout);
-    	//unc.wait(timeout, nanos);;
+    	//unc.wait(timeout, nanos);
+
     	
     	
     	
@@ -114,7 +114,7 @@ public class DBLibraryDriver {
 //ALL METHODS:
     	
     	//acc.addProfilePicture(jpeg);
-    	//acc.editProfile(username);
+    	acc.editProfile("tux69@csbsju.edu");
     	//acc.equals(obj);
     	//acc.getClass();
     	//acc.getPassword(username);

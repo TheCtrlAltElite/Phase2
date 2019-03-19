@@ -111,7 +111,7 @@ public class DBController {
 		return false;
 	}
 	/**
-	 * 
+	 * Gets user information from database
 	 * 
 	 * @param username
 	 */
