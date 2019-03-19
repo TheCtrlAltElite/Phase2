@@ -4,15 +4,17 @@
 package testDriver;
 
 import dblibrary.project.csci230.*;
-import other.*;
 
-import java.io.*;
-import java.util.*; 
+import AdminFunctionalities.*;
 import CMCDatabase.*;
+import other.*;
 import UniversityFunctionalities.*;
+import UserFunctionalities.*;
+
+
 
 public class DBLibraryDriver {
-  private UniversityDBLibrary library;
+  //private UniversityDBLibrary library;
   
   public DBLibraryDriver() {
 	 
@@ -21,63 +23,176 @@ public class DBLibraryDriver {
   
   public static void main(String[] args) {
     try{
-    	System.out.println("hello");
+    	System.out.println("THIS IS THE DRIVER, TO TEST METHODS UNCOMMENT THEM AND RUN DRIVER. BE CAREFUL BEFORE YOU CHANGE ANYTHING. ");
 
+    	
+    	
     	DBController dbc = new DBController();
-    	dbc.rMethod();
+    	
+//WORKS:   
+    	//dbc.testAdd();                      Do Not Uncomment; will add a duplicate ZTESTUNI unless you edit testAdd in DBController. 
+    	//dbc.rMethod();
     	//dbc.loadUniversities();
     	
+//ALL METHODS: 
+    	
+    	//dbc.addUniversity(newUni);
+    	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);
+    	//dbc.checkPasswordRequirements(password)
+    	//dbc.compareAccountInfo(email, firstName, lastName);
+    	//dbc.compareSearchCriteria(search);
+    	//dbc.containsLowerCase(array);
+    	//dbc.containsNumber(array);
+    	//dbc.containsSpecialCharacter(array);
+    	//dbc.containsUpperCase(array);
+    	//dbc.editUser(user);
+    	//dbc.emailSavedSchoolsList(list);
+    	//dbc.equals(obj);
+    	//dbc.getClass();
+    	//dbc.getDetailsProfile(username);
+    	//dbc.getDetailsUni(school);
+    	//dbc.getPassword(username);
+    	//dbc.getUnivDBlib();
+    	//dbc.hashCode();
+    	//dbc.isUserReal(username);
+    	//dbc.loadUniversities();
+    	//dbc.loadUsers();
+    	//dbc.notify();
+    	//dbc.notifyAll();
+    	//dbc.removeUniversityDB(schoolName);
+    	//dbc.removeUniversityDB(schoolName);
+    	//dbc.sendRecoverEmail();
+    	//dbc.toString();
+    	//dbc.update(type);
+    	//dbc.updateProfilePic(jpeg);
+    	//dbc.updateSavedSschoolsList(list);
+    	//dbc.updateStatus(status);
+    	//dbc.updateType(type);
+    	//dbc.updateUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
+    	//dbc.wait();
+    	//dbc.wait(timeout);
+    	//dbc.wait(timeout, nanos);;
     	
     	
-    	//AccountController acc = new AccountController();
-    	//acc.login("sfd","assword");
     	
     	
-//**Jake use this**
+    	
     	UniversityController unc = new UniversityController();
-    	unc.addUniversityInfo();
     	
-    	
+//WORKS:    	
+    	//unc.editUniversity();           //use "testzuni"
     	
 
+//ALL METHODS:
+    	
+    	//unc.getDetailsUni();
+    	//unc.addToList(university);
+    	//unc.addUniversityInfo();
+    	//unc.compareUniversity(university);
+    	//unc.editUniversity();
+    	//unc.equals(obj);
+    	//unc.getClass();
+    	//unc.getDetailsUni(university);
+    	//unc.hashCode();
+    	//unc.notify();
+    	//unc.notifyAll();
+    	//unc.recommendedSchools(university);
+    	//unc.toString();
+    	//unc.wait();
+    	//unc.wait(timeout);
+    	//unc.wait(timeout, nanos);;
+    	
+    	
+    	
+    	
+    	
+    	AccountController acc = new AccountController();
+    	
+//WORKS:   
+    	
+    	
+//ALL METHODS:
+    	
+    	//acc.addProfilePicture(jpeg);
+    	//acc.editProfile(username);
+    	//acc.equals(obj);
+    	//acc.getClass();
+    	//acc.getPassword(username);
+    	//acc.hashCode();
+    	//acc.isUserReal(username);
+    	//acc.login("username", "password");
+    	//acc.logOut();
+    	//acc.notify();
+    	//acc.passwordRequirements(password);
+    	//acc.recoverPassword(email, firstName, lastName);
+    	//acc.resetPassword(o, n1, n2);
+    	//acc.toString();
+    	//acc.viewProfile(username);
+    	//acc.viewProfile(username);
+    	//acc.wait();
+    	//acc.wait(timeout);
+    	//acc.wait(timeout, nanos);
+    	
+    	
+    	
+    	
+   	
+    	AdminFunctionalityController afc = new AdminFunctionalityController();
 
+//WORKS:   
+    	
+    	
+//ALL METHODS:    	
+    	
+    	//afc.addUser();
+    	//afc.editUniversity();
+    	//afc.equals(obj);
+    	//afc.getClass();
+    	//afc.hashCode();
+    	//afc.notify();
+    	//afc.removeUniversityDB(schoolName);
+    	//afc.setStatus();
+    	//afc.setType();
+    	//afc.toString();
+    	//afc.update(type);
+    	//afc.updateStatus(status);
+    	//afc.updateType(type);
+    	//afc.viewUniversities();
+    	//afc.viewUsers();
+    	//afc.wait();
+    	//afc.wait(timeout);
+    	//afc.wait(timeout, nanos);
     	
     	
     	
     	
     	
+    	UserFunctionalityController ufc = new UserFunctionalityController();
     	
+    	//ufc.addToList(user);
+    	//ufc.emailSavedSchools();
+    	//ufc.equals(obj);
+    	//ufc.getClass();
+    	//ufc.getSavedSchoolsList();
+    	//ufc.hashCode();
+    	//ufc.notify();
+    	//ufc.notifyAll();
+    	//ufc.removeSavedSchool(schoolName);
+    	//ufc.saveSchool(schoolName);
+    	//ufc.searchSchools(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
+    	//ufc.toString();
+    	//ufc.updateSavedSchoolsList(list);
+    	//ufc.viewSavedSchools();
+    	//ufc.viewSchool(schoolName);
+    	//ufc.wait();
+    	//ufc.wait(timeout);
+    	//ufc.wait(timeout, nanos);
+    
+    
     	
-    	
-//    	AdminInteraction adint = new AdminInteraction ();
-//    	adint.rMethod();
-    	
-  
-//      DBLibraryDriver dbld = new DBLibraryDriver(args[0],args[1]);
-//      
-//      String[][] listUniv = dbld.getUnivDBlib().university_getUniversities();
-//      
-//      Scanner scan = new Scanner(System.in);
-//      System.out.println("Enter school state: ");
-//      String state = scan.nextLine();
-//      
-//      System.out.println("Enter number of students: ");
-//      int students = scan.nextInt();
-//      
-//      for(int i = 0; i < listUniv.length; i++ ){
-//    	  if(listUniv[i][1].equals(state.toUpperCase()) || (students + 5000) >= Integer.parseInt(listUniv[i][4]) && 
-//    			  (students - 5000) <= Integer.parseInt(listUniv[i][4])  ) {
-//    		  System.out.println(listUniv[i][0]);
-//    	  }
-//    	  else {
-//    		  System.out.println("Not a match.");
-//    	  }	  
-//      }
-      //System.out.println(Arrays.deepToString(dbld.getUnivDBlib().university_getUniversities()));
     }
     catch(Exception e){
       e.printStackTrace();
     }
-    
   }
 }

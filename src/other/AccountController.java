@@ -8,6 +8,7 @@ import java.util.*;
 import java.util.List;
 
 import CMCDatabase.DBController;
+import UserFunctionalities.User;
 
 /**
  * @author lneuensch001
@@ -138,12 +139,24 @@ public class AccountController {
 	
 	/**
 	 * 
-	 * @param O
+	 * @param o - old password
 	 * @param n1
 	 * @param n2
 	 */
 	public void resetPassword(String o, String n1, String n2) {
-		database.checkPasswordRequirements(n2);
+		List<User> listUsers = database.loadUsers();
+		for (int i = 0; i < listUsers.size(); i++) {
+			if(this.account.getEmail().equals(listUsers.get(i).getEmail())) {
+				if(listUsers.get(i).getPassword().equals(o)) {
+					if (n1.equals(n2)) {
+						if(this.passwordRequirements(n2)) {
+							this.account.setPassword(n2);
+							database.editUser(listUsers.get(i));
+						}
+					}
+				}	
+			}
+		}
 	}
 	
 	/**
@@ -153,7 +166,7 @@ public class AccountController {
 	 * @param lastName
 	 */
 	public void recoverPassword(String email, String firstName, String lastName) {
-		//TODO
+
 	}
 	
 	/**
@@ -167,7 +180,10 @@ public class AccountController {
 	 * 
 	 * @param password
 	 */
-	public void passwordRequirements(String password){
-		//TODO
+	public boolean passwordRequirements(String password){
+		if(database.checkPasswordRequirements(password)) {
+			return true;
+		}
+		return false;
 	}
 }
