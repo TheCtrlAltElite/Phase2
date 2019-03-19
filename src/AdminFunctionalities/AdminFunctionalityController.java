@@ -10,24 +10,25 @@ import UserFunctionalities.*;
 public class AdminFunctionalityController {
 
 	private DBController database;
+	private UniversityController uniController;
 	
 	public AdminFunctionalityController() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	/**
-	 * Sets the status for an account
-	 */
-	public void setStatus() {
-		//TODO
-	}
-	
-	/**
-	 *  Sets Type for an account
-	 */
-	public void setType() {
-		//TODO
-	}
+//	/**
+//	 * Sets the status for an account
+//	 */
+//	public void setStatus() {
+//		//TODO
+//	}
+//	
+//	/**
+//	 *  Sets Type for an account
+//	 */
+//	public void setType() {
+//		//TODO
+//	}
 	
 	/**
 	 * Retrieves universities from database
@@ -67,14 +68,14 @@ public class AdminFunctionalityController {
 	 * Edits the info stored for a university
 	 */
 	public void editUniversity() {
-		//TODO
+		uniController.addUniversityInfo();
 	}
 	
 	/**
 	 * Retrieves user info from database 
 	 */
-	public void viewUsers() {
-		//TODO
+	public List<User> viewUsers() {
+		return database.loadUsers();
 	}
 	
 	/**
