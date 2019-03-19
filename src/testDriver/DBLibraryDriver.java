@@ -26,7 +26,7 @@ public class DBLibraryDriver {
 //WORKS:   
     	//dbc.testAdd();                      //Do Not Uncomment; will add a duplicate ZTESTUNI unless you edit testAdd in DBController. 
     	//dbc.rMethod();
-    	dbc.loadUniversities();
+    	//dbc.loadUniversities();
     	//dbc.loadUsers();
     	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);        //Cannot be tested here. Test from AdminFunctionalityController.
     	//dbc.checkPasswordRequirements(password)
@@ -97,7 +97,7 @@ public class DBLibraryDriver {
     	//acc.login("username", "password");
     	//acc.logOut();
     	//acc.passwordRequirements(password);
-    	//acc.recoverPassword(email, firstName, lastName);
+    	acc.recoverPassword("email", "firstName", "lastName");
     	//acc.resetPassword(o, n1, n2);
     	//acc.toString();
     	//acc.viewProfile(username);

@@ -9,6 +9,7 @@ import java.util.List;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.Authenticator;
 
 import CMCDatabase.DBController;
 import UserFunctionalities.User;
@@ -170,36 +171,40 @@ public class AccountController {
 	 * @throws MessagingException 
 	 */
 	public void recoverPassword(String email, String firstName, String lastName) throws MessagingException {
+		//if(database.isUserReal(email)){
+		
+		
 		try {
-
             Properties props = new Properties();
-
-            //props.put("mail.smtp.host", host);
+            props.put("mail.smtp.user", "cmcdatabase2019@gmail.com");
             props.put("mail.smtp.host", "smtp.gmail.com");
             props.put("mail.smtp.starttls.enable", "true");
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.port", "587");
+            
             System.out.println(props);
             
-        Session session = Session.getDefaultInstance(props, null);
+            Authenticator auth = new SMTPAuthenticator();
+            Session session = Session.getInstance(props, auth);
         
-        String mail_body = "<html><head></head><body><h1>Mail Body</h1><b> Hey Jake </b></body></html>";
+        String mail_body = "Here's your new password: ";
         //String encodingOptions = "text/html; charset=UTF-8";
 		
 		MimeMessage message= new MimeMessage(session);  
-		message.setFrom(new InternetAddress("rclintsma001@gmail.com"));  
-		message.addRecipient(Message.RecipientType.TO, new InternetAddress("jmuehls@gmail.com"));  
+		message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com"));  
+		message.addRecipient(Message.RecipientType.TO, new InternetAddress("jmuehls@gmail.com"));
 		message.setSubject("Password Recovery");  
 		message.setText(mail_body); 
 
         System.out.println(message);
-
-        Transport.send(message);
-        System.out.println("Message sent!");
+        	Transport.send(message);
+        	System.out.println("Message sent!");
+        	
     } catch (Exception e) {
         e.printStackTrace();
     	}
-	}
+	   }
+	//}
 	
 	/**
 	 * 
