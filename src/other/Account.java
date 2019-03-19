@@ -32,26 +32,12 @@ public class Account {
 		this.status = type;
 		this.type = status;
 	}
-
-	/**
-	 * Logs in user/admin
-	 */
-	public void login(String username, String password) {
-		controller.login(username, password);
-	}
 	
 	/**
 	 * Checks if user is already logged in
 	 */
 	public void isLoggedIn(boolean stat) {
 		this.loginStatus = stat;
-	}
-	
-	/**
-	 * Logs out the user/admin
-	 */
-	public void logOut() {
-		
 	}
 	
 	/**
