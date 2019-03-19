@@ -6,6 +6,7 @@ package UniversityFunctionalities;
 
 import java.util.*;
 
+
 import CMCDatabase.DBController;
 import UserFunctionalities.User;
 import other.*;
@@ -254,21 +255,36 @@ public class UniversityController {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter School Name");
 		String schoolName = sc.nextLine();
+		System.out.println("Enter School State");
 		String schoolState = sc.nextLine();
+		System.out.println("Enter School Location");
 	    String schoolLocation = sc.nextLine();
+	    System.out.println("Enter School Control");
 	    String schoolControl = sc.nextLine();
-		int numberStudents = Integer.parseInt(sc.nextLine());
-		int percentFemale = Integer.parseInt(sc.nextLine());
-		int verbalSAT = Integer.parseInt(sc.nextLine());
-		int mathSAT = Integer.parseInt(sc.nextLine());
-		int schoolExpenses = Integer.parseInt(sc.nextLine());
-		int percentFinancialAid = Integer.parseInt(sc.nextLine());
-		int numApplicants = Integer.parseInt(sc.nextLine());
-		int percentAdmitted = Integer.parseInt(sc.nextLine());
-		int percentEnrolled = Integer.parseInt(sc.nextLine());
-		int academicScale = Integer.parseInt(sc.nextLine());
-		int socialScale = Integer.parseInt(sc.nextLine());
-		int qualityScale = Integer.parseInt(sc.nextLine());
+	    System.out.println("Enter Number of Students");
+		int numberStudents = sc.nextInt();
+		System.out.println("Enter Percent Female Students");
+		int percentFemale = sc.nextInt();
+		System.out.println("Enter Average Verbal SAT Score");
+		int verbalSAT = sc.nextInt();
+		System.out.println("Enter Average Math SAT Score");
+		int mathSAT = sc.nextInt();
+		System.out.println("Enter School Cost");
+		int schoolExpenses = sc.nextInt();
+		System.out.println("Enter Percent of Students Receiving Financial Aid");
+		int percentFinancialAid = sc.nextInt();
+		System.out.println("Enter Number of Applicants");
+		int numApplicants = sc.nextInt();
+		System.out.println("Enter Percent of Students Admitted");
+		int percentAdmitted = sc.nextInt();
+		System.out.println("Enter Percent of Students Enrolled");
+		int percentEnrolled = sc.nextInt();
+		System.out.println("Enter Academic Scale Rating (1-5)");
+		int academicScale = sc.nextInt();
+		System.out.println("Enter Social Scale Rating (1-5)");
+		int socialScale = sc.nextInt();
+		System.out.println("Enter Quality Scale Rating (1-5)");
+		int qualityScale = sc.nextInt();
 		//List<String> emphasis = sc.nextLine();
 		University newUni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, 
 										   percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, 
