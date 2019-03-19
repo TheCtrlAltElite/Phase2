@@ -35,7 +35,12 @@ public class DBLibraryDriver {
     	//dbc.loadUniversities();
     	//dbc.loadUsers();
     	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);        //Cannot be tested here. Test from AdminFunctionalityController.
+
     	//dbc.checkPasswordRequirements(password)
+
+    	
+//ALL METHODS: 
+
     	//dbc.containsLowerCase(password);
     	//dbc.containsNumber(password);
     	//dbc.containsUpperCase(password);
