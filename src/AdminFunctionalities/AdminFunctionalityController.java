@@ -64,15 +64,9 @@ public class AdminFunctionalityController {
    		}
     	
    		if(e) {
-<<<<<<< HEAD
    			UniversityController unc = new UniversityController();
    			unc.addToSavedSchoolsList2(userToFind);
     	}		
-=======
-   			return uniController.addToSavedSchoolsList2(userToFind);
-    	}
-   		throw new NullPointerException("That school does not exist.");
->>>>>>> 299762cb8875e7ba0ec6875bf53f41d621afcb95
 	}
 	
 	
