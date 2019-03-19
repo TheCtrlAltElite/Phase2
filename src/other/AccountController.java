@@ -171,7 +171,7 @@ public class AccountController {
 	 * @throws MessagingException 
 	 */
 	public void recoverPassword(String email, String firstName, String lastName) throws MessagingException {
-		//if(database.isUserReal(email)){
+		//if(database.isUserReal(email)){      //Returns Null??
 		
 		
 		try {
