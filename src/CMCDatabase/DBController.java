@@ -93,6 +93,10 @@ public class DBController {
 				details.add(Integer.toString(universities.get(i).getQualityScale()));
 			}
 		}
+		System.out.println(details.toString());
+		for (int i =0; i < details.size(); i++) {
+			System.out.println(details.get(i));
+		}
 		return details;
 	}
 	/**
