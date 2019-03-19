@@ -49,10 +49,10 @@ public class AccountController {
 	}
 
 	/**
-	 * 
+	 * Logs the account out.
 	 */
 	public void logOut() {
-		//TODO
+		this.account.isLoggedIn(false);
 	}
 	
 	/**

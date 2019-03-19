@@ -171,13 +171,13 @@ public class DBController {
 		//System.out.println(listUnis.get(54).getSchoolName());   //will return university at index 54 which is Harvard
 		return listUnis;
 	}
-	/**
-	 * 
-	 * @param search
-	 */
-	public void compareSearchCriteria(SearchCriteria search) {
-		//TODO
-	}
+//	/**
+//	 * 
+//	 * @param search
+//	 */
+//	public void compareSearchCriteria(SearchCriteria search) {
+//		//TODO
+//	}
 	/**
 	 * 
 	 * @param search
@@ -279,6 +279,12 @@ public class DBController {
 	 * @return
 	 */
 	public boolean compareAccountInfo(String email, String firstName, String lastName) {
+		List<String> details = new ArrayList<String>(getDetailsProfile(email));
+		User user = new User(details.get(0), details.get(1), details.get(2), details.get(3), details.get(4).charAt(0), details.get(5).charAt(0));
+		if(email.equals(user.getEmail()) && firstName.equals(user.getFirstName()) && lastName.equals(user.getLastName())) {
+			return true;
+		}
+		System.out.println("Your email, first name, or last name was incorrect.");
 		return false;
 	}
 	/**
@@ -291,7 +297,7 @@ public class DBController {
 	 * 
 	 * @param list of UserSchool's
 	 */
-	public void emailSavedSchoolsList(List list) {
+	public void emailSavedSchoolsList(List<University> list) {
 		//TODO
 	}
 	/**
@@ -459,7 +465,7 @@ public class DBController {
 		return maxSATMath;									//index of the array is realigned										 
 	}
 	
-	public int minSATMath() {arg0
+	public int minSATMath() {
 		List<Integer> satMath = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getMathSAT() != -1) {

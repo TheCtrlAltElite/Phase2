@@ -38,7 +38,6 @@ public class DBLibraryDriver {
     	
 //ALL METHODS: 
     	
-
     	//dbc.checkPasswordRequirements(password);    	
     	//dbc.containsLowerCase(password);
     	//dbc.containsNumber(password);

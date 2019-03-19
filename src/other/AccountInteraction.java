@@ -36,7 +36,7 @@ public class AccountInteraction {
 	 * 
 	 */
 	public void logOut() {
-		//TODO
+		accController.logOut();
 	}
 	
 	/**
