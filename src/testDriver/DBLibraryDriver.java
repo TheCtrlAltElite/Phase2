@@ -119,7 +119,7 @@ public class DBLibraryDriver {
 //ALL METHODS:    	
     	
     	
-    	afc.addToSavedSchoolsList3();
+    	//afc.addToSavedSchoolsList3();
     	
     	//afc.editUniversity();
     	//afc.equals(obj);
