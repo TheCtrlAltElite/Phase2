@@ -199,8 +199,9 @@ public class DBController {
 	 * 
 	 * @param list of UserSchool's
 	 */
-	public void addToSavedSchoolsList(String username, String school) {
-		library.user_saveSchool(username, school);
+	public int addToSavedSchoolsList(String username, String school) {
+		return library.user_saveSchool(username, school);
+	
 	}
 	
 	public void removeFromSavedSchoolsList(String username, String school) {

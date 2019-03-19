@@ -37,8 +37,8 @@ public class User extends Account{
 	 * Adds UserSchool object to the User's savedSchoolsList.
 	 * @param UserSchool userSchool - An object with the school name and date of the addition to the savedSchoolsList.  
 	 */	
-	public void appendList(University university) {		//NEEDS WORK
-		savedSchoolsList.add(university);				//NEEDS WORK
+	public void appendList(University university) {	
+		savedSchoolsList.add(university);
 	}
 	
 	/**

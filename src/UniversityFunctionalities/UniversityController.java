@@ -31,9 +31,38 @@ public class UniversityController {
 	 * 
 	 * @param university
 	 */
-	public void addToList(User user, University university) {
+	public int addToList(String user) {
 		
-		database.addToSavedSchoolsList(user.getEmail(), university.getSchoolName());
+		DBController dbc = new DBController();
+		String university;
+		Scanner scan = new Scanner(System.in);
+    	System.out.println("Enter school to be edited: \n");
+    	String nameToFind = scan.nextLine().toUpperCase();
+    	//Boolean exists = false;	
+    	int i = 0;
+    		
+    	boolean e = false;
+    	
+    	while(i<dbc.loadUniversities().size()) {
+    			
+    		String name = dbc.loadUniversities().get(i).getSchoolName();
+   			if (name.equals(nameToFind)){
+   				e= true;
+   				System.out.println("YES, " + nameToFind + " exists.");   			
+   				break;
+    		}
+    			
+    		if(i == (dbc.loadUniversities().size())-1) {
+		   		System.out.print(nameToFind + " does NOT exist.");
+	    		System.out.print(dbc.loadUniversities().get(i).getSchoolName());
+    		}
+   			i++;    			
+   		}
+   		if(e) {
+   			university = nameToFind;
+   			return database.addToSavedSchoolsList(user, university);
+    	}
+   		throw new NullPointerException("That school does not exist.");
 	}
 	
 	public void removeFromList(User user, University university) {

@@ -171,9 +171,9 @@ public class UserFunctionalityController {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */	
-	public void saveSchool(String schoolName) {			//NEEDS WORK
-		uniController.addToList(user, university);		//NEEDS WORK
-		user.appendList(university);					//NEEDS WORK
+	public int saveSchool(String userName) {	
+		//user.appendList(university);
+		return uniController.addToList(userName);
 	}
 
 	/**

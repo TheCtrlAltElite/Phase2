@@ -182,7 +182,7 @@ public class DBLibraryDriver {
     	//ufc.notify();
     	//ufc.notifyAll();
     	//ufc.removeSavedSchool(schoolName);
-    	//ufc.saveSchool(schoolName);
+    	ufc.saveSchool("name");
     	//ufc.searchSchools("UNI", "MIN", "URBAN", "STATE", "35000", "40000", "40", "70", "400", "500", "400", "600", "10000", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
     	//ufc.searchSchools(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
     	//ufc.toString();
