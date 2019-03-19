@@ -33,16 +33,17 @@ public class DBLibraryDriver {
     	//dbc.testAdd();                      Do Not Uncomment; will add a duplicate ZTESTUNI unless you edit testAdd in DBController. 
     	//dbc.rMethod();
     	//dbc.loadUniversities();
+
     	//dbc.checkPasswordRequirements(password);    	
     	//dbc.containsLowerCase(password);
     	//dbc.containsNumber(password);
     	//dbc.containsUpperCase(password);
     	//dbc.passwordLength(password);
-    	//ufc.searchSchools("UNI", "MIN", "URBAN", "STATE", "35000", "40000", "40", "70", "400", "500", "400", "600", "10000", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
+    	//dbc.addUniversity(newUni);          Can only be tested through addUniversityInfo in UniversityController
+
     	
 //ALL METHODS: 
     	
-    	//dbc.addUniversity(newUni);
     	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);
     	//dbc.compareAccountInfo(email, firstName, lastName);
     	//dbc.compareSearchCriteria(search);
@@ -72,7 +73,7 @@ public class DBLibraryDriver {
     	//dbc.updateUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
     	//dbc.wait();
     	//dbc.wait(timeout);
-    	//dbc.wait(timeout, nanos);;
+    	//dbc.wait(timeout, nanos);
     	
     	//dbc.getDetailsUni("YANKTOWN");
     	
@@ -83,13 +84,12 @@ public class DBLibraryDriver {
     	
 //WORKS:    	
     	//unc.editUniversity();           //use "testzuni"
-    	
+    	//unc.addUniversityInfo();        Must be ran in UniversityController
 
 //ALL METHODS:
     	
     	//unc.getDetailsUni();
     	//unc.addToList(university);
-    	//unc.addUniversityInfo();
     	//unc.compareUniversity(university);
     	//unc.editUniversity();
     	//unc.equals(obj);
@@ -102,7 +102,8 @@ public class DBLibraryDriver {
     	//unc.toString();
     	//unc.wait();
     	//unc.wait(timeout);
-    	//unc.wait(timeout, nanos);;
+    	//unc.wait(timeout, nanos);
+
     	
     	
     	
@@ -116,7 +117,7 @@ public class DBLibraryDriver {
 //ALL METHODS:
     	
     	//acc.addProfilePicture(jpeg);
-    	//acc.editProfile(username);
+    	//acc.editProfile("tux69@csbsju.edu");
     	//acc.equals(obj);
     	//acc.getClass();
     	//acc.getPassword(username);
@@ -181,7 +182,7 @@ public class DBLibraryDriver {
     	//ufc.notifyAll();
     	//ufc.removeSavedSchool(schoolName);
     	//ufc.saveSchool(schoolName);
-    	ufc.searchSchools("UNI", "MIN", "URBAN", "STATE", "35000", "40000", "40", "70", "400", "500", "400", "600", "10000", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
+    	//ufc.searchSchools("UNI", "MIN", "URBAN", "STATE", "35000", "40000", "40", "70", "400", "500", "400", "600", "10000", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
     	//ufc.searchSchools(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
     	//ufc.toString();
     	//ufc.updateSavedSchoolsList(list);
