@@ -6,6 +6,9 @@ package other;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import CMCDatabase.DBController;
 import UserFunctionalities.User;
@@ -160,13 +163,42 @@ public class AccountController {
 	}
 	
 	/**
-	 * 
-	 * @param email
-	 * @param firstName
-	 * @param lastName
+	 * Sends an email to the user's email with instructions for resetting their password.
+	 * @param email - same as the username.
+	 * @param firstName - the first name of the user on the account to verify. Used for security purposes.
+	 * @param lastName - the last name of the user on the account to verify. Used for security purposes.
+	 * @throws MessagingException 
 	 */
-	public void recoverPassword(String email, String firstName, String lastName) {
+	public void recoverPassword(String email, String firstName, String lastName) throws MessagingException {
+		try {
 
+            Properties props = new Properties();
+
+            //props.put("mail.smtp.host", host);
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "587");
+            System.out.println(props);
+            
+        Session session = Session.getDefaultInstance(props, null);
+        
+        String mail_body = "<html><head></head><body><h1>Mail Body</h1><b> Hey Jake </b></body></html>";
+        //String encodingOptions = "text/html; charset=UTF-8";
+		
+		MimeMessage message= new MimeMessage(session);  
+		message.setFrom(new InternetAddress("rclintsma001@gmail.com"));  
+		message.addRecipient(Message.RecipientType.TO, new InternetAddress("jmuehls@gmail.com"));  
+		message.setSubject("Password Recovery");  
+		message.setText(mail_body); 
+
+        System.out.println(message);
+
+        Transport.send(message);
+        System.out.println("Message sent!");
+    } catch (Exception e) {
+        e.printStackTrace();
+    	}
 	}
 	
 	/**

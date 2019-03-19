@@ -3,6 +3,8 @@
  */
 package other;
 
+import javax.mail.MessagingException;
+
 /**
  * @author lneuensch001
  *
@@ -89,8 +91,9 @@ public class AccountInteraction {
 	 * @param email
 	 * @param firstName
 	 * @param lastName
+	 * @throws MessagingException 
 	 */
-	public void recoverPassword(String email, String firstName, String lastName) {
+	public void recoverPassword(String email, String firstName, String lastName) throws MessagingException {
 		accController.recoverPassword(email, firstName, lastName);
 	}
 	
