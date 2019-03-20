@@ -17,9 +17,15 @@ public class AdminInteraction {
 	
 	//constructor
 	public AdminInteraction() {
-		// TODO Auto-generated constructor stub
+		adminFController = new AdminFunctionalityController();
 	}
 
+	
+	
+	public void addToSavedSchoolsList4(){
+		adminFController.addToSavedSchoolsList3();
+	}
+	
 	/**
 	 *shows the admin the list of universities by calling
 	 *viewUniversities() in the AdminFunctionalityController 

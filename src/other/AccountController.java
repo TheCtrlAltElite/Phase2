@@ -3,7 +3,6 @@
  */
 package other;
 
-import java.awt.*;
 import java.util.*;
 import java.util.List;
 import javax.mail.*;
@@ -40,7 +39,7 @@ public class AccountController {
 			if(pw.equals(password)) {						//checks that the password enter is correct and corresponds with the account
 				List<String> details = database.getDetailsProfile(username);
 				this.account = new Account(details.get(0), details.get(1), details.get(2), details.get(3), details.get(4).charAt(0), details.get(5).charAt(0));
-				this.account.isLoggedIn(true);
+				this.account.setLoginStatus(true);
 				System.out.println("You have been successfully logged in.");
 				if(this.account.getStatus() == 'N') {
 					System.out.println("Your account has been deactivated.");
@@ -56,7 +55,7 @@ public class AccountController {
 	 * Logs the account out.
 	 */
 	public void logOut() {
-		this.account.isLoggedIn(false);
+		this.account.setLoginStatus(false);
 	}
 	
 	/**
