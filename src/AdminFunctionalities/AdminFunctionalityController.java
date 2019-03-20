@@ -39,6 +39,7 @@ public class AdminFunctionalityController {
 	/**
 	 * adds a university to a User's saves schools list
 	 */
+
 	public void addToSavedSchoolsList3(){
 		DBController dbc = new DBController();
 		Scanner scan = new Scanner(System.in);

@@ -1,5 +1,5 @@
 /**
- * 
+ * Java.DBController
  */
 
 package CMCDatabase;
@@ -27,20 +27,32 @@ public class DBController {
 		  
 	}
 	
-	
+	/**
+	 * Test method for the library
+	 * 
+	 * @return
+	 */
 	public UniversityDBLibrary getUnivDBlib(){
 	    return library;
 	}
 
+	/**
+	 * Test method for the Driver
+	 */
 	public void rMethod() {
 	    System.out.println("Driver is Working and is communicating with DBController \n");
 	}
 	
-	
+	/**
+	 * Test method for the add functionality
+	 */
 	public void testAdd() {
 		library.university_addUniversity("ZCSB", "MN", "RURAL", "Private", 10000, 99, 1600, 1600, 2, 100, 1000, 999, 4000, 5, 5, 5);
 	}
 	
+	/**
+	 * Test method for saving a university to a saved schools list
+	 */
 	public void testSaveUni() {
 		String name = "juser";
 		String uni = "BROWN";
@@ -116,7 +128,7 @@ public class DBController {
 	/**
 	 * Gets user information from database
 	 * 
-	 * @param username
+	 * @param username the user of which to get the details for
 	 */
 	public void editUser(User user) {
 		this.library.user_editUser(user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getType(), user.getStatus());
@@ -194,6 +206,7 @@ public class DBController {
 	
 	
 	/**
+	 * Updates the information for a university in the database.
 	 * 
 	 * @param search
 	 */
@@ -222,8 +235,10 @@ public class DBController {
 	
 	
 	/**
+	 * Adds a university to a saved schools list
 	 * 
-	 * @param list of UserSchool's
+	 * @param String username, the user to whom the saved schools list being added to belongs
+	 * @param String school, the school name of the school to save to the saved schools list
 	 */
 	public void addToSavedSchoolsList1(String username, String school) {
 		library.user_saveSchool(username, school);
@@ -233,7 +248,12 @@ public class DBController {
 	
 	
 	
-	
+	/**
+	 * Removes a school from a saved schools list
+	 * 
+	 * @param username the user whose saved schools will be changed
+	 * @param school the name of the schools to remove from the user's saved schools list
+	 */
 	public void removeFromSavedSchoolsList(String username, String school) {
 		library.user_removeSchool(username, school);
 	}
@@ -267,7 +287,9 @@ public class DBController {
 		return listUsers;
 	}
 	
-	
+	/**
+	 * Displays all the users to the terminal (just the username/emails.
+	 */
 	public void viewAllUsers() {
 		for(int i = 0; i < loadUsers().size(); i++) {
 			System.out.println(listUsers.get(i).getFirstName() + " " + listUsers.get(i).getLastName() + " " + listUsers.get(i).getEmail() + " " + listUsers.get(i).getStatus() + " " + listUsers.get(i).getType());
@@ -279,8 +301,10 @@ public class DBController {
 	
 
 	/**
+	 * Gets the password for a user from the database
 	 * 
-	 * @return
+	 * @param username the user to search the database for
+	 * @return String the password the user
 	 */
 	public String getPassword(String username) {
 		List<User> users = loadUsers();
@@ -291,26 +315,28 @@ public class DBController {
 		}
 		return "That user does not exist.";
 	}
+	
 	/**
+	 * Adds a account to the database
 	 * 
-	 * @param password
-	 * @param firstName
-	 * @param lastName
-	 * @param email
-	 * @param profilePic
-	 * @param Type
-	 * @param Status
+	 * @param firstName the first name of the new account
+	 * @param lastName the last name of the new account
+	 * @param username the username/email for the new account
+	 * @param password the password for the new account
+	 * @param type the type of the new account
 	 */
 	public void addUser(String firstName, String lastName, String username, String password, char type) {
 		library.user_addUser(firstName, lastName, username, password, type);
 	}
 
 	/**
+	 * Compares the given information to the information for an account from the database with an email matching the email parameter
 	 * 
-	 * @param email
-	 * @param firstName
-	 * @param lastName
-	 * @return
+	 * @param email the username/email to compare
+	 * @param firstName the first name to compare
+	 * @param lastName the last name to compare
+	 * @return true if all the parameters match the database's information
+	 * @return false if any of the parameters do not match the database's information
 	 */
 	public boolean compareAccountInfo(String userName, String firstName, String lastName) {
 		List<String> details = getDetailsProfile2(userName);
@@ -326,29 +352,33 @@ public class DBController {
 		}
 	}
 	/**
-	 * 
+	 * Sends the account an email to recover their new password
 	 */
 	public void sendRecoverEmail() {
 		//TODO
 	}
 	/**
+	 * Emails the user their saved schools list
 	 * 
-	 * @param list of UserSchool's
+	 * @param list of Universities
 	 */
 	public void emailSavedSchoolsList(List<University> list) {
 		//TODO
 	}
 	/**
+	 * Sets the account's new profile picture
 	 * 
-	 * @param jpeg
+	 * @param jpeg the name of the new image for the profile
 	 */
 	public void updateProfilePic(String jpeg) {
 		
 	}
 	/**
+	 * Checks the new password against the systems password requirements
 	 * 
-	 * @param password
-	 * @return
+	 * @param password the new password to check against the requirements
+	 * @return true if the parameter password contains all the password requirements
+	 * @return false if the parameter password does not contain all password requirements
 	 */
 	public boolean checkPasswordRequirements(String password) {
 		if(this.containsLowerCase(password) && this.containsUpperCase(password) && this.containsNumber(password) && this.passwordLength(password)) {
@@ -359,9 +389,11 @@ public class DBController {
 		return false;
 	}
 	/**
+	 * Checks to see if the password contains a lower case character
 	 * 
-	 * @param array
-	 * @return
+	 * @param password the password to check
+	 * @return true if the password contains a lower case character
+	 * @return false if the password does not contains a lower case character
 	 */
 	public boolean containsLowerCase(String password) {
 		for(int i = 0; i < password.length(); i++) {
@@ -373,9 +405,11 @@ public class DBController {
 		return false;
 	}
 	/**
+	 * Checks to see if the password contains a upper case character
 	 * 
-	 * @param array
-	 * @return
+	 * @param password the password to check
+	 * @return true if the password contains a upper case character
+	 * @return false if the password does not contains a upper case character
 	 */
 	public boolean containsUpperCase(String password) {
 		for(int i = 0; i < password.length(); i++) {
@@ -387,9 +421,11 @@ public class DBController {
 		return false;
 	}
 	/**
+	 * Checks to see if the password is of sufficient length for the password requirements
 	 * 
-	 * @param array
-	 * @return
+	 * @param password the password to check
+	 * @return true if the password if of sufficient length
+	 * @return false if the password is not of sufficient length
 	 */
 	public boolean passwordLength(String password) {
 		if(password.length() >= 10) {
@@ -399,9 +435,11 @@ public class DBController {
 		return false;
 	}
 	/**
+	 * Checks to see if the password contains a number character
 	 * 
-	 * @param array
-	 * @return
+	 * @param password the password to check
+	 * @return true if the password contains a number character
+	 * @return false if the password does not contains a number character
 	 */
 	public boolean containsNumber(String password) {
 		for(int i = 0; i < password.length(); i++) {
@@ -413,13 +451,19 @@ public class DBController {
 		return false;
 	}
 	/**
+	 * Removes a university from the database
 	 * 
-	 * @param schoolName
+	 * @param schoolName the name of the school to remove from the database
 	 */
 	public void removeUniversityDB(String schoolName) {
 		library.university_deleteUniversity(schoolName);
 	}
 	
+	/**
+	 * Gets the max number of students of the universities in the database
+	 * 
+	 * @return int the max number of students of the universities in the database
+	 */
 	public int maxNumStudents() {
 		List<Integer> listOfStudents = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -432,6 +476,11 @@ public class DBController {
 		return maxStudents;													//index of the array is realigned
 	}
 	
+	/**
+	 * Gets the min number of students of the universities in the database
+	 * 
+	 * @return int the min number of students of the universities in the database
+	 */
 	public int minNumStudents() {
 		List<Integer> listOfStudents = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -444,6 +493,11 @@ public class DBController {
 		return minStudents;
 	}
 	
+	/**
+	 * Gets the max percent female of the universities in the database
+	 * 
+	 * @return int the max percent female of the universities in the database
+	 */
 	public int maxFemale() {
 		List<Integer> percentFemale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -455,7 +509,11 @@ public class DBController {
 		int maxFemale = percentFemale.get(percentFemale.size() - 1); //Subtracts 1 to ensure that the 
 		return maxFemale;											 //index of the array is realigned
 	}
-	
+	/**
+	 * Gets the min percent female of the universities in the database
+	 * 
+	 * @return int the min percent female of the universities in the database
+	 */
 	public int minFemale() {
 		List<Integer> percentFemale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -468,6 +526,11 @@ public class DBController {
 		return minFemale;											 
 	}
 	
+	/**
+	 * Gets the max verbal SAT of the universities in the database
+	 * 
+	 * @return int the max verbal SAT of the universities in the database
+	 */
 	public int maxSATVerbal() {
 		List<Integer> satVerbal = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -480,6 +543,11 @@ public class DBController {
 		return maxSATVerbal;									//index of the array is realigned										 
 	}
 	
+	/**
+	 * Gets the min verbal SAT of the universities in the database
+	 * 
+	 * @return int the min verbal SAT of the universities in the database
+	 */
 	public int minSATVerbal() {
 		List<Integer> satVerbal = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -492,6 +560,11 @@ public class DBController {
 		return minSATVerbal;																		 
 	}
 	
+	/**
+	 * Gets the max math SAT of the universities in the database
+	 * 
+	 * @return int the max math SAT of the universities in the database
+	 */
 	public int maxSATMath() {
 		List<Integer> satMath = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -504,6 +577,11 @@ public class DBController {
 		return maxSATMath;									//index of the array is realigned										 
 	}
 	
+	/**
+	 * Gets the min math SAT of the universities in the database
+	 * 
+	 * @return int the min math SAT of the universities in the database
+	 */
 	public int minSATMath() {
 		List<Integer> satMath = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -516,6 +594,11 @@ public class DBController {
 		return minSATMath;																		 
 	}
 	
+	/**
+	 * Gets the max expenses of the universities in the database
+	 * 
+	 * @return int the max expenses of the universities in the database
+	 */
 	public int maxExpenses() {
 		List<Integer> expenses = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -528,6 +611,11 @@ public class DBController {
 		return maxExpenses;									//index of the array is realigned										 
 	}
 	
+	/**
+	 * Gets the min expenses of the universities in the database
+	 * 
+	 * @return int the min expenses of the universities in the database
+	 */
 	public int minExpenses() {
 		List<Integer> expenses = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -540,6 +628,11 @@ public class DBController {
 		return minExpenses;																		 
 	}
 	
+	/**
+	 * Gets the max amount of financial aid of the universities in the database
+	 * 
+	 * @return int the max amount of financial aid of the universities in the database
+	 */
 	public int maxFinancialAid() {
 		List<Integer> aid = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -552,6 +645,11 @@ public class DBController {
 		return maxAid;									//index of the array is realigned										 
 	}
 	
+	/**
+	 * Gets the min amount of financial aid of the universities in the database
+	 * 
+	 * @return int the min amount of financial aid of the universities in the database
+	 */
 	public int minFinancialAid() {
 		List<Integer> aid = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -564,6 +662,11 @@ public class DBController {
 		return minAid;																			 
 	}
 	
+	/**
+	 * Gets the max number of applicants of the universities in the database
+	 * 
+	 * @return int the max number of applicants of the universities in the database
+	 */
 	public int maxNumApplicants() {
 		List<Integer> numApps = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -576,6 +679,11 @@ public class DBController {
 		return maxApps;									//index of the array is realigned										 
 	}
 	
+	/**
+	 * Gets the min number of applicants of the universities in the database
+	 * 
+	 * @return int the min number of applicants of the universities in the database
+	 */
 	public int minNumApplicants() {
 		List<Integer> numApps = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -588,6 +696,11 @@ public class DBController {
 		return minApps;																		 
 	}
 	
+	/**
+	 * Gets the max percent of students admitted of the universities in the database
+	 * 
+	 * @return int the max percent of students admitted of the universities in the database
+	 */
 	public int maxPercentAdmitted() {
 		List<Integer> percentAdmitted = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -600,6 +713,11 @@ public class DBController {
 		return maxAdmitted;									//index of the array is realigned										 
 	}
 	
+	/**
+	 * Gets the min percent of students admitted of the universities in the database
+	 * 
+	 * @return int the min percent of students admitted of the universities in the database
+	 */
 	public int minPercentAdmitted() {
 		List<Integer> percentAdmitted = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -612,6 +730,11 @@ public class DBController {
 		return minAdmitted;									//index of the array is realigned										 
 	}
 	
+	/**
+	 * Gets the max percent of students enrolled of the universities in the database
+	 * 
+	 * @return int the max percent of students enrolled of the universities in the database
+	 */
 	public int maxPercentEnrolled() {
 		List<Integer> percentEnrolled = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -624,6 +747,11 @@ public class DBController {
 		return maxEnrolled;													 //index of the array is realigned										 
 	}
 	
+	/**
+	 * Gets the min percent of students enrolled of the universities in the database
+	 * 
+	 * @return int the min percent of students enrolled of the universities in the database
+	 */
 	public int minPercentEnrolled() {
 		List<Integer> percentEnrolled = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -636,6 +764,11 @@ public class DBController {
 		return maxEnrolled;																			 
 	}
 	
+	/**
+	 * Gets the max academic scale of the universities in the database
+	 * 
+	 * @return int the max academic scale of the universities in the database
+	 */
 	public int maxAcademicScale() {
 		List<Integer> academicScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -648,6 +781,11 @@ public class DBController {
 		return maxAcademicScale;													 //index of the array is realigned										 
 	}
 	
+	/**
+	 * Gets the min academic scale of the universities in the database
+	 * 
+	 * @return int the min academic scale of the universities in the database
+	 */
 	public int minAcademicScale() {
 		List<Integer> academicScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -660,6 +798,11 @@ public class DBController {
 		return minAcademicScale;													 										 
 	}
 	
+	/**
+	 * Gets the max social scale of the universities in the database
+	 * 
+	 * @return int the max social scale of the universities in the database
+	 */
 	public int maxSocialScale() {
 		List<Integer> socialScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -672,6 +815,11 @@ public class DBController {
 		return maxSocialScale;													 //index of the array is realigned										 
 	}
 	
+	/**
+	 * Gets the min social scale of the universities in the database
+	 * 
+	 * @return int the min social scale of the universities in the database
+	 */
 	public int minSocialScale() {
 		List<Integer> socialScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -684,6 +832,11 @@ public class DBController {
 		return minSocialScale;																					 
 	}
 	
+	/**
+	 * Gets the max quality of life scale of the universities in the database
+	 * 
+	 * @return int the max quality of life scale of the universities in the database
+	 */
 	public int maxQualityOfLifeScale() {
 		List<Integer> qualityScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
@@ -696,6 +849,11 @@ public class DBController {
 		return maxQualityScale;													 //index of the array is realigned										 
 	}
 	
+	/**
+	 * Gets the min quality of life scale of the universities in the database
+	 * 
+	 * @return int the min quality of life scale of the universities in the database
+	 */
 	public int minQualityOfLifeScale() {
 		List<Integer> qualityScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
