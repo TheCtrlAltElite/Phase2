@@ -7,7 +7,7 @@ package other;
 import javax.mail.MessagingException;
 
 /**
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  */
 
 public class AccountInteraction {

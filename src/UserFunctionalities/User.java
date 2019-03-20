@@ -9,6 +9,7 @@ import other.*;
  */
 
 /**
+ * @author CtrlAltElite
  * User class is a type of Account that keeps track of User specific information such as a list of saved schools
  * and methods for searching schools.
  *

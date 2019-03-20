@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * University Class
  * 
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  *
  */
 public class University {
