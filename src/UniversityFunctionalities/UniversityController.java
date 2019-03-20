@@ -28,7 +28,7 @@ public class UniversityController {
 	
 	
 	public UniversityController() {
-		
+		database = new DBController();
 	}
 	
 
@@ -168,7 +168,9 @@ public class UniversityController {
 				float key = this.scores.firstKey();
 				recommendedSchools.add(this.scores.get(key));
 				this.scores.remove(key);
+				System.out.println(recommendedSchools.get(i).getSchoolName());
 		}
+			
 		return recommendedSchools;
 	}
 	
@@ -297,5 +299,69 @@ public class UniversityController {
 										   numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
 		dbc.addUniversity(newUni);
 		sc.close();
+	}
+	
+	public List<String> getDetailsUni() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter school you wish to get details from: ");
+		String uni = sc.nextLine().toUpperCase();
+		sc.close();
+		List<String> details = new ArrayList<String>();
+		List<University> universities = database.loadUniversities();
+		for(int i = 0; i < universities.size(); i++) {
+			if(uni.equals(universities.get(i).getSchoolName())) {
+				details.add(universities.get(i).getSchoolName());
+				details.add(universities.get(i).getSchoolState());
+				details.add(universities.get(i).getSchoolLocation());
+				details.add(universities.get(i).getSchoolControl());
+				details.add(Integer.toString(universities.get(i).getNumberStudents()));
+				details.add(Integer.toString(universities.get(i).getPercentFemale()));
+				details.add(Integer.toString(universities.get(i).getVerbalSAT()));
+				details.add(Integer.toString(universities.get(i).getMathSAT()));
+				details.add(Integer.toString(universities.get(i).getSchoolExpenses()));
+				details.add(Integer.toString(universities.get(i).getPercentFinancialAid()));
+				details.add(Integer.toString(universities.get(i).getNumApplicants()));
+				details.add(Integer.toString(universities.get(i).getPercentAdmitted()));
+				details.add(Integer.toString(universities.get(i).getPercentEnrolled()));
+				details.add(Integer.toString(universities.get(i).getAcademicScale()));
+				details.add(Integer.toString(universities.get(i).getSocialScale()));
+				details.add(Integer.toString(universities.get(i).getQualityScale()));
+			}
+		}
+		//System.out.println(details.toString());
+		for (int i =0; i < details.size(); i++) {
+			System.out.println(details.get(i));
+		}
+		return details;
+	}
+	
+	public List<String> getDetailsUni(String uni) {
+		List<String> details = new ArrayList<String>();
+		List<University> universities = database.loadUniversities();
+		for(int i = 0; i < universities.size(); i++) {
+			if(uni.toUpperCase().equals(universities.get(i).getSchoolName())) {
+				details.add(universities.get(i).getSchoolName());
+				details.add(universities.get(i).getSchoolState());
+				details.add(universities.get(i).getSchoolLocation());
+				details.add(universities.get(i).getSchoolControl());
+				details.add(Integer.toString(universities.get(i).getNumberStudents()));
+				details.add(Integer.toString(universities.get(i).getPercentFemale()));
+				details.add(Integer.toString(universities.get(i).getVerbalSAT()));
+				details.add(Integer.toString(universities.get(i).getMathSAT()));
+				details.add(Integer.toString(universities.get(i).getSchoolExpenses()));
+				details.add(Integer.toString(universities.get(i).getPercentFinancialAid()));
+				details.add(Integer.toString(universities.get(i).getNumApplicants()));
+				details.add(Integer.toString(universities.get(i).getPercentAdmitted()));
+				details.add(Integer.toString(universities.get(i).getPercentEnrolled()));
+				details.add(Integer.toString(universities.get(i).getAcademicScale()));
+				details.add(Integer.toString(universities.get(i).getSocialScale()));
+				details.add(Integer.toString(universities.get(i).getQualityScale()));
+			}
+		}
+		//System.out.println(details.toString());
+		for (int i =0; i < details.size(); i++) {
+			System.out.println(details.get(i));
+		}
+		return details;
 	}
 }

@@ -46,8 +46,8 @@ public class AdminInteraction {
 	 * Displays all users and their information in the database
 	 * by calling viewUsers() in AdminFunctionalityController 
 	 */
-	public List<User> viewUsers() {
-		return adminFController.viewUsers();
+	public void viewUsers() {
+		adminFController.viewUsers();
 	}
 	
 //	/**

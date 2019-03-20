@@ -5,7 +5,6 @@
 package CMCDatabase;
 
 import java.util.*;
-import java.util.List;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
 import dblibrary.project.csci230.*;
@@ -56,56 +55,49 @@ public class DBController {
 	 * @param String username
 	 * @return List with all the details of the profile
 	 */
-	public List<String> getDetailsProfile(String username){
+	public List<String> getDetailsProfile2(String userName){
 		List<String> details = new ArrayList<String>();
 		List<User> users = loadUsers();
 		for(int i = 0; i < users.size(); i++) {
-			if(username.equals(users.get(i).getEmail())) {
-				details.add(users.get(i).getEmail());
+			if(userName.equals(users.get(i).getEmail())) {				
 				details.add(users.get(i).getFirstName());
 				details.add(users.get(i).getLastName());
+				details.add(users.get(i).getEmail());
 				details.add(users.get(i).getPassword());
 				details.add(Character.toString(users.get(i).getType()));
 				details.add(Character.toString(users.get(i).getStatus()));
 			}
 		}
+//		for (int i =0; i < details.size(); i++) {
+//			System.out.println(details.get(i));
+//		}
 		return details;
 	}
-	/**
-	 * Gets the details for the university with name school.
-	 * 
-	 * @param String school the name of the school
-	 * @return a Collection of the details for that University
-	 */
-	public List<String> getDetailsUni(String schoolName) {
+	
+	
+	public List<String> getDetailsProfile(){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter username you wish to get details of: ");
+		String userName = sc.nextLine();
+		sc.close();
 		List<String> details = new ArrayList<String>();
-		List<University> universities = loadUniversities();
-		for(int i = 0; i < universities.size(); i++) {
-			if(schoolName.equals(universities.get(i).getSchoolName())) {
-				details.add(universities.get(i).getSchoolName());
-				details.add(universities.get(i).getSchoolState());
-				details.add(universities.get(i).getSchoolLocation());
-				details.add(universities.get(i).getSchoolControl());
-				details.add(Integer.toString(universities.get(i).getNumberStudents()));
-				details.add(Integer.toString(universities.get(i).getPercentFemale()));
-				details.add(Integer.toString(universities.get(i).getVerbalSAT()));
-				details.add(Integer.toString(universities.get(i).getMathSAT()));
-				details.add(Integer.toString(universities.get(i).getSchoolExpenses()));
-				details.add(Integer.toString(universities.get(i).getPercentFinancialAid()));
-				details.add(Integer.toString(universities.get(i).getNumApplicants()));
-				details.add(Integer.toString(universities.get(i).getPercentAdmitted()));
-				details.add(Integer.toString(universities.get(i).getPercentEnrolled()));
-				details.add(Integer.toString(universities.get(i).getAcademicScale()));
-				details.add(Integer.toString(universities.get(i).getSocialScale()));
-				details.add(Integer.toString(universities.get(i).getQualityScale()));
+		List<User> users = loadUsers();
+		for(int i = 0; i < users.size(); i++) {
+			if(userName.equals(users.get(i).getEmail())) {				
+				details.add(users.get(i).getFirstName());
+				details.add(users.get(i).getLastName());
+				details.add(users.get(i).getEmail());
+				details.add(users.get(i).getPassword());
+				details.add(Character.toString(users.get(i).getType()));
+				details.add(Character.toString(users.get(i).getStatus()));
 			}
 		}
-		System.out.println(details.toString());
 		for (int i =0; i < details.size(); i++) {
 			System.out.println(details.get(i));
 		}
 		return details;
 	}
+
 	/**
 	 * Checks the database to see if that username exists in the database.
 	 * 
@@ -278,8 +270,9 @@ public class DBController {
 	
 	public void viewAllUsers() {
 		for(int i = 0; i < loadUsers().size(); i++) {
-			System.out.println(listUsers.get(i).getEmail());
-		}		
+			System.out.println(listUsers.get(i).getFirstName() + " " + listUsers.get(i).getLastName() + " " + listUsers.get(i).getEmail() + " " + listUsers.get(i).getStatus() + " " + listUsers.get(i).getType());
+		}	
+		
 	}
 	
 	
@@ -319,14 +312,18 @@ public class DBController {
 	 * @param lastName
 	 * @return
 	 */
-	public boolean compareAccountInfo(String email, String firstName, String lastName) {
-		List<String> details = new ArrayList<String>(getDetailsProfile(email));
-		User user = new User(details.get(0), details.get(1), details.get(2), details.get(3), details.get(4).charAt(0), details.get(5).charAt(0));
-		if(email.equals(user.getEmail()) && firstName.equals(user.getFirstName()) && lastName.equals(user.getLastName())) {
+	public boolean compareAccountInfo(String userName, String firstName, String lastName) {
+		List<String> details = getDetailsProfile2(userName);
+		//User user = new User(details.get(0), details.get(1), details.get(2), details.get(3), details.get(4).charAt(0), details.get(5).charAt(0));
+		//if(email.equals(user.getEmail()) && firstName.equals(user.getFirstName()) && lastName.equals(user.getLastName())) {
+		if(userName.equals(details.get(2)) && firstName.equals(details.get(0)) && lastName.equals(details.get(1))) {
+			System.out.println("Success");
 			return true;
 		}
+		else {
 		System.out.println("Your email, first name, or last name was incorrect.");
 		return false;
+		}
 	}
 	/**
 	 * 
@@ -355,6 +352,7 @@ public class DBController {
 	 */
 	public boolean checkPasswordRequirements(String password) {
 		if(this.containsLowerCase(password) && this.containsUpperCase(password) && this.containsNumber(password) && this.passwordLength(password)) {
+			System.out.println("Meets password requirements.");
 			return true;
 		}
 		System.out.println("Did not meet password requirements.");
