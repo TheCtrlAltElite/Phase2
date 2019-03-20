@@ -23,18 +23,12 @@ public class UniversityController {
 	private List<University> listUnis;
 	private TreeMap<Float, University> scores;
 	
-	
-	
-	
-	
+
 	public UniversityController() {
 		
 	}
 	
 
-
-	
-	
 	/**
 	 * 
 	 * @param university
