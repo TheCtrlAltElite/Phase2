@@ -1,5 +1,5 @@
 /**
- * Author: Ctrl Alt Elite
+ * Author: CtrlAltElite
  */
 package testDriver;
 

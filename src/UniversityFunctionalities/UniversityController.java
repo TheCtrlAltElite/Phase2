@@ -11,7 +11,7 @@ import CMCDatabase.DBController;
 import UserFunctionalities.User;
 
 /**
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  *
  * University Controller class
  */

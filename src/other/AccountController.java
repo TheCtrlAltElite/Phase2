@@ -14,7 +14,7 @@ import UniversityFunctionalities.*;
 import UserFunctionalities.User;
 
 /**
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  *		 
  */
 public class AccountController {

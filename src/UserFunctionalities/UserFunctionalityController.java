@@ -12,7 +12,7 @@ import UniversityFunctionalities.*;
 
 /**
  * @author rclintsma001
- *
+ * UserFunctionalityContoller is a class which receives information from methods in DBController, edits them/searches the data received, and makes it available for UserInteraction.
  */
 public class UserFunctionalityController {
 
@@ -202,7 +202,7 @@ public class UserFunctionalityController {
 	}
 	
 	/**
-	 * Emails the user's savedSchoolsList to the user's email
+	 * Email's the user's savedSchoolsList to the user's email
 	 */		
 	public void emailSavedSchools() {
 		

@@ -7,7 +7,7 @@ package other;
 //import java.util.*;
 
 /**
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  *
  */
 public class Account {

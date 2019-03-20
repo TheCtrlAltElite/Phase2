@@ -8,7 +8,7 @@ import UserFunctionalities.*;
 //import other.*;
 
 /**
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  */
 public class AdminFunctionalityController {
 
