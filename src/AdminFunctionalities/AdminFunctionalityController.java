@@ -142,9 +142,11 @@ public class AdminFunctionalityController {
 		List<University> unis;		
 		for (int i = 0; i < users.size(); i++) {
 			unis = users.get(i).getSavedSchoolsList();
-			if(unis.contains(unis.get(i))) {
+			if(unis.size() > 0) {
+				if (unis.get(i).getSchoolName().equals(schoolName)) {
 				System.out.println("This School Cannot be Removed");
 				break;
+				}
 			}
 		}
 		database.removeUniversityDB(schoolName);

@@ -63,7 +63,7 @@ public class DBLibraryDriver {
     	//dbc.getPassword(username);
     	//dbc.getUnivDBlib();
     	//dbc.isUserReal(username);
-    	//dbc.removeUniversityDB(schoolName);
+    	//dbc.removeUniversityDB("");    //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
     	//dbc.sendRecoverEmail();
     	//dbc.toString();
     	//dbc.update(type);
@@ -86,7 +86,7 @@ public class DBLibraryDriver {
 
     	
 //Needs Work
-    	//unc.recommendedSchools(dbc.loadUniversities().get(10));			//reccomended schools
+    	//unc.recommendedSchools(dbc.loadUniversities().get(9));			//reccomended schools
     	
 //ALL METHODS:
  
@@ -104,22 +104,27 @@ public class DBLibraryDriver {
     	AccountController acc = new AccountController();
     	
 //WORKS:   
-    	//acc.getDetailsUni();					//RUN HERE, get details of one university
+    	//acc.getDetailsUni();					//RUN HERE, get details of one university   //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
     	
 //ALL METHODS:
     	
     	
     	//acc.addProfilePicture(jpeg);
-    	///acc.editProfile("tux420@csbsju.edu");
+    	
+    	//acc.addProfilePicture("jpeg");     //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
+    	
+    	//acc.editProfile("tux420@csbsju.edu");
     	//acc.equals(obj);
     	//acc.getClass();
     	//acc.getPassword(username);
     	//acc.isUserReal(username);
-    	//acc.login("username", "password");
+    	//acc.login("juser", "user");
     	//acc.logOut();
     	//acc.passwordRequirements(password);
     	//acc.recoverPassword("email", "firstName", "lastName");
-    	//acc.resetPassword(o, n1, n2);
+    	
+    	//acc.resetPassword("Penguin", "newpassword", "newpassword");   //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
+    	
     	//acc.toString();
     	//acc.viewProfile(username);
     	//acc.viewProfile(username);
@@ -139,11 +144,12 @@ public class DBLibraryDriver {
 //ALL METHODS:    	
     	
     	
-    	//afc.addToSavedSchoolsList3();
+    	//afc.addToSavedSchoolsList3();   //5456465465465465465566546546565465465654654654654654654656546546546546655463546464464646645645646
     	
     	//afc.editUniversity();
     	//afc.equals(obj);
     	//afc.getClass();
+    	//afc.removeUniversityDB("yanktown");			doesn't work, returns null pointer
     	//afc.removeUniversityDB(schoolName);
     	//afc.setStatus();
     	//afc.setType();
@@ -158,7 +164,7 @@ public class DBLibraryDriver {
     	
     	UserFunctionalityController ufc = new UserFunctionalityController();
 //WORKS: 
-    	//ufc.viewSchool("Brown");
+    	//ufc.viewSchool("yanktown");
     	
 //ALL METHODS: 
     	
@@ -169,6 +175,8 @@ public class DBLibraryDriver {
     	//ufc.getSavedSchoolsList();
     	//ufc.removeSavedSchool(schoolName);
     	//ufc.saveSchool("name");
+    	//ufc.searchSchools("UNI", "MI", null, null, null, "null, null, null", null, null", null, null, null", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
+
     	//ufc.searchSchools("UNI", "MI", "URBAN", "STATE", "35000", "40000", "40", "70", "400", "500", "400", "600", "10000", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
     	//ufc.searchSchools(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
     	//ufc.toString();

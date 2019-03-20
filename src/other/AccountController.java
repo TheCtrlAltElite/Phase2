@@ -153,13 +153,14 @@ public class AccountController {
 	 * @param n2 - new password, must be the same as n1
 	 */
 	public void resetPassword(String o, String n1, String n2) {
+		Account testAccount = new Account("eli@csbsju.edu", "ELi3","tux3","Penguin",'a', 'Y');
 		List<User> listUsers = database.loadUsers();
 		for (int i = 0; i < listUsers.size(); i++) {
-			if(this.account.getEmail().equals(listUsers.get(i).getEmail())) {  //goes through users in database and finds which one corresponds with the account email
+			if(testAccount.getEmail().equals(listUsers.get(i).getEmail())) {  //goes through users in database and finds which one corresponds with the account email
 				if(listUsers.get(i).getPassword().equals(o)) {				   //compares the old password with the current
 					if (n1.equals(n2)) {									   //checks that n1 is the same as n2 to avoid error
 						if(this.passwordRequirements(n2)) {					   //checks that the new password (n2) meets the password requirements
-							this.account.setPassword(n2);					   //sets the password for the account
+							testAccount.setPassword(n2);					   //sets the password for the account
 							database.editUser(listUsers.get(i));			   //sets the password in database
 						}
 					}
@@ -215,7 +216,8 @@ public class AccountController {
 	 * @param jpeg - the name of the jpeg the user wants as their profile pic. Will be named their email to simplify process.
 	 */
 	public void addProfilePicture(String jpeg) {
-		account.setProfilePic(jpeg);
+		Account TestAccount = new Account("eli@csbsju.edu", "ELi3","tux3","Penguin",'a', 'Y');
+		TestAccount.setProfilePic(jpeg);
 	}
 	/**
 	 * This method is called in resetPassword(). It checks the passed parameter 'password' to make sure it's up to security standards.

@@ -8,6 +8,7 @@ import java.util.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
 import dblibrary.project.csci230.*;
+import other.Account;
 
 /**
  * @author CtrlAltElite
@@ -130,8 +131,8 @@ public class DBController {
 	 * 
 	 * @param username the user of which to get the details for
 	 */
-	public void editUser(User user) {
-		this.library.user_editUser(user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getType(), user.getStatus());
+	public void editUser(Account account) {
+		this.library.user_editUser(account.getEmail(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getType(), account.getStatus());
 	}
 	
 	
