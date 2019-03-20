@@ -37,7 +37,7 @@ public class AdminFunctionalityController {
 	/*
 	 * adds a university to a User's saves schools list
 	 */
-	public int addToSavedSchoolsList6(){
+	public int addToSavedSchoolsList(){
 		DBController dbc = new DBController();
 		Scanner scan = new Scanner(System.in);
     	System.out.println("Enter username to add University to: \n");
