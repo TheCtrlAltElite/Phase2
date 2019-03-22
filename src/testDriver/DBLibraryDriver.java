@@ -26,7 +26,7 @@ public class DBLibraryDriver extends DBController {
 //WORKS:   
     	//dbc.testAdd();                      //Do Not Uncomment, will add a duplicate ZTESTUNI unless you edit testAdd in DBController. 
     	//dbc.testSaveUni();					//Do not Uncomment, will save BROWN to juser unless you edit testSaveUni in DBCController
-    	rMethod();
+    	//rMethod();
     	
     	//dbc.loadUniversities();
     	//dbc.viewAllUnis();					//view list of Universities
@@ -180,7 +180,8 @@ public class DBLibraryDriver extends DBController {
     	//ufc.emailSavedSchools();
     	//ufc.equals(obj);
     	//ufc.getClass();
-    	ufc.getSavedSchoolsList();
+    	//agfds
+    	//ufc.getSavedSchoolsList();
     	//ufc.removeSavedSchool(schoolName);
     	//ufc.saveSchool("name");
     	//ufc.searchSchools("UNI", "MI", null, null, null, "null, null, null", null, null", null, null, null", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");

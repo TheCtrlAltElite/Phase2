@@ -114,7 +114,8 @@ public class AdminFunctionalityController {
 	 */
 	public void addUser() {
 		DBController dbc = new DBController();
-
+		List<User> users = dbc.loadUsers();
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter first name: ");
 		String firstName = sc.nextLine();
@@ -124,10 +125,20 @@ public class AdminFunctionalityController {
 		String username = sc.nextLine();
 		System.out.println("Please enter password: ");
 		String password = sc.nextLine();
-		this.database.checkPasswordRequirements(password);
+		
 		System.out.println("Please enter type: ");
 		char type = sc.next().charAt(0); 
-		dbc.addUser(firstName, lastName, username, password, type);
+		boolean o = true;
+		//this.database.checkPasswordRequirements(password);
+		for (int i = 0; i < users.size(); i ++) {
+			if(username.equals(users.get(i).getEmail()) || (this.database.checkPasswordRequirements(password)== false)) {//FINAL PRODUCT WILL NOT HAVE PRINT STATEMENT
+				System.out.println("This username is taken or password does not meet requirements.");	
+				break;
+			}
+			else {
+				dbc.addUser(firstName, lastName, username, password, type);
+			}
+		}		
 //		Account acc = new Account(username, firstName, lastName,  password,  type, 'Y');
 		sc.close();
 	}
