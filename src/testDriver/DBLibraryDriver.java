@@ -180,7 +180,7 @@ public class DBLibraryDriver {
     	//ufc.emailSavedSchools();
     	//ufc.equals(obj);
     	//ufc.getClass();
-    	//ufc.getSavedSchoolsList();
+    	ufc.getSavedSchoolsList();
     	//ufc.removeSavedSchool(schoolName);
     	//ufc.saveSchool("name");
     	//ufc.searchSchools("UNI", "MI", null, null, null, "null, null, null", null, null", null, null, null", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
