@@ -2,9 +2,18 @@ package UserFunctionalities;
 
 import java.util.*;
 
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import CMCDatabase.*;
 import UniversityFunctionalities.*;
 //import other.*;
+import other.SMTPAuthenticator;
 
 /**
  * 
@@ -229,14 +238,48 @@ public class UserFunctionalityController {
 	/**
 	 * Email's the user's savedSchoolsList to the user's email
 	 */		
-	public void emailSavedSchools() {
+	public void emailSavedSchools() throws MessagingException {
+		Map<String, String> savedSchoolsList = getSavedSchoolsList();
+		String mail_body = "Your saved schools list: \n";
 		
+		try {
+            Properties props = new Properties();
+            props.put("mail.smtp.user", "cmcdatabase2019@gmail.com");	//sets email to be sent from cmcdatabase2019@gmail.com
+            props.put("mail.smtp.host", "smtp.gmail.com");				//sets server host as gmail
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "587");							//sets the port
+            
+            System.out.println(props);									//displays server information
+            
+            Authenticator auth = new SMTPAuthenticator();
+            Session session = Session.getInstance(props, auth);
+        
+            for (Map.Entry entry : savedSchoolsList.entrySet())
+    		{
+            	mail_body += entry.getKey() + " " + entry.getValue() + " \n"; //body of email
+    		}
+		
+		MimeMessage message= new MimeMessage(session);  				//creates MimeMessage object to send email
+		message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com"));  					//sets from email which is cmcdatabase2019@gmail.com
+		message.addRecipient(Message.RecipientType.TO, new InternetAddress("rclintsma001@csbsju.edu"));	//receiver of the email
+		message.setSubject("Your Saved Schools List");  						//subject of the email
+		message.setText(mail_body); 									//sets the body of the email to mail_body
+
+        	System.out.println(message);									//shows email has begun to send out
+        	Transport.send(message);									//Sends out email
+        	System.out.println("Message sent!");						//Informs message is sent
+        	
+    } catch (Exception e) {
+        e.printStackTrace();
+    	}
+	   
 	}
 	
 	/**
 	 * Fetches the user's savedSchoolsList
 	 */	
-	public void getSavedSchoolsList(){
+	public Map<String, String> getSavedSchoolsList(){
 		DBController database = new DBController();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Username to see their saved schools: ");
@@ -246,5 +289,6 @@ public class UserFunctionalityController {
 		{
 		    System.out.println(entry.getKey() + " " + entry.getValue());
 		}
+		return savedSchoolsList;
 	}
 }

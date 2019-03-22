@@ -352,40 +352,4 @@ public class UniversityController {
 		}
 		return details;
 	}
-	
-	
-	/**
-	 * gets details of one University
-	 * @param university that will be used to get details from
-	 * @return list  of strings of all details of a university
-	 */
-	public List<String> getDetailsUni(String uni) {
-		List<String> details = new ArrayList<String>();
-		List<University> universities = database.loadUniversities();
-		for(int i = 0; i < universities.size(); i++) {
-			if(uni.toUpperCase().equals(universities.get(i).getSchoolName())) {
-				details.add(universities.get(i).getSchoolName());
-				details.add(universities.get(i).getSchoolState());
-				details.add(universities.get(i).getSchoolLocation());
-				details.add(universities.get(i).getSchoolControl());
-				details.add(Integer.toString(universities.get(i).getNumberStudents()));
-				details.add(Integer.toString(universities.get(i).getPercentFemale()));
-				details.add(Integer.toString(universities.get(i).getVerbalSAT()));
-				details.add(Integer.toString(universities.get(i).getMathSAT()));
-				details.add(Integer.toString(universities.get(i).getSchoolExpenses()));
-				details.add(Integer.toString(universities.get(i).getPercentFinancialAid()));
-				details.add(Integer.toString(universities.get(i).getNumApplicants()));
-				details.add(Integer.toString(universities.get(i).getPercentAdmitted()));
-				details.add(Integer.toString(universities.get(i).getPercentEnrolled()));
-				details.add(Integer.toString(universities.get(i).getAcademicScale()));
-				details.add(Integer.toString(universities.get(i).getSocialScale()));
-				details.add(Integer.toString(universities.get(i).getQualityScale()));
-			}
-		}
-		//System.out.println(details.toString());
-		for (int i =0; i < details.size(); i++) {
-			System.out.println(details.get(i));
-		}
-		return details;
-	}
 }
