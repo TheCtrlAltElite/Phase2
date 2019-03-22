@@ -5,19 +5,21 @@ import java.util.*;
 import CMCDatabase.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
+//import other.*;
 
 /**
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  */
 public class AdminFunctionalityController {
 
 	//instance variables
 	private DBController database;
 	private UniversityController uniController;
+//	private Account acc;
 	
 	//constructor
 	public AdminFunctionalityController() {
-		// TODO Auto-generated constructor stub
+	database = new DBController();
 	}
 	
 //	/**
@@ -43,7 +45,6 @@ public class AdminFunctionalityController {
 		Scanner scan = new Scanner(System.in);
     	System.out.println("Enter username to add University to: \n");
     	String userToFind = scan.nextLine();
-    	
     	
     	int i = 0;  		
     	boolean e = false;
@@ -79,7 +80,7 @@ public class AdminFunctionalityController {
 	 * by calling loadUniversities() in DBController
 	 */
 	public void viewUniversities() {
-		database.loadUniversities();
+		database.viewAllUnis();
 	}
 	
 	/**
@@ -103,8 +104,8 @@ public class AdminFunctionalityController {
 	 * by calling loadUsers() on a DBController object and returning it
 	 * @return List of Users
 	 */
-	public List<User> viewUsers() {
-		return database.loadUsers();
+	public void viewUsers() {
+		database.viewAllUsers();
 	}
 	
 	/**
@@ -113,6 +114,7 @@ public class AdminFunctionalityController {
 	 */
 	public void addUser() {
 		DBController dbc = new DBController();
+
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter first name: ");
 		String firstName = sc.nextLine();
@@ -122,9 +124,10 @@ public class AdminFunctionalityController {
 		String username = sc.nextLine();
 		System.out.println("Please enter password: ");
 		String password = sc.nextLine();
-		System.out.println("Please enter type:.");
+		System.out.println("Please enter type: ");
 		char type = sc.next().charAt(0); 
 		dbc.addUser(firstName, lastName, username, password, type);
+//		Account acc = new Account(username, firstName, lastName,  password,  type, 'Y');
 		sc.close();
 	}
 	
@@ -139,9 +142,11 @@ public class AdminFunctionalityController {
 		List<University> unis;		
 		for (int i = 0; i < users.size(); i++) {
 			unis = users.get(i).getSavedSchoolsList();
-			if(unis.contains(unis.get(i))) {
+			if(unis.size() > 0) {
+				if (unis.get(i).getSchoolName().equals(schoolName)) {
 				System.out.println("This School Cannot be Removed");
 				break;
+				}
 			}
 		}
 		database.removeUniversityDB(schoolName);

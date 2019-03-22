@@ -1,12 +1,13 @@
 package AdminFunctionalities;
 
 //imports
-import java.util.*;
-import UserFunctionalities.*;
+//import java.util.*;
+
+//import UserFunctionalities.*;
 
 /**
  * 
- * @author Ctrl Alt Elite
+ * @authorCtrlAltElite
  * 
  */
 
@@ -46,8 +47,8 @@ public class AdminInteraction {
 	 * Displays all users and their information in the database
 	 * by calling viewUsers() in AdminFunctionalityController 
 	 */
-	public List<User> viewUsers() {
-		return adminFController.viewUsers();
+	public void viewUsers() {
+		adminFController.viewUsers();
 	}
 	
 //	/**

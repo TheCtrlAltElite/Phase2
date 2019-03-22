@@ -7,16 +7,15 @@ package UserFunctionalities;
 
 /**
  * @author CtrlAltElite
- *
+ *UserInteraction is a class that holds all methods involving the User's interaction with the database, as well as the UserFunctionalityController.
  */
 public class UserInteraction {
-
+/**
+ * Instance Variables
+ */
 	private UserFunctionalityController userController;
 
 	
-	/**
-	 * 
-	 */
 	public UserInteraction() {
 		userController = new UserFunctionalityController();
 	}

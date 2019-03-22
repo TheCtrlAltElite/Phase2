@@ -7,7 +7,7 @@ import other.*;
 //import AdminFunctionalities.*;
 
 /**
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  *
  */
 public class Admin extends Account{

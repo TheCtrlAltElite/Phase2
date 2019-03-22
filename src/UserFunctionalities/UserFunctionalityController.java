@@ -1,6 +1,7 @@
 package UserFunctionalities;
 
 import java.util.*;
+
 import CMCDatabase.*;
 import UniversityFunctionalities.*;
 //import other.*;
@@ -11,7 +12,7 @@ import UniversityFunctionalities.*;
 
 /**
  * @author rclintsma001
- *
+ * UserFunctionalityContoller is a class which receives information from methods in DBController, edits them/searches the data received, and makes it available for UserInteraction.
  */
 public class UserFunctionalityController {
 
@@ -20,8 +21,8 @@ public class UserFunctionalityController {
 	 */
 //	private User user;
 //	private University university;
-	private DBController database;
-//	private UniversityController uniController;
+//	private DBController database;
+	private UniversityController unc;
 //	private String firstName;
 //	private String lastName;
 //	private String email;
@@ -31,7 +32,8 @@ public class UserFunctionalityController {
 //	private String password;
 	
 	public UserFunctionalityController() {
-		database = new DBController();
+//		database = new DBController();
+		unc = new UniversityController();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -180,7 +182,7 @@ public class UserFunctionalityController {
 	 * @param String schoolName - name of the school
 	 */	
 	public void viewSchool(String schoolName) {
-		database.getDetailsUni(schoolName);
+		unc.getDetailsUni(schoolName);
 	}
 	
 	/**
@@ -200,7 +202,7 @@ public class UserFunctionalityController {
 	}
 	
 	/**
-	 * Emails the user's savedSchoolsList to the user's email
+	 * Email's the user's savedSchoolsList to the user's email
 	 */		
 	public void emailSavedSchools() {
 		

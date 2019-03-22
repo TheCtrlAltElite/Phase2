@@ -7,7 +7,7 @@ package other;
 //import java.util.*;
 
 /**
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  *
  */
 public class Account {
@@ -65,6 +65,7 @@ public class Account {
 	 */
 	public void setProfilePic(String newPic) {
 		this.profilePic = newPic;
+		System.out.println("Jpeg has been set");
 	}
 	
 	public String getProfilePic() {

@@ -7,7 +7,7 @@ import javax.mail.PasswordAuthentication;
 
 /**
  * This class is used to Authenticate the login for sending out the email.
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  */
 	public class SMTPAuthenticator extends javax.mail.Authenticator {
 		

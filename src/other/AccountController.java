@@ -4,29 +4,31 @@
 package other;
 
 import java.util.*;
-import java.util.List;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.Authenticator;
-
 import CMCDatabase.DBController;
+import UniversityFunctionalities.*;
 import UserFunctionalities.User;
 
 /**
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  *		 
  */
 public class AccountController {
 
 	private DBController database;
+	private UniversityController unc;
 	private Account account;
 	
 	/**
 	 * 
 	 */
 	public AccountController() {
-		// TODO Auto-generated constructor stub
+		database = new DBController();
+		unc = new UniversityController();
 	}
 	/**
 	 * Logs in the user
@@ -37,7 +39,7 @@ public class AccountController {
 		if(database.isUserReal(username)) {					//makes sure user is real
 			String pw = database.getPassword(username);
 			if(pw.equals(password)) {						//checks that the password enter is correct and corresponds with the account
-				List<String> details = database.getDetailsProfile(username);
+				List<String> details = database.getDetailsProfile2(username);
 				this.account = new Account(details.get(0), details.get(1), details.get(2), details.get(3), details.get(4).charAt(0), details.get(5).charAt(0));
 				this.account.setLoginStatus(true);
 				System.out.println("You have been successfully logged in.");
@@ -80,7 +82,7 @@ public class AccountController {
 	 * @param username - the profile that will be viewed
 	 */
 	public List<String> viewProfile(String username) {
-		List<String> accDetails = database.getDetailsProfile(username);
+		List<String> accDetails = database.getDetailsProfile2(username);
 		return accDetails;
 	}
 	
@@ -90,7 +92,7 @@ public class AccountController {
 	 */
 	public void editProfile(String username) {
 		Scanner console = new Scanner(System.in);
-		List<String> profileDetails = new ArrayList<String>(database.getDetailsProfile(username));
+		List<String> profileDetails = new ArrayList<String>(database.getDetailsProfile2(username));
 		this.account = new Account(profileDetails.get(0), profileDetails.get(1), profileDetails.get(2), profileDetails.get(3), profileDetails.get(4).charAt(0), profileDetails.get(5).charAt(0));
 		while(console.nextLine() != "Stop") {
 			System.out.println("Please enter a field you would like to change. CAPS LOCK MATTERS.");
@@ -136,6 +138,9 @@ public class AccountController {
 					input = console.nextLine();
 					account.setStatus(input.charAt(0));					//account.getStatus() = input.charAt(0);
 			}
+			else if(input.equals("Stop")){
+				break;
+			}
 		}
 		console.close();
 	}
@@ -148,13 +153,14 @@ public class AccountController {
 	 * @param n2 - new password, must be the same as n1
 	 */
 	public void resetPassword(String o, String n1, String n2) {
+		Account testAccount = new Account("eli@csbsju.edu", "ELi3","tux3","Penguin",'a', 'Y');
 		List<User> listUsers = database.loadUsers();
 		for (int i = 0; i < listUsers.size(); i++) {
-			if(this.account.getEmail().equals(listUsers.get(i).getEmail())) {  //goes through users in database and finds which one corresponds with the account email
+			if(testAccount.getEmail().equals(listUsers.get(i).getEmail())) {  //goes through users in database and finds which one corresponds with the account email
 				if(listUsers.get(i).getPassword().equals(o)) {				   //compares the old password with the current
 					if (n1.equals(n2)) {									   //checks that n1 is the same as n2 to avoid error
 						if(this.passwordRequirements(n2)) {					   //checks that the new password (n2) meets the password requirements
-							this.account.setPassword(n2);					   //sets the password for the account
+							testAccount.setPassword(n2);					   //sets the password for the account
 							database.editUser(listUsers.get(i));			   //sets the password in database
 						}
 					}
@@ -210,7 +216,8 @@ public class AccountController {
 	 * @param jpeg - the name of the jpeg the user wants as their profile pic. Will be named their email to simplify process.
 	 */
 	public void addProfilePicture(String jpeg) {
-		account.setProfilePic(jpeg);
+		Account TestAccount = new Account("eli@csbsju.edu", "ELi3","tux3","Penguin",'a', 'Y');
+		TestAccount.setProfilePic(jpeg);
 	}
 	/**
 	 * This method is called in resetPassword(). It checks the passed parameter 'password' to make sure it's up to security standards.
@@ -222,4 +229,11 @@ public class AccountController {
 		}
 		return false;
 	}
+	
+	
+	
+	public List<String> getDetailsUni() {
+		return unc.getDetailsUni();
+	}
+	
 }

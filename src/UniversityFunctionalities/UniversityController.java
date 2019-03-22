@@ -11,54 +11,63 @@ import CMCDatabase.DBController;
 import UserFunctionalities.User;
 
 /**
- * @author Ctrl Alt Elite
+ * @author CtrlAltElite
  *
+ * University Controller class
  */
 public class UniversityController {
 
 	/**
-	 * 
+	 * Instance variables for University Controller
 	 */
 	private DBController database;
 	private List<University> listUnis;
 	private TreeMap<Float, University> scores;
 	
 
+	/**
+	 * University Controller constructor creates DBController object
+	 */
 	public UniversityController() {
-		
+		database = new DBController();
 	}
 	
 
 	/**
-	 * 
-	 * @param university
+	 * Saves a University to the specified user's saved school
+	 * @param user that school will be added to
 	 */
 	public void addToSavedSchoolsList2(String user) {
 		DBController dbc = new DBController();
 		Scanner scan2 = new Scanner(System.in);
     	System.out.println("Enter school to be added to " + user + "'s list: \n");
+    	//asks for university that will be added to the user's saved school list
     	String uniToFind = scan2.nextLine().toUpperCase();
     	scan2.close();
     	
     	int i = 0;  		
     	boolean e = false;
     	
+    	//searches through list of universities retrieved through loadUniversities() method
     	while(i<dbc.loadUniversities().size()) {
     		String name = dbc.loadUniversities().get(i).getSchoolName();
    			
+    		//confirms that the uniToFind exists
     		if (name.equals(uniToFind)){
    				e= true;
    				System.out.println("YES, " + uniToFind + " exists.");   			
    				break;
     		}
-    			
+    		
+    		//if the while loop reaches the end of the list, uniToFind does not exist
     		if(i == (dbc.loadUniversities().size())-1) {
 		   		System.out.print(uniToFind + " does NOT exist. \n");
-	    		System.out.print(dbc.loadUniversities().get(i).getSchoolName());   //prints last uni in list
+	    		//System.out.print(dbc.loadUniversities().get(i).getSchoolName());   //prints last uni in list
     		}
    			i++;    			
    		}
     	
+    	//if uniToFind exists, calls addToSavedSchoolsList1() from DBController 
    		if(e) {
    			//System.out.println("reached 2nd if");
    			dbc.addToSavedSchoolsList1(user, uniToFind);
@@ -68,7 +77,11 @@ public class UniversityController {
 	
 	
 	
-	
+	/**
+	 * Removes a University from the specified user's saved school list
+	 * @param user that school will be removed from
+	 * @param university that will be removed
+	 */
 	public void removeFromList(User user, University university) {
 		database.removeFromSavedSchoolsList(user.getEmail(), university.getSchoolName());
 	}
@@ -76,7 +89,11 @@ public class UniversityController {
 
 	
 	
-	
+	/**
+	 * compares a University To the rest of the universities and returns map with the score between each
+	 * @param university that will be used to compare to the rest of the universities
+	 * @return map of score and university associated with that score
+	 */
 	public Map<Float, University> compareUniversity(University university) {	
 		this.listUnis = database.loadUniversities();
 		this.scores = new TreeMap<>();
@@ -154,7 +171,11 @@ public class UniversityController {
 	
 	
 	
-	
+	/**
+	 * returns list of 5 recommended schools
+	 * @param university that will be used to compare to the rest of the universities
+	 * @return list of 5 recommendedSchools
+	 */
 	public List<University> recommendedSchools(University university) {
 		compareUniversity(university);
 		List<University> recommendedSchools = new ArrayList<University>();
@@ -162,7 +183,9 @@ public class UniversityController {
 				float key = this.scores.firstKey();
 				recommendedSchools.add(this.scores.get(key));
 				this.scores.remove(key);
+				System.out.println(recommendedSchools.get(i).getSchoolName());
 		}
+			
 		return recommendedSchools;
 	}
 	
@@ -171,7 +194,7 @@ public class UniversityController {
 	
 	
 	/**
-	 * 
+	 * edits a University by taking in information to be changed and calling updateUniversity() in DBController
 	 */
 	public void editUniversity() {
 		
@@ -245,8 +268,7 @@ public class UniversityController {
 	
 	
 	/**
-	 * 
-	 * 
+	 * adds a University by taking information and calling addUniversity() from DBController()
 	 */
 	public void addUniversityInfo() {
 		
@@ -291,5 +313,79 @@ public class UniversityController {
 										   numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
 		dbc.addUniversity(newUni);
 		sc.close();
+	}
+	
+	/**
+	 * gets details of one University
+	 * @return string of all details of a university
+	 */
+	public List<String> getDetailsUni() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter school you wish to get details from: ");
+		String uni = sc.nextLine().toUpperCase();
+		sc.close();
+		List<String> details = new ArrayList<String>();
+		List<University> universities = database.loadUniversities();
+		for(int i = 0; i < universities.size(); i++) {
+			if(uni.equals(universities.get(i).getSchoolName())) {
+				details.add(universities.get(i).getSchoolName());
+				details.add(universities.get(i).getSchoolState());
+				details.add(universities.get(i).getSchoolLocation());
+				details.add(universities.get(i).getSchoolControl());
+				details.add(Integer.toString(universities.get(i).getNumberStudents()));
+				details.add(Integer.toString(universities.get(i).getPercentFemale()));
+				details.add(Integer.toString(universities.get(i).getVerbalSAT()));
+				details.add(Integer.toString(universities.get(i).getMathSAT()));
+				details.add(Integer.toString(universities.get(i).getSchoolExpenses()));
+				details.add(Integer.toString(universities.get(i).getPercentFinancialAid()));
+				details.add(Integer.toString(universities.get(i).getNumApplicants()));
+				details.add(Integer.toString(universities.get(i).getPercentAdmitted()));
+				details.add(Integer.toString(universities.get(i).getPercentEnrolled()));
+				details.add(Integer.toString(universities.get(i).getAcademicScale()));
+				details.add(Integer.toString(universities.get(i).getSocialScale()));
+				details.add(Integer.toString(universities.get(i).getQualityScale()));
+			}
+		}
+		//System.out.println(details.toString());
+		for (int i =0; i < details.size(); i++) {
+			System.out.println(details.get(i));
+		}
+		return details;
+	}
+	
+	
+	/**
+	 * gets details of one University
+	 * @param university that will be used to get details from
+	 * @return list  of strings of all details of a university
+	 */
+	public List<String> getDetailsUni(String uni) {
+		List<String> details = new ArrayList<String>();
+		List<University> universities = database.loadUniversities();
+		for(int i = 0; i < universities.size(); i++) {
+			if(uni.toUpperCase().equals(universities.get(i).getSchoolName())) {
+				details.add(universities.get(i).getSchoolName());
+				details.add(universities.get(i).getSchoolState());
+				details.add(universities.get(i).getSchoolLocation());
+				details.add(universities.get(i).getSchoolControl());
+				details.add(Integer.toString(universities.get(i).getNumberStudents()));
+				details.add(Integer.toString(universities.get(i).getPercentFemale()));
+				details.add(Integer.toString(universities.get(i).getVerbalSAT()));
+				details.add(Integer.toString(universities.get(i).getMathSAT()));
+				details.add(Integer.toString(universities.get(i).getSchoolExpenses()));
+				details.add(Integer.toString(universities.get(i).getPercentFinancialAid()));
+				details.add(Integer.toString(universities.get(i).getNumApplicants()));
+				details.add(Integer.toString(universities.get(i).getPercentAdmitted()));
+				details.add(Integer.toString(universities.get(i).getPercentEnrolled()));
+				details.add(Integer.toString(universities.get(i).getAcademicScale()));
+				details.add(Integer.toString(universities.get(i).getSocialScale()));
+				details.add(Integer.toString(universities.get(i).getQualityScale()));
+			}
+		}
+		//System.out.println(details.toString());
+		for (int i =0; i < details.size(); i++) {
+			System.out.println(details.get(i));
+		}
+		return details;
 	}
 }
