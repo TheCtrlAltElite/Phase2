@@ -10,6 +10,10 @@ import javax.mail.PasswordAuthentication;
  * @author CtrlAltElite
  */
 	public class SMTPAuthenticator extends javax.mail.Authenticator {
+		
+		/*
+		 * verifies that the email to send from is a valid email address
+		 */
 		public PasswordAuthentication getPasswordAuthentication(){
 			return new PasswordAuthentication("cmcdatabase2019@gmail.com", "PenguinPower100");
 		}

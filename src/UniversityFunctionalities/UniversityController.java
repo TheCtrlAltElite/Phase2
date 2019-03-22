@@ -24,6 +24,7 @@ public class UniversityController {
 	private List<University> listUnis;
 	private TreeMap<Float, University> scores;
 	
+
 	/**
 	 * University Controller constructor creates DBController object
 	 */
@@ -31,7 +32,6 @@ public class UniversityController {
 		database = new DBController();
 	}
 	
-
 
 	/**
 	 * Saves a University to the specified user's saved school

@@ -32,6 +32,9 @@ public class DBLibraryDriver extends DBController {
     	//dbc.viewAllUnis();					//view list of Universities
    
     	//dbc.loadUsers();
+
+    	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);        //Cannot be tested here. Test from AdminFunctionalityController.
+    	
     	//dbc.viewAllUsers();					//view list of users
     	
     	//dbc.addUser(firstName, lastName, username, password, type);		//adds a new user to the database, Run from AdminFunctionality Controller
@@ -45,6 +48,7 @@ public class DBLibraryDriver extends DBController {
     	//dbc.compareAccountInfo("juser", "John", "User");
     	
     	//dbc.checkPasswordRequirements("ArandomPa55word");
+
     	//dbc.containsLowerCase(password);
     	//dbc.containsNumber(password);
     	//dbc.containsUpperCase(password);
@@ -63,7 +67,9 @@ public class DBLibraryDriver extends DBController {
     	//dbc.getPassword(username);
     	//dbc.getUnivDBlib();
     	//dbc.isUserReal(username);
-    	//dbc.removeUniversityDB("");    //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
+
+    	//dbc.removeUniversityDB("ZTESTUNI");
+
     	//dbc.sendRecoverEmail();
     	//dbc.toString();
     	//dbc.update(type);
@@ -108,12 +114,14 @@ public class DBLibraryDriver extends DBController {
     	
 //ALL METHODS:
     	
+
     	
     	//acc.addProfilePicture(jpeg);
     	
     	//acc.addProfilePicture("jpeg");     //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
     	
     	//acc.editProfile("tux420@csbsju.edu");
+
     	//acc.equals(obj);
     	//acc.getClass();
     	//acc.getPassword(username);
