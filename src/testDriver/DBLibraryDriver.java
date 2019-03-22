@@ -21,27 +21,19 @@ public class DBLibraryDriver extends DBController {
     try{
     	System.out.println("THIS IS THE DRIVER, TO TEST METHODS UNCOMMENT THEM AND RUN DRIVER. BE CAREFUL BEFORE YOU CHANGE ANYTHING. \n\n");
 
-    	//DBController dbc = new DBController();
+    	DBController dbc = new DBController();
     	
 //WORKS:   
     	//dbc.testAdd();                      //Do Not Uncomment, will add a duplicate ZTESTUNI unless you edit testAdd in DBController. 
     	//dbc.testSaveUni();					//Do not Uncomment, will save BROWN to juser unless you edit testSaveUni in DBCController
     	rMethod();
+    	//dbc.addUser("Jackson", "Oettinger", "Jack@gmail.com", "helloworld", 'a'); 
     	
-    	//dbc.loadUniversities();
+    	//dbc.loadUniversities();				//loads universities into a list, uncomment print statement in DBController to test it.
     	//dbc.viewAllUnis();					//view list of Universities
-   
-    	//dbc.loadUsers();
-
-    	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);        //Cannot be tested here. Test from AdminFunctionalityController.
+    	//dbc.loadUsers();						//loads users into a list, uncomment print statement in DBController to test it.
     	
     	//dbc.viewAllUsers();					//view list of users
-    	
-    	//dbc.addUser(firstName, lastName, username, password, type);		//adds a new user to the database, Run from AdminFunctionality Controller
-    	
-    	//dbc.addUniversity(newUni);          //adds new university to database, Run from UniversityController
-    	
-    	
     	//dbc.getDetailsProfile();			//gets details of a single user
     	//dbc.getDetailsProfile2("juser");
     	
@@ -90,6 +82,7 @@ public class DBLibraryDriver extends DBController {
     	
     	//unc.getDetailsUni();			// gets details of one university, Run from AccountController
 
+    	
     	
 //Needs Work
     	//unc.recommendedSchools(dbc.loadUniversities().get(9));			//reccomended schools
@@ -143,10 +136,7 @@ public class DBLibraryDriver extends DBController {
 
 //WORKS:   
     	//afc.addUser();					//adds new user to database, Run from University Controller
-    	
-    	//afc.addUniversity();				//Run from university controller
-    	
-    	//afc.viewUniversities();
+        //afc.viewUniversities();
     	//afc.viewUsers();
     	
 //ALL METHODS:    	
@@ -172,7 +162,7 @@ public class DBLibraryDriver extends DBController {
     	
     	UserFunctionalityController ufc = new UserFunctionalityController();
 //WORKS: 
-    	//ufc.viewSchool("yanktown");
+    	//ufc.viewSchool("Bard");
     	
 //ALL METHODS: 
     	
@@ -180,7 +170,7 @@ public class DBLibraryDriver extends DBController {
     	//ufc.emailSavedSchools();
     	//ufc.equals(obj);
     	//ufc.getClass();
-    	ufc.getSavedSchoolsList();
+    	//ufc.getSavedSchoolsList();
     	//ufc.removeSavedSchool(schoolName);
     	//ufc.saveSchool("name");
     	//ufc.searchSchools("UNI", "MI", null, null, null, "null, null, null", null, null", null, null, null", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
