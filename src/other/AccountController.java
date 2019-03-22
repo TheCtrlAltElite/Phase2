@@ -152,22 +152,29 @@ public class AccountController {
 	 * @param n1 - new password, must be the same as n2
 	 * @param n2 - new password, must be the same as n1
 	 */
-	public void resetPassword(String o, String n1, String n2) {
-		Account testAccount = new Account("eli@csbsju.edu", "ELi3","tux3","Penguin",'a', 'Y');
+	public void resetPassword(String o, String n1, String n2) { //WILL NEED TO CHANGE ONCE WE START TO USE GUI
+	
 		List<User> listUsers = database.loadUsers();
-		for (int i = 0; i < listUsers.size(); i++) {
-			if(testAccount.getEmail().equals(listUsers.get(i).getEmail())) {  //goes through users in database and finds which one corresponds with the account email
-				if(listUsers.get(i).getPassword().equals(o)) {				   //compares the old password with the current
-					if (n1.equals(n2)) {									   //checks that n1 is the same as n2 to avoid error
-						if(this.passwordRequirements(n2)) {					   //checks that the new password (n2) meets the password requirements
-							testAccount.setPassword(n2);					   //sets the password for the account
-							database.editUser(listUsers.get(i));			   //sets the password in database
+		for (int i = 0; i < listUsers.size(); i++) {							//goes through users in database and finds which one corresponds with the account email																				
+				if(listUsers.get(i).getPassword().equals(o)) {				    //compares the old password with the current
+					if (n1.equals(n2)) {									    //checks that n1 is the same as n2 to avoid error
+						if(this.passwordRequirements(n2)) {					    //checks that the new password (n2) meets the password requirements
+							Account acc = listUsers.get(i);
+							acc.setPassword(n2);					       		//sets the password for the account
+							database.editUser(listUsers.get(i));
+							System.out.println("Your password has been changed.");//sets the password in database
 						}
+					}				
+					else {
+						System.out.print("Your new passwords do not match.");
 					}
-				}	
-			}
-		}
+				}
+				//needs an else that will make sure that the old password meets the input from the user
+				
+		}	
+			
 	}
+	
 	
 	/**
 	 * Sends an email to the user's email with instructions for resetting their password.

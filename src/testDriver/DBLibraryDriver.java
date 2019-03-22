@@ -37,7 +37,7 @@ public class DBLibraryDriver {
     	
     	//dbc.viewAllUsers();					//view list of users
     	
-    	//dbc.addUser(firstName, lastName, username, password, type);		//adds a new user to the database, Run from AdminFunctionality Controller
+    	//dbc.addUser("Jake", "Muehlenbein", "jmuehls", "Muehlenbein1", 'u');		//adds a new user to the database, Run from AdminFunctionality Controller
     	
     	//dbc.addUniversity(newUni);          //adds new university to database, Run from UniversityController
     	
@@ -120,7 +120,7 @@ public class DBLibraryDriver {
     	
     	//acc.addProfilePicture("jpeg");     //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
     	
-    	//acc.editProfile("tux420@csbsju.edu");
+    	//acc.editProfile("jmuehls");
 
     	//acc.equals(obj);
     	//acc.getClass();
@@ -131,10 +131,10 @@ public class DBLibraryDriver {
     	//acc.passwordRequirements(password);
     	//acc.recoverPassword("email", "firstName", "lastName");
     	
-    	//acc.resetPassword("Penguin", "newpassword", "newpassword");   //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
+    	//acc.resetPassword("user", "JohnMillerIsGod5", "JohnMillerIsGod5");   //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
     	
     	//acc.toString();
-    	//acc.viewProfile(username);
+    	//acc.viewProfile("juser");
     	//acc.viewProfile(username);
     	
     	
@@ -142,7 +142,7 @@ public class DBLibraryDriver {
     	AdminFunctionalityController afc = new AdminFunctionalityController();
 
 //WORKS:   
-    	//afc.addUser();					//adds new user to database, Run from University Controller
+    	afc.addUser();					//adds new user to database, Run from University Controller
     	
     	//afc.addUniversity();				//Run from university controller
     	
