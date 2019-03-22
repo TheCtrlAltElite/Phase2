@@ -29,7 +29,7 @@ public class DBLibraryDriver {
     	//dbc.loadUniversities();
     	//dbc.loadUsers();
     	//dbc.addUser(password, firstName, lastName, email, profilePic, Type, Status);        //Cannot be tested here. Test from AdminFunctionalityController.
-    	//dbc.checkPasswordRequirements(password)
+    	//dbc.checkPasswordRequirements("Randall");
     	//dbc.containsLowerCase(password);
     	//dbc.containsNumber(password);
     	//dbc.containsUpperCase(password);
@@ -53,7 +53,7 @@ public class DBLibraryDriver {
     	//dbc.getPassword(username);
     	//dbc.getUnivDBlib();
     	//dbc.isUserReal(username);
-    	//dbc.removeUniversityDB(schoolName);
+    	//dbc.removeUniversityDB("ZTESTUNI");
     	//dbc.sendRecoverEmail();
     	//dbc.toString();
     	//dbc.update(type);
@@ -93,7 +93,7 @@ public class DBLibraryDriver {
     	
 //ALL METHODS:
     	
-    	//acc.addProfilePicture(jpeg);
+    	//acc.addProfilePicture("jpeg");
     	//acc.editProfile("tux69@csbsju.edu");
     	//acc.equals(obj);
     	//acc.getClass();
