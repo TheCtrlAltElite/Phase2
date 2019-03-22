@@ -28,28 +28,19 @@ public class DBLibraryDriver extends DBController {
     	//dbc.testSaveUni();					//Do not Uncomment, will save BROWN to juser unless you edit testSaveUni in DBCController
     	rMethod();
     	//dbc.addUser("Jackson", "Oettinger", "Jack@gmail.com", "helloworld", 'a'); 
-    	
     	//dbc.loadUniversities();				//loads universities into a list, uncomment print statement in DBController to test it.
     	//dbc.viewAllUnis();					//view list of Universities
     	//dbc.loadUsers();						//loads users into a list, uncomment print statement in DBController to test it.
-    	
     	//dbc.viewAllUsers();					//view list of users
-    	//dbc.getDetailsProfile();			//gets details of a single user
+    	//dbc.getDetailsProfile();			    //gets details of a single user
     	//dbc.getDetailsProfile2("juser");
-    	
     	//dbc.compareAccountInfo("juser", "John", "User");
-    	
-    	//dbc.checkPasswordRequirements("ArandomPa55word");
-
+    	//dbc.checkPasswordRequirements("ArandomPa55word")
     	//dbc.containsLowerCase(password);
     	//dbc.containsNumber(password);
     	//dbc.containsUpperCase(password);
     	//dbc.passwordLength(password);
     
-    	
-    
-    	
-    	
 //ALL METHODS: 
     	
     	//dbc.editUser("juser");
@@ -59,9 +50,7 @@ public class DBLibraryDriver extends DBController {
     	//dbc.getPassword(username);
     	//dbc.getUnivDBlib();
     	//dbc.isUserReal(username);
-
-    	//dbc.removeUniversityDB("ZTESTUNI");
-
+    	//dbc.removeUniversityDB("ZTESTUNI")
     	//dbc.sendRecoverEmail();
     	//dbc.toString();
     	//dbc.update(type);
@@ -97,9 +86,6 @@ public class DBLibraryDriver extends DBController {
     	//unc.getDetailsUni("YANKTOWN");
     	//unc.toString();
     	
-    	
-    	
-	
     	AccountController acc = new AccountController();
     	
 //WORKS:   
@@ -107,14 +93,9 @@ public class DBLibraryDriver extends DBController {
     	
 //ALL METHODS:
     	
-
-    	
     	//acc.addProfilePicture(jpeg);
-    	
     	//acc.addProfilePicture("jpeg");     //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
-    	
-    	//acc.editProfile("tux420@csbsju.edu");
-
+    	//acc.editProfile("jmuehls");
     	//acc.equals(obj);
     	//acc.getClass();
     	//acc.getPassword(username);
@@ -123,15 +104,11 @@ public class DBLibraryDriver extends DBController {
     	//acc.logOut();
     	//acc.passwordRequirements(password);
     	//acc.recoverPassword("email", "firstName", "lastName");
-    	
-    	//acc.resetPassword("Penguin", "newpassword", "newpassword");   //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
-    	
+    	//acc.resetPassword("user", "JohnMillerIsGod5", "JohnMillerIsGod5");   //654654654654656546546546546655463546464464646645645646654654654654656546546546546655463546464464646645645646
     	//acc.toString();
-    	//acc.viewProfile(username);
+    	//acc.viewProfile("juser");
     	//acc.viewProfile(username);
     	
-    	
-
     	AdminFunctionalityController afc = new AdminFunctionalityController();
 
 //WORKS:   
@@ -156,10 +133,6 @@ public class DBLibraryDriver extends DBController {
     	//afc.updateStatus(status);
     	//afc.updateType(type);
 
-    	
-    	
-    	
-    	
     	UserFunctionalityController ufc = new UserFunctionalityController();
 //WORKS: 
     	//ufc.viewSchool("Bard");
@@ -174,14 +147,12 @@ public class DBLibraryDriver extends DBController {
     	//ufc.removeSavedSchool(schoolName);
     	//ufc.saveSchool("name");
     	//ufc.searchSchools("UNI", "MI", null, null, null, "null, null, null", null, null", null, null, null", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
-
     	//ufc.searchSchools("UNI", "MI", "URBAN", "STATE", "35000", "40000", "40", "70", "400", "500", "400", "600", "10000", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
     	//ufc.searchSchools(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
     	//ufc.toString();
     	//ufc.updateSavedSchoolsList(list);
     	//ufc.viewSavedSchools();
     	
-
     }
     catch(Exception e){
       e.printStackTrace();
