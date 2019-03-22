@@ -201,8 +201,9 @@ public class UserFunctionalityController {
     	boolean e = false;
     	
     	//searches through list of saved schools for the user
-    	while(i<dbc.getSavedSchoolsList(username).size()) {
-    		String name = dbc.getSavedSchoolsList(username).get(i).getSchoolName();
+    	Map<String, String> schoolsList = dbc.getSavedSchoolsList(username);
+    	for (Map.Entry<String, String> entry : schoolsList.entrySet()) {
+    		String name = entry.getKey();
    			
     		//confirms that the uniToFind is in that user's saved schools list
     		if (name.equals(uniToFind)){
@@ -213,7 +214,7 @@ public class UserFunctionalityController {
     		
     		//if the while loop reaches the end of the list, uniToFind is not in that user's saved schools list
     		if(i == (dbc.getSavedSchoolsList(username).size())-1) {
-		   		System.out.print(uniToFind + " does NOT exist. \n");
+		   		System.out.print(uniToFind + " is not in that users saved schools list. \n");
     		}
    			i++;    			
    		}
@@ -223,15 +224,6 @@ public class UserFunctionalityController {
    			//System.out.println("reached 2nd if");
    			dbc.removeFromSavedSchoolsList(username, uniToFind);
     	}
-	}
-	
-	/**
-	 * Updates the user's savedSchoolsList in the database
-	 * 
-	 * @param List<UserSchool> list - list of the user's saved schools
-	 */			
-	public void updateSavedSchoolsList(List<UserSchool> list) {
-		
 	}
 	
 	/**
