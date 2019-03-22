@@ -1,5 +1,7 @@
 package UserFunctionalities;
 
+import javax.mail.MessagingException;
+
 //import UniversityFunctionalities.University;
 //import other.*;
 
@@ -61,8 +63,9 @@ public class UserInteraction {
 	
 	/**
 	 * Emails the user's savedSchoolsList to the user's email
+	 * @throws MessagingException 
 	 */	
-	public void emailSavedSchools() {
+	public void emailSavedSchools() throws MessagingException {
 		userController.emailSavedSchools();
 	}
 }
