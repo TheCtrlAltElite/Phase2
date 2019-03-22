@@ -41,7 +41,7 @@ public class DBController {
 	/**
 	 * Test method for the Driver
 	 */
-	public void rMethod() {
+	public static void rMethod() {
 	    System.out.println("Driver is Working and is communicating with DBController \n");
 	}
 	
