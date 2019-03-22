@@ -4,6 +4,7 @@
 
 package CMCDatabase;
 
+import java.sql.Timestamp;
 import java.util.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
@@ -40,7 +41,7 @@ public class DBController {
 	/**
 	 * Test method for the Driver
 	 */
-	public void rMethod() {
+	public static void rMethod() {
 	    System.out.println("Driver is Working and is communicating with DBController \n");
 	}
 	
@@ -257,6 +258,17 @@ public class DBController {
 	 */
 	public void removeFromSavedSchoolsList(String username, String school) {
 		library.user_removeSchool(username, school);
+	}
+	
+	public Map<String, String> getSavedSchoolsList(String username) {
+		String[][] listUserSave	= library.user_getUsernamesWithSavedSchools();
+		Map<String, String> mapUserSave = new TreeMap<>();
+		for (int i = 0; i < listUserSave.length; i++) {
+			if (username.equals(listUserSave[i][0])){
+				mapUserSave.put(listUserSave[i][1], listUserSave[i][2]);
+			}
+		}
+		return mapUserSave;
 	}
 	
 	

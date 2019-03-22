@@ -10,7 +10,7 @@ import UniversityFunctionalities.*;
 import UserFunctionalities.*;
 
 
-public class DBLibraryDriver {
+public class DBLibraryDriver extends DBController {
   //private UniversityDBLibrary library;
   
   public DBLibraryDriver() {
@@ -21,12 +21,12 @@ public class DBLibraryDriver {
     try{
     	System.out.println("THIS IS THE DRIVER, TO TEST METHODS UNCOMMENT THEM AND RUN DRIVER. BE CAREFUL BEFORE YOU CHANGE ANYTHING. \n\n");
 
-    	DBController dbc = new DBController();
+    	//DBController dbc = new DBController();
     	
 //WORKS:   
     	//dbc.testAdd();                      //Do Not Uncomment, will add a duplicate ZTESTUNI unless you edit testAdd in DBController. 
     	//dbc.testSaveUni();					//Do not Uncomment, will save BROWN to juser unless you edit testSaveUni in DBCController
-    	//dbc.rMethod();
+    	rMethod();
     	
     	//dbc.loadUniversities();
     	//dbc.viewAllUnis();					//view list of Universities
@@ -180,7 +180,7 @@ public class DBLibraryDriver {
     	//ufc.emailSavedSchools();
     	//ufc.equals(obj);
     	//ufc.getClass();
-    	//ufc.getSavedSchoolsList();
+    	ufc.getSavedSchoolsList();
     	//ufc.removeSavedSchool(schoolName);
     	//ufc.saveSchool("name");
     	//ufc.searchSchools("UNI", "MI", null, null, null, "null, null, null", null, null", null, null, null", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
