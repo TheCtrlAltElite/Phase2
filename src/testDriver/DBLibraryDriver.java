@@ -142,7 +142,7 @@ public class DBLibraryDriver extends DBController {
     	AdminFunctionalityController afc = new AdminFunctionalityController();
 
 //WORKS:   
-    	afc.addUser();					//adds new user to database, Run from University Controller
+    	//afc.addUser();					//adds new user to database, Run from University Controller
     	
     	//afc.addUniversity();				//Run from university controller
     	
@@ -180,7 +180,7 @@ public class DBLibraryDriver extends DBController {
     	//ufc.emailSavedSchools();
     	//ufc.equals(obj);
     	//ufc.getClass();
-    	ufc.getSavedSchoolsList();
+    	//ufc.getSavedSchoolsList();
     	//ufc.removeSavedSchool(schoolName);
     	//ufc.saveSchool("name");
     	//ufc.searchSchools("UNI", "MI", null, null, null, "null, null, null", null, null", null, null, null", "20000", "25", "75", "5000", "10000", "50", "100", "50", "100", "1", "5", "1", "5", "1", "5");
