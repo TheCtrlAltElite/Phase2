@@ -124,6 +124,7 @@ public class AdminFunctionalityController {
 		String username = sc.nextLine();
 		System.out.println("Please enter password: ");
 		String password = sc.nextLine();
+		this.database.checkPasswordRequirements(password);
 		System.out.println("Please enter type: ");
 		char type = sc.next().charAt(0); 
 		dbc.addUser(firstName, lastName, username, password, type);
