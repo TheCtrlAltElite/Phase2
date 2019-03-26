@@ -80,12 +80,12 @@ public class DBLibraryDriver extends DBController {
     	
     	
 //Needs Work
-    	//unc.recommendedSchools(dbc.loadUniversities().get(9));			//reccomended schools
+    	//unc.recommendedSchools(dbc.loadUniversities().get(4));			//reccomended schools
     	
 //ALL METHODS:
  
     	//unc.addToList(university);
-    	//unc.compareUniversity(university);
+    	unc.compareUniversity(dbc.loadUniversities().get(4));
     	//unc.editUniversity();
     	//unc.equals(obj);
     	//unc.getClass();
