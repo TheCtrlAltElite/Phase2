@@ -41,7 +41,7 @@ public class DBController {
 	/**
 	 * Test method for the Driver
 	 */
-	public static void rMethod() {
+	public void rMethod() {
 	    System.out.println("Driver is Working and is communicating with DBController \n");
 	}
 	
@@ -184,23 +184,9 @@ public class DBController {
 			University uni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
 			listUnis.add(uni);
 			//System.out.println(listUnis.get(i).getSchoolName());    //prints all universities
-			
 		}
 		//System.out.println(listUnis.get(54).getSchoolName());   //will return university at index 54 which is Harvard
 		return listUnis;
-	}
-	
-	
-	
-	
-	
-	/**
-	 * Prints a list of all of the universities(just names) in the database.
-	 */
-	public void viewAllUnis() {
-		for(int i = 0; i < loadUniversities().size(); i++) {
-			System.out.println(listUnis.get(i).getSchoolName());
-		}		
 	}
 	
 	
@@ -296,20 +282,8 @@ public class DBController {
 		User user = new User(emailUserName, firstName, lastName, password, type.charAt(0), status.charAt(0));
 		listUsers.add(user);
 		}
-
 		return listUsers;
 	}
-	
-	/**
-	 * Displays all the users to the terminal (just the username/emails.
-	 */
-	public void viewAllUsers() {
-		for(int i = 0; i < loadUsers().size(); i++) {
-			System.out.println(listUsers.get(i).getFirstName() + " " + listUsers.get(i).getLastName() + " " + listUsers.get(i).getEmail() + " " + listUsers.get(i).getStatus() + " " + listUsers.get(i).getType());
-		}	
-		
-	}
-	
 	
 	
 
