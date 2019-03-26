@@ -20,6 +20,7 @@ public class AdminFunctionalityController {
 	//constructor
 	public AdminFunctionalityController() {
 	database = new DBController();
+	uniController = new UniversityController();
 	}
 	
 //	/**
@@ -80,8 +81,12 @@ public class AdminFunctionalityController {
 	 * by calling loadUniversities() in DBController
 	 */
 	public void viewUniversities() {
-		database.viewAllUnis();
+		List<University> listUnis = database.loadUniversities();
+		for(int i = 0; i < listUnis.size(); i++) {
+			System.out.println(listUnis.get(i).getSchoolName());
+		}		
 	}
+	
 	
 	/**
 	 * Adds a new university to the database.
@@ -96,7 +101,7 @@ public class AdminFunctionalityController {
 	 * by calling editUniversity() in UniversityController
 	 */
 	public void editUniversity() {
-		uniController.editUniversity();;
+		uniController.editUniversity();
 	}
 	
 	/**
@@ -105,7 +110,10 @@ public class AdminFunctionalityController {
 	 * @return List of Users
 	 */
 	public void viewUsers() {
-		database.viewAllUsers();
+		List<User> listUsers = database.loadUsers();
+		for(int i = 0; i < listUsers.size(); i++) {
+			System.out.println(listUsers.get(i).getFirstName() + " " + listUsers.get(i).getLastName() + " " + listUsers.get(i).getEmail() + " " + listUsers.get(i).getStatus() + " " + listUsers.get(i).getType());
+		}	
 	}
 	
 	/**

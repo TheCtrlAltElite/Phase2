@@ -4,13 +4,13 @@
 package testDriver;
 
 import AdminFunctionalities.*;
-import CMCDatabase.*;
+//import CMCDatabase.*;
 import other.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
 
 
-public class DBLibraryDriver extends DBController {
+public class DBLibraryDriver{
   //private UniversityDBLibrary library;
   
   public DBLibraryDriver() {
@@ -27,7 +27,6 @@ public class DBLibraryDriver extends DBController {
      //unc.compareUniversity(University university)
      //unc.recommendedSchools(University university;
      //unc.editUniversity();
-     //unc.addUniversityInfo();
      //unc.getDetailsUni();
      
      AccountController acc = new AccountController();
@@ -37,7 +36,7 @@ public class DBLibraryDriver extends DBController {
      //cc.isUserReal(String username);
      //acc.getPassword(String username);
      //acc.viewProfile(String username);
-     //acc.editProfile(String username);
+     //acc.editProfile("juser"); //?
      //acc.resetPassword(String o, String n1, String n2);
      //acc.recoverPassword(String email, String firstName, String lastName);
      //acc.addProfilePicture(String jpeg);

@@ -91,6 +91,7 @@ public class AccountController {
 	 * @param username - the profile that will be edited
 	 */
 	public void editProfile(String username) {
+		System.out.print("test");
 		Scanner console = new Scanner(System.in);
 		List<String> profileDetails = new ArrayList<String>(database.getDetailsProfile2(username));
 		this.account = new Account(profileDetails.get(0), profileDetails.get(1), profileDetails.get(2), profileDetails.get(3), profileDetails.get(4).charAt(0), profileDetails.get(5).charAt(0));

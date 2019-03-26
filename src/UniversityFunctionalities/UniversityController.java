@@ -200,29 +200,28 @@ public class UniversityController {
 		
 		DBController dbc = new DBController();
 		
+		List<University> uniList = dbc.loadUniversities();
 		Scanner scan = new Scanner(System.in);
     	System.out.println("Enter school to be edited: \n");
     	String nameToFind = scan.nextLine().toUpperCase();
-    	//Boolean exists = false;	
     	int i = 0;
     		
     	boolean e = false;
     	
-    		while(i<dbc.loadUniversities().size()) {
+    		while(i<uniList.size()) {
     			
-    			String name = dbc.loadUniversities().get(i).getSchoolName();
+    			String name = uniList.get(i).getSchoolName().toUpperCase();
     			if (name.equals(nameToFind)){
     				e= true;
        			System.out.println("YES, " + nameToFind + " exists.");   			
         		break;
     			}
     			
-    			if(i == (dbc.loadUniversities().size())-1) {
+    			if(i == (uniList.size())-1) {
     		System.out.print(nameToFind + " does NOT exist.");
-    		System.out.print(dbc.loadUniversities().get(i).getSchoolName());
+    		System.out.print(uniList.get(i).getSchoolName());
     	}
-    			i++;
-    			
+    			i++;		
     		}
     		if(e) {
     			
@@ -256,7 +255,6 @@ public class UniversityController {
     			int editsocialScale = scan.nextInt();
     			System.out.println("Enter quality of life: ");
     			int editqualityOfLifeScale = scan.nextInt();
-    			
     			
     			dbc.updateUniversity(nameToFind, editstate, editlocation, editcontrol, editnumberOfStudents, editpercentFemales, editSATVerbal, editSATMath, editexpenses, editpercentFinancialAid, editnumberOfApplicants, editpercentAdmitted, editpercentEnrolled, editacademicsScale, editsocialScale, editqualityOfLifeScale);
     		}
