@@ -23,8 +23,8 @@ public class DBLibraryDriver extends DBController {
      UniversityController unc = new UniversityController();
      
      //unc.addToSavedSchoolsList2("juser"); 
-     //unc.removeFromList(User user, University university)
-     //unc.compareUniversity(University university)
+     //unc.removeFromList("juser", "HARVARD"); 
+     //unc.compareUniversity(University university);
      //unc.recommendedSchools(University university;
      //unc.editUniversity();
      //unc.addUniversityInfo();
