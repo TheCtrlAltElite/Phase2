@@ -240,8 +240,8 @@ public class AccountController {
 	
 	
 	
-	public List<String> getDetailsUni() {
-		return unc.getDetailsUni();
-	}
+//	public List<String> getDetailsUni() {				//Do we need this?? Never called in Account Interaction
+//		return unc.getDetailsUni();
+//	}
 	
 }
