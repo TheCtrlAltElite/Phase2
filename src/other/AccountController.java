@@ -27,8 +27,9 @@ public class AccountController {
 	 * 
 	 */
 	public AccountController() {
-		database = new DBController();
-		unc = new UniversityController();
+		this.database = new DBController();
+		this.unc = new UniversityController();
+		this.account = new Account();
 	}
 	/**
 	 * Logs in the user
