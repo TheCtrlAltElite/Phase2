@@ -1,5 +1,7 @@
 package UserFunctionalities;
 
+import java.util.Scanner;
+
 import javax.mail.MessagingException;
 
 //import UniversityFunctionalities.University;
@@ -42,7 +44,11 @@ public class UserInteraction {
 	 * Presents the user with the information of a school
 	 * @param String schoolName - name of the school
 	 */	
-	public void viewSchool(String schoolName) {
+	public void viewSchool() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter school you wish to get details from: ");
+		String schoolName = sc.nextLine().toUpperCase();
+		sc.close();
 		userController.viewSchool(schoolName);
 	}
 	

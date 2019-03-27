@@ -51,7 +51,7 @@ public class DBLibraryDriver{
      //afc.editUniversity();
      //afc.viewUsers();
      //afc.addUser();
-     //afc.removeUniversityDB(String schoolName)
+     //afc.removeUniversityDB("ZZdzfgds");  //only one that does not work in AdminFunctionalityController
      
      UserFunctionalityController ufc = new UserFunctionalityController();
      
