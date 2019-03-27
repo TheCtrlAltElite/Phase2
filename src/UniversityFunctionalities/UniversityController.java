@@ -323,15 +323,11 @@ public class UniversityController {
 	 * gets details of one University
 	 * @return string of all details of a university
 	 */
-	public List<String> getDetailsUni() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter school you wish to get details from: ");
-		String uni = sc.nextLine().toUpperCase();
-		sc.close();
+	public List<String> getDetailsUni(String schoolName) {
 		List<String> details = new ArrayList<String>();
 		List<University> universities = database.loadUniversities();
 		for(int i = 0; i < universities.size(); i++) {
-			if(uni.equals(universities.get(i).getSchoolName())) {
+			if(schoolName.equals(universities.get(i).getSchoolName())) {
 				details.add(universities.get(i).getSchoolName());
 				details.add(universities.get(i).getSchoolState());
 				details.add(universities.get(i).getSchoolLocation());

@@ -36,6 +36,7 @@ public class AccountController {
 	 * @param password - password associated with the profile to be logged in.
 	 */
 	public void login(String username, String password) {
+		String msg = "Your username or password is incorrect. Please try again.";
 		if(database.isUserReal(username)) {					//makes sure user is real
 			String pw = database.getPassword(username);
 			if(pw.equals(password)) {						//checks that the password enter is correct and corresponds with the account
@@ -47,9 +48,12 @@ public class AccountController {
 					System.out.println("Your account has been deactivated.");
 				}
 			}
+			else {
+				System.out.println(msg);
+			}
 		}
 		else {
-			System.out.println("Your username or password is incorrect. Please try again.");
+			System.out.println(msg);
 		}
 	}
 
@@ -241,8 +245,8 @@ public class AccountController {
 	
 	
 	
-	public List<String> getDetailsUni() {
-		return unc.getDetailsUni();
-	}
+//	public List<String> getDetailsUni() {				//Do we need this?? Never called in Account Interaction
+//		return unc.getDetailsUni();
+//	}
 	
 }
