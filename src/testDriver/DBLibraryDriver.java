@@ -33,7 +33,7 @@ public class DBLibraryDriver{
      
      //acc.login("jmuehls", "Muehlenbein100");
      //acc.logOut();
-     //cc.isUserReal(String username);
+     acc.isUserReal("jmuehls");
      //acc.getPassword(String username);
      //acc.viewProfile(String username);
      //acc.editProfile("juser"); //?

@@ -58,6 +58,7 @@ public class AccountController {
 	 */
 	public void logOut() {
 		this.account.setLoginStatus(false);
+		System.out.println("You have successfully logged out.");
 	}
 	
 	/**
