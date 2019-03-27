@@ -24,14 +24,14 @@ public class DBLibraryDriver{
      
      //unc.addToSavedSchoolsList2("juser"); 
      //unc.removeFromList("juser", "HARVARD"); 
-     //unc.compareUniversity(University university);
-     //unc.recommendedSchools(University university;
+     //unc.compareUniversity(University university); 	 //not ready
+     //unc.recommendedSchools(University university;	//not ready
      //unc.editUniversity();
-     //unc.getDetailsUni();
+     //unc.getDetailsUni(); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
      
      AccountController acc = new AccountController();
      
-     //acc.login(String username, String password);
+     //acc.login("jmuehls", "Muehlenbein100");
      //acc.logOut();
      //cc.isUserReal(String username);
      //acc.getPassword(String username);
@@ -41,7 +41,7 @@ public class DBLibraryDriver{
      //acc.recoverPassword(String email, String firstName, String lastName);
      //acc.addProfilePicture(String jpeg);
      //acc.passwordRequirements(String password);
-     //acc.getDetailsUni();
+ 
      
      AdminFunctionalityController afc = new AdminFunctionalityController();
      
