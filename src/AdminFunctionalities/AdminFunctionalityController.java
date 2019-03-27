@@ -163,12 +163,21 @@ public class AdminFunctionalityController {
 		for (int i = 0; i < users.size(); i++) {
 			unis = users.get(i).getSavedSchoolsList();
 			if(unis.size() > 0) {
-				if (unis.get(i).getSchoolName().equals(schoolName)) {
+				for(int j= 0; j < unis.size(); j++) {
+				if (unis.get(j).getSchoolName().equals(schoolName)) {
 				System.out.println("This School Cannot be Removed");
 				break;
 				}
+				else {
+					database.removeUniversityDB(schoolName);
+				}
+				}
+			}
+			else {
+				break;
 			}
 		}
-		database.removeUniversityDB(schoolName);
+		//database.removeUniversityDB(schoolName);
 	}
+	
 }
