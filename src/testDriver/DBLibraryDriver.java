@@ -28,25 +28,29 @@ public class DBLibraryDriver{
      //unc.addToSavedSchoolsList2("juser"); 
      //unc.removeFromList("juser", "HARVARD"); 
      //unc.compareUniversity(University university);
-     DBController dbc = new DBController();
-     List<University> listUnis = dbc.loadUniversities();
-     unc.recommendedSchools(listUnis.get(4));
+     
+     //DBController dbc = new DBController();
+     //List<University> listUnis = dbc.loadUniversities();
+     //unc.recommendedSchools(listUnis.get(4));
+     
+     //unc.compareUniversity(University university); 	 //not ready
+     //unc.recommendedSchools(University university;	//not ready
      //unc.editUniversity();
-     //unc.getDetailsUni();
+     //unc.getDetailsUni(); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
      
      AccountController acc = new AccountController();
      
-     //acc.login(String username, String password);
+     //acc.login("jmuehls", "Muehlenbein100");
      //acc.logOut();
-     //cc.isUserReal(String username);
-     //acc.getPassword(String username);
-     //acc.viewProfile(String username);
-     //acc.editProfile("juser"); //?
-     //acc.resetPassword(String o, String n1, String n2);
+     //acc.isUserReal("jmuehls");
+     //acc.getPassword("jmuehls");
+     //acc.viewProfile("juser");
+     //acc.editProfile("juser"); 									//does not work
+     //acc.resetPassword("Maren", "Maren300000", "Maren300000");
      //acc.recoverPassword(String email, String firstName, String lastName);
-     //acc.addProfilePicture(String jpeg);
+     //acc.addProfilePicture(String jpeg);							//not ready
      //acc.passwordRequirements(String password);
-     //acc.getDetailsUni();
+ 
      
      AdminFunctionalityController afc = new AdminFunctionalityController();
      

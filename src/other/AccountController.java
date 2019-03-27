@@ -27,8 +27,9 @@ public class AccountController {
 	 * 
 	 */
 	public AccountController() {
-		database = new DBController();
-		unc = new UniversityController();
+		this.database = new DBController();
+		this.unc = new UniversityController();
+		this.account = new Account();
 	}
 	/**
 	 * Logs in the user
@@ -36,6 +37,7 @@ public class AccountController {
 	 * @param password - password associated with the profile to be logged in.
 	 */
 	public void login(String username, String password) {
+		String msg = "Your username or password is incorrect. Please try again.";
 		if(database.isUserReal(username)) {					//makes sure user is real
 			String pw = database.getPassword(username);
 			if(pw.equals(password)) {						//checks that the password enter is correct and corresponds with the account
@@ -47,9 +49,12 @@ public class AccountController {
 					System.out.println("Your account has been deactivated.");
 				}
 			}
+			else {
+				System.out.println(msg);
+			}
 		}
 		else {
-			System.out.println("Your username or password is incorrect. Please try again.");
+			System.out.println(msg);
 		}
 	}
 
@@ -58,6 +63,7 @@ public class AccountController {
 	 */
 	public void logOut() {
 		this.account.setLoginStatus(false);
+		System.out.println("You have successfully logged out.");
 	}
 	
 	/**
@@ -65,7 +71,13 @@ public class AccountController {
 	 * @param username - checked to make sure it exists in the database.
 	 */
 	public void isUserReal(String username) {
-		database.isUserReal(username);
+		boolean real = database.isUserReal(username);
+		if(real == true) {
+			System.out.println("User is real.");
+		}
+		else {
+			System.out.println("User does not exist");
+		}
 	}
 	
 	/**
@@ -74,7 +86,9 @@ public class AccountController {
 	 * @return String which is the password for the profile.
 	 */
 	public String getPassword(String username) {
-		return database.getPassword(username);
+		String pass = database.getPassword(username);
+		System.out.println(pass);
+		return pass;
 	}
 	
 	/**
@@ -83,6 +97,7 @@ public class AccountController {
 	 */
 	public List<String> viewProfile(String username) {
 		List<String> accDetails = database.getDetailsProfile2(username);
+		System.out.println(accDetails);
 		return accDetails;
 	}
 	
@@ -91,7 +106,6 @@ public class AccountController {
 	 * @param username - the profile that will be edited
 	 */
 	public void editProfile(String username) {
-		System.out.print("test");
 		Scanner console = new Scanner(System.in);
 		List<String> profileDetails = new ArrayList<String>(database.getDetailsProfile2(username));
 		this.account = new Account(profileDetails.get(0), profileDetails.get(1), profileDetails.get(2), profileDetails.get(3), profileDetails.get(4).charAt(0), profileDetails.get(5).charAt(0));
@@ -170,11 +184,12 @@ public class AccountController {
 						System.out.print("Your new passwords do not match.");
 					}
 				}
-				//needs an else that will make sure that the old password meets the input from the user
-				
+				else if(i == listUsers.size() - 1) {
+					System.out.println("Your old password was incorrect. Please try again.");
+				}
+			}
 		}	
 			
-	}
 	
 	
 	/**

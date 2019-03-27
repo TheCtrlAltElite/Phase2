@@ -22,6 +22,13 @@ public class Account {
 	private boolean loginStatus;
 
 	/**
+	 * Creates an Account object
+	 */
+	public Account() {
+		this.loginStatus = false;
+	}
+	
+	/**
 	 * Creates an Account object and sets the parameters to the items in the list parameter.
 	 * 
 	 * @param email, firstName, lastName, password, type, status

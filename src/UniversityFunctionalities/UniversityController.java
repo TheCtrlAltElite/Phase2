@@ -348,7 +348,7 @@ public class UniversityController {
 				details.add(Integer.toString(universities.get(i).getQualityScale()));
 			}
 		}
-		//System.out.println(details.toString());
+		System.out.println(details.toString());
 		for (int i =0; i < details.size(); i++) {
 			System.out.println(details.get(i));
 		}
