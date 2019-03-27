@@ -3,18 +3,21 @@
  */
 package testDriver;
 
+import java.util.List;
+
 import AdminFunctionalities.*;
+import CMCDatabase.DBController;
 //import CMCDatabase.*;
 import other.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
+import dblibrary.project.csci230.UniversityDBLibrary;
 
 
 public class DBLibraryDriver{
   //private UniversityDBLibrary library;
   
   public DBLibraryDriver() {
-  
   }
   
   public static void main(String[] args) {
@@ -25,7 +28,9 @@ public class DBLibraryDriver{
      //unc.addToSavedSchoolsList2("juser"); 
      //unc.removeFromList("juser", "HARVARD"); 
      //unc.compareUniversity(University university);
-     //unc.recommendedSchools(University university;
+     DBController dbc = new DBController();
+     List<University> listUnis = dbc.loadUniversities();
+     unc.recommendedSchools(listUnis.get(4));
      //unc.editUniversity();
      //unc.getDetailsUni();
      
