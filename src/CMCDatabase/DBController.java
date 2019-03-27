@@ -87,30 +87,6 @@ public class DBController {
 //		}
 		return details;
 	}
-	
-	
-	public List<String> getDetailsProfile(){
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter username you wish to get details of: ");
-		String userName = sc.nextLine();
-		sc.close();
-		List<String> details = new ArrayList<String>();
-		List<User> users = loadUsers();
-		for(int i = 0; i < users.size(); i++) {
-			if(userName.equals(users.get(i).getEmail())) {				
-				details.add(users.get(i).getFirstName());
-				details.add(users.get(i).getLastName());
-				details.add(users.get(i).getEmail());
-				details.add(users.get(i).getPassword());
-				details.add(Character.toString(users.get(i).getType()));
-				details.add(Character.toString(users.get(i).getStatus()));
-			}
-		}
-		for (int i =0; i < details.size(); i++) {
-			System.out.println(details.get(i));
-		}
-		return details;
-	}
 
 	/**
 	 * Checks the database to see if that username exists in the database.
@@ -120,7 +96,7 @@ public class DBController {
 	 */
 	public boolean isUserReal(String username) {
 		List<User> users = loadUsers();
-		for(int i =0; i < users.size(); i++) {
+		for(int i = 0; i < users.size(); i++) {
 			if(username.equals(users.get(i).getEmail())) {
 				return true;
 			}
