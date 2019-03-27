@@ -34,12 +34,12 @@ public class DBLibraryDriver{
      //acc.login("jmuehls", "Muehlenbein100");
      //acc.logOut();
      //acc.isUserReal("jmuehls");
-     //acc.getPassword(String username);
-     //acc.viewProfile(String username);
-     //acc.editProfile("juser"); //?
-     //acc.resetPassword(String o, String n1, String n2);
+     //acc.getPassword("jmuehls");
+     //acc.viewProfile("juser");
+     //acc.editProfile("juser"); 									//does not work
+     //acc.resetPassword("Maren", "Maren300000", "Maren300000");
      //acc.recoverPassword(String email, String firstName, String lastName);
-     //acc.addProfilePicture(String jpeg);
+     //acc.addProfilePicture(String jpeg);							//not ready
      //acc.passwordRequirements(String password);
  
      
