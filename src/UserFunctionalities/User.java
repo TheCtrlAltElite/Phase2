@@ -1,6 +1,8 @@
 package UserFunctionalities;
 
 import java.util.*;
+
+import AccountFunctionalities.Account;
 import UniversityFunctionalities.*;
 import other.*;
 
