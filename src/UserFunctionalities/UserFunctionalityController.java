@@ -314,15 +314,15 @@ public class UserFunctionalityController {
 	/**
 	 * Fetches the user's savedSchoolsList
 	 */	
-	public Map<String, String> getSavedSchoolsList(){
+	public Map<String, String> getSavedSchoolsList(String username){
 		DBController database = new DBController();
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Username to see their saved schools: ");
-		String username = sc.nextLine();
+//		Scanner sc = new Scanner(System.in);
+//		System.out.println("Enter Username to see their saved schools: ");
+//		String username = sc.nextLine();
 		Map<String, String> savedSchoolsList = database.getSavedSchoolsList(username);	
 		for (Map.Entry entry : savedSchoolsList.entrySet())
 		{
-		    System.out.println(entry.getKey() + " " + entry.getValue());
+		    System.out.println(entry.getKey()); // + " " + entry.getValue());
 		}
 		return savedSchoolsList;
 	}

@@ -15,12 +15,14 @@ public class AdminFunctionalityController {
 	//instance variables
 	private DBController database;
 	private UniversityController uniController;
+	private UserFunctionalityController ufc;
 //	private Account acc;
 	
 	//constructor
 	public AdminFunctionalityController() {
 	database = new DBController();
 	uniController = new UniversityController();
+	ufc = new UserFunctionalityController();
 	}
 	
 //	/**
@@ -161,6 +163,9 @@ public class AdminFunctionalityController {
 		List<User> users = database.loadUsers();
 		List<University> unis;		
 		for (int i = 0; i < users.size(); i++) {
+			
+			 List<>ssList = ufc.getSavedSchoolsList(users.get(i).getEmail());
+			
 			unis = users.get(i).getSavedSchoolsList();
 			if(unis.size() > 0) {
 				for(int j= 0; j < unis.size(); j++) {

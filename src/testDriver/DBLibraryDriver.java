@@ -70,7 +70,7 @@ public class DBLibraryDriver{
      //ufc.removeSavedSchool(String username);
      //ufc.updateSavedSchoolsList(List<UserSchool> list);
      //ufc.emailSavedSchools();
-     //ufc.getSavedSchoolsList();
+     //ufc.getSavedSchoolsList("juser");
      
      
      
