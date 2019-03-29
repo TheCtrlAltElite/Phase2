@@ -36,26 +36,27 @@ public class AccountController {
 	 * Logs in the user
 	 * @param username - username associated with the profile to be logged in (Same as email).
 	 * @param password - password associated with the profile to be logged in.
+	 * @throws Exception 
 	 */
-	public void login(String username, String password) {
+	public void login(String username, String password) throws Exception {
 		String msg = "Your username or password is incorrect. Please try again.";
 		if(database.isUserReal(username)) {					//makes sure user is real
 			String pw = database.getPassword(username);
 			if(pw.equals(password)) {						//checks that the password enter is correct and corresponds with the account
 				List<String> details = database.getDetailsProfile2(username);
 				this.account = new Account(details.get(0), details.get(1), details.get(2), details.get(3), details.get(4).charAt(0), details.get(5).charAt(0));
+				if(this.account.getStatus() == 'N') {
+					throw new Exception("Your account has been deactivated.");
+				}
 				this.account.setLoginStatus(true);
 				System.out.println("You have been successfully logged in.");
-				if(this.account.getStatus() == 'N') {
-					System.out.println("Your account has been deactivated.");
-				}
 			}
 			else {
-				System.out.println(msg);
+				throw new IllegalArgumentException(msg);
 			}
 		}
 		else {
-			System.out.println(msg);
+			throw new IllegalArgumentException(msg);
 		}
 	}
 
@@ -71,7 +72,7 @@ public class AccountController {
 	 * Checks to make sure the passed username is real in the database.
 	 * @param username - checked to make sure it exists in the database.
 	 */
-	public void isUserReal(String username) {
+	public boolean isUserReal(String username) {
 		boolean real = database.isUserReal(username);
 		if(real == true) {
 			System.out.println("User is real.");
@@ -79,6 +80,7 @@ public class AccountController {
 		else {
 			System.out.println("User does not exist");
 		}
+		return real;
 	}
 	
 	/**
