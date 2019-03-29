@@ -92,81 +92,141 @@ public class UniversityController {
 	public Map<Float, University> compareUniversity(University university) {	
 		this.listUnis = database.loadUniversities();
 		this.scores = new TreeMap<>();
-		for (int i = 0; i < listUnis.size(); i++) {
+		for (int i = 0; i < listUnis.size(); i++) { 
 			float score = 0;
 			if(!university.getSchoolName().equals(listUnis.get(i).getSchoolName()))
 			{
-				if(!university.getSchoolState().equals(listUnis.get(i).getSchoolState())) { 		//State
+				if(university.getSchoolState().equals("-1") || listUnis.get(i).getSchoolState().equals("-1")) {		//Awards 1 if either school has "-1" in the field SchoolState
 					score += 1;
 				}
-				if(!university.getSchoolLocation().equals(listUnis.get(i).getSchoolLocation())) { 
+				else if(!university.getSchoolState().equals(listUnis.get(i).getSchoolState())) { 		//State
 					score += 1;
 				}
-				else if(university.getSchoolLocation().equals("-1")) { 	//When the university passed location is '-1'
-					score += 1;											//awards 1 because data is insufficient
-				}	
-				if(!university.getSchoolControl().equals(listUnis.get(i).getSchoolControl())) { 	//Control
+				if(university.getSchoolLocation().equals("-1") || listUnis.get(i).getSchoolLocation().equals("-1")) {
 					score += 1;
 				}
-				else if(university.getSchoolControl().equals("-1")) { 	//When the university passed location is '-1'
-					score += 1;											//awards 1 because data is insufficient
+				else if(!university.getSchoolLocation().equals(listUnis.get(i).getSchoolLocation())) {	//Location
+					score += 1;
 				}
-				if(university.getNumberStudents() != listUnis.get(i).getNumberStudents()) { //NumberOfStudents
+				if(university.getSchoolControl().equals("-1")|| listUnis.get(i).getSchoolControl().equals("-1")) {
+					score += 1;
+				}
+				else if(!university.getSchoolControl().equals(listUnis.get(i).getSchoolControl())) { 	//Control
+					score += 1;
+				}
+				if(university.getNumberStudents() == -1 || listUnis.get(i).getNumberStudents() == -1) {		//NumberOfStudents -1 field
+					score += 1;
+				}
+				else if(university.getNumberStudents() != listUnis.get(i).getNumberStudents()) { //NumberOfStudents
 					float students = (Integer.valueOf(listUnis.get(i).getNumberStudents()).floatValue());					                    //int students is the numberOfStudents for listUnis.get(i)
 					score += (Math.abs(Integer.valueOf(university.getNumberStudents()).floatValue() - students)) / (database.maxNumStudents() - database.minNumStudents()); //
-	//				float temp = (Math.abs(university.getNumberStudents() - students)) / (database.maxNumStudents() - database.minNumStudents());
-	//				System.out.println("num students: " + temp);
+					float temp = (Math.abs(Integer.valueOf(university.getNumberStudents()).floatValue() - students)) / (database.maxNumStudents() - database.minNumStudents());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "num students: " + temp);
 				}
-				if(university.getPercentFemale() != listUnis.get(i).getPercentFemale()) {  //PercentFemale
+				if(university.getPercentFemale() == -1 || listUnis.get(i).getPercentFemale() == -1) {			//PercentFemale with -1 field
+					score += 1;
+				}
+				else if(university.getPercentFemale() != listUnis.get(i).getPercentFemale()) {  //PercentFemale
 					float percent = (Integer.valueOf(listUnis.get(i).getPercentFemale()).floatValue());						 //int percent is the PercentFemale for listUnis[i][5]
 					score += (Math.abs(Integer.valueOf(university.getPercentFemale()).floatValue() - percent)) / (database.maxFemale() - database.minFemale()); 
+					float temp = (Math.abs(Integer.valueOf(university.getPercentFemale()).floatValue() - percent)) / (database.maxFemale() - database.minFemale());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "percentfe: " + temp);
 				}
-//JAKE START HERE
-				if(university.getVerbalSAT() != listUnis.get(i).getVerbalSAT()) {  //Verbal SAT Score
-					float verbSat = listUnis.get(i).getVerbalSAT();					 //int verbSat is the math SAT score for listUnis[i][7]
-					score += (Math.abs(university.getVerbalSAT() - verbSat)) / (database.maxSATVerbal() - database.minSATVerbal()); 
+				if(university.getVerbalSAT() == -1 || listUnis.get(i).getVerbalSAT() == -1) {		//VerbalSAT with -1 field
+					score += 1;
 				}
-				if(university.getMathSAT() != listUnis.get(i).getMathSAT()) {  //Verbal SAT Score
-					float mathSat = listUnis.get(i).getMathSAT();					 //int mathSAT is the math SAT score for listUnis[i][7]
-					score += (Math.abs(university.getVerbalSAT() - mathSat)) / (database.maxSATMath() - database.minSATMath()); 
+				else if(university.getVerbalSAT() != listUnis.get(i).getVerbalSAT()) {  //Verbal SAT Score
+					float verbSat = (Integer.valueOf(listUnis.get(i).getVerbalSAT()).floatValue());					 //int verbSat is the math SAT score for listUnis[i][7]
+					score += (Math.abs(Integer.valueOf(university.getVerbalSAT()).floatValue()  - verbSat)) / (database.maxSATVerbal() - database.minSATVerbal()); 
+					float temp = (Math.abs(Integer.valueOf(university.getVerbalSAT()).floatValue() - verbSat)) / (database.maxSATVerbal() - database.minSATVerbal());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "verb sat: " + temp);
 				}
-				if(university.getSchoolExpenses() != listUnis.get(i).getSchoolExpenses()) {  //Expenses
-					float exp = listUnis.get(i).getSchoolExpenses();					      //int exp is the expenses for listUnis[i][8]
-					score += (Math.abs(university.getVerbalSAT() - exp)) / (database.maxExpenses() - database.minExpenses()); 
+				if(university.getMathSAT() == -1 || listUnis.get(i).getMathSAT() == -1) {		//MathSAT with -1 field
+					score += 1;
 				}
-				if(university.getPercentFinancialAid() != listUnis.get(i).getPercentFinancialAid()) {  //Percent Financial Aid
-					float aid = listUnis.get(i).getPercentFinancialAid();					      //int aid is the percent financial aid for listUnis[i][9]
-					score += (Math.abs(university.getVerbalSAT() - aid)) / (database.maxFinancialAid() - database.minFinancialAid()); 
+				else if(university.getMathSAT() != listUnis.get(i).getMathSAT()) {  //Verbal SAT Score
+					float mathSat = (Integer.valueOf(listUnis.get(i).getMathSAT()).floatValue());					 //int mathSAT is the math SAT score for listUnis[i][7]
+					score += (Math.abs(Integer.valueOf(university.getMathSAT()).floatValue() - mathSat)) / (database.maxSATMath() - database.minSATMath()); 
+					float temp = (Math.abs(Integer.valueOf(university.getMathSAT()).floatValue() - mathSat)) / (database.maxSATMath() - database.minSATMath());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "math sat: " + temp);
 				}
-				if(university.getNumApplicants() != listUnis.get(i).getNumApplicants()) {  
-					float numApplicants = listUnis.get(i).getNumApplicants();			           
-					score += (Math.abs(university.getVerbalSAT() - numApplicants)) / (database.maxNumApplicants() - database.minNumApplicants()); 
+				if(university.getSchoolExpenses() == -1 || listUnis.get(i).getSchoolExpenses() == -1) {		//School Expenses with -1 field
+					score += 1;
 				}
-				if(university.getPercentAdmitted() != listUnis.get(i).getPercentAdmitted()) {  
-					float percentAdmitted = listUnis.get(i).getPercentAdmitted();			           
-					score += (Math.abs(university.getVerbalSAT() - percentAdmitted)) / (database.maxPercentAdmitted() - database.minPercentAdmitted()); 
+				else if(university.getSchoolExpenses() != listUnis.get(i).getSchoolExpenses()) {  //Expenses
+					float exp = (Integer.valueOf(listUnis.get(i).getSchoolExpenses()).floatValue());					      //int exp is the expenses for listUnis[i][8]
+					score += (Math.abs(Integer.valueOf(university.getSchoolExpenses()).floatValue() - exp)) / (database.maxExpenses() - database.minExpenses());
+					float temp = (Math.abs(Integer.valueOf(university.getSchoolExpenses()).floatValue() - exp)) / (database.maxExpenses() - database.minExpenses());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "school exp: " + temp);
 				}
-				if(university.getPercentEnrolled() != listUnis.get(i).getPercentEnrolled()) {  
-					float percentEnrolled = listUnis.get(i).getPercentEnrolled();			           
-					score += (Math.abs(university.getVerbalSAT() - percentEnrolled)) / (database.maxPercentEnrolled() - database.minPercentEnrolled()); 
+				if(university.getPercentFinancialAid() == -1 || listUnis.get(i).getPercentFinancialAid() == -1) {		//PercentFinancialAid with -1 field
+					score += 1;
 				}
-				if(university.getAcademicScale() != listUnis.get(i).getAcademicScale()) {  
-					float academicScale = listUnis.get(i).getAcademicScale();			           
-					score += (Math.abs(university.getVerbalSAT() - academicScale)) / (database.maxAcademicScale() - database.minAcademicScale()); 
+				else if(university.getPercentFinancialAid() != listUnis.get(i).getPercentFinancialAid()) {  //Percent Financial Aid
+					float aid = (Integer.valueOf(listUnis.get(i).getPercentFinancialAid()).floatValue());					      //int aid is the percent financial aid for listUnis[i][9]
+					score += (Math.abs(Integer.valueOf(university.getPercentFinancialAid()).floatValue() - aid)) / (database.maxFinancialAid() - database.minFinancialAid()); 
+					float temp = (Math.abs(Integer.valueOf(university.getPercentFinancialAid()).floatValue() - aid)) / (database.maxFinancialAid() - database.minFinancialAid());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "percent fin aid: " + temp);
 				}
-				if(university.getSocialScale() != listUnis.get(i).getSocialScale()) {  
-					float socialScale = listUnis.get(i).getSocialScale();			           
-					score += (Math.abs(university.getVerbalSAT() - socialScale)) / (database.maxSocialScale() - database.minSocialScale()); 
+				if(university.getNumApplicants() == -1 || listUnis.get(i).getNumApplicants() == -1) {		//NumApplicants with -1 field
+					score += 1;
 				}
-				if(university.getQualityScale() != listUnis.get(i).getQualityScale()) {  
-					float qualityScale = listUnis.get(i).getQualityScale();			           
-					score += (Math.abs(university.getVerbalSAT() - qualityScale)) / (database.maxQualityOfLifeScale() - database.minQualityOfLifeScale()); 
+				else if(university.getNumApplicants() != listUnis.get(i).getNumApplicants()) {  
+					float numApplicants = (Integer.valueOf(listUnis.get(i).getNumApplicants()).floatValue());			           
+					score += (Math.abs(Integer.valueOf(university.getNumApplicants()).floatValue() - numApplicants)) / (database.maxNumApplicants() - database.minNumApplicants());
+					float temp = (Math.abs(Integer.valueOf(university.getNumApplicants()).floatValue() - numApplicants)) / (database.maxNumApplicants() - database.minNumApplicants());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "num applicants: " + temp);
+				}
+				if(university.getPercentAdmitted() == -1 || listUnis.get(i).getPercentAdmitted() == -1) {		//PercentAdmitted with -1 field
+					score += 1;
+				}
+				else if(university.getPercentAdmitted() != listUnis.get(i).getPercentAdmitted()) {  
+					float percentAdmitted = (Integer.valueOf(listUnis.get(i).getPercentAdmitted()).floatValue());			           
+					score += (Math.abs(Integer.valueOf(university.getPercentAdmitted()).floatValue() - percentAdmitted)) / (database.maxPercentAdmitted() - database.minPercentAdmitted()); 
+					float temp = (Math.abs(Integer.valueOf(university.getPercentAdmitted()).floatValue() - percentAdmitted)) / (database.maxPercentAdmitted() - database.minPercentAdmitted());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "percent admitted: " + temp);
+				}
+				if(university.getPercentEnrolled() == -1 || listUnis.get(i).getPercentEnrolled() == -1) {		//PercentEnrolled with -1 field
+					score += 1;
+				}
+				else if(university.getPercentEnrolled() != listUnis.get(i).getPercentEnrolled()) {  
+					float percentEnrolled = (Integer.valueOf(listUnis.get(i).getPercentEnrolled()).floatValue());			           
+					score += (Math.abs(Integer.valueOf(university.getPercentEnrolled()).floatValue()  - percentEnrolled)) / (database.maxPercentEnrolled() - database.minPercentEnrolled());
+					float temp = (Math.abs(Integer.valueOf(university.getPercentEnrolled()).floatValue() - percentEnrolled)) / (database.maxPercentEnrolled() - database.minPercentEnrolled());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "percent enrolled: " + temp);
+				}
+				if(university.getAcademicScale() == -1 || listUnis.get(i).getAcademicScale() == -1) {		//AcademicScale with -1 field
+					score += 1;
+				}
+				else if(university.getAcademicScale() != listUnis.get(i).getAcademicScale()) {  
+					float academicScale = (Integer.valueOf(listUnis.get(i).getAcademicScale()).floatValue());			           
+					score += (Math.abs(Integer.valueOf(university.getAcademicScale()).floatValue() - academicScale)) / (database.maxAcademicScale() - database.minAcademicScale()); 
+					float temp = (Math.abs(Integer.valueOf(university.getAcademicScale()).floatValue() - academicScale)) / (database.maxAcademicScale() - database.minAcademicScale());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "academic scale: " + temp);
+				}
+				if(university.getSocialScale() == -1 || listUnis.get(i).getSocialScale() == -1) {		//SocialScale with -1 field
+					score += 1;
+				}
+				else if(university.getSocialScale() != listUnis.get(i).getSocialScale()) {  			//SocialScale
+					float socialScale = (Integer.valueOf(listUnis.get(i).getSocialScale()).floatValue());			           
+					score += (Math.abs(Integer.valueOf(university.getSocialScale()).floatValue() - socialScale)) / (database.maxSocialScale() - database.minSocialScale());
+					float temp = (Math.abs(Integer.valueOf(university.getSocialScale()).floatValue() - socialScale)) / (database.maxSocialScale() - database.minSocialScale());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "social scale: " + temp);
+				}
+				if(university.getQualityScale() == -1 || listUnis.get(i).getQualityScale() == -1) {		//QualityScale with -1 field
+					score += 1;
+				}
+				else if(university.getQualityScale() != listUnis.get(i).getQualityScale()) {  			//QualityScale
+					float qualityScale = (Integer.valueOf(listUnis.get(i).getQualityScale()).floatValue());			           
+					score += (Math.abs(Integer.valueOf(university.getQualityScale()).floatValue() - qualityScale)) / (database.maxQualityOfLifeScale() - database.minQualityOfLifeScale());
+					float temp = (Math.abs(Integer.valueOf(university.getQualityScale()).floatValue() - qualityScale)) / (database.maxQualityOfLifeScale() - database.minQualityOfLifeScale());
+					System.out.println(listUnis.get(i).getSchoolName() + " " + "quality scale: " + temp);
 				}
 			scores.put(score, listUnis.get(i));
 //			for(Entry<Float, University> entry : scores.entrySet()) {
 //				System.out.println(entry.getKey() + " " + entry.getValue().getSchoolName());
-//			}
-			}		
+//		    }
+		  }		
 		}
 		return scores;
 	}
@@ -181,6 +241,11 @@ public class UniversityController {
 	 */
 	public List<University> recommendedSchools(University university) {
 		compareUniversity(university);
+		int y = 0;
+		for(Entry<Float, University> entry : scores.entrySet()) {
+			y++;
+		   System.out.println(y + ": " + entry.getKey() + " " + entry.getValue().getSchoolName());	   
+        }
 		List<University> recommendedSchools = new ArrayList<University>();
 			for(int i = 0; i < 5; i++) {
 				float key = this.scores.firstKey();
