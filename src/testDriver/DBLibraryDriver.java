@@ -54,14 +54,13 @@ public class DBLibraryDriver{
  
      
      AdminFunctionalityController afc = new AdminFunctionalityController();
-     
-     //afc.addToSavedSchoolsList3();
-     //afc.viewUniversities();
+     //afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name
      //afc.addUniversity();
-     //afc.editUniversity();
-     //afc.viewUsers();
      //afc.addUser();
-     //afc.removeUniversityDB("ZZdzfgds");  //only one that does not work in AdminFunctionalityController
+     //afc.editUniversity();
+     //afc.removeUniversityDB("yale");  //parameter = school
+     //afc.viewUniversities();
+     //afc.viewUsers();
      
      UserFunctionalityController ufc = new UserFunctionalityController();
      

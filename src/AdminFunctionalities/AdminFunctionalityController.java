@@ -43,11 +43,10 @@ public class AdminFunctionalityController {
 	 * adds a university to a User's saves schools list
 	 */
 
-	public void addToSavedSchoolsList3(){
+	public void addToSavedSchoolsList3(String username, String schoolName){
+		
 		DBController dbc = new DBController();
-		Scanner scan = new Scanner(System.in);
-    	System.out.println("Enter username to add University to: \n");
-    	String userToFind = scan.nextLine();
+    	String userToFind = username;
     	
     	int i = 0;  		
     	boolean e = false;
@@ -63,14 +62,13 @@ public class AdminFunctionalityController {
     			
     		if(i == (dbc.loadUsers().size())-1) {
 		   		System.out.print(userToFind + " does NOT exist.");
-		   		scan.close();
     		}
    			i++;    			
    		}
     	
    		if(e) {
    			UniversityController unc = new UniversityController();
-   			unc.addToSavedSchoolsList2(userToFind);
+   			unc.addToSavedSchoolsList2(userToFind, schoolName);
     	}		
 	}
 	
@@ -159,30 +157,24 @@ public class AdminFunctionalityController {
 	 * saved schools list of any users
 	 * then calls removeUniversity() in DBController
 	 */
-	public void removeUniversityDB(String schoolName) {
-		List<User> users = database.loadUsers();
-		List<University> unis;		
+	public boolean removeUniversityDB(String schoolName) {
+		List<User> users = database.loadUsers();	
+		boolean success = true;
 		for (int i = 0; i < users.size(); i++) {
-			
-			 List<>ssList = ufc.getSavedSchoolsList(users.get(i).getEmail());
-			
-			unis = users.get(i).getSavedSchoolsList();
-			if(unis.size() > 0) {
-				for(int j= 0; j < unis.size(); j++) {
-				if (unis.get(j).getSchoolName().equals(schoolName)) {
-				System.out.println("This School Cannot be Removed");
-				break;
-				}
-				else {
-					database.removeUniversityDB(schoolName);
-				}
-				}
-			}
-			else {
-				break;
-			}
+			 Map<String, String> savedList = ufc.getSavedSchoolsList(users.get(i).getEmail());
+			 for (Map.Entry entry : savedList.entrySet()){
+				 if(schoolName.toUpperCase().equals(entry.getKey().toString().toUpperCase())) {
+					 success = false;
+					 System.out.println("School was removed: " + success);
+					 break;
+				 } 
+			 }
 		}
-		//database.removeUniversityDB(schoolName);
+		if(success) {
+			database.removeUniversityDB(schoolName);
+			System.out.println("School was removed: " + success );
+		}
+		return success;
 	}
 	
 }

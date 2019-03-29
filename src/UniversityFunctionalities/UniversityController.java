@@ -37,23 +37,20 @@ public class UniversityController {
 	 * Saves a University to the specified user's saved school
 	 * @param user that school will be added to
 	 */
-	public void addToSavedSchoolsList2(String user) {
-		DBController dbc = new DBController();
-		Scanner scan2 = new Scanner(System.in);
-    	System.out.println("Enter school to be added to " + user + "'s list: \n");
-    	//asks for university that will be added to the user's saved school list
-    	String uniToFind = scan2.nextLine().toUpperCase();
-    	scan2.close();
-    	
+	public void addToSavedSchoolsList2(String user, String schoolName) {
+		
+		DBController dbc = new DBController();		
+		String uniToFind = schoolName.toUpperCase(); 
     	int i = 0;  		
     	boolean e = false;
     	
     	//searches through list of universities retrieved through loadUniversities() method
     	while(i<dbc.loadUniversities().size()) {
+    		
     		String name = dbc.loadUniversities().get(i).getSchoolName();
-   			
+    		
     		//confirms that the uniToFind exists
-    		if (name.equals(uniToFind)){
+    		if (name.toUpperCase().equals(uniToFind)){
    				e= true;
    				System.out.println("YES, " + uniToFind + " exists.");   			
    				break;
@@ -62,14 +59,12 @@ public class UniversityController {
     		//if the while loop reaches the end of the list, uniToFind does not exist
     		if(i == (dbc.loadUniversities().size())-1) {
 		   		System.out.print(uniToFind + " does NOT exist. \n");
-	    		//System.out.print(dbc.loadUniversities().get(i).getSchoolName());   //prints last uni in list
     		}
    			i++;    			
    		}
     	
     	//if uniToFind exists, calls addToSavedSchoolsList1() from DBController 
    		if(e) {
-   			//System.out.println("reached 2nd if");
    			dbc.addToSavedSchoolsList1(user, uniToFind);
     	}
 	}
@@ -283,6 +278,22 @@ public class UniversityController {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter School Name");
 		String schoolName = sc.nextLine();
+		
+		int i = 0;
+		//searches through list of universities retrieved through loadUniversities() method
+    	while(i<dbc.loadUniversities().size()) {
+    		
+    		String name = dbc.loadUniversities().get(i).getSchoolName();
+    		
+    		//confirms that the uniToFind exists
+    		if (name.toUpperCase().equals(schoolName)){
+   				//e= true;
+   				System.out.println(schoolName + " exists, choose a different name.");   			
+   				break;
+    		}
+		
+		
+		
 		System.out.println("Enter School State");
 		String schoolState = sc.nextLine();
 		System.out.println("Enter School Location");

@@ -207,7 +207,6 @@ public class DBController {
 	 */
 	public void addToSavedSchoolsList1(String username, String school) {
 		library.user_saveSchool(username, school);
-		System.out.println("reached addSavedToSchoolsList in dbc");
 	}
 	
 	
