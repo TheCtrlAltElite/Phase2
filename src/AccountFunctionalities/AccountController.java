@@ -1,7 +1,7 @@
 /**
  * 
  */
-package other;
+package AccountFunctionalities;
 
 import java.util.*;
 
@@ -12,6 +12,7 @@ import javax.mail.Authenticator;
 import CMCDatabase.DBController;
 import UniversityFunctionalities.*;
 import UserFunctionalities.User;
+import other.SMTPAuthenticator;
 
 /**
  * @author CtrlAltElite
