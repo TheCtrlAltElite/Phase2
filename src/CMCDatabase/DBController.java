@@ -436,7 +436,7 @@ public class DBController {
 		}
 		Collections.sort(listOfStudents);
 		float maxStudents = listOfStudents.get(listOfStudents.size() - 1);	//Subtracts 1 to ensure that the 
-		return maxStudents;													//index of the array is realigned
+		return maxStudents;		//index of the array is realigned
 	}
 	
 	/**
@@ -519,7 +519,7 @@ public class DBController {
 			}
 		}
 		Collections.sort(satVerbal);
-		float minSATVerbal = satVerbal.get(0); 					
+		float minSATVerbal = satVerbal.get(0); 		
 		return minSATVerbal;																		 
 	}
 	
@@ -536,7 +536,7 @@ public class DBController {
 			}
 		}
 		Collections.sort(satMath);
-		float maxSATMath = satMath.get(satMath.size() - 1); //Subtracts 1 to ensure that the 
+		float maxSATMath = satMath.get(satMath.size() - 1); //Subtracts 1 to ensure that the
 		return maxSATMath;									//index of the array is realigned										 
 	}
 	
@@ -553,7 +553,7 @@ public class DBController {
 			}
 		}
 		Collections.sort(satMath);
-		float minSATMath = satMath.get(0); 					
+		float minSATMath = satMath.get(0); 		
 		return minSATMath;																		 
 	}
 	
@@ -621,7 +621,7 @@ public class DBController {
 			}
 		}
 		Collections.sort(aid);
-		float minAid = aid.get(0); 						
+		float minAid = aid.get(0); 	
 		return minAid;																			 
 	}
 	
@@ -655,7 +655,7 @@ public class DBController {
 			}
 		}
 		Collections.sort(numApps);
-		float minApps = numApps.get(0); 					
+		float minApps = numApps.get(0); 	
 		return minApps;																		 
 	}
 	
@@ -706,7 +706,7 @@ public class DBController {
 			}
 		}
 		Collections.sort(percentEnrolled);
-		float maxEnrolled = percentEnrolled.get(percentEnrolled .size() - 1);  //Subtracts 1 to ensure that the 
+		float maxEnrolled = percentEnrolled.get(percentEnrolled .size() - 1);  //Subtracts 1 to ensure that the
 		return maxEnrolled;													 //index of the array is realigned										 
 	}
 	
