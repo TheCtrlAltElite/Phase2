@@ -6,10 +6,11 @@ package CMCDatabase;
 
 import java.sql.Timestamp;
 import java.util.*;
+
+import AccountFunctionalities.Account;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
 import dblibrary.project.csci230.*;
-import other.Account;
 
 /**
  * @author CtrlAltElite

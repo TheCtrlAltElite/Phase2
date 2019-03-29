@@ -1,7 +1,7 @@
  /**
  * 
  */
-package other;
+package AccountFunctionalities;
 
 //imports
 import javax.mail.MessagingException;
