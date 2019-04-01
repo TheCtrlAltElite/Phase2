@@ -10,5 +10,4 @@ public class UserInteractionTest {
 	public void test() {
 		fail("Not yet implemented");
 	}
-
 }
