@@ -43,7 +43,7 @@ public class AdminFunctionalityController {
 	 * adds a university to a User's saves schools list
 	 */
 
-	public void addToSavedSchoolsList3(String username, String schoolName){
+	public boolean addToSavedSchoolsList3(String username, String schoolName){
 		
 		DBController dbc = new DBController();
     	String userToFind = username;
@@ -69,7 +69,8 @@ public class AdminFunctionalityController {
    		if(e) {
    			UniversityController unc = new UniversityController();
    			unc.addToSavedSchoolsList2(userToFind, schoolName);
-    	}		
+    	}	
+   		return e;
 	}
 	
 	

@@ -2,6 +2,7 @@ package AccountFunctionalitiesTests;
 
 import static org.junit.Assert.*;
 
+
 import org.junit.Before;
 import org.junit.Test;
 import AccountFunctionalities.AccountController;
@@ -14,6 +15,7 @@ public class AccountControllerTest {
 	public void setUp() throws Exception {
 		acc = new AccountController();
 	}
+	
 	@Test
 	public void loginTest_correctArguments() throws Exception {
 		acc.login("juser", "JohnMiller5");
