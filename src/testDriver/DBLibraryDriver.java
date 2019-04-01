@@ -53,8 +53,13 @@ public class DBLibraryDriver{
      //acc.passwordRequirements(String password);
  
      
+     AdminInteraction aic = new AdminInteraction();
+     
+     //aic.addToSavedSchoolsList4("luser", "baruch");
+     
+     
      AdminFunctionalityController afc = new AdminFunctionalityController();
-     //afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name
+     ////afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name
      //afc.addUniversity();
      //afc.addUser();
      //afc.editUniversity();
