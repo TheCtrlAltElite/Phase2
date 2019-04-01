@@ -41,8 +41,8 @@ public class Account {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
-		this.status = type;
-		this.type = status;
+		this.status = status;
+		this.type = type;
 		this.loginStatus = false;
 	}
 	
