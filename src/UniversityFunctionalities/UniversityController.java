@@ -395,6 +395,7 @@ public class UniversityController {
 										   numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
 		dbc.addUniversity(newUni);
 		sc.close();
+    	}
 	}
 	
 	/**

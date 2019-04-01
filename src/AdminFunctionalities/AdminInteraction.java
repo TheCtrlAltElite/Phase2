@@ -23,8 +23,8 @@ public class AdminInteraction {
 
 	
 	
-	public void addToSavedSchoolsList4(){
-		adminFController.addToSavedSchoolsList3();
+	public void addToSavedSchoolsList4(String username, String schoolName){
+		adminFController.addToSavedSchoolsList3(username, schoolName);
 	}
 	
 	/**
