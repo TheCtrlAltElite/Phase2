@@ -182,8 +182,8 @@ public class UserFunctionalityController {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */	
-	public void addToSavedSchoolsList3(String userName) {	
-		unc.addToSavedSchoolsList2(userName);
+	public void addToSavedSchoolsList3(String school) {	
+		unc.addToSavedSchoolsList2("userName", school);
 	}
 
 	/**
@@ -234,40 +234,6 @@ public class UserFunctionalityController {
    			dbc.removeFromSavedSchoolsList(username, uniToFind);
     	}
 	}
-	 
-//		public void removeSavedSchool(String username) {
-//			DBController dbc = new DBController();
-//			Scanner sc = new Scanner(System.in);
-//	    	System.out.println("Enter school to be removed from " + username + "'s list: \n");
-//	    	//asks for university that will be removed from the user's saved school list
-//	    	String uniToFind = sc.nextLine().toUpperCase();
-//	    	sc.close();
-//	    	
-//	    	int i = 0;  		
-//	    	boolean e = false;
-//	    	
-//	    	//searches through list of saved schools for the user
-//	    	while(i<dbc.getSavedSchoolsList(username).size()) {
-//	    		String name = dbc.getSavedSchoolsList(username).get(i).getSchoolName();
-//	   			
-//	    		//confirms that the uniToFind is in that user's saved schools list
-//	    		if (name.equals(uniToFind)){
-//	   				e= true;
-//	   				System.out.println("YES, " + uniToFind + " exists.");   			
-//	   				break;
-//	    		}
-//	    		
-//	    		//if the while loop reaches the end of the list, uniToFind is not in that user's saved schools list
-//	    		if(i == (dbc.getSavedSchoolsList(username).size())-1) {
-//			   		System.out.print(uniToFind + " does NOT exist. \n");
-//	    		}
-//	   			i++;    			
-//	   		}
-//	    	
-//	    	//if uniToFind exists in the saved schools list, calls removeFromSavedSchoolsList1() from DBController 
-//	   		if(e) {
-//	   			//System.out.println("reached 2nd if");
-//	   			dbc.removeFromSavedSchoolsList(username, uniToFind);
 	   			
 	   			
 	/**
