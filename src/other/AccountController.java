@@ -252,11 +252,4 @@ public class AccountController {
 		}
 		return false;
 	}
-	
-	
-	
-//	public List<String> getDetailsUni() {				//Do we need this?? Never called in Account Interaction
-//		return unc.getDetailsUni();
-//	}
-	
 }
