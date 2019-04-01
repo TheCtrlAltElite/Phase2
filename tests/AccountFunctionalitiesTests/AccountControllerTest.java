@@ -91,6 +91,18 @@ public class AccountControllerTest {
 	
 	@Test
 	public void resetPasswordIncorrectOldPasswordTest() {
-		boolean resetStatus = acc.resetPassword("Nobody", "PenguinAtHeart123", "PenguinAtHeart123")
+		boolean resetStatus = acc.resetPassword("Nobody", "PenguinAtHeart123", "PenguinAtHeart123");
+		assertFalse(resetStatus);
 	}
+	
+	@Test
+	public void resetPasswordReEnterDoesNotMatchTest() {
+		boolean resetStatus = acc.resetPassword("TuxIsOurSavior1", "NewPasswordToBeChanged123", "DifferentPassword123");
+		assertFalse(resetStatus);
+		String newPassSet = acc.getPassword("tux69@csbsju.edu");
+		assertTrue("The password has not changed.", newPassSet.equals("TuxIsOurSavior1"));
+	}
+	
+//	@After
+//	public void
 }
