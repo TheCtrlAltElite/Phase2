@@ -42,5 +42,9 @@ public class AccountControllerTest {
 		assertFalse("The user Nobody is not a user.", result);
 	}
 	
-	
+	@Test
+	public void getPasswordTest() {
+		String pass = acc.getPassword("juser");
+		assertTrue("The user juser's password is: ", pass.equals("JohnMiller5"));
+	}
 }
