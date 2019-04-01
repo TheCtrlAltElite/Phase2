@@ -78,11 +78,19 @@ public class AccountControllerTest {
 		////////////////TODO///////////////////
 	}
 	
+	/**
+	 * Old and new passwords must be changed each time.
+	 */
 	@Test
 	public void resetPasswordTest() {
 		boolean resetStatus = acc.resetPassword("SuperPenguinTux1", "TuxIsOurSavior1", "TuxIsOurSavior1");
 		assertTrue(resetStatus);
 		String newPassSet = acc.getPassword("tux69@csbsju.edu");
 		assertTrue("The new password has been set.", newPassSet.equals("TuxIsOurSavior1"));
+	}
+	
+	@Test
+	public void resetPasswordIncorrectOldPasswordTest() {
+		boolean resetStatus = acc.resetPassword("Nobody", "PenguinAtHeart123", "PenguinAtHeart123")
 	}
 }
