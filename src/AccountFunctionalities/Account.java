@@ -1,7 +1,7 @@
 /**Account class
  * 
  */
-package other;
+package AccountFunctionalities;
 
 //imports
 //import java.util.*;

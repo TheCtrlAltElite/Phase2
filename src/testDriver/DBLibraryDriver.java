@@ -3,18 +3,22 @@
  */
 package testDriver;
 
+import java.util.List;
+
+import AccountFunctionalities.AccountController;
 import AdminFunctionalities.*;
+import CMCDatabase.DBController;
 //import CMCDatabase.*;
 import other.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
+import dblibrary.project.csci230.UniversityDBLibrary;
 
 
 public class DBLibraryDriver{
   //private UniversityDBLibrary library;
   
   public DBLibraryDriver() {
-  
   }
   
   public static void main(String[] args) {
@@ -24,14 +28,20 @@ public class DBLibraryDriver{
      
      //unc.addToSavedSchoolsList2("juser"); 
      //unc.removeFromList("juser", "HARVARD"); 
-     //unc.compareUniversity(University university); 	 //not ready
+     //unc.compareUniversity(University university);
+     
+     DBController dbc = new DBController();
+     List<University> listUnis = dbc.loadUniversities();
+     unc.recommendedSchools(listUnis.get(58));
+     
+     //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
      //unc.editUniversity();
      //unc.getDetailsUni(); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
      
      AccountController acc = new AccountController();
      
-     //acc.login("jmuehls", "Muehlenbein100");
+     //acc.login("luser", "ImadRahal4");
      //acc.logOut();
      //acc.isUserReal("jmuehls");
      //acc.getPassword("jmuehls");
@@ -43,15 +53,19 @@ public class DBLibraryDriver{
      //acc.passwordRequirements(String password);
  
      
-     AdminFunctionalityController afc = new AdminFunctionalityController();
+     AdminInteraction aic = new AdminInteraction();
      
-     //afc.addToSavedSchoolsList3();
-     //afc.viewUniversities();
+     //aic.addToSavedSchoolsList4("luser", "baruch");
+     
+     
+     AdminFunctionalityController afc = new AdminFunctionalityController();
+     ////afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name
      //afc.addUniversity();
-     //afc.editUniversity();
-     //afc.viewUsers();
      //afc.addUser();
-     //afc.removeUniversityDB("ZZdzfgds");  //only one that does not work in AdminFunctionalityController
+     //afc.editUniversity();
+     //afc.removeUniversityDB("yale");  //parameter = school
+     //afc.viewUniversities();
+     //afc.viewUsers();
      
      UserFunctionalityController ufc = new UserFunctionalityController();
      
@@ -61,7 +75,7 @@ public class DBLibraryDriver{
      //ufc.removeSavedSchool(String username);
      //ufc.updateSavedSchoolsList(List<UserSchool> list);
      //ufc.emailSavedSchools();
-     //ufc.getSavedSchoolsList();
+     //ufc.getSavedSchoolsList("juser");
      
      
      

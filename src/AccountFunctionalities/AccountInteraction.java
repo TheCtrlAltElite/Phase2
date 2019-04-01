@@ -1,7 +1,7 @@
  /**
  * 
  */
-package other;
+package AccountFunctionalities;
 
 //imports
 import javax.mail.MessagingException;
@@ -29,8 +29,9 @@ public class AccountInteraction {
 	 * 
 	 * @param username
 	 * @param password
+	 * @throws Exception 
 	 */
-	public void login(String username, String password) {
+	public void login(String username, String password) throws Exception {
 		accController.login(username, password);
 	}
 

@@ -6,10 +6,11 @@ package CMCDatabase;
 
 import java.sql.Timestamp;
 import java.util.*;
+
+import AccountFunctionalities.Account;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
 import dblibrary.project.csci230.*;
-import other.Account;
 
 /**
  * @author CtrlAltElite
@@ -206,7 +207,6 @@ public class DBController {
 	 */
 	public void addToSavedSchoolsList1(String username, String school) {
 		library.user_saveSchool(username, school);
-		System.out.println("reached addSavedToSchoolsList in dbc");
 	}
 	
 	
@@ -425,9 +425,9 @@ public class DBController {
 	/**
 	 * Gets the max number of students of the universities in the database
 	 * 
-	 * @return int the max number of students of the universities in the database
+	 * @return float the max number of students of the universities in the database
 	 */
-	public int maxNumStudents() {
+	public float maxNumStudents() {
 		List<Integer> listOfStudents = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getNumberStudents() != -1) {
@@ -435,16 +435,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(listOfStudents);
-		int maxStudents = listOfStudents.get(listOfStudents.size() - 1);	//Subtracts 1 to ensure that the 
-		return maxStudents;													//index of the array is realigned
+		float maxStudents = listOfStudents.get(listOfStudents.size() - 1);	//Subtracts 1 to ensure that the 
+		return maxStudents;		//index of the array is realigned
 	}
 	
 	/**
 	 * Gets the min number of students of the universities in the database
 	 * 
-	 * @return int the min number of students of the universities in the database
+	 * @return float the min number of students of the universities in the database
 	 */
-	public int minNumStudents() {
+	public float minNumStudents() {
 		List<Integer> listOfStudents = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getNumberStudents() != -1) {
@@ -452,16 +452,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(listOfStudents);
-		int minStudents = listOfStudents.get(0);
+		float minStudents = listOfStudents.get(0);
 		return minStudents;
 	}
 	
 	/**
 	 * Gets the max percent female of the universities in the database
 	 * 
-	 * @return int the max percent female of the universities in the database
+	 * @return float the max percent female of the universities in the database
 	 */
-	public int maxFemale() {
+	public float maxFemale() {
 		List<Integer> percentFemale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getPercentFemale() != -1) {
@@ -469,15 +469,15 @@ public class DBController {
 			}
 		}
 		Collections.sort(percentFemale);
-		int maxFemale = percentFemale.get(percentFemale.size() - 1); //Subtracts 1 to ensure that the 
+		float maxFemale = percentFemale.get(percentFemale.size() - 1); //Subtracts 1 to ensure that the 
 		return maxFemale;											 //index of the array is realigned
 	}
 	/**
 	 * Gets the min percent female of the universities in the database
 	 * 
-	 * @return int the min percent female of the universities in the database
+	 * @return float the min percent female of the universities in the database
 	 */
-	public int minFemale() {
+	public float minFemale() {
 		List<Integer> percentFemale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getPercentFemale() != -1) {
@@ -485,16 +485,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(percentFemale);
-		int minFemale = percentFemale.get(0);  
+		float minFemale = percentFemale.get(0);  
 		return minFemale;											 
 	}
 	
 	/**
 	 * Gets the max verbal SAT of the universities in the database
 	 * 
-	 * @return int the max verbal SAT of the universities in the database
+	 * @return float the max verbal SAT of the universities in the database
 	 */
-	public int maxSATVerbal() {
+	public float maxSATVerbal() {
 		List<Integer> satVerbal = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getVerbalSAT() != -1) {
@@ -502,16 +502,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(satVerbal);
-		int maxSATVerbal = satVerbal.get(satVerbal.size() - 1); //Subtracts 1 to ensure that the 
+		float maxSATVerbal = satVerbal.get(satVerbal.size() - 1); //Subtracts 1 to ensure that the 
 		return maxSATVerbal;									//index of the array is realigned										 
 	}
 	
 	/**
 	 * Gets the min verbal SAT of the universities in the database
 	 * 
-	 * @return int the min verbal SAT of the universities in the database
+	 * @return float the min verbal SAT of the universities in the database
 	 */
-	public int minSATVerbal() {
+	public float minSATVerbal() {
 		List<Integer> satVerbal = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getVerbalSAT() != -1) {
@@ -519,16 +519,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(satVerbal);
-		int minSATVerbal = satVerbal.get(0); 					
+		float minSATVerbal = satVerbal.get(0); 		
 		return minSATVerbal;																		 
 	}
 	
 	/**
 	 * Gets the max math SAT of the universities in the database
 	 * 
-	 * @return int the max math SAT of the universities in the database
+	 * @return float the max math SAT of the universities in the database
 	 */
-	public int maxSATMath() {
+	public float maxSATMath() {
 		List<Integer> satMath = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getMathSAT() != -1) {
@@ -536,16 +536,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(satMath);
-		int maxSATMath = satMath.get(satMath.size() - 1); //Subtracts 1 to ensure that the 
+		float maxSATMath = satMath.get(satMath.size() - 1); //Subtracts 1 to ensure that the
 		return maxSATMath;									//index of the array is realigned										 
 	}
 	
 	/**
 	 * Gets the min math SAT of the universities in the database
 	 * 
-	 * @return int the min math SAT of the universities in the database
+	 * @return float the min math SAT of the universities in the database
 	 */
-	public int minSATMath() {
+	public float minSATMath() {
 		List<Integer> satMath = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getMathSAT() != -1) {
@@ -553,16 +553,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(satMath);
-		int minSATMath = satMath.get(0); 					
+		float minSATMath = satMath.get(0); 		
 		return minSATMath;																		 
 	}
 	
 	/**
 	 * Gets the max expenses of the universities in the database
 	 * 
-	 * @return int the max expenses of the universities in the database
+	 * @return float the max expenses of the universities in the database
 	 */
-	public int maxExpenses() {
+	public float maxExpenses() {
 		List<Integer> expenses = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getSchoolExpenses() != -1) {
@@ -570,16 +570,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(expenses);
-		int maxExpenses = expenses.get(expenses.size() - 1); //Subtracts 1 to ensure that the 
+		float maxExpenses = expenses.get(expenses.size() - 1); //Subtracts 1 to ensure that the 
 		return maxExpenses;									//index of the array is realigned										 
 	}
 	
 	/**
 	 * Gets the min expenses of the universities in the database
 	 * 
-	 * @return int the min expenses of the universities in the database
+	 * @return float the min expenses of the universities in the database
 	 */
-	public int minExpenses() {
+	public float minExpenses() {
 		List<Integer> expenses = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getSchoolExpenses() != -1) {
@@ -587,16 +587,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(expenses);
-		int minExpenses = expenses.get(0); 
+		float minExpenses = expenses.get(0); 
 		return minExpenses;																		 
 	}
 	
 	/**
 	 * Gets the max amount of financial aid of the universities in the database
 	 * 
-	 * @return int the max amount of financial aid of the universities in the database
+	 * @return float the max amount of financial aid of the universities in the database
 	 */
-	public int maxFinancialAid() {
+	public float maxFinancialAid() {
 		List<Integer> aid = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getPercentFinancialAid() != -1) {
@@ -604,16 +604,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(aid);
-		int maxAid = aid.get(aid.size() - 1); 			//Subtracts 1 to ensure that the 
+		float maxAid = aid.get(aid.size() - 1); 			//Subtracts 1 to ensure that the 
 		return maxAid;									//index of the array is realigned										 
 	}
 	
 	/**
 	 * Gets the min amount of financial aid of the universities in the database
 	 * 
-	 * @return int the min amount of financial aid of the universities in the database
+	 * @return float the min amount of financial aid of the universities in the database
 	 */
-	public int minFinancialAid() {
+	public float minFinancialAid() {
 		List<Integer> aid = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getPercentFinancialAid() != -1) {
@@ -621,16 +621,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(aid);
-		int minAid = aid.get(0); 						
+		float minAid = aid.get(0); 	
 		return minAid;																			 
 	}
 	
 	/**
 	 * Gets the max number of applicants of the universities in the database
 	 * 
-	 * @return int the max number of applicants of the universities in the database
+	 * @return float the max number of applicants of the universities in the database
 	 */
-	public int maxNumApplicants() {
+	public float maxNumApplicants() {
 		List<Integer> numApps = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getNumApplicants() != -1) {
@@ -638,16 +638,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(numApps);
-		int maxApps = numApps.get(numApps.size() - 1);  //Subtracts 1 to ensure that the 
+		float maxApps = numApps.get(numApps.size() - 1);  //Subtracts 1 to ensure that the 
 		return maxApps;									//index of the array is realigned										 
 	}
 	
 	/**
 	 * Gets the min number of applicants of the universities in the database
 	 * 
-	 * @return int the min number of applicants of the universities in the database
+	 * @return float the min number of applicants of the universities in the database
 	 */
-	public int minNumApplicants() {
+	public float minNumApplicants() {
 		List<Integer> numApps = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getNumApplicants() != -1) {
@@ -655,16 +655,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(numApps);
-		int minApps = numApps.get(0); 					
+		float minApps = numApps.get(0); 	
 		return minApps;																		 
 	}
 	
 	/**
 	 * Gets the max percent of students admitted of the universities in the database
 	 * 
-	 * @return int the max percent of students admitted of the universities in the database
+	 * @return float the max percent of students admitted of the universities in the database
 	 */
-	public int maxPercentAdmitted() {
+	public float maxPercentAdmitted() {
 		List<Integer> percentAdmitted = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getPercentAdmitted() != -1) {
@@ -672,16 +672,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(percentAdmitted );
-		int maxAdmitted = percentAdmitted.get(percentAdmitted .size() - 1);  //Subtracts 1 to ensure that the 
+		float maxAdmitted = percentAdmitted.get(percentAdmitted .size() - 1);  //Subtracts 1 to ensure that the 
 		return maxAdmitted;									//index of the array is realigned										 
 	}
 	
 	/**
 	 * Gets the min percent of students admitted of the universities in the database
 	 * 
-	 * @return int the min percent of students admitted of the universities in the database
+	 * @return float the min percent of students admitted of the universities in the database
 	 */
-	public int minPercentAdmitted() {
+	public float minPercentAdmitted() {
 		List<Integer> percentAdmitted = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getPercentAdmitted() != -1) {
@@ -689,16 +689,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(percentAdmitted );
-		int minAdmitted = percentAdmitted.get(0);  //Subtracts 1 to ensure that the 
+		float minAdmitted = percentAdmitted.get(0);  //Subtracts 1 to ensure that the 
 		return minAdmitted;									//index of the array is realigned										 
 	}
 	
 	/**
 	 * Gets the max percent of students enrolled of the universities in the database
 	 * 
-	 * @return int the max percent of students enrolled of the universities in the database
+	 * @return float the max percent of students enrolled of the universities in the database
 	 */
-	public int maxPercentEnrolled() {
+	public float maxPercentEnrolled() {
 		List<Integer> percentEnrolled = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getPercentEnrolled() != -1) {
@@ -706,16 +706,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(percentEnrolled);
-		int maxEnrolled = percentEnrolled.get(percentEnrolled .size() - 1);  //Subtracts 1 to ensure that the 
+		float maxEnrolled = percentEnrolled.get(percentEnrolled .size() - 1);  //Subtracts 1 to ensure that the
 		return maxEnrolled;													 //index of the array is realigned										 
 	}
 	
 	/**
 	 * Gets the min percent of students enrolled of the universities in the database
 	 * 
-	 * @return int the min percent of students enrolled of the universities in the database
+	 * @return float the min percent of students enrolled of the universities in the database
 	 */
-	public int minPercentEnrolled() {
+	public float minPercentEnrolled() {
 		List<Integer> percentEnrolled = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getPercentEnrolled() != -1) {
@@ -723,16 +723,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(percentEnrolled);
-		int maxEnrolled = percentEnrolled.get(0);  		 
+		float maxEnrolled = percentEnrolled.get(0);  		 
 		return maxEnrolled;																			 
 	}
 	
 	/**
 	 * Gets the max academic scale of the universities in the database
 	 * 
-	 * @return int the max academic scale of the universities in the database
+	 * @return float the max academic scale of the universities in the database
 	 */
-	public int maxAcademicScale() {
+	public float maxAcademicScale() {
 		List<Integer> academicScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getAcademicScale() != -1) {
@@ -740,16 +740,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(academicScale);
-		int maxAcademicScale = academicScale.get(academicScale .size() - 1); 		 //Subtracts 1 to ensure that the 
+		float maxAcademicScale = academicScale.get(academicScale .size() - 1); 		 //Subtracts 1 to ensure that the 
 		return maxAcademicScale;													 //index of the array is realigned										 
 	}
 	
 	/**
 	 * Gets the min academic scale of the universities in the database
 	 * 
-	 * @return int the min academic scale of the universities in the database
+	 * @return float the min academic scale of the universities in the database
 	 */
-	public int minAcademicScale() {
+	public float minAcademicScale() {
 		List<Integer> academicScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getAcademicScale() != -1) {
@@ -757,16 +757,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(academicScale);
-		int minAcademicScale = academicScale.get(0); 		 
+		float minAcademicScale = academicScale.get(0); 		 
 		return minAcademicScale;													 										 
 	}
 	
 	/**
 	 * Gets the max social scale of the universities in the database
 	 * 
-	 * @return int the max social scale of the universities in the database
+	 * @return float the max social scale of the universities in the database
 	 */
-	public int maxSocialScale() {
+	public float maxSocialScale() {
 		List<Integer> socialScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getSocialScale() != -1) {
@@ -774,16 +774,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(socialScale);
-		int maxSocialScale = socialScale.get(socialScale .size() - 1); 		 //Subtracts 1 to ensure that the 
+		float maxSocialScale = socialScale.get(socialScale .size() - 1); 		 //Subtracts 1 to ensure that the 
 		return maxSocialScale;													 //index of the array is realigned										 
 	}
 	
 	/**
 	 * Gets the min social scale of the universities in the database
 	 * 
-	 * @return int the min social scale of the universities in the database
+	 * @return float the min social scale of the universities in the database
 	 */
-	public int minSocialScale() {
+	public float minSocialScale() {
 		List<Integer> socialScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getSocialScale() != -1) {
@@ -791,16 +791,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(socialScale);
-		int minSocialScale = socialScale.get(0); 		  
+		float minSocialScale = socialScale.get(0); 		  
 		return minSocialScale;																					 
 	}
 	
 	/**
 	 * Gets the max quality of life scale of the universities in the database
 	 * 
-	 * @return int the max quality of life scale of the universities in the database
+	 * @return float the max quality of life scale of the universities in the database
 	 */
-	public int maxQualityOfLifeScale() {
+	public float maxQualityOfLifeScale() {
 		List<Integer> qualityScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getQualityScale() != -1) {
@@ -808,16 +808,16 @@ public class DBController {
 			}
 		}
 		Collections.sort(qualityScale);
-		int maxQualityScale = qualityScale.get(qualityScale .size() - 1); 		 //Subtracts 1 to ensure that the 
+		float maxQualityScale = qualityScale.get(qualityScale .size() - 1); 		 //Subtracts 1 to ensure that the 
 		return maxQualityScale;													 //index of the array is realigned										 
 	}
 	
 	/**
 	 * Gets the min quality of life scale of the universities in the database
 	 * 
-	 * @return int the min quality of life scale of the universities in the database
+	 * @return float the min quality of life scale of the universities in the database
 	 */
-	public int minQualityOfLifeScale() {
+	public float minQualityOfLifeScale() {
 		List<Integer> qualityScale = new ArrayList<Integer>();
 		for (int j = 0; j < listUnis.size(); j++) {
 			if(listUnis.get(j).getQualityScale() != -1) {
@@ -825,7 +825,7 @@ public class DBController {
 			}
 		}
 		Collections.sort(qualityScale);
-		int minQualityScale = qualityScale.get(0); 		 
+		float minQualityScale = qualityScale.get(0); 		 
 		return minQualityScale;													 									 
 	}
 
