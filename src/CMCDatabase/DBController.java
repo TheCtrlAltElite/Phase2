@@ -83,9 +83,6 @@ public class DBController {
 				details.add(Character.toString(users.get(i).getStatus()));
 			}
 		}
-//		for (int i =0; i < details.size(); i++) {
-//			System.out.println(details.get(i));
-//		}
 		return details;
 	}
 

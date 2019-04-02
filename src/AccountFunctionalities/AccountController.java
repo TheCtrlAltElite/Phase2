@@ -170,15 +170,17 @@ public class AccountController {
 	 * @param n1 - new password, must be the same as n2
 	 * @param n2 - new password, must be the same as n1
 	 */
-	public void resetPassword(String o, String n1, String n2) { //WILL NEED TO CHANGE ONCE WE START TO USE GUI
+	public boolean resetPassword(String o, String n1, String n2) { //WILL NEED TO CHANGE ONCE WE START TO USE GUI
 	
 		List<User> listUsers = database.loadUsers();
+		boolean changeStatus = false;
 		for (int i = 0; i < listUsers.size(); i++) {							//goes through users in database and finds which one corresponds with the account email																				
 				if(listUsers.get(i).getPassword().equals(o)) {				    //compares the old password with the current
 					if (n1.equals(n2)) {									    //checks that n1 is the same as n2 to avoid error
 						if(this.passwordRequirements(n2)) {					    //checks that the new password (n2) meets the password requirements
 							Account acc = listUsers.get(i);
-							acc.setPassword(n2);					       		//sets the password for the account
+							acc.setPassword(n2);				       		//sets the password for the account
+							changeStatus = true;
 							database.editUser(listUsers.get(i));
 							System.out.println("Your password has been changed.");//sets the password in database
 						}
@@ -191,7 +193,8 @@ public class AccountController {
 					System.out.println("Your old password was incorrect. Please try again.");
 				}
 			}
-		}	
+		return changeStatus;
+		}
 			
 	
 	

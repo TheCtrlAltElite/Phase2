@@ -3,7 +3,6 @@
  */
 package UniversityFunctionalities;
 
-
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -37,7 +36,7 @@ public class UniversityController {
 	 * Saves a University to the specified user's saved school
 	 * @param user that school will be added to
 	 */
-	public void addToSavedSchoolsList2(String user, String schoolName) {
+	public boolean addToSavedSchoolsList2(String user, String schoolName) {
 		
 		DBController dbc = new DBController();		
 		String uniToFind = schoolName.toUpperCase(); 
@@ -67,10 +66,8 @@ public class UniversityController {
    		if(e) {
    			dbc.addToSavedSchoolsList1(user, uniToFind);
     	}
+   		return e;
 	}
-	
-	
-	
 	
 	/**
 	 * Removes a University from the specified user's saved school list
@@ -80,9 +77,6 @@ public class UniversityController {
 	public void removeFromList(String user, String university) {
 		database.removeFromSavedSchoolsList(user, university);
 	}
-	
-
-	
 	
 	/**
 	 * compares a University To the rest of the universities and returns map with the score between each
@@ -230,10 +224,7 @@ public class UniversityController {
 		}
 		return scores;
 	}
-	
-	
-	
-	
+
 	/**
 	 * returns list of 5 recommended schools
 	 * @param university that will be used to compare to the rest of the universities
@@ -256,11 +247,7 @@ public class UniversityController {
 			
 		return recommendedSchools;
 	}
-	
-	
-	
-	
-	
+
 	/**
 	 * edits a University by taking in information to be changed and calling updateUniversity() in DBController
 	 */
@@ -328,11 +315,7 @@ public class UniversityController {
     		}
     	scan.close();
     }
-	
-	
-	
-	
-	
+
 	/**
 	 * adds a University by taking information and calling addUniversity() from DBController()
 	 */
@@ -356,9 +339,7 @@ public class UniversityController {
    				System.out.println(schoolName + " exists, choose a different name.");   			
    				break;
     		}
-		
-		
-		
+
 		System.out.println("Enter School State");
 		String schoolState = sc.nextLine();
 		System.out.println("Enter School Location");

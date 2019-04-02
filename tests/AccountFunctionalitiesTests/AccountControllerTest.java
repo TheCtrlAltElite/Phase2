@@ -2,6 +2,9 @@ package AccountFunctionalitiesTests;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
+
 import org.junit.Before;
 import org.junit.Test;
 import AccountFunctionalities.AccountController;
@@ -14,6 +17,7 @@ public class AccountControllerTest {
 	public void setUp() throws Exception {
 		acc = new AccountController();
 	}
+	
 	@Test
 	public void loginTest_correctArguments() throws Exception {
 		acc.login("juser", "JohnMiller5");
@@ -47,4 +51,60 @@ public class AccountControllerTest {
 		String pass = acc.getPassword("juser");
 		assertTrue("The user juser's password is: ", pass.equals("JohnMiller5"));
 	}
+	
+	@Test
+	public void getPasswordFailTest() {
+		String pass = acc.getPassword("Nobody");
+		assertTrue("The user Nobody is not a user", pass.equals("That user does not exist."));
+	}
+	
+	@Test
+	public void viewProfileTest() {
+		List<String> details = acc.viewProfile("juser");
+		assertTrue(details.get(0).equals("John"));
+		assertTrue(details.get(1).equals("User"));
+		assertTrue(details.get(2).equals("juser"));
+		assertTrue(details.get(3).equals("JohnMiller5"));
+		assertTrue(details.get(4).equals("u"));
+		assertTrue(details.get(5).equals("Y"));
+	}
+	
+	@Test
+	public void viewProfileFailTest() {
+		List<String> details = acc.viewProfile("Nobody");
+		assertTrue("The user Nobody is not a user", details.isEmpty());
+	}
+	
+	@Test
+	public void editProfileTest() {
+		////////////////TODO///////////////////
+	}
+	
+	/**
+	 * Old and new passwords must be changed each time.
+	 */
+	@Test
+	public void resetPasswordTest() {
+		boolean resetStatus = acc.resetPassword("SuperPenguinTux1", "TuxIsOurSavior1", "TuxIsOurSavior1");
+		assertTrue(resetStatus);
+		String newPassSet = acc.getPassword("tux69@csbsju.edu");
+		assertTrue("The new password has been set.", newPassSet.equals("TuxIsOurSavior1"));
+	}
+	
+	@Test
+	public void resetPasswordIncorrectOldPasswordTest() {
+		boolean resetStatus = acc.resetPassword("Nobody", "PenguinAtHeart123", "PenguinAtHeart123");
+		assertFalse(resetStatus);
+	}
+	
+	@Test
+	public void resetPasswordReEnterDoesNotMatchTest() {
+		boolean resetStatus = acc.resetPassword("TuxIsOurSavior1", "NewPasswordToBeChanged123", "DifferentPassword123");
+		assertFalse(resetStatus);
+		String newPassSet = acc.getPassword("tux69@csbsju.edu");
+		assertTrue("The password has not changed.", newPassSet.equals("TuxIsOurSavior1"));
+	}
+	
+//	@After
+//	public void
 }
