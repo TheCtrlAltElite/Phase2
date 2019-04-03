@@ -28,7 +28,19 @@ public class UniversityControllerTest {
 		assertFalse("Universtiy is not in the Database", result);
 	}
 	
+	@Test
+	public void removeFromListSuccess() {
+		boolean result = uc.removeFromList("luser","YALE");                     //make sure that school is present in list of user b4 running :)
+		assertTrue("University has been removed from the users list", result);
+	}
+	
+	@Test
+	public void removeFromListInvalidUniversity() {
+		boolean result = uc.removeFromList("luser","NOTASCHOOL");
+		assertFalse("Univseristy does not exist on users list", result);
+	}
 
+		
 	
 	
 

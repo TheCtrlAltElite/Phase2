@@ -26,13 +26,13 @@ public class DBLibraryDriver{
 
      UniversityController unc = new UniversityController();
      
-     //unc.addToSavedSchoolsList2("juser"); 
+     unc.addToSavedSchoolsList2("luser", "YALE"); 
      //unc.removeFromList("juser", "HARVARD"); 
      //unc.compareUniversity(University university);
      
      DBController dbc = new DBController();
      List<University> listUnis = dbc.loadUniversities();
-     unc.recommendedSchools(listUnis.get(58));
+     //unc.recommendedSchools(listUnis.get(58));
      
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
