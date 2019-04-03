@@ -25,20 +25,6 @@ public class AdminFunctionalityController {
 	ufc = new UserFunctionalityController();
 	}
 	
-//	/**
-//	 * Sets the status for an account
-//	 */
-//	public void setStatus() {
-//		//TODO
-//	}
-//	
-//	/**
-//	 *  Sets Type for an account
-//	 */
-//	public void setType() {
-//		//TODO
-//	}
-	
 	/**
 	 * adds a university to a User's saves schools list
 	 */
@@ -81,11 +67,12 @@ public class AdminFunctionalityController {
 	 * Retrieves universities from database
 	 * by calling loadUniversities() in DBController
 	 */
-	public void viewUniversities() {
+	public List<University> viewUniversities() {
 		List<University> listUnis = database.loadUniversities();
 		for(int i = 0; i < listUnis.size(); i++) {
 			System.out.println(listUnis.get(i).getSchoolName());
 		}		
+		return listUnis;
 	}
 	
 	
@@ -110,11 +97,12 @@ public class AdminFunctionalityController {
 	 * by calling loadUsers() on a DBController object and returning it
 	 * @return List of Users
 	 */
-	public void viewUsers() {
+	public List<User> viewUsers() {
 		List<User> listUsers = database.loadUsers();
 		for(int i = 0; i < listUsers.size(); i++) {
 			System.out.println(listUsers.get(i).getFirstName() + " " + listUsers.get(i).getLastName() + " " + listUsers.get(i).getEmail() + " " + listUsers.get(i).getStatus() + " " + listUsers.get(i).getType());
 		}	
+		return listUsers;
 	}
 	
 	/**

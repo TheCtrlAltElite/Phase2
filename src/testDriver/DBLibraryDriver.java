@@ -26,13 +26,13 @@ public class DBLibraryDriver{
 
      UniversityController unc = new UniversityController();
      
-     //unc.addToSavedSchoolsList2("juser"); 
+     unc.addToSavedSchoolsList2("luser", "YALE"); 
      //unc.removeFromList("juser", "HARVARD"); 
      //unc.compareUniversity(University university);
      
      DBController dbc = new DBController();
      List<University> listUnis = dbc.loadUniversities();
-     unc.recommendedSchools(listUnis.get(58));
+     //unc.recommendedSchools(listUnis.get(58));
      
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
@@ -48,7 +48,7 @@ public class DBLibraryDriver{
      //acc.viewProfile("juser");
      //acc.editProfile("juser"); 									//does not work
      //acc.resetPassword("Maren", "Maren300000", "Maren300000");
-     //acc.recoverPassword(String email, String firstName, String lastName);
+     //acc.recoverPassword(String email, String firstName, String lastName);		
      //acc.addProfilePicture(String jpeg);							//not ready
      //acc.passwordRequirements(String password);
  
