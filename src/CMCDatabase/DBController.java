@@ -215,8 +215,8 @@ public class DBController {
 	 * @param username the user whose saved schools will be changed
 	 * @param school the name of the schools to remove from the user's saved schools list
 	 */
-	public void removeFromSavedSchoolsList(String username, String school) {
-		library.user_removeSchool(username, school);
+	public int removeFromSavedSchoolsList(String username, String school) {
+		return library.user_removeSchool(username, school);
 	}
 	
 	public Map<String, String> getSavedSchoolsList(String username) {
