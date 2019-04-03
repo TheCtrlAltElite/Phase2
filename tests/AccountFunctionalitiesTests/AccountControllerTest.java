@@ -34,6 +34,16 @@ public class AccountControllerTest {
 		acc.login("juser", "JhonMiller5");
 	}
 	
+	@Test(expected=Exception.class)
+	public void loginTest_inactiveAccount() throws Exception {
+		acc.login("luser", "ImadRahal4");
+	}
+	
+	@Test
+	public void logOutTest() {
+		acc.logOut();
+	}
+	
 	@Test
 	public void isUserRealTest() {
 		boolean result = acc.isUserReal("juser");
@@ -77,7 +87,7 @@ public class AccountControllerTest {
 	
 	@Test
 	public void editProfileTest() {
-		////////////////TODO///////////////////
+		
 	}
 	
 	/**
@@ -103,6 +113,20 @@ public class AccountControllerTest {
 		assertFalse(resetStatus);
 		String newPassSet = acc.getPassword("tux69@csbsju.edu");
 		assertTrue("The password has not changed.", newPassSet.equals("TuxIsOurSavior1"));
+	}
+	
+	@Test
+	public void resetPasswordTest_doesNotMeetRequirements() {
+		boolean resetStatus = acc.resetPassword("TuxIsOurSavior1", "ThIsPaSsWoRdWoNtWoRk", "ThIsPaSsWoRdWoNtWoRk");
+		assertFalse(resetStatus);
+		String newPassSet = acc.getPassword("tux69@csbsju.edu");
+		assertTrue("The password has not changed.", newPassSet.equals("TuxIsOurSavior1"));
+	}
+	
+	@Test
+	public void passwordRequirementsTest() {
+		boolean requirements = acc.passwordRequirements("ThisIsAValidPassword1");
+		assertTrue(requirements);
 	}
 	
 //	@After

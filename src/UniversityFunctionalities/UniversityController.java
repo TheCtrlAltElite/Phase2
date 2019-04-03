@@ -74,8 +74,16 @@ public class UniversityController {
 	 * @param user that school will be removed from
 	 * @param university that will be removed
 	 */
-	public void removeFromList(String user, String university) {
-		database.removeFromSavedSchoolsList(user, university);
+	public boolean removeFromList(String user, String university) {
+		boolean e = false;
+		int numSchool = database.removeFromSavedSchoolsList(user, university);
+		if (numSchool == -1) {
+			return e;
+		}
+		else {
+			e = true;
+		}
+		return e;
 	}
 	
 	/**

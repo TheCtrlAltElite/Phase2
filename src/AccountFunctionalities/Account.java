@@ -35,15 +35,23 @@ public class Account {
 	 */
 	public Account(String email, String firstName, String lastName, String password, char type, char status) {
 		
-		//controller = new AccountController();
-		
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.password = password;
-		this.status = status;
-		this.type = type;
-		this.loginStatus = false;
+		if(type == 'a' || type == 'u') {
+			if(status == 'y' || status == 'n') {
+				this.email = email;
+				this.firstName = firstName;
+				this.lastName = lastName;
+				this.password = password;
+				this.status = status;
+				this.type = type;
+				this.loginStatus = false;
+			}
+			else {
+				throw new IllegalArgumentException("Type is invalid.");
+			}
+		}
+		else {
+			throw new IllegalArgumentException("Status is invalid.");
+		}
 	}
 	
 	/**
