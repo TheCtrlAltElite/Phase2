@@ -25,10 +25,6 @@ public class DBLibraryDriver{
     try{
 
      UniversityController unc = new UniversityController();
-     
-     //unc.addToSavedSchoolsList2("juser", "YALE"); 
-     //unc.removeFromList("juser", "YALE"); 
-
      //unc.addToSavedSchoolsList2("luser", "YALE"); 
      //unc.removeFromList("luser", "AUBURN");                 	<<<<<<<<<<<<<<< //PROBABLY GOING TO DELETE
      //unc.compareUniversity(realUni);
@@ -59,6 +55,7 @@ public class DBLibraryDriver{
      
      AdminInteraction aic = new AdminInteraction();
      
+
      //aic.addToSavedSchoolsList4("luser", "yanktown");
      //aic.addUniversity();   //this works 100%
      

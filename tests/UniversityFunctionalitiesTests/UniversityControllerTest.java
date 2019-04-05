@@ -199,6 +199,7 @@ public class UniversityControllerTest {
 		List<University> listUnis = dbc.loadUniversities();
 		List<University> recUnis = uc.recommendedSchools(listUnis.get(58));
 		assertTrue(recUnis.get(4).getSchoolName().equals("UNIVERSITY OF PORTLAND"));	
+
 	}
 	
 	@Test

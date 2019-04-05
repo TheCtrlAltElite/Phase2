@@ -30,7 +30,11 @@ public class UserFunctionalityController {
 	 */
 //	private User user;
 //	private University university;
+<<<<<<< HEAD
 	private DBController dbc;
+=======
+    private DBController database;
+>>>>>>> be0c4b0eab7267ce8a4e93a6e02cf1fb9748acb3
 	private UniversityController unc;
 //	private String firstName;
 //	private String lastName;
@@ -41,7 +45,11 @@ public class UserFunctionalityController {
 //	private String password;
 	
 	public UserFunctionalityController() {
+<<<<<<< HEAD
 		dbc = new DBController();
+=======
+		database = new DBController();
+>>>>>>> be0c4b0eab7267ce8a4e93a6e02cf1fb9748acb3
 		unc = new UniversityController();
 		// TODO Auto-generated constructor stub
 	}
@@ -184,14 +192,15 @@ public class UserFunctionalityController {
 	 */	
 	public void addToSavedSchoolsList3(String userName, String school) {	
 		unc.addToSavedSchoolsList2(userName, school);
+
 	}
 
 	/**
 	 * Presents the user with the information of a school
 	 * @param String schoolName - name of the school
 	 */	
-	public void viewSchool(String schoolName) {
-		unc.getDetailsUni(schoolName);
+	public List<String> viewSchool(String schoolName) {
+		return unc.getDetailsUni(schoolName);
 	}
 	
 	/**
@@ -275,14 +284,15 @@ public class UserFunctionalityController {
 	/**
 	 * Fetches the user's savedSchoolsList
 	 */	
-	public Map<String, String> getSavedSchoolsList(String username){
-		DBController database = new DBController();
-
+	public ArrayList<String> getSavedSchoolsList(String username){
+		
 		Map<String, String> savedSchoolsList = database.getSavedSchoolsList(username);	
-//		for (Map.Entry entry : savedSchoolsList.entrySet())
-//		{
-//		    System.out.println(entry.getKey()); // + " " + entry.getValue());
-//		}
-		return savedSchoolsList;
+		Collection<String> savedSchools = savedSchoolsList.keySet();
+		ArrayList<String> saved = new ArrayList<String>();
+		saved.addAll(savedSchools);
+		for(int i = 0; i < saved.size(); i++) {
+			System.out.println(saved.get(i));
+		}
+		return saved;
 	}
 }

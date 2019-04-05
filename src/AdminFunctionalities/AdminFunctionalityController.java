@@ -36,14 +36,14 @@ public class AdminFunctionalityController {
     	
     	int i = 0;  		
     	boolean e = false;
-    	
+    	outerloop:
     	while(i<dbc.loadUsers().size()) {
     		String name = dbc.loadUsers().get(i).getEmail().toUpperCase();
    			
     		if (name.equals(userToFind.toUpperCase())){
    				e= true;
    				System.out.println("YES, " + userToFind + " exists.");   			
-   				break;
+   				break outerloop;
     		}
     			
     		if(i == (dbc.loadUsers().size())-1) {
