@@ -80,8 +80,13 @@ public class AdminFunctionalityController {
 	 * Adds a new university to the database.
 	 * by calling addUniversityInfo() in UniversityController 
 	 */
-	public void addUniversity() {
-		uniController.addUniversityInfo();
+	public void addUniversity(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents,
+			int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants,
+			int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
+		
+		uniController.addUniversityInfo(schoolName, schoolState, schoolLocation, schoolControl, numberStudents,
+				percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants,
+				percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
 	}
 	
 	/**

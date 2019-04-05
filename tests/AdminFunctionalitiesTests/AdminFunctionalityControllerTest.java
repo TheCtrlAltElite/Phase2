@@ -1,8 +1,10 @@
 package AdminFunctionalitiesTests;
 
 import static org.junit.Assert.*;
+
 import java.util.List;
 import org.junit.Before;
+
 import org.junit.Test;
 import AdminFunctionalities.AdminFunctionalityController;
 import UniversityFunctionalities.University;
@@ -20,7 +22,7 @@ public class AdminFunctionalityControllerTest {
 	@Test
 	public void viewUniversitiesTest() {
 		List<University> listUnis = adc.viewUniversities();
-		assertTrue(listUnis.size() == 180);
+		assertTrue(listUnis.size() == 181);
 	}
 	
 	@Test

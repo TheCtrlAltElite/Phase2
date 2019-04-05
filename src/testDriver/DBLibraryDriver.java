@@ -26,18 +26,18 @@ public class DBLibraryDriver{
 
      UniversityController unc = new UniversityController();
      
-     unc.addToSavedSchoolsList2("luser", "YALE"); 
+     //unc.addToSavedSchoolsList2("luser", "YALE"); 
      //unc.removeFromList("juser", "HARVARD"); 
      //unc.compareUniversity(University university);
      
      DBController dbc = new DBController();
-     List<University> listUnis = dbc.loadUniversities();
+     //List<University> listUnis = dbc.loadUniversities();
      //unc.recommendedSchools(listUnis.get(58));
      
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
      //unc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
-     dbc.addUniversity("ZZZZZZ", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
+     //dbc.addUniversity("ZZZZZZ", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
      //unc.getDetailsUni(); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
      
      AccountController acc = new AccountController();
@@ -45,7 +45,7 @@ public class DBLibraryDriver{
      //acc.login("luser", "ImadRahal4");
      //acc.logOut();
      //acc.isUserReal("jmuehls");
-     //acc.getPassword("jmuehls");
+     acc.getPassword("juser");
      //acc.viewProfile("juser");
      //acc.editProfile("juser"); 									//does not work
      //acc.resetPassword("Maren", "Maren300000", "Maren300000");
@@ -56,8 +56,8 @@ public class DBLibraryDriver{
      
      AdminInteraction aic = new AdminInteraction();
      
-     //aic.addToSavedSchoolsList4("luser", "baruch");
-     
+     aic.addToSavedSchoolsList4("luser", "yanktown");
+     //aic.addUniversity();   //this works 100%
      
      AdminFunctionalityController afc = new AdminFunctionalityController();
      //afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name

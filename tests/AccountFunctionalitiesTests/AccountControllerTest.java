@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import AccountFunctionalities.AccountController;
@@ -87,7 +87,10 @@ public class AccountControllerTest {
 	
 	@Test
 	public void editProfileTest() {
-		
+		boolean result = acc.editProfile("Rigby", "tux", "tux420@csbsju.edu", "PenguinPower420", 'u', 'Y');
+		assertTrue(result);
+		List<String> details = acc.viewProfile("tux420@csbsju.edu");
+		assertTrue("The first name is now Rigby for username tux420@csbsju.edu", details.get(0).equals("Rigby"));
 	}
 	
 	/**
@@ -95,10 +98,10 @@ public class AccountControllerTest {
 	 */
 	@Test
 	public void resetPasswordTest() {
-		boolean resetStatus = acc.resetPassword("SuperPenguinTux1", "TuxIsOurSavior1", "TuxIsOurSavior1");
+		boolean resetStatus = acc.resetPassword("TuxIsOurSavior1", "SuperPenguinTux1", "SuperPenguinTux1");
 		assertTrue(resetStatus);
 		String newPassSet = acc.getPassword("tux69@csbsju.edu");
-		assertTrue("The new password has been set.", newPassSet.equals("TuxIsOurSavior1"));
+		assertTrue("The new password has been set.", newPassSet.equals("SuperPenguinTux1"));
 	}
 	
 	@Test
@@ -128,7 +131,4 @@ public class AccountControllerTest {
 		boolean requirements = acc.passwordRequirements("ThisIsAValidPassword1");
 		assertTrue(requirements);
 	}
-	
-//	@After
-//	public void
 }
