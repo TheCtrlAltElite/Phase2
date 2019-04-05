@@ -172,9 +172,8 @@ public class DBController {
 	 * 
 	 * @param search
 	 */
-	public void updateUniversity(String school, String state, String location, java.lang.String control, int numberOfStudents, double percentFemales, double SATVerbal, double SATMath, double expenses, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
-		
-		library.university_editUniversity(school, state, location,control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
+	public int updateUniversity(String school, String state, String location, java.lang.String control, int numberOfStudents, double percentFemales, double SATVerbal, double SATMath, double expenses, double percentFinancialAid, int numberOfApplicants, double percentAdmitted, double percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale) {
+		return library.university_editUniversity(school, state, location,control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
 	}
 	
 	/**
@@ -182,14 +181,13 @@ public class DBController {
 	 * 
 	 * @param newUni
 	 */
-	public void addUniversity(University newUni) {
-		library.university_addUniversity(newUni.getSchoolName(), newUni.getSchoolState(), 
-											  newUni.getSchoolLocation(), newUni.getSchoolControl(), 
-											  newUni.getNumberStudents(), newUni.getPercentFemale(), 
-											  newUni.getVerbalSAT(), newUni.getMathSAT(), newUni.getSchoolExpenses(), 
-											  newUni.getPercentFinancialAid(), newUni.getNumApplicants(), 
-											  newUni.getPercentAdmitted(), newUni.getPercentEnrolled(), 
-											  newUni.getAcademicScale(), newUni.getSocialScale(), newUni.getQualityScale());
+	public void addUniversity(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents,
+			int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants,
+			int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
+		
+		library.university_addUniversity(schoolName, schoolState, schoolLocation, schoolControl, numberStudents,
+				percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants,
+				percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
 	}
 	
 	
@@ -215,8 +213,8 @@ public class DBController {
 	 * @param username the user whose saved schools will be changed
 	 * @param school the name of the schools to remove from the user's saved schools list
 	 */
-	public void removeFromSavedSchoolsList(String username, String school) {
-		library.user_removeSchool(username, school);
+	public int removeFromSavedSchoolsList(String username, String school) {
+		return library.user_removeSchool(username, school);
 	}
 	
 	public Map<String, String> getSavedSchoolsList(String username) {

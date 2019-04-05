@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+
 import org.junit.Before;
 import org.junit.Test;
 import AccountFunctionalities.AccountController;
@@ -16,6 +17,7 @@ public class AccountControllerTest {
 	public void setUp() throws Exception {
 		acc = new AccountController();
 	}
+	
 	@Test
 	public void loginTest_correctArguments() throws Exception {
 		acc.login("juser", "JohnMiller5");
@@ -30,6 +32,16 @@ public class AccountControllerTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void loginTest_invalidPassword() throws Exception{
 		acc.login("juser", "JhonMiller5");
+	}
+	
+	@Test(expected=Exception.class)
+	public void loginTest_inactiveAccount() throws Exception {
+		acc.login("luser", "ImadRahal4");
+	}
+	
+	@Test
+	public void logOutTest() {
+		acc.logOut();
 	}
 	
 	@Test
@@ -75,7 +87,7 @@ public class AccountControllerTest {
 	
 	@Test
 	public void editProfileTest() {
-		////////////////TODO///////////////////
+		
 	}
 	
 	/**
@@ -101,6 +113,20 @@ public class AccountControllerTest {
 		assertFalse(resetStatus);
 		String newPassSet = acc.getPassword("tux69@csbsju.edu");
 		assertTrue("The password has not changed.", newPassSet.equals("TuxIsOurSavior1"));
+	}
+	
+	@Test
+	public void resetPasswordTest_doesNotMeetRequirements() {
+		boolean resetStatus = acc.resetPassword("TuxIsOurSavior1", "ThIsPaSsWoRdWoNtWoRk", "ThIsPaSsWoRdWoNtWoRk");
+		assertFalse(resetStatus);
+		String newPassSet = acc.getPassword("tux69@csbsju.edu");
+		assertTrue("The password has not changed.", newPassSet.equals("TuxIsOurSavior1"));
+	}
+	
+	@Test
+	public void passwordRequirementsTest() {
+		boolean requirements = acc.passwordRequirements("ThisIsAValidPassword1");
+		assertTrue(requirements);
 	}
 	
 //	@After
