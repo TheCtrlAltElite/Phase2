@@ -26,18 +26,18 @@ public class DBLibraryDriver{
 
      UniversityController unc = new UniversityController();
      
-     unc.addToSavedSchoolsList2("luser", "YALE"); 
+     //unc.addToSavedSchoolsList2("luser", "YALE"); 
      //unc.removeFromList("juser", "HARVARD"); 
      //unc.compareUniversity(University university);
      
      DBController dbc = new DBController();
-     List<University> listUnis = dbc.loadUniversities();
+     //List<University> listUnis = dbc.loadUniversities();
      //unc.recommendedSchools(listUnis.get(58));
      
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
      //unc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
-     dbc.addUniversity("ZZZZZZ", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
+     //dbc.addUniversity("ZZZZZZ", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
      //unc.getDetailsUni(); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
      
      AccountController acc = new AccountController();

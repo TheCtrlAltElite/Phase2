@@ -66,7 +66,7 @@ public class UniversityControllerTest {
 	@Test
 	public void removeFromListInvalidUniversity() {
 		boolean result = uc.removeFromList("luser","NOTASCHOOL");
-		assertFalse("Univseristy does not exist on users list", result);
+		assertFalse("University does not exist on users list", result);
 	}
 
 		
