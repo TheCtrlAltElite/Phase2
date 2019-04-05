@@ -1,6 +1,9 @@
 package UniversityFunctionalities;
 
 import java.util.List;
+import java.util.regex.*;
+
+import CMCDatabase.DBController;
 
 /**
  * University Class
@@ -13,6 +16,8 @@ public class University {
 	/**
 	 * Instance Variables for the University class
 	 */
+	private DBController dbc;
+	
 	private String schoolName;
 	private String schoolState;
 	private String schoolLocation;
@@ -29,7 +34,7 @@ public class University {
 	private int academicScale;
 	private int socialScale;
 	private int qualityScale;
-	private List<String> emphasis;																																				
+	private List<String> emphasis;			
 	
 	/**
 	 * University Constructor that creates a University Object
@@ -50,23 +55,29 @@ public class University {
 	 * @param qualityScale  the school's score in quality
 	 */
 	public University(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
-		this.schoolName = schoolName;
-		this.schoolState = schoolState;
-		this.schoolLocation = schoolLocation;
-		this.schoolControl = schoolControl;
-		this.numberStudents = numberStudents;
-		this.percentFemale = percentFemale;
-		this.verbalSAT = verbalSAT;
-		this.mathSAT = mathSAT;
-		this.schoolExpenses = schoolExpenses;
-		this.percentFinancialAid = percentFinancialAid;
-		this.numApplicants = numApplicants;
-		this.percentAdmitted = percentAdmitted;
-		this.percentEnrolled = percentEnrolled;
-		this.academicScale = academicScale;
-		this.socialScale = socialScale;
-		this.qualityScale = qualityScale;
-		this.emphasis = null;
+		dbc = new DBController();
+		if(schoolName == null || schoolName.equals("") || dbc.containsNumber(schoolName)) {
+			throw new IllegalArgumentException("School name must contain a valid name (Letters only, no numbers).");
+		}
+		else {	
+			this.schoolName = schoolName;
+			this.schoolState = schoolState;
+			this.schoolLocation = schoolLocation;
+			this.schoolControl = schoolControl;
+			this.numberStudents = numberStudents;
+			this.percentFemale = percentFemale;
+			this.verbalSAT = verbalSAT;
+			this.mathSAT = mathSAT;
+			this.schoolExpenses = schoolExpenses;
+			this.percentFinancialAid = percentFinancialAid;
+			this.numApplicants = numApplicants;
+			this.percentAdmitted = percentAdmitted;
+			this.percentEnrolled = percentEnrolled;
+			this.academicScale = academicScale;
+			this.socialScale = socialScale;
+			this.qualityScale = qualityScale;
+			this.emphasis = null;
+		}
 	}
 
 

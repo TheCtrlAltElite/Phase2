@@ -10,13 +10,13 @@ import AccountFunctionalities.Account;
 public class AccountTest {
 	
 	private Account testAccount;
-//	private Account testAdminAccount;
+	private Account testAdminAccount;
 
 	
 	@Before
 	public void setUp() throws Exception {
 		testAccount = new Account("rookid9492@hotmail.com", "Randall", "Clintsman", "TestPassword72", 'u', 'y');
-//		testAdminAccount = new Account ("jiverson002@csbsju.edu", "Jeremy", "Iverson", "NikeAirMax99", 'a', 'n');
+		testAdminAccount = new Account ("jiverson002@csbsju.edu", "Jeremy", "Iverson", "NikeAirMax99", 'a', 'n');
 	}
 	
 	@Test
@@ -46,12 +46,12 @@ public class AccountTest {
 
 	@Test(expected=IllegalArgumentException.class)
 	public void AccountConstructerStatusFailTest() {
-		Account account = new Account("irahal@csbsju.edu","Imad", "Rahal", "PenguinPower720",'a', 'w');
+		new Account("irahal@csbsju.edu","Imad", "Rahal", "PenguinPower720",'a', 'w');
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void AccountConstructerTypeFailTest() {
-		Account account = new Account("irahal@csbsju.edu","Imad", "Rahal", "PenguinPower720",'o', 'y');
+		new Account("irahal@csbsju.edu","Imad", "Rahal", "PenguinPower720",'o', 'y');
 	}
 	
 	@Test
@@ -66,7 +66,6 @@ public class AccountTest {
 		assertFalse("Account set to False", testAccount.getLoginStatus());
 	}
 	
-	//Unsure how to test this \/\/\/\/\/\/
 	
 	@Test
 	public void getLoginStatusTest() {
@@ -107,21 +106,27 @@ public class AccountTest {
 	}
 	
 	@Test
-	public void getTypeTest() {
+	public void getTypeUserTest() {
 		char type = testAccount.getType();
 		assertTrue("The Type of Account is user", type == 'u');
 	}
 	
-//	@Test
-//	public void getTypeAdminTest() {
-//		char type = testAdminAccount.getType();
-//		assertTrue("The Type of Account is Admin", type == 'a');
-//	}
+	@Test
+	public void getTypeAdminTest() {
+		char type = testAdminAccount.getType();
+		assertTrue("The Type of Account is Admin", type == 'a');
+	}
 	
 	@Test
-	public void getStatusTest() {
+	public void getStatusActiveTest() {
 		char status = testAccount.getStatus();
 		assertTrue("The Status of Account is active", status == 'y');
+	}
+	
+	@Test
+	public void getStatusDeactivatedTest() {
+		char status = testAdminAccount.getStatus();
+		assertTrue("The Status of Account is deactivated", status == 'n');
 	}
 	
 	@Test
@@ -143,15 +148,27 @@ public class AccountTest {
 	}
 	
 	@Test
-	public void setTypeTest() {
+	public void setTypeAdminTest() {
 		testAccount.setType('a');
 		assertTrue("The Account has been set to type Admin", testAccount.getType() == 'a');
 	}
 	
 	@Test
-	public void setStatusTest() {
+	public void setTypeUserTest() {
+		testAdminAccount.setType('u');
+		assertTrue("The Account has been set to type Admin", testAdminAccount.getType() == 'u');
+	}
+	
+	@Test
+	public void setStatusDeactivatedTest() {
 		testAccount.setStatus('n');
 		assertTrue("The Account has been deactivated", testAccount.getStatus() == 'n');
+	}
+	
+	@Test
+	public void setStatusActiveTest() {
+		testAdminAccount.setStatus('y');
+		assertTrue("The Account has been deactivated", testAccount.getStatus() == 'y');
 	}
 	
 	@Test
