@@ -1,9 +1,7 @@
 package UniversityFunctionalities;
 
 import java.util.List;
-import java.util.regex.*;
 
-import CMCDatabase.DBController;
 
 /**
  * University Class
@@ -16,8 +14,6 @@ public class University {
 	/**
 	 * Instance Variables for the University class
 	 */
-	private DBController dbc;
-	
 	private String schoolName;
 	private String schoolState;
 	private String schoolLocation;
@@ -55,8 +51,7 @@ public class University {
 	 * @param qualityScale  the school's score in quality
 	 */
 	public University(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
-		dbc = new DBController();
-		if(schoolName == null || schoolName.equals("") || dbc.containsNumber(schoolName)) {
+		if(schoolName == null || schoolName.equals("") || this.containsNumber(schoolName)) {
 			throw new IllegalArgumentException("School name must contain a valid name (Letters only, no numbers).");
 		}
 		else {	
@@ -384,5 +379,14 @@ public class University {
 	 */
 	public void setEmphasis(List<String> emphasis) {
 		this.emphasis = emphasis;
+	}
+	
+	public boolean containsNumber(String schoolName) {
+		for(int i = 0; i < schoolName.length(); i++) {
+			if(Character.isDigit(schoolName.charAt(i))){
+				return true;
+			}
+		}
+		return false;
 	}
 }
