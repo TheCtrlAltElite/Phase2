@@ -108,8 +108,17 @@ public class AccountController {
 	 * Edit/Updates the profile in the selected fields.
 	 * @param username - the profile that will be edited
 	 */
-	public void editProfile(String username) {
-		
+	public boolean editProfile(String firstName, String lastName, String email, String password, char type, char status) {
+		boolean e = false;
+		Account acc = new Account(firstName, lastName, email, password, type, status);
+		int record = this.database.editUser(acc);
+		if(record == -1) {
+			return e;
+		}
+		else {
+			e = true;
+		}
+		return e;
 	}
 	
 	/**

@@ -132,7 +132,7 @@ public class AccountInteraction {
 					account.setStatus(input.charAt(0));					//account.getStatus() = input.charAt(0);
 			}
 			else if(input.equals("Stop")){
-				this.accController.editProfile(username);
+				this.accController.editProfile(account.getFirstName(), account.getLastName(), account.getEmail(), account.getPassword(), account.getType(), account.getStatus());
 				break;
 			}
 		}
