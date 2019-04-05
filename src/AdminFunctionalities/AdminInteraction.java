@@ -46,13 +46,15 @@ public class AdminInteraction {
 	 * Adds a new university to the database by calling addUniversity() in
 	 * AdminFunctionalityController
 	 */
-	public void addUniversity() {
-		adminFController.addUniversity();
+	public boolean addUniversity() {
+		//adminFController.addUniversity();
 		DBController dbc = new DBController();
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter School Name");
+		System.out.println("Enter School Name or 'q' to quit");
 		String schoolName = sc.nextLine();
+		
+		boolean success = false;
 
 		int i = 0;
 		// searches through list of universities retrieved through loadUniversities()
@@ -62,11 +64,22 @@ public class AdminInteraction {
 			String name = dbc.loadUniversities().get(i).getSchoolName();
 
 			// confirms that the uniToFind exists
-			if (name.toUpperCase().equals(schoolName)) {
+			if (name.toUpperCase().equals(schoolName.toUpperCase())) {
 				// e= true;
 				System.out.println(schoolName + " exists, choose a different name.");
+				sc.close();
+				
+				addUniversity();
+				
+				//break;
+			}
+			
+			else if(schoolName.equals("q")) {
+				sc.close();
 				break;
 			}
+			
+			else {
 
 			System.out.println("Enter School State");
 			String schoolState = sc.nextLine();
@@ -99,12 +112,20 @@ public class AdminInteraction {
 			System.out.println("Enter Quality Scale Rating (1-5)");
 			int qualityScale = sc.nextInt();
 			// List<String> emphasis = sc.nextLine();
+			sc.close();
 			
-			uc.addUniversityInfo(schoolName, schoolState, schoolLocation, schoolControl, numberStudents,
+			adminFController.addUniversity(schoolName, schoolState, schoolLocation, schoolControl, numberStudents,
 					percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants,
 					percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
-			sc.close();
+			
+			
+			success = true;
+			break;
+			
+			}
 		}
+		
+		return success;
 	}
 
 	/**

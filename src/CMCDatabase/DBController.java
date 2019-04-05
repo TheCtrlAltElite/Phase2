@@ -106,8 +106,8 @@ public class DBController {
 	 * 
 	 * @param username the user of which to get the details for
 	 */
-	public void editUser(Account account) {
-		this.library.user_editUser(account.getEmail(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getType(), account.getStatus());
+	public int editUser(Account account) {
+		return this.library.user_editUser(account.getEmail(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getType(), account.getStatus());
 	}
 	
 	
