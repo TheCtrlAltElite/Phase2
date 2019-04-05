@@ -15,6 +15,11 @@ public class UniversityTest {
 	public void setUp() throws Exception {
 		uni = new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400, 15736, 95, 4000, 95, 90, 1, 2, 2);
 	}
+	
+//	@Test
+//	public void UniversityConstructerTest() {
+//		University university = new University("YALE", "CONNECTICUT", "SMALL-CITY", )
+//	}
 
 	@Test(expected=IllegalArgumentException.class)
 	public void UniversityConstructerNullNametest() {
