@@ -45,7 +45,7 @@ public class DBLibraryDriver{
      //acc.login("luser", "ImadRahal4");
      //acc.logOut();
      //acc.isUserReal("jmuehls");
-     acc.getPassword("juser");
+     //acc.getPassword("juser");
      //acc.viewProfile("juser");
      //acc.editProfile("juser"); 									//does not work
      //acc.resetPassword("Maren", "Maren300000", "Maren300000");
