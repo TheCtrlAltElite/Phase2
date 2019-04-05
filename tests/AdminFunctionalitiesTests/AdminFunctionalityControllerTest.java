@@ -22,7 +22,7 @@ public class AdminFunctionalityControllerTest {
 	@Test
 	public void viewUniversitiesTest() {
 		List<University> listUnis = adc.viewUniversities();
-		assertTrue(listUnis.size() == 180);
+		assertTrue(listUnis.size() == 181);
 	}
 	
 	@Test

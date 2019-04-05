@@ -25,9 +25,9 @@ public class DBLibraryDriver{
     try{
 
      UniversityController unc = new UniversityController();
-     
      //unc.addToSavedSchoolsList2("luser", "YALE"); 
      //unc.removeFromList("juser", "HARVARD"); 
+
      //unc.compareUniversity(University university);
      
      DBController dbc = new DBController();
@@ -45,7 +45,7 @@ public class DBLibraryDriver{
      //acc.login("luser", "ImadRahal4");
      //acc.logOut();
      //acc.isUserReal("jmuehls");
-     //acc.getPassword("jmuehls");
+     //acc.getPassword("juser");
      //acc.viewProfile("juser");
      //acc.editProfile("juser"); 									//does not work
      //acc.resetPassword("Maren", "Maren300000", "Maren300000");
@@ -56,8 +56,9 @@ public class DBLibraryDriver{
      
      AdminInteraction aic = new AdminInteraction();
      
-     //aic.addToSavedSchoolsList4("luser", "baruch");
-     
+
+     //aic.addToSavedSchoolsList4("luser", "yanktown");
+     //aic.addUniversity();   //this works 100%
      
      AdminFunctionalityController afc = new AdminFunctionalityController();
      //afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name

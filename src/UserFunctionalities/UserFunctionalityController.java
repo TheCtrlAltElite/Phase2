@@ -199,7 +199,7 @@ public class UserFunctionalityController {
 	 * Removes a school from the user's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */		
-	public void removeSavedSchool(String username) {
+	public boolean removeSavedSchool(String username) {
 		DBController dbc = new DBController();
 		Scanner sc = new Scanner(System.in);
     	System.out.println("Enter school to be removed from " + username + "'s list: \n");
@@ -234,6 +234,7 @@ public class UserFunctionalityController {
    			//System.out.println("reached 2nd if");
    			dbc.removeFromSavedSchoolsList(username, uniToFind);
     	}
+   		return e;
 	}
 	   			
 	   			

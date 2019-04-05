@@ -2,6 +2,7 @@ package UniversityFunctionalities;
 
 import java.util.List;
 
+
 /**
  * University Class
  * 
@@ -29,7 +30,7 @@ public class University {
 	private int academicScale;
 	private int socialScale;
 	private int qualityScale;
-	private List<String> emphasis;																																				
+	private List<String> emphasis;			
 	
 	/**
 	 * University Constructor that creates a University Object
@@ -50,23 +51,28 @@ public class University {
 	 * @param qualityScale  the school's score in quality
 	 */
 	public University(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
-		this.schoolName = schoolName;
-		this.schoolState = schoolState;
-		this.schoolLocation = schoolLocation;
-		this.schoolControl = schoolControl;
-		this.numberStudents = numberStudents;
-		this.percentFemale = percentFemale;
-		this.verbalSAT = verbalSAT;
-		this.mathSAT = mathSAT;
-		this.schoolExpenses = schoolExpenses;
-		this.percentFinancialAid = percentFinancialAid;
-		this.numApplicants = numApplicants;
-		this.percentAdmitted = percentAdmitted;
-		this.percentEnrolled = percentEnrolled;
-		this.academicScale = academicScale;
-		this.socialScale = socialScale;
-		this.qualityScale = qualityScale;
-		this.emphasis = null;
+		if(schoolName == null || schoolName.equals("") || this.containsNumber(schoolName)) {
+			throw new IllegalArgumentException("School name must contain a valid name (Letters only, no numbers).");
+		}
+		else {	
+			this.schoolName = schoolName;
+			this.schoolState = schoolState;
+			this.schoolLocation = schoolLocation;
+			this.schoolControl = schoolControl;
+			this.numberStudents = numberStudents;
+			this.percentFemale = percentFemale;
+			this.verbalSAT = verbalSAT;
+			this.mathSAT = mathSAT;
+			this.schoolExpenses = schoolExpenses;
+			this.percentFinancialAid = percentFinancialAid;
+			this.numApplicants = numApplicants;
+			this.percentAdmitted = percentAdmitted;
+			this.percentEnrolled = percentEnrolled;
+			this.academicScale = academicScale;
+			this.socialScale = socialScale;
+			this.qualityScale = qualityScale;
+			this.emphasis = null;
+		}
 	}
 
 
@@ -373,5 +379,14 @@ public class University {
 	 */
 	public void setEmphasis(List<String> emphasis) {
 		this.emphasis = emphasis;
+	}
+	
+	public boolean containsNumber(String schoolName) {
+		for(int i = 0; i < schoolName.length(); i++) {
+			if(Character.isDigit(schoolName.charAt(i))){
+				return true;
+			}
+		}
+		return false;
 	}
 }

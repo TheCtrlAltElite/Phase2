@@ -106,8 +106,8 @@ public class DBController {
 	 * 
 	 * @param username the user of which to get the details for
 	 */
-	public void editUser(Account account) {
-		this.library.user_editUser(account.getEmail(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getType(), account.getStatus());
+	public int editUser(Account account) {
+		return this.library.user_editUser(account.getEmail(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getType(), account.getStatus());
 	}
 	
 	
@@ -162,11 +162,7 @@ public class DBController {
 		//System.out.println(listUnis.get(54).getSchoolName());   //will return university at index 54 which is Harvard
 		return listUnis;
 	}
-	
-	
-	
-	
-	
+
 	/**
 	 * Updates the information for a university in the database.
 	 * 
@@ -189,11 +185,7 @@ public class DBController {
 				percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants,
 				percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
 	}
-	
-	
-	
-	
-	
+
 	/**
 	 * Adds a university to a saved schools list
 	 * 

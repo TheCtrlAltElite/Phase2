@@ -56,7 +56,10 @@ public class UserInteraction {
 	 * Presents the user with the list of saved schools
 	 */		
 	public void viewSavedSchools() {
-		userController.getSavedSchoolsList();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter a user to view thier saved schools list:");
+		String user = sc.nextLine();
+		userController.getSavedSchoolsList(user);
 	}
 	
 	/**
