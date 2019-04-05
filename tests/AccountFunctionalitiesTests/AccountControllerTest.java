@@ -115,7 +115,7 @@ public class AccountControllerTest {
 		boolean resetStatus = acc.resetPassword("TuxIsOurSavior1", "NewPasswordToBeChanged123", "DifferentPassword123");
 		assertFalse(resetStatus);
 		String newPassSet = acc.getPassword("tux69@csbsju.edu");
-		assertTrue("The password has not changed.", newPassSet.equals("TuxIsOurSavior1"));
+		assertTrue("The password has not changed.", newPassSet.equals("SuperPenguinTux1"));
 	}
 	
 	@Test
@@ -123,12 +123,17 @@ public class AccountControllerTest {
 		boolean resetStatus = acc.resetPassword("TuxIsOurSavior1", "ThIsPaSsWoRdWoNtWoRk", "ThIsPaSsWoRdWoNtWoRk");
 		assertFalse(resetStatus);
 		String newPassSet = acc.getPassword("tux69@csbsju.edu");
-		assertTrue("The password has not changed.", newPassSet.equals("TuxIsOurSavior1"));
+		assertTrue("The password has not changed.", newPassSet.equals("SuperPenguinTux1"));
 	}
 	
 	@Test
 	public void passwordRequirementsTest() {
 		boolean requirements = acc.passwordRequirements("ThisIsAValidPassword1");
 		assertTrue(requirements);
+	}
+	
+	@After
+	public void reset() {
+		
 	}
 }

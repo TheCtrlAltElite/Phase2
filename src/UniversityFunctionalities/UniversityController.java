@@ -271,7 +271,6 @@ public class UniversityController {
         return e;
 	}
 	
-
 	/**
 	 * adds a University by taking information and calling addUniversity() from DBController()
 	 */
