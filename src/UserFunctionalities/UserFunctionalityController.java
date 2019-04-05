@@ -30,7 +30,7 @@ public class UserFunctionalityController {
 	 */
 //	private User user;
 //	private University university;
-//	private DBController database;
+	private DBController dbc;
 	private UniversityController unc;
 //	private String firstName;
 //	private String lastName;
@@ -41,7 +41,7 @@ public class UserFunctionalityController {
 //	private String password;
 	
 	public UserFunctionalityController() {
-//		database = new DBController();
+		dbc = new DBController();
 		unc = new UniversityController();
 		// TODO Auto-generated constructor stub
 	}
@@ -182,8 +182,8 @@ public class UserFunctionalityController {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */	
-	public void addToSavedSchoolsList3(String school) {	
-		unc.addToSavedSchoolsList2("userName", school);
+	public void addToSavedSchoolsList3(String userName, String school) {	
+		unc.addToSavedSchoolsList2(userName, school);
 	}
 
 	/**
@@ -198,13 +198,7 @@ public class UserFunctionalityController {
 	 * Removes a school from the user's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */		
-	public boolean removeSavedSchool(String username) {
-		DBController dbc = new DBController();
-		Scanner sc = new Scanner(System.in);
-    	System.out.println("Enter school to be removed from " + username + "'s list: \n");
-    	//asks for university that will be removed from the user's saved school list
-    	String uniToFind = sc.nextLine().toUpperCase();
-    	sc.close();
+	public boolean removeSavedSchool(String username, String uniToFind) {
     	
     	int i = 0;  		
     	boolean e = false;

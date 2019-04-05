@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.junit.Before;
 import org.junit.After;
@@ -25,6 +27,11 @@ public class UniversityControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		uc = new UniversityController();
+		afc = new AdminFunctionalityController();
+		dbc = new DBController();
+		ufc = new UserFunctionalityController();
+		
+		
 	}
 
 	@Test
@@ -158,20 +165,49 @@ public class UniversityControllerTest {
 		List<University> school = ufc.searchSchools("ZZZZZUNIVERSITY", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);		
 		assertTrue(school.get(0).getSchoolName().equals("ZZZZZUNIVERSITY"));
 	}
-	
-	@Test
-	public void removeFromListSuccess() {		
-		boolean result = uc.removeFromList("juser","BROWN");                     //make sure that school is present in list of user b4 running :)
-		assertTrue("University has been removed from the users list", result);
-	}
-	
-	@Test
-	public void removeFromListInvalidUniversity() {
-		boolean result = uc.removeFromList("luser","NOTASCHOOL");
-		assertFalse("Univseristy does not exist on users list", result);
-	}
 
+	@Test
+	public void recommendedSchoolsGetsClosestSchool() {
+		List<University> listUnis = dbc.loadUniversities();
+		List<University> recUnis = uc.recommendedSchools(listUnis.get(58));
+		assertTrue(recUnis.get(0).getSchoolName().equals("UNIVERSITY OF EVANSVILLE"));	
+	}
 	
+	@Test
+	public void recommendedSchoolsGetsSecondClosestSchool() {
+		List<University> listUnis = dbc.loadUniversities();
+		List<University> recUnis = uc.recommendedSchools(listUnis.get(58));
+		assertTrue(recUnis.get(1).getSchoolName().equals("FLORIDA TECH"));	
+	}
+	
+	@Test
+	public void recommendedSchoolsThirdGetsClosestSchool() {
+		List<University> listUnis = dbc.loadUniversities();
+		List<University> recUnis = uc.recommendedSchools(listUnis.get(58));
+		assertTrue(recUnis.get(2).getSchoolName().equals("HAMPSHIRE COLLEGE"));	
+	}
+	
+	@Test
+	public void recommendedSchoolsGetsFourthClosestSchool() {
+		List<University> listUnis = dbc.loadUniversities();
+		List<University> recUnis = uc.recommendedSchools(listUnis.get(58));
+		assertTrue(recUnis.get(3).getSchoolName().equals("BUTLER"));	
+	}
+	
+	@Test
+	public void recommendedSchoolsGetsFifthClosestSchool() {
+		List<University> listUnis = dbc.loadUniversities();
+		List<University> recUnis = uc.recommendedSchools(listUnis.get(58));
+		assertTrue(recUnis.get(4).getSchoolName().equals("UNIVERSITY OF PORTLAND"));	
+	}
+	
+	@Test
+	public void compareSchoolsReturnsCorrectValue() {
+		List<University> listUnis = dbc.loadUniversities();
+		Map<Float, University> scores = uc.compareUniversity(listUnis.get(0));
+		String result = scores.get((float)5.482062).getSchoolName();
+		assertTrue(result.equals("DALLAS BAPTIST COLLEGE"));
+	}
 	
 
 	
