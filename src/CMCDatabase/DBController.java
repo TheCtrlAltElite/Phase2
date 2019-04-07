@@ -20,7 +20,7 @@ public class DBController {
 
 	private UniversityDBLibrary library;
 	private List<University> listUnis;
-	private List<User> listUsers;
+	private List<Account> listUsers;
 	
 	/**
 	 * Creates a DBController object.
@@ -72,7 +72,7 @@ public class DBController {
 	 */
 	public List<String> getDetailsProfile2(String userName){
 		List<String> details = new ArrayList<String>();
-		List<User> users = loadUsers();
+		List<Account> users = loadUsers();
 		for(int i = 0; i < users.size(); i++) {
 			if(userName.equals(users.get(i).getEmail())) {				
 				details.add(users.get(i).getFirstName());
@@ -82,9 +82,6 @@ public class DBController {
 				details.add(Character.toString(users.get(i).getType()));
 				details.add(Character.toString(users.get(i).getStatus()));
 			}
-		}
-		if(details.isEmpty()) {
-			details.add(0, "That user does not exist.");
 		}
 		return details;
 	}
@@ -96,7 +93,7 @@ public class DBController {
 	 * @return boolean true if the username is in the database or false if the username is not in the database
 	 */
 	public boolean isUserReal(String username) {
-		List<User> users = loadUsers();
+		List<Account> users = loadUsers();
 		for(int i = 0; i < users.size(); i++) {
 			if(username.equals(users.get(i).getEmail())) {
 				return true;
@@ -229,9 +226,9 @@ public class DBController {
 	 * 
 	 * @return List of all users in the database
 	 */
-	public List<User> loadUsers() {
+	public List<Account> loadUsers() {
 		String [][] arrayUsers = library.user_getUsers();
-		this.listUsers = new ArrayList<User>();
+		this.listUsers = new ArrayList<Account>();
 		String firstName;
 		String lastName;
 		String emailUserName;
@@ -245,8 +242,8 @@ public class DBController {
 		password = arrayUsers[i][3];
 		type = arrayUsers[i][4];
 		status = arrayUsers[i][5];	
-		User user = new User(emailUserName, firstName, lastName, password, type.charAt(0), status.charAt(0));
-		listUsers.add(user);
+		Account account = new Account(emailUserName, firstName, lastName, password, type.charAt(0), status.charAt(0));
+		listUsers.add(account);
 		}
 		return listUsers;
 	}
@@ -260,7 +257,7 @@ public class DBController {
 	 * @return String the password the user
 	 */
 	public String getPassword(String username) {
-		List<User> users = loadUsers();
+		List<Account> users = loadUsers();
 		for(int i = 0; i < users.size(); i++) {
 			if(username.equals(users.get(i).getEmail())) {
 				return users.get(i).getPassword();
@@ -304,20 +301,7 @@ public class DBController {
 		return false;
 		}
 	}
-	/**
-	 * Sends the account an email to recover their new password
-	 */
-	public void sendRecoverEmail() {
-		//TODO
-	}
-	/**
-	 * Emails the user their saved schools list
-	 * 
-	 * @param list of Universities
-	 */
-	public void emailSavedSchoolsList(List<University> list) {
-		//TODO
-	}
+	
 	/**
 	 * Sets the account's new profile picture
 	 * 

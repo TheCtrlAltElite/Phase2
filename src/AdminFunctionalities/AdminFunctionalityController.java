@@ -2,6 +2,8 @@ package AdminFunctionalities;
 
 //imports
 import java.util.*;
+
+import AccountFunctionalities.Account;
 import CMCDatabase.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
@@ -75,7 +77,6 @@ public class AdminFunctionalityController {
 		return listUnis;
 	}
 	
-	
 	/**
 	 * Adds a new university to the database.
 	 * by calling addUniversityInfo() in UniversityController 
@@ -102,8 +103,8 @@ public class AdminFunctionalityController {
 	 * by calling loadUsers() on a DBController object and returning it
 	 * @return List of Users
 	 */
-	public List<User> viewUsers() {
-		List<User> listUsers = database.loadUsers();
+	public List<Account> viewUsers() {
+		List<Account> listUsers = database.loadUsers();
 		for(int i = 0; i < listUsers.size(); i++) {
 			System.out.println(listUsers.get(i).getFirstName() + " " + listUsers.get(i).getLastName() + " " + listUsers.get(i).getEmail() + " " + listUsers.get(i).getStatus() + " " + listUsers.get(i).getType());
 		}	
@@ -116,7 +117,7 @@ public class AdminFunctionalityController {
 	 */
 	public void addUser() {
 		DBController dbc = new DBController();
-		List<User> users = dbc.loadUsers();
+		List<Account> users = dbc.loadUsers();
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter first name: ");
@@ -152,7 +153,7 @@ public class AdminFunctionalityController {
 	 * then calls removeUniversity() in DBController
 	 */
 	public boolean removeUniversityDB(String schoolName) {
-		List<User> users = database.loadUsers();	
+		List<Account> users = database.loadUsers();	
 		boolean success = true;
 		for (int i = 0; i < users.size(); i++) {
 			 Map<String, String> savedList = ufc.getSavedSchoolsList(users.get(i).getEmail());

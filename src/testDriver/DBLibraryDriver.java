@@ -52,7 +52,7 @@ public class DBLibraryDriver{
      //acc.isUserReal("jmuehls");
      //acc.getPassword("juser");
      //acc.viewProfile("juser");
-     //acc.editProfile("juser"); 									//does not work
+     //acc.editProfile("Eli123", "Tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y'); 									//does not work
      //acc.resetPassword("Maren", "Maren300000", "Maren300000");
      //acc.recoverPassword(String email, String firstName, String lastName);		
      //acc.addProfilePicture(String jpeg);							//not ready

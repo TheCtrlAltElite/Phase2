@@ -6,6 +6,8 @@ import java.util.List;
 import org.junit.Before;
 
 import org.junit.Test;
+
+import AccountFunctionalities.Account;
 import AdminFunctionalities.AdminFunctionalityController;
 import UniversityFunctionalities.University;
 import UserFunctionalities.User;
@@ -27,7 +29,7 @@ public class AdminFunctionalityControllerTest {
 	
 	@Test
 	public void viewUsersTest() {
-		List<User> listUsers = adc.viewUsers();
+		List<Account> listUsers = adc.viewUsers();
 		assertTrue(listUsers.size() == 7);
 	}
 }

@@ -9,8 +9,6 @@ import UserFunctionalities.UserFunctionalityController;
 import org.junit.Test;
 
 public class UserInteractionTest {
-	
-	private 
 
 	@Test
 	public void test() {

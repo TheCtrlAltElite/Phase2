@@ -101,11 +101,12 @@ public class AccountControllerTest {
 		assertTrue("The last name is now Neuenschwander for username tux420@csbsju.edu", details.get(1).equals("Neuenschwander"));
 	}
 	
+	@Test
 	public void editProfileUsernameFailsTest() {
 		boolean result = acc.editProfile("Eli2", "Tux", "fakeUserName@csbsju.edu", "PenguinPower420", 'u', 'Y');
 		assertFalse(result);
 		List<String> details = acc.viewProfile("fakeUserName@csbsju.edu");
-		assertTrue("The username has not changed so this user does not exist.", details.get(0).equals("That user does not exist."));
+		assertTrue("The username has not changed so this user does not exist.", details.isEmpty());
 	}
 	
 	@Test
@@ -174,6 +175,6 @@ public class AccountControllerTest {
 	@After
 	public void reset() {
 		acc.resetPassword("SuperPenguinTux1", "TuxIsOurSavior1", "TuxIsOurSavior1");
-		acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y');
+		//acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y');
 	}
 }

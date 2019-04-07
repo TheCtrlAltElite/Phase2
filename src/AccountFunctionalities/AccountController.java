@@ -110,9 +110,14 @@ public class AccountController {
 	 */
 	public boolean editProfile(String firstName, String lastName, String email, String password, char type, char status) {
 		boolean e = false;
-		Account acc = new Account(firstName, lastName, email, password, type, status);
+		Account acc = new Account(email, firstName, lastName, password, type, status);
 		int record = this.database.editUser(acc);
-		if(record == -1) {
+		List<Account> users = this.database.loadUsers();
+		List<String> usernames = new ArrayList<String>();
+		for(int i = 0; i < users.size(); i++) {
+			usernames.add(users.get(i).getEmail());
+		}
+		if(record == -1 || !usernames.contains(acc.getEmail())) {
 			return e;
 		}
 		else {
@@ -130,7 +135,7 @@ public class AccountController {
 	 */
 	public boolean resetPassword(String o, String n1, String n2) { //WILL NEED TO CHANGE ONCE WE START TO USE GUI
 	
-		List<User> listUsers = database.loadUsers();
+		List<Account> listUsers = database.loadUsers();
 		boolean changeStatus = false;
 		for (int i = 0; i < listUsers.size(); i++) {							//goes through users in database and finds which one corresponds with the account email																				
 				if(listUsers.get(i).getPassword().equals(o)) {				    //compares the old password with the current
@@ -164,40 +169,41 @@ public class AccountController {
 	 * @throws MessagingException 
 	 */
 	public void recoverPassword(String email, String firstName, String lastName) throws MessagingException {
-		//if(database.isUserReal(email)){      //Returns Null??
-		
-		
-		try {
-            Properties props = new Properties();
-            props.put("mail.smtp.user", "cmcdatabase2019@gmail.com");	//sets email to be sent from cmcdatabase2019@gmail.com
-            props.put("mail.smtp.host", "smtp.gmail.com");				//sets server host as gmail
-            props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.port", "587");							//sets the port
-            
-            System.out.println(props);									//displays server information
-            
-            Authenticator auth = new SMTPAuthenticator();
-            Session session = Session.getInstance(props, auth);
-        
-        String mail_body = "Here's your new password: ";				//body of email
-		
-		MimeMessage message= new MimeMessage(session);  				//creates MimeMessage object to send email
-		message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com"));  					//sets from email which is cmcdatabase2019@gmail.com
-		message.addRecipient(Message.RecipientType.TO, new InternetAddress("jmuehls@gmail.com"));	//receiver of the email
-		message.setSubject("Password Recovery");  						//subject of the email
-		message.setText(mail_body); 									//sets the body of the email to mail_body
+		// if(database.isUserReal(email)){ //Returns Null??
 
-        System.out.println(message);									//shows email has begun to send out
-        	Transport.send(message);									//Sends out email
-        	System.out.println("Message sent!");						//Informs message is sent
-        	
-    } catch (Exception e) {
-        e.printStackTrace();
-    	}
-	   }
-	//}
-	
+		try {
+			Properties props = new Properties();
+			props.put("mail.smtp.user", "cmcdatabase2019@gmail.com"); // sets email to be sent from
+																		// cmcdatabase2019@gmail.com
+			props.put("mail.smtp.host", "smtp.gmail.com"); // sets server host as gmail
+			props.put("mail.smtp.starttls.enable", "true");
+			props.put("mail.smtp.auth", "true");
+			props.put("mail.smtp.port", "587"); // sets the port
+
+			System.out.println(props); // displays server information
+
+			Authenticator auth = new SMTPAuthenticator();
+			Session session = Session.getInstance(props, auth);
+
+			String mail_body = "Here's your new password: "; // body of email
+
+			MimeMessage message = new MimeMessage(session); // creates MimeMessage object to send email
+			message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com")); // sets from email which is
+																				// cmcdatabase2019@gmail.com
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress("jmuehls@gmail.com")); // receiver of the
+																										// email
+			message.setSubject("Password Recovery"); // subject of the email
+			message.setText(mail_body); // sets the body of the email to mail_body
+
+			System.out.println(message); // shows email has begun to send out
+			Transport.send(message); // Sends out email
+			System.out.println("Message sent!"); // Informs message is sent
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * Sets a jpeg the user wants as their profile pic. Will be named their email to simplify process.
 	 * @param jpeg - the name of the jpeg the user wants as their profile pic. Will be named their email to simplify process.
