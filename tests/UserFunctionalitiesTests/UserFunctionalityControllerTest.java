@@ -50,8 +50,8 @@ public class UserFunctionalityControllerTest {
 	
 	@Test
 	public void savedSchoolsListSuccess() {
-		ArrayList<String> result = uc.getSavedSchoolsList("juser");
-		assertTrue("Univeristy is on users saved school list.", result.get(0).equals("QUEENS"));
-		assertTrue("University is on users saved school list.", result.get(1).equals("YALE"));
+		Map<String, String> result = uc.getSavedSchoolsList("juser");
+		assertTrue("Univeristy is on users saved school list.", result.containsKey("QUEENS"));
+		assertTrue("University is on users saved school list.", result.containsKey("YALE"));
 	}
 }

@@ -66,15 +66,15 @@ public class UserInteraction {
 	 * Removes a school from the user's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */	
-	public void removeSavedSchool(String schoolName) {
-		userController.removeSavedSchool(schoolName);
+	public void removeSavedSchool(String username, String schoolName) {
+		userController.removeSavedSchool(username, schoolName);
 	}
 	
 	/**
 	 * Emails the user's savedSchoolsList to the user's email
 	 * @throws MessagingException 
 	 */	
-	public void emailSavedSchools() throws MessagingException {
-		userController.emailSavedSchools();
+	public void emailSavedSchools(String username) throws MessagingException {
+		userController.emailSavedSchools(username);
 	}
 }
