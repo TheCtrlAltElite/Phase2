@@ -25,19 +25,30 @@ public class DBLibraryDriver{
     try{
 
      UniversityController unc = new UniversityController();
+     
+     //unc.addToSavedSchoolsList2("luser", "YALE"); 
+     //unc.removeFromList("juser", "HARVARD"); 
+     //unc.compareUniversity(University university);
+
      //unc.addToSavedSchoolsList2("luser", "YALE"); 
      //unc.removeFromList("luser", "AUBURN");                 	<<<<<<<<<<<<<<< //PROBABLY GOING TO DELETE
      //unc.compareUniversity(realUni);
+
      
      DBController dbc = new DBController();
-     List<University> listUnis = dbc.loadUniversities();
-     unc.recommendedSchools(listUnis.get(0));
+
+     //List<University> listUnis = dbc.loadUniversities();
+     //unc.recommendedSchools(listUnis.get(4));
+
+     //List<University> listUnis = dbc.loadUniversities();
+     //unc.recommendedSchools(listUnis.get(0));
+
      
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
      //unc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
-     //dbc.addUniversity("ZZZZZZ", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
-     //unc.getDetailsUni(); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
+     //dbc.addUniversity("TESTUNIDONTDELETE", "-1", "-1", "-1", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
+     //unc.getDetailsUni("YALE"); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
      
      AccountController acc = new AccountController();
      
@@ -46,7 +57,7 @@ public class DBLibraryDriver{
      //acc.isUserReal("jmuehls");
      //acc.getPassword("juser");
      //acc.viewProfile("juser");
-     //acc.editProfile("juser"); 									//does not work
+     //acc.editProfile("Eli123", "Tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y'); 									//does not work
      //acc.resetPassword("Maren", "Maren300000", "Maren300000");
      //acc.recoverPassword(String email, String firstName, String lastName);		
      //acc.addProfilePicture(String jpeg);							//not ready
@@ -54,14 +65,16 @@ public class DBLibraryDriver{
  
      
      AdminInteraction aic = new AdminInteraction();
-     
+
+     //aic.addToSavedSchoolsList4("luser", "some university);  //works 100%
+     //aic.addUniversity();    //works 100%
 
      //aic.addToSavedSchoolsList4("luser", "yanktown");
      //aic.addUniversity();   //this works 100%
-     
+
      AdminFunctionalityController afc = new AdminFunctionalityController();
-     //afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name
-     //afc.addUniversity();
+     //afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name; call from AdminInteraction
+     //afc.addUniversity();  //call from admin interaction
      //afc.addUser();
      //afc.editUniversity();
      //afc.removeUniversityDB("yale");  //parameter = school
