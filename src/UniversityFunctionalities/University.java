@@ -229,13 +229,13 @@ public class University {
 	}
 
 
-	/**
-	 * A set method to set the university's name
-	 * @param schoolName the schoolName to set
-	 */
-	public void setSchoolName(String schoolName) {
-		this.schoolName = schoolName;
-	}
+//	/**
+//	 * A set method to set the university's name
+//	 * @param schoolName the schoolName to set
+//	 */
+//	public void setSchoolName(String schoolName) {
+//		this.schoolName = schoolName;
+//	}
 
 
 	/**
