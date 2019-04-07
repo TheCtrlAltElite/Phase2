@@ -122,9 +122,14 @@ public class AccountController {
 	public boolean editProfile(String firstName, String lastName, String email, String password, char type,
 			char status) {
 		boolean e = false;
-		Account acc = new Account(firstName, lastName, email, password, type, status);
+		Account acc = new Account(email, firstName, lastName, password, type, status);
 		int record = this.database.editUser(acc);
-		if (record == -1) {
+		List<Account> users = this.database.loadUsers();
+		List<String> usernames = new ArrayList<String>();
+		for(int i = 0; i < users.size(); i++) {
+			usernames.add(users.get(i).getEmail());
+		}
+		if(record == -1 || !usernames.contains(acc.getEmail())) {
 			return e;
 		} else {
 			e = true;
@@ -144,9 +149,9 @@ public class AccountController {
 	 * @param n2
 	 *            - new password, must be the same as n1
 	 */
-	public boolean resetPassword(String o, String n1, String n2) { // WILL NEED TO CHANGE ONCE WE START TO USE GUI
-
-		List<User> listUsers = database.loadUsers();
+	public boolean resetPassword(String o, String n1, String n2) { //WILL NEED TO CHANGE ONCE WE START TO USE GUI
+	
+		List<Account> listUsers = database.loadUsers();
 		boolean changeStatus = false;
 		for (int i = 0; i < listUsers.size(); i++) { // goes through users in database and finds which one corresponds
 														// with the account email
@@ -226,6 +231,9 @@ public class AccountController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		else {
+			throw new Error("resetPassword Failed");
 		}
 	}
 

@@ -1,8 +1,11 @@
 package UserFunctionalities;
 
+import java.util.List;
 import java.util.Scanner;
 
 import javax.mail.MessagingException;
+
+import UniversityFunctionalities.University;
 
 //import UniversityFunctionalities.University;
 //import other.*;
