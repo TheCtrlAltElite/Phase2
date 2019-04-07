@@ -36,8 +36,13 @@ public class DBLibraryDriver{
 
      
      DBController dbc = new DBController();
-     List<University> listUnis = dbc.loadUniversities();
-     unc.recommendedSchools(listUnis.get(4));
+
+     //List<University> listUnis = dbc.loadUniversities();
+     //unc.recommendedSchools(listUnis.get(4));
+
+     //List<University> listUnis = dbc.loadUniversities();
+     //unc.recommendedSchools(listUnis.get(0));
+
      
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
