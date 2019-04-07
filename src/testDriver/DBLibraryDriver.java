@@ -26,12 +26,8 @@ public class DBLibraryDriver{
 
      UniversityController unc = new UniversityController();
      
-     //unc.addToSavedSchoolsList2("juser", "YALE"); 
-     //unc.removeFromList("juser", "YALE"); 
-
      //unc.addToSavedSchoolsList2("luser", "YALE"); 
      //unc.removeFromList("juser", "HARVARD"); 
-
      //unc.compareUniversity(University university);
      
      DBController dbc = new DBController();
@@ -60,16 +56,12 @@ public class DBLibraryDriver{
      
      AdminInteraction aic = new AdminInteraction();
      
-<<<<<<< HEAD
-     aic.addToSavedSchoolsList4("luser", "yanktown college");
-=======
-     //aic.addToSavedSchoolsList4("luser", "yanktown");
->>>>>>> 204b9b7b2ee3e75ad98ef53460da42ac41dfdb23
-     //aic.addUniversity();   //this works 100%
+     //aic.addToSavedSchoolsList4("luser", "some university);  //works 100%
+     //aic.addUniversity();    //works 100%
      
      AdminFunctionalityController afc = new AdminFunctionalityController();
-     //afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name
-     //afc.addUniversity();
+     //afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name; call from AdminInteraction
+     //afc.addUniversity();  //call from admin interaction
      //afc.addUser();
      //afc.editUniversity();
      //afc.removeUniversityDB("yale");  //parameter = school

@@ -53,7 +53,7 @@ public class AdminInteraction {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter School Name or 'q' to quit");
 		String schoolName = sc.nextLine();
-		
+
 		boolean success = false;
 
 		int i = 0;
@@ -70,17 +70,17 @@ public class AdminInteraction {
 				sc.close();
 				
 				addUniversity();
-				
+
 				//break;
 			}
-			
+
 			else if(schoolName.equals("q")) {
 				sc.close();
 				break;
 			}
-			
-			else {
 
+			else {
+				
 			System.out.println("Enter School State");
 			String schoolState = sc.nextLine();
 			System.out.println("Enter School Location");
@@ -113,11 +113,10 @@ public class AdminInteraction {
 			int qualityScale = sc.nextInt();
 			// List<String> emphasis = sc.nextLine();
 			sc.close();
-			
+
 			adminFController.addUniversity(schoolName, schoolState, schoolLocation, schoolControl, numberStudents,
 					percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants,
 					percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
-			
 			
 			success = true;
 			break;
