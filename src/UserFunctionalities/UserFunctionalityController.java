@@ -30,11 +30,7 @@ public class UserFunctionalityController {
 	 */
 //	private User user;
 //	private University university;
-<<<<<<< HEAD
 	private DBController dbc;
-=======
-    private DBController database;
->>>>>>> be0c4b0eab7267ce8a4e93a6e02cf1fb9748acb3
 	private UniversityController unc;
 //	private String firstName;
 //	private String lastName;
@@ -45,11 +41,7 @@ public class UserFunctionalityController {
 //	private String password;
 	
 	public UserFunctionalityController() {
-<<<<<<< HEAD
 		dbc = new DBController();
-=======
-		database = new DBController();
->>>>>>> be0c4b0eab7267ce8a4e93a6e02cf1fb9748acb3
 		unc = new UniversityController();
 		// TODO Auto-generated constructor stub
 	}
@@ -243,8 +235,8 @@ public class UserFunctionalityController {
 	/**
 	 * Email's the user's savedSchoolsList to the user's email
 	 */		
-	public void emailSavedSchools() throws MessagingException {
-		Map<String, String> savedSchoolsList = getSavedSchoolsList();
+	public void emailSavedSchools(String username) throws MessagingException {
+		Map<String, String> savedSchoolsList = getSavedSchoolsList(username);
 		String mail_body = "Your saved schools list: \n";
 		
 		try {
@@ -284,15 +276,8 @@ public class UserFunctionalityController {
 	/**
 	 * Fetches the user's savedSchoolsList
 	 */	
-	public ArrayList<String> getSavedSchoolsList(String username){
-		
-		Map<String, String> savedSchoolsList = database.getSavedSchoolsList(username);	
-		Collection<String> savedSchools = savedSchoolsList.keySet();
-		ArrayList<String> saved = new ArrayList<String>();
-		saved.addAll(savedSchools);
-		for(int i = 0; i < saved.size(); i++) {
-			System.out.println(saved.get(i));
-		}
-		return saved;
+	public Map<String, String> getSavedSchoolsList(String username){
+		Map<String, String> savedSchoolsList = dbc.getSavedSchoolsList(username);	
+		return savedSchoolsList;
 	}
 }
