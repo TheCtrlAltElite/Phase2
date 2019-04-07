@@ -36,8 +36,8 @@ public class UserInteraction {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */		
-	public void addToSavedSchoolsList4(String school) {
-		userController.addToSavedSchoolsList3(school);
+	public void addToSavedSchoolsList4(String userName, String school) {
+		userController.addToSavedSchoolsList3(userName, school);
 	}
 	
 	/**

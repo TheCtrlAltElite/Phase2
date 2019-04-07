@@ -83,6 +83,9 @@ public class DBController {
 				details.add(Character.toString(users.get(i).getStatus()));
 			}
 		}
+		if(details.isEmpty()) {
+			details.add(0, "That user does not exist.");
+		}
 		return details;
 	}
 

@@ -86,11 +86,50 @@ public class AccountControllerTest {
 	}
 	
 	@Test
-	public void editProfileTest() {
+	public void editProfileFirstNameTest() {
 		boolean result = acc.editProfile("Rigby", "tux", "tux420@csbsju.edu", "PenguinPower420", 'u', 'Y');
 		assertTrue(result);
 		List<String> details = acc.viewProfile("tux420@csbsju.edu");
 		assertTrue("The first name is now Rigby for username tux420@csbsju.edu", details.get(0).equals("Rigby"));
+	}
+	
+	@Test
+	public void editProfileLastNameTest() {
+		boolean result = acc.editProfile("Eli2", "Neuenschwander", "tux420@csbsju.edu", "PenguinPower420", 'u', 'Y');
+		assertTrue(result);
+		List<String> details = acc.viewProfile("tux420@csbsju.edu");
+		assertTrue("The last name is now Neuenschwander for username tux420@csbsju.edu", details.get(1).equals("Neuenschwander"));
+	}
+	
+	public void editProfileUsernameFailsTest() {
+		boolean result = acc.editProfile("Eli2", "Tux", "fakeUserName@csbsju.edu", "PenguinPower420", 'u', 'Y');
+		assertFalse(result);
+		List<String> details = acc.viewProfile("fakeUserName@csbsju.edu");
+		assertTrue("The username has not changed so this user does not exist.", details.get(0).equals("That user does not exist."));
+	}
+	
+	@Test
+	public void editProfilePasswordTest() {
+		boolean result = acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y');
+		assertTrue(result);
+		List<String> details = acc.viewProfile("tux420@csbsju.edu");
+		assertTrue("This user's password is now TuxIsOurSavior1", details.get(3).equals("TuxIsOurSavior1"));
+	}
+	
+	@Test
+	public void editProfileTypeTest() {
+		boolean result = acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "PenguinPower420", 'a', 'Y');
+		assertTrue(result);
+		List<String> details = acc.viewProfile("tux420@csbsju.edu");
+		assertTrue("This user's type is now admin", details.get(4).equals("a"));
+	}
+	
+	@Test
+	public void editProfileStatusTest() {
+		boolean result = acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "PenguinPower420", 'u', 'N');
+		assertTrue(result);
+		List<String> details = acc.viewProfile("tux420@csbsju.edu");
+		assertTrue("This user's status is now inactive.", details.get(5).equals("N"));
 	}
 	
 	/**
