@@ -25,14 +25,13 @@ public class DBLibraryDriver{
     try{
 
      UniversityController unc = new UniversityController();
-     
      //unc.addToSavedSchoolsList2("luser", "YALE"); 
-     //unc.removeFromList("juser", "HARVARD"); 
-     //unc.compareUniversity(University university);
+     //unc.removeFromList("luser", "AUBURN");                 	<<<<<<<<<<<<<<< //PROBABLY GOING TO DELETE
+     //unc.compareUniversity(realUni);
      
      DBController dbc = new DBController();
-     //List<University> listUnis = dbc.loadUniversities();
-     //unc.recommendedSchools(listUnis.get(58));
+     List<University> listUnis = dbc.loadUniversities();
+     unc.recommendedSchools(listUnis.get(0));
      
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
@@ -56,7 +55,8 @@ public class DBLibraryDriver{
      
      AdminInteraction aic = new AdminInteraction();
      
-     aic.addToSavedSchoolsList4("luser", "yanktown");
+
+     //aic.addToSavedSchoolsList4("luser", "yanktown");
      //aic.addUniversity();   //this works 100%
      
      AdminFunctionalityController afc = new AdminFunctionalityController();
@@ -71,9 +71,9 @@ public class DBLibraryDriver{
      UserFunctionalityController ufc = new UserFunctionalityController();
      
      //ufc.searchSchools(String schoolName, String schoolState, String schoolLocation,String schoolControl, String numberStudents1, String numberStudents2, String percentFemale1, String percentFemale2, String verbalSAT1, String verbalSAT2, String mathSAT1, String mathSAT2, String schoolExpenses1, String schoolExpenses2, String percentFinancialAid1, String percentFinancialAid2, String numApplicants1, String numApplicants2, String percentAdmitted1, String percentAdmitted2, String percentEnrolled1, String percentEnrolled2, String academicScale1, String academicScale2, String socialScale1, String socialScale2, String qualityScale1, String qualityScale2);
-     //ufc.addToSavedSchoolsList3(String userName);
+     //ufc.addToSavedSchoolsList3("juser", "YALE");
      //ufc.viewSchool(String schoolName);
-     //ufc.removeSavedSchool(String username);
+     //ufc.removeSavedSchool("luser", "BARUCH");
      //ufc.updateSavedSchoolsList(List<UserSchool> list);
      //ufc.emailSavedSchools();
      //ufc.getSavedSchoolsList("juser");

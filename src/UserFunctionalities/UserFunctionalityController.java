@@ -30,7 +30,11 @@ public class UserFunctionalityController {
 	 */
 //	private User user;
 //	private University university;
-//	private DBController database;
+<<<<<<< HEAD
+	private DBController dbc;
+=======
+    private DBController database;
+>>>>>>> be0c4b0eab7267ce8a4e93a6e02cf1fb9748acb3
 	private UniversityController unc;
 //	private String firstName;
 //	private String lastName;
@@ -41,7 +45,11 @@ public class UserFunctionalityController {
 //	private String password;
 	
 	public UserFunctionalityController() {
-//		database = new DBController();
+<<<<<<< HEAD
+		dbc = new DBController();
+=======
+		database = new DBController();
+>>>>>>> be0c4b0eab7267ce8a4e93a6e02cf1fb9748acb3
 		unc = new UniversityController();
 		// TODO Auto-generated constructor stub
 	}
@@ -182,29 +190,24 @@ public class UserFunctionalityController {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */	
-	public void addToSavedSchoolsList3(String school) {	
-		unc.addToSavedSchoolsList2("userName", school);
+	public void addToSavedSchoolsList3(String userName, String school) {	
+		unc.addToSavedSchoolsList2(userName, school);
+
 	}
 
 	/**
 	 * Presents the user with the information of a school
 	 * @param String schoolName - name of the school
 	 */	
-	public void viewSchool(String schoolName) {
-		unc.getDetailsUni(schoolName);
+	public List<String> viewSchool(String schoolName) {
+		return unc.getDetailsUni(schoolName);
 	}
 	
 	/**
 	 * Removes a school from the user's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */		
-	public void removeSavedSchool(String username) {
-		DBController dbc = new DBController();
-		Scanner sc = new Scanner(System.in);
-    	System.out.println("Enter school to be removed from " + username + "'s list: \n");
-    	//asks for university that will be removed from the user's saved school list
-    	String uniToFind = sc.nextLine().toUpperCase();
-    	sc.close();
+	public boolean removeSavedSchool(String username, String uniToFind) {
     	
     	int i = 0;  		
     	boolean e = false;
@@ -233,6 +236,7 @@ public class UserFunctionalityController {
    			//System.out.println("reached 2nd if");
    			dbc.removeFromSavedSchoolsList(username, uniToFind);
     	}
+   		return e;
 	}
 	   			
 	   			
@@ -280,14 +284,15 @@ public class UserFunctionalityController {
 	/**
 	 * Fetches the user's savedSchoolsList
 	 */	
-	public Map<String, String> getSavedSchoolsList(String username){
-		DBController database = new DBController();
-
+	public ArrayList<String> getSavedSchoolsList(String username){
+		
 		Map<String, String> savedSchoolsList = database.getSavedSchoolsList(username);	
-//		for (Map.Entry entry : savedSchoolsList.entrySet())
-//		{
-//		    System.out.println(entry.getKey()); // + " " + entry.getValue());
-//		}
-		return savedSchoolsList;
+		Collection<String> savedSchools = savedSchoolsList.keySet();
+		ArrayList<String> saved = new ArrayList<String>();
+		saved.addAll(savedSchools);
+		for(int i = 0; i < saved.size(); i++) {
+			System.out.println(saved.get(i));
+		}
+		return saved;
 	}
 }

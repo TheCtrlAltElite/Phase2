@@ -74,17 +74,17 @@ public class UniversityController {
 	 * @param user that school will be removed from
 	 * @param university that will be removed
 	 */
-	public boolean removeFromList(String user, String university) {
-		boolean e = false;
-		int numSchool = database.removeFromSavedSchoolsList(user, university);
-		if (numSchool == -1) {
-			return e;
-		}
-		else {
-			e = true;
-		}
-		return e;
-	}
+//	public boolean removeFromList(String user, String university) {
+//		boolean e = false;
+//		int numSchool = database.removeFromSavedSchoolsList(user, university);
+//		if (numSchool == -1) {
+//			return e;
+//		}
+//		else {
+//			e = true;
+//		}
+//		return e;
+//	}
 	
 	/**
 	 * compares a University To the rest of the universities and returns map with the score between each
@@ -262,7 +262,9 @@ public class UniversityController {
 	public boolean editUniversity(String nameToFind, String editState, String editLocation, String editControl, int editNumberOfStudents, double editPercentFemales, double editSATVerbal, double editSATMath, double editExpenses, double editPercentFinancialAid, int editNumberOfApplicants, double editPercentAdmitted, double editPercentEnrolled, int editAcademicsScale, int editSocialScale, int editQualityOfLifeScale) {
 		boolean e = false;
 		int num = database.updateUniversity(nameToFind, editState, editLocation, editControl, editNumberOfStudents, editPercentFemales, editSATVerbal, editSATMath, editExpenses, editPercentFinancialAid, editNumberOfApplicants, editPercentAdmitted, editPercentEnrolled, editAcademicsScale, editSocialScale, editQualityOfLifeScale);
-        if (num == -1) {
+		listUnis = database.loadUniversities();
+		List<String> schools = new ArrayList<String>();
+		if (num == -1 || !schools.contains(nameToFind)) {
         	return e;
         }
         else {
@@ -271,7 +273,6 @@ public class UniversityController {
         return e;
 	}
 	
-
 	/**
 	 * adds a University by taking information and calling addUniversity() from DBController()
 	 */

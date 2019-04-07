@@ -36,8 +36,8 @@ public class UserInteraction {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */		
-	public void addToSavedSchoolsList4(String school) {
-		userController.addToSavedSchoolsList3(school);
+	public void addToSavedSchoolsList4(String userName, String school) {
+		userController.addToSavedSchoolsList3(userName, school);
 	}
 	
 	/**
@@ -56,7 +56,10 @@ public class UserInteraction {
 	 * Presents the user with the list of saved schools
 	 */		
 	public void viewSavedSchools() {
-		userController.getSavedSchoolsList();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter a user to view thier saved schools list:");
+		String user = sc.nextLine();
+		userController.getSavedSchoolsList(user);
 	}
 	
 	/**
