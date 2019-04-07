@@ -39,29 +39,6 @@ public class DBController {
 	    return library;
 	}
 
-	/**
-	 * Test method for the Driver
-	 */
-	public void rMethod() {
-	    System.out.println("Driver is Working and is communicating with DBController \n");
-	}
-	
-	/**
-	 * Test method for the add functionality
-	 */
-	public void testAdd() {
-		library.university_addUniversity("ZCSB", "MN", "RURAL", "Private", 10000, 99, 1600, 1600, 2, 100, 1000, 999, 4000, 5, 5, 5);
-	}
-	
-	/**
-	 * Test method for saving a university to a saved schools list
-	 */
-	public void testSaveUni() {
-		String name = "juser";
-		String uni = "BROWN";
-		library.user_saveSchool(name, uni);
-		//return 1;
-	}
 	
 	
 	/**
@@ -307,8 +284,31 @@ public class DBController {
 	/**
 	 * Sends the account an email to recover their new password
 	 */
-	public void sendRecoverEmail() {
-		
+	public String sendRecoverEmail(String username) {
+
+		if (this.isUserReal(username)) {
+			char[] lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+			char[] upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+			int[] numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+			String newPassword = "";
+			Random ran = new Random();
+			for (int i = 0; i < 10; i++) {
+				if (i == 0 || i == 3 || i == 6 || i == 9) {
+					int random = 0 + ran.nextInt(25 - 0 + 1);
+					newPassword += lowerCaseLetters[random];
+				} else if (i == 1 || i == 4 || i == 7 || i == 10) {
+					int random = 0 + ran.nextInt(25 - 0 + 1);
+					newPassword += upperCaseLetters[random];
+				} else {
+					int random = 0 + ran.nextInt(9 - 0 + 1);
+					newPassword += numbers[random];
+				}
+			}
+//			System.out.println(newPassword);
+			return newPassword;
+		} else {
+			throw new IllegalArgumentException("The email is invalid");
+		}
 	}
 	/**
 	 * Emails the user their saved schools list

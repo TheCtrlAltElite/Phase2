@@ -43,6 +43,7 @@ public class DBLibraryDriver{
      //List<University> listUnis = dbc.loadUniversities();
      //unc.recommendedSchools(listUnis.get(0));
 
+     dbc.sendRecoverEmail("juser");
      
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
@@ -59,7 +60,7 @@ public class DBLibraryDriver{
      //acc.viewProfile("juser");
      //acc.editProfile("juser"); 									//does not work
      //acc.resetPassword("Maren", "Maren300000", "Maren300000");
-     //acc.recoverPassword(String email, String firstName, String lastName);		
+     acc.recoverPassword("joettinge001@gmail.com");		
      //acc.addProfilePicture(String jpeg);							//not ready
      //acc.passwordRequirements(String password);
  
