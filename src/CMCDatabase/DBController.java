@@ -308,7 +308,7 @@ public class DBController {
 	 * Sends the account an email to recover their new password
 	 */
 	public void sendRecoverEmail() {
-		//TODO
+		
 	}
 	/**
 	 * Emails the user their saved schools list
