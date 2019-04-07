@@ -301,7 +301,7 @@ public class DBController {
 		return false;
 		}
 	}
-	
+
 	/**
 	 * Sets the account's new profile picture
 	 * 

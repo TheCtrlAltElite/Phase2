@@ -146,7 +146,7 @@ public class UniversityController {
 				if(university.getMathSAT() == -1 || listUnis.get(i).getMathSAT() == -1) {		//MathSAT with -1 field
 					score += 1;
 				}
-				else if(university.getMathSAT() != listUnis.get(i).getMathSAT()) {  //Verbal SAT Score
+				else if(university.getMathSAT() != listUnis.get(i).getMathSAT()) {  //Math SAT Score
 					float mathSat = (Integer.valueOf(listUnis.get(i).getMathSAT()).floatValue());					 //int mathSAT is the math SAT score for listUnis[i][7]
 					score += (Math.abs(Integer.valueOf(university.getMathSAT()).floatValue() - mathSat)) / (database.maxSATMath() - database.minSATMath()); 
 					float temp = (Math.abs(Integer.valueOf(university.getMathSAT()).floatValue() - mathSat)) / (database.maxSATMath() - database.minSATMath());
@@ -264,6 +264,9 @@ public class UniversityController {
 		int num = database.updateUniversity(nameToFind, editState, editLocation, editControl, editNumberOfStudents, editPercentFemales, editSATVerbal, editSATMath, editExpenses, editPercentFinancialAid, editNumberOfApplicants, editPercentAdmitted, editPercentEnrolled, editAcademicsScale, editSocialScale, editQualityOfLifeScale);
 		listUnis = database.loadUniversities();
 		List<String> schools = new ArrayList<String>();
+		for(int i = 0; i < listUnis.size(); i++) {
+			schools.add(listUnis.get(i).getSchoolName());
+		}
 		if (num == -1 || !schools.contains(nameToFind)) {
         	return e;
         }

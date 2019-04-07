@@ -34,7 +34,8 @@ public class User extends Account{
 	 * Searches schools based on the criteria the user gave.
 	 */
 	public void searchSchools(String schoolName, String schoolState, String schoolLocation,String schoolControl, String numberStudents1, String numberStudents2, String percentFemale1, String percentFemale2, String verbalSAT1, String verbalSAT2, String mathSAT1, String mathSAT2, String schoolExpenses1, String schoolExpenses2, String percentFinancialAid1, String percentFinancialAid2, String numApplicants1, String numApplicants2, String percentAdmitted1, String percentAdmitted2, String percentEnrolled1, String percentEnrolled2, String academicScale1, String academicScale2, String socialScale1, String socialScale2, String qualityScale1, String qualityScale2) {
-		List<University> = uControl.searchSchools(schoolName, schoolState, schoolLocation, schoolControl, numberStudents1, numberStudents2, percentFemale1, percentFemale2, verbalSAT1, verbalSAT2, mathSAT1, mathSAT2, schoolExpenses1, schoolExpenses2, percentFinancialAid1, percentFinancialAid2, numApplicants1, numApplicants2, percentAdmitted1, percentAdmitted2, percentEnrolled1, percentEnrolled2, academicScale1, academicScale2, socialScale1, socialScale2, qualityScale1, qualityScale2);
+		List<University> results = uControl.searchSchools(schoolName, schoolState, schoolLocation, schoolControl, numberStudents1, numberStudents2, percentFemale1, percentFemale2, verbalSAT1, verbalSAT2, mathSAT1, mathSAT2, schoolExpenses1, schoolExpenses2, percentFinancialAid1, percentFinancialAid2, numApplicants1, numApplicants2, percentAdmitted1, percentAdmitted2, percentEnrolled1, percentEnrolled2, academicScale1, academicScale2, socialScale1, socialScale2, qualityScale1, qualityScale2);
+		
 	}
 	
 	/**

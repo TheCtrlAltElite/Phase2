@@ -36,7 +36,7 @@ public class UniversityControllerTest {
 
 	@Test
 	public void addToSavedSchoolsListSuccess() {
-		boolean result = uc.addToSavedSchoolsList2("tux69@csbsju.edu", "YALE");
+		boolean result = uc.addToSavedSchoolsList2("juser", "BARD");
 		assertTrue("Universtiy was successfully added.", result);
 	}//CREATE A METHOD THAT CHECKS TO MAKE SURE THE UNIVERSITY IS ADDED TO THE LIST
 	
@@ -48,105 +48,105 @@ public class UniversityControllerTest {
 	
 	@Test
 	public void editUniversityChangesUniversityState() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(1).equals("MN"));
+		assertTrue(details.get(1).equals("MINNESOTA"));
 	}
 	
 	@Test
 	public void editUniversityChangesUniversityLocation() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
 		assertTrue(details.get(2).equals("URBAN"));
 	}
 	
 	@Test
 	public void editUniversityChangesUniversityControl() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
 		assertTrue(details.get(3).equals("STATE"));
 	}
 	
 	@Test
 	public void editUniversityChangesUniversityNumStudents() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(4).equals("155"));
+		assertTrue(details.get(4).equals("200"));
 	}
 	
 	@Test
 	public void editUniversityChangesPercentFemale() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(5).equals("155"));
+		assertTrue(details.get(5).equals("200"));
 	}
 	
 	@Test
 	public void editUniversityChangesSATVerbal() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(6).equals("155"));
+		assertTrue(details.get(6).equals("200"));
 	}
 	
 	@Test
 	public void editUniversityChangesSATMath() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(7).equals("155"));
+		assertTrue(details.get(7).equals("200"));
 	}
 	
 	@Test
 	public void editUniversityChangesExpenses() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(8).equals("155"));
+		assertTrue(details.get(8).equals("200"));
 	}
 	
 	@Test
 	public void editUniversityChangesPercentFinancialAid() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(9).equals("155"));
+		assertTrue(details.get(9).equals("200"));
 	}
 	
 	@Test
 	public void editUniversityChangesNumberOfApplicants() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(10).equals("155"));
+		assertTrue(details.get(10).equals("200"));
 	}
 	
 	@Test
 	public void editUniversityChangesPercentAdmitted() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(11).equals("155"));
+		assertTrue(details.get(11).equals("200"));
 	}
 	
 	@Test
 	public void editUniversityChangesPercentEnrolled() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(12).equals("155"));
+		assertTrue(details.get(12).equals("200"));
 	}
 	
 	@Test
 	public void editUniversityChangesAcademicScale() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
 		assertTrue(details.get(13).equals("5"));
 	}
 	
 	@Test
 	public void editUniversityChangesSocialScale() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
 		assertTrue(details.get(14).equals("5"));
 	}
 	
 	@Test
 	public void editUniversityChangesQualityScale() {
-		uc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
 		assertTrue(details.get(15).equals("5"));
 	}
@@ -154,8 +154,14 @@ public class UniversityControllerTest {
 	
 	@Test//This does not work
 	public void editUniversityFailsForInvalidUniversity() {
-		boolean result = uc.editUniversity("IDKWHATSGOINGON", "MN", "URBAN", "STATE", 155, 155, 155, 155, 155, 155, 155, 155, 155, 5, 5, 5);
+		boolean result = uc.editUniversity("IDKWHATSGOINGON", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		assertFalse("Edit University value is FALSE", result);
+	}
+	
+	@Test
+	public void editUniversityMakesSureTheUniversityIsValid() {
+		boolean result = uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
+		assertTrue("Edit University value is TRUE", result);
 	}
 
 	//ADD UNIVERSITY WORKS YET HAS NOT BEEN TESTED
@@ -169,49 +175,126 @@ public class UniversityControllerTest {
 	@Test
 	public void recommendedSchoolsGetsClosestSchool() {
 		List<University> listUnis = dbc.loadUniversities();
-		List<University> recUnis = uc.recommendedSchools(listUnis.get(58));
-		assertTrue(recUnis.get(0).getSchoolName().equals("UNIVERSITY OF EVANSVILLE"));	
+		List<University> recUnis = uc.recommendedSchools(listUnis.get(4));
+		assertTrue(recUnis.get(0).getSchoolName().equals("UNIVERSITY OF ALABAMA"));	
 	}
 	
 	@Test
 	public void recommendedSchoolsGetsSecondClosestSchool() {
 		List<University> listUnis = dbc.loadUniversities();
-		List<University> recUnis = uc.recommendedSchools(listUnis.get(58));
-		assertTrue(recUnis.get(1).getSchoolName().equals("FLORIDA TECH"));	
+		List<University> recUnis = uc.recommendedSchools(listUnis.get(4));
+		assertTrue(recUnis.get(1).getSchoolName().equals("UNIVERSITY OF GEORGIA"));	
 	}
 	
 	@Test
 	public void recommendedSchoolsThirdGetsClosestSchool() {
 		List<University> listUnis = dbc.loadUniversities();
-		List<University> recUnis = uc.recommendedSchools(listUnis.get(58));
-		assertTrue(recUnis.get(2).getSchoolName().equals("HAMPSHIRE COLLEGE"));	
+		List<University> recUnis = uc.recommendedSchools(listUnis.get(4));
+		assertTrue(recUnis.get(2).getSchoolName().equals("UNIVERSITY OF MAINE"));	
 	}
 	
 	@Test
 	public void recommendedSchoolsGetsFourthClosestSchool() {
 		List<University> listUnis = dbc.loadUniversities();
-		List<University> recUnis = uc.recommendedSchools(listUnis.get(58));
-		assertTrue(recUnis.get(3).getSchoolName().equals("BUTLER"));	
+		List<University> recUnis = uc.recommendedSchools(listUnis.get(4));
+		assertTrue(recUnis.get(3).getSchoolName().equals("PURDUE"));	
 	}
 	
 	@Test
 	public void recommendedSchoolsGetsFifthClosestSchool() {
 		List<University> listUnis = dbc.loadUniversities();
-		List<University> recUnis = uc.recommendedSchools(listUnis.get(58));
-		assertTrue(recUnis.get(4).getSchoolName().equals("UNIVERSITY OF PORTLAND"));	
+		List<University> recUnis = uc.recommendedSchools(listUnis.get(4));
+		assertTrue(recUnis.get(4).getSchoolName().equals("FLORIDA STATE"));	
 
 	}
 	
-	@Test
+	/*@Test
 	public void compareSchoolsReturnsCorrectValue() {
 		List<University> listUnis = dbc.loadUniversities();
 		Map<Float, University> scores = uc.compareUniversity(listUnis.get(0));
 		String result = scores.get((float)5.482062).getSchoolName();
 		assertTrue(result.equals("DALLAS BAPTIST COLLEGE"));
+	}*/
+	
+	@Test
+	public void getDetailsUniWorksForSchoolName() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(0).equals("YALE"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolState() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(1).equals("CONNECTICUT"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolLocation() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(2).equals("SMALL-CITY"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolControl() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(3).equals("PRIVATE"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolNumStudents() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(4).equals("10000"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolPercentFemale() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(5).equals("45"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolVerbalSAT() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(6).equals("675"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolMathSAT() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(7).equals("675"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolExpenses() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(8).equals("33014"));
 	}
 	
-
-	
-	
-
+	@Test
+	public void getDetailsUniWorksForSchoolPercentFinancialAid() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(9).equals("40"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolNumApplicants() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(10).equals("11500"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolPercentAdmitted() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(11).equals("20"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolPercentEnrolled() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(12).equals("60"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolAcademicScale() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(13).equals("5"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolSocialScale() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(14).equals("3"));
+	}
+	@Test
+	public void getDetailsUniWorksForSchoolQualityScale() {
+		List<String> details = uc.getDetailsUni("YALE");
+		assertTrue(details.get(15).equals("4"));
+	}
 }
