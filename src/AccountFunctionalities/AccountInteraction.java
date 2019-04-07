@@ -131,6 +131,9 @@ public class AccountInteraction {
 					input = console.nextLine();
 					account.setStatus(input.charAt(0));					//account.getStatus() = input.charAt(0);
 			}
+			else if(input.equals("Username")){
+				System.out.println("You may not change any user's username.");
+			}
 			else if(input.equals("Stop")){
 				this.accController.editProfile(account.getFirstName(), account.getLastName(), account.getEmail(), account.getPassword(), account.getType(), account.getStatus());
 				break;
