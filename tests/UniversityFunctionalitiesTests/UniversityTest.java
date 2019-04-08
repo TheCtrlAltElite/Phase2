@@ -2,6 +2,7 @@ package UniversityFunctionalitiesTests;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -164,8 +165,8 @@ public class UniversityTest {
 	
 	@Test
 	public void setSchoolLocationTest() {
-		uni.setSchoolState("SMALL-CITY");
-		assertTrue("The University's Location was set to SMALL-CITY", uni.getSchoolState().equals("SMALL-CITY"));
+		uni.setSchoolLocation("SMALL-CITY");
+		assertTrue("The University's Location was set to SMALL-CITY", uni.getSchoolLocation().equals("SMALL-CITY"));
 	}
 	
 	@Test
@@ -221,5 +222,50 @@ public class UniversityTest {
 		uni.setNumApplicants(500);
 		assertTrue("The University's Number of Applicants was set to 500", uni.getNumApplicants() == 500);
 		assertFalse("The University's Number of Applicants was NOT set to 500", uni.getNumApplicants() != 500);
+	}
+	
+	@Test
+	public void setPercentAdmittedTest() {
+		uni.setPercentAdmitted(10);
+		assertTrue("The University's Percent Admitted was set to 10", uni.getPercentAdmitted() == 10);
+		assertFalse("The University's Percent Admitted was NOT set to 10", uni.getPercentAdmitted() != 10);
+	}
+	
+	@Test
+	public void setPercentEnrolledTest() {
+		uni.setPercentEnrolled(15);
+		assertTrue("The University's Percent Enrolled was set to 15", uni.getPercentEnrolled() == 15);
+		assertFalse("The University's Percent Enrolled was NOT set to 15", uni.getPercentEnrolled() != 15);
+	}
+	
+	@Test
+	public void setAcademicScaleTest() {
+		uni.setAcademicScale(5);
+		assertTrue("The University's Academic Scale was set to 5", uni.getAcademicScale() == 5);
+		assertFalse("The University's Academic Scale was NOT set to 5", uni.getAcademicScale() != 5);
+	}
+	
+	@Test
+	public void setSocialScaleTest() {
+		uni.setSocialScale(5);
+		assertTrue("The University's Social Scale was set to 5", uni.getSocialScale() == 5);
+		assertFalse("The University's Social Scale was NOT set to 5", uni.getSocialScale() != 5);
+	}
+	
+	@Test
+	public void setQualityScaleTest() {
+		uni.setQualityScale(5);
+		assertTrue("The University's Quality of Life Scale was set to 5", uni.getQualityScale() == 5);
+		assertFalse("The University's Quality of Life Scale was NOT set to 5", uni.getQualityScale() != 5);
+	}
+	
+	@Test
+	public void setEmphasisTest() {
+		List<String> testEmphasis = new ArrayList<String>();
+		testEmphasis.add("BIOLOGY");
+		uni.setEmphasis(testEmphasis);
+		assertTrue("The University's Emphasis was set to: BIOLOGY", uni.getEmphasis().get(0).equals("BIOLOGY"));
+		assertFalse("The University's Emphasis was NOT set to: BIOLOGY", uni.getEmphasis().get(0).equals("ACCOUNTING"));
+
 	}
 }
