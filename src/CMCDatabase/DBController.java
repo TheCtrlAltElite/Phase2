@@ -62,6 +62,22 @@ public class DBController {
 		}
 		return details;
 	}
+	
+	public University getUniversity(String uniName) {
+		University uni = null;
+		List<University> unis = this.loadUniversities();
+		for(int i = 0; i < unis.size(); i++) {
+			if(unis.get(i).getSchoolName().equals(uniName)) {
+				uni = unis.get(i);
+			}
+		}
+		if(!(uni == null)) {
+			return uni;
+		}
+		else {
+			throw new IllegalArgumentException("That school does not exist.");
+		}
+	}
 
 	/**
 	 * Checks the database to see if that username exists in the database.
