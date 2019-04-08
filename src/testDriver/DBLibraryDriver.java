@@ -44,7 +44,10 @@ public class DBLibraryDriver{
      //unc.recommendedSchools(listUnis.get(0));
 
      //dbc.sendRecoverEmail("juser");
-     
+
+  
+     //dbc.checkPasswordRequirements("PenguinPower");
+
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
      //unc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
@@ -60,7 +63,6 @@ public class DBLibraryDriver{
      //acc.viewProfile("juser");
      //acc.editProfile("Eli123", "Tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y'); 									//does not work
      //acc.resetPassword("Maren", "Maren300000", "Maren300000");
-     //
      //acc.recoverPassword("joettinge001@gmail.com");		
      //acc.addProfilePicture(String jpeg);							//not ready
      //acc.passwordRequirements(String password);
@@ -73,13 +75,17 @@ public class DBLibraryDriver{
      //aic.removeUniversityDB();
 
 
+
+
      AdminFunctionalityController afc = new AdminFunctionalityController();
-     //afc.addUniversity();  //call from admin interaction
-     //afc.addUser();
-     //afc.editUniversity();
-     //afc.removeUniversityDB("yale");  //parameter = school
+     
+     //afc.addToSavedSchoolsList3("luser", "zxy");     //works 100%; call from AdminInteraction
+     //afc.addUniversity("zza", "gb", "bg", "bg", 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2);     //works 100%; call from AdminInteraction
+     //afc.removeUniversityDB("zzo");     //works 100%; call from AdminInteraction
+     //afc.addUser("zosbaldo", "zmatias", "omuser", "pass", 'a');     //works 100%; call from AdminInteraction
      //afc.viewUniversities();    //works 100%
      //afc.viewUsers();     //works 100%
+
      
      UserFunctionalityController ufc = new UserFunctionalityController();
      
