@@ -23,6 +23,8 @@ public class UniversityControllerTest {
 	private AdminFunctionalityController afc;
 	private DBController dbc;
 	private UserFunctionalityController ufc;
+	private String username;
+	private String schoolTest1;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -30,20 +32,26 @@ public class UniversityControllerTest {
 		afc = new AdminFunctionalityController();
 		dbc = new DBController();
 		ufc = new UserFunctionalityController();
-		
-		
+		this.username = "juser";
+		this.schoolTest1 = "reed";
+	}
+	
+	@After
+	public void  tearDown() {
+		this.dbc = new DBController();
+		dbc.removeFromSavedSchoolsList(this.username, this.schoolTest1);
 	}
 
 	@Test
 	public void addToSavedSchoolsListSuccess() {
-		boolean result = uc.addToSavedSchoolsList2("juser", "BARD");
-		assertTrue("Universtiy was successfully added.", result);
+		int result = uc.addToSavedSchoolsList2(username, schoolTest1);
+		assertEquals("Universtiy was successfully added.", 4, result);
 	}//CREATE A METHOD THAT CHECKS TO MAKE SURE THE UNIVERSITY IS ADDED TO THE LIST
 	
 	@Test
 	public void addToSavedSchoolsListInvalidSchool() {
-		boolean result = uc.addToSavedSchoolsList2("tux69@csbsju.edu","NOTASCHOOL");
-		assertFalse("Universtiy is not in the Database", result);
+		int result = uc.addToSavedSchoolsList2("tux69@csbsju.edu","NOTASCHOOL");
+		assertEquals("Universtiy is not in the Database", 5, result);
 	}
 	
 	@Test
