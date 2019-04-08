@@ -182,9 +182,8 @@ public class UserFunctionalityController {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */	
-	public void addToSavedSchoolsList3(String userName, String school) {	
-		unc.addToSavedSchoolsList2(userName, school);
-
+	public boolean addToSavedSchoolsList3(String userName, String school) {	
+		return unc.addToSavedSchoolsList2(userName, school);
 	}
 
 	/**
