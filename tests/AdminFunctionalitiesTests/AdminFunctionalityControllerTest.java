@@ -30,4 +30,7 @@ public class AdminFunctionalityControllerTest {
 		List<User> listUsers = adc.viewUsers();
 		assertTrue(listUsers.size() == 7);
 	}
+	
+	
+	
 }

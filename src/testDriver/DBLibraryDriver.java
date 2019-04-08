@@ -63,9 +63,8 @@ public class DBLibraryDriver{
 
      //aic.addToSavedSchoolsList4("luser", "some university);  //works 100%
      //aic.addUniversity();    //works 100%
+     aic.removeUniversityDB();
 
-     //aic.addToSavedSchoolsList4("luser", "yanktown");
-     //aic.addUniversity();   //this works 100%
 
      AdminFunctionalityController afc = new AdminFunctionalityController();
      //afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name; call from AdminInteraction
@@ -73,8 +72,8 @@ public class DBLibraryDriver{
      //afc.addUser();
      //afc.editUniversity();
      //afc.removeUniversityDB("yale");  //parameter = school
-     //afc.viewUniversities();
-     //afc.viewUsers();
+     //afc.viewUniversities();    //works 100%
+     //afc.viewUsers();     //works 100%
      
      UserFunctionalityController ufc = new UserFunctionalityController();
      
