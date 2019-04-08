@@ -338,6 +338,7 @@ public class DBController {
 		System.out.println("Did not meet password requirements.");
 		return false;
 	}
+	
 	/**
 	 * Checks to see if the password contains a lower case character
 	 * 
