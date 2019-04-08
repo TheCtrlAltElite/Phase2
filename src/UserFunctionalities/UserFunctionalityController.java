@@ -182,9 +182,12 @@ public class UserFunctionalityController {
 	 * Saves a school to the User's savedSchoolsList
 	 * @param String schoolName - name of the school
 	 */	
-	public void addToSavedSchoolsList3(String userName, String school) {	
-		unc.addToSavedSchoolsList2(userName, school);
-
+	public boolean addToSavedSchoolsList3(String userName, String school) {	
+		if (unc.addToSavedSchoolsList2(userName, school)) {
+			return true;
+		}
+		else 
+			return false;
 	}
 
 	/**
@@ -225,7 +228,6 @@ public class UserFunctionalityController {
     	
     	//if uniToFind exists in the saved schools list, calls removeFromSavedSchoolsList1() from DBController 
    		if(e) {
-   			//System.out.println("reached 2nd if");
    			dbc.removeFromSavedSchoolsList(username, uniToFind);
     	}
    		return e;
