@@ -181,12 +181,12 @@ public class AdminInteraction {
 		System.out.println("Enter school to be edited: \n");
 		String nameToFind = scan.nextLine().toUpperCase();
 		int i = 0;
-
 		boolean e = false;
 
 		while (i < uniList.size()) {
 
 			String name = uniList.get(i).getSchoolName().toUpperCase();
+			
 			if (name.equals(nameToFind)) {
 				e = true;
 				System.out.println("YES, " + nameToFind + " exists.");
@@ -200,7 +200,6 @@ public class AdminInteraction {
 			i++;
 		}
 		if (e) {
-
 			System.out.println("Enter state: \n");
 			String editstate = scan.nextLine();
 			System.out.println("Enter location: ");

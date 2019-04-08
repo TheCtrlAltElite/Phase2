@@ -66,20 +66,22 @@ public class DBLibraryDriver{
  
      
      AdminInteraction aic = new AdminInteraction();
-     //aic.addToSavedSchoolsList4("FBaggins@gmail.com", "BOSTON UNIVERSITY");  //works 100%
-     //aic.addUniversity();    //works 100%
-     //aic.removeUniversityDB();
-     //aic.addToSavedSchoolsList4("luser", "yanktown");
-     //aic.addUniversity();   //this works 100%
+     //aic.addToSavedSchoolsList4();    //works 100%
+     //aic.addUniversity();     //works 100%
+     //aic.removeUniversityDB();    //works 100%
+     //aic.addUser();     //works 100%
+     //aic.editUniversity();     //works 100%
+     //aic.viewUniversities();     //works 100%
+     //aic.viewUsers();     //works 100%
+
 
      AdminFunctionalityController afc = new AdminFunctionalityController();
-     //afc.addToSavedSchoolsList3("luser", "baruch");  //parameters = username, school name; call from AdminInteraction
-     //afc.addUniversity();  //call from admin interaction
-     //afc.addUser();
-     //afc.editUniversity();
-     //afc.removeUniversityDB("yale");  //parameter = school
-     //afc.viewUniversities();
-     //afc.viewUsers();
+     //afc.addToSavedSchoolsList3("luser", "baruch");  //call from AdminInteraction
+     //afc.addUniversity("xuni", "x", "y", "z", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);  //call from AdminInteraction
+     //afc.addUser("z", "u", "zuser", "zpass", 'a'); //call from AdminInteraction
+     //afc.removeUniversityDB("yale");     //call from AdminInteraction
+     //afc.viewUniversities();     //call from AdminInteraction
+     //afc.viewUsers();    //call from AdminInteraction
      
      UserFunctionalityController ufc = new UserFunctionalityController();
      
@@ -90,8 +92,7 @@ public class DBLibraryDriver{
      //ufc.emailSavedSchools();
      //ufc.getSavedSchoolsList("juser");
      
-     
-     
+    
     }
     catch(Exception e){
       e.printStackTrace();
