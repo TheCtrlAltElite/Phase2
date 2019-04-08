@@ -36,14 +36,20 @@ public class DBLibraryDriver{
 
      
      DBController dbc = new DBController();
+
+     //List<University> listUnis = dbc.loadUniversities();
+     //unc.recommendedSchools(listUnis.get(4));
+
      //List<University> listUnis = dbc.loadUniversities();
      //unc.recommendedSchools(listUnis.get(0));
+
+     dbc.sendRecoverEmail("juser");
      
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
      //unc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
-     //dbc.addUniversity("ZZZZZZ", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
-     //unc.getDetailsUni(); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
+     //dbc.addUniversity("TESTUNIDONTDELETE", "-1", "-1", "-1", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
+     //unc.getDetailsUni("YALE"); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
      
      AccountController acc = new AccountController();
      
@@ -52,9 +58,9 @@ public class DBLibraryDriver{
      //acc.isUserReal("jmuehls");
      //acc.getPassword("juser");
      //acc.viewProfile("juser");
-     //acc.editProfile("juser"); 									//does not work
+     //acc.editProfile("Eli123", "Tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y'); 									//does not work
      //acc.resetPassword("Maren", "Maren300000", "Maren300000");
-     //acc.recoverPassword(String email, String firstName, String lastName);		
+     acc.recoverPassword("joettinge001@gmail.com");		
      //acc.addProfilePicture(String jpeg);							//not ready
      //acc.passwordRequirements(String password);
  

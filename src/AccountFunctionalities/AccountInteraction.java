@@ -161,8 +161,8 @@ public class AccountInteraction {
 	 * @param lastName
 	 * @throws MessagingException 
 	 */
-	public void recoverPassword(String email, String firstName, String lastName) throws MessagingException {
-		accController.recoverPassword(email, firstName, lastName);
+	public void recoverPassword(String email) throws MessagingException {
+		accController.recoverPassword(email);
 	}
 	
 	/**

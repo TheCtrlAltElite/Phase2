@@ -2,10 +2,10 @@ package AdminFunctionalities;
 
 //imports
 import java.util.*;
+import AccountFunctionalities.Account;
 import CMCDatabase.*;
 import UniversityFunctionalities.*;
 import UserFunctionalities.*;
-//import other.*;
 
 /**
  * @author CtrlAltElite
@@ -23,8 +23,9 @@ public class AdminFunctionalityController {
 	database = new DBController();
 	uniController = new UniversityController();
 	ufc = new UserFunctionalityController();
-	
 	}
+	
+	
 	
 	/**
 	 * adds a university to a User's saves schools list
@@ -37,6 +38,7 @@ public class AdminFunctionalityController {
     	int i = 0;  		
     	boolean e = false;
     	outerloop:
+    		
     	while(i<dbc.loadUsers().size()) {
     		String name = dbc.loadUsers().get(i).getEmail().toUpperCase();
    			
@@ -49,6 +51,7 @@ public class AdminFunctionalityController {
     		if(i == (dbc.loadUsers().size())-1) {
 		   		System.out.print(userToFind + " does NOT exist.");
     		}
+    		
    			i++;    			
    		}
 	
@@ -76,17 +79,14 @@ public class AdminFunctionalityController {
 
 
 	
-	
-	
-	
-	
 	/**
 	 * Adds a user to the database
 	 * by getting the information from the user
 	 */
 	public void addUser() {
+		
 		DBController dbc = new DBController();
-		List<User> users = dbc.loadUsers();
+		List<Account> users = dbc.loadUsers();
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter first name: ");
@@ -102,11 +102,14 @@ public class AdminFunctionalityController {
 		char type = sc.next().charAt(0); 
 		boolean o = true;
 		//this.database.checkPasswordRequirements(password);
+		
 		for (int i = 0; i < users.size(); i ++) {
+			
 			if(username.equals(users.get(i).getEmail()) || (this.database.checkPasswordRequirements(password)== false)) {//FINAL PRODUCT WILL NOT HAVE PRINT STATEMENT
 				System.out.println("This username is taken or password does not meet requirements.");	
 				break;
 			}
+			
 			else {
 				dbc.addUser(firstName, lastName, username, password, type);
 			}
@@ -117,17 +120,13 @@ public class AdminFunctionalityController {
 	
 	
 	
-	
-	
 	/**
 	 * Removes university from the database
 	 * by making sure the University is not in the 
 	 * saved schools list of any users
 	 * then calls removeUniversity() in DBController
 	 */
-	public boolean removeUniversityDB(String schoolName) {
-		
-		
+	public boolean removeUniversityDB(String schoolName) {		
 		int j = 0;  		
 		boolean e = false;
 		
@@ -145,45 +144,40 @@ public class AdminFunctionalityController {
 			
 			//if the while loop reaches the end of the list, uniToFind does not exist
 			if(j == (database.loadUniversities().size())-1) {
-		   		break;
+		   		//System.out.println("School does not exist, did not remove school.");
+				return e;
 			}
 				j++;    			
 			}
 		
-		//if uniToFind exists, calls addToSavedSchoolsList1() from DBController 
+		//if uniToFind exists, 
 			if(e) {
-				//
+				
+				List<Account> users = database.loadUsers();	
+				boolean success = true;
+				
+				for (int i = 0; i < users.size(); i++) {
+					 Map<String, String> savedList = ufc.getSavedSchoolsList(users.get(i).getEmail());
+					 
+					 for (Map.Entry entry : savedList.entrySet()){
+						 
+						 if(schoolName.toUpperCase().equals(entry.getKey().toString().toUpperCase())) {
+							 success = false;
+							 System.out.println("School was removed: " + success);
+							 break;
+						 } 
+					 }
+				}
+				
+				if(success) {
+					database.removeUniversityDB(schoolName);
+					System.out.println("School was removed: " + success );
+				}
+				return success;
 		}
 			return e;
 		
-		
-		
-		List<User> users = database.loadUsers();	
-		boolean success = true;
-		for (int i = 0; i < users.size(); i++) {
-			 Map<String, String> savedList = ufc.getSavedSchoolsList(users.get(i).getEmail());
-			 for (Map.Entry entry : savedList.entrySet()){
-				 if(schoolName.toUpperCase().equals(entry.getKey().toString().toUpperCase())) {
-					 success = false;
-					 System.out.println("School was removed: " + success);
-					 break;
-				 } 
-			 }
-		}
-		if(success) {
-			database.removeUniversityDB(schoolName);
-			System.out.println("School was removed: " + success );
-		}
-		return success;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -206,8 +200,8 @@ public class AdminFunctionalityController {
 	 * by calling loadUsers() on a DBController object and returning it
 	 * @return List of Users
 	 */
-	public List<User> viewUsers() {
-		List<User> listUsers = database.loadUsers();
+	public List<Account> viewUsers() {
+		List<Account> listUsers = database.loadUsers();
 		for(int i = 0; i < listUsers.size(); i++) {
 			System.out.println(listUsers.get(i).getFirstName() + " " + listUsers.get(i).getLastName() + " " + listUsers.get(i).getEmail() + " " + listUsers.get(i).getStatus() + " " + listUsers.get(i).getType());
 		}	
