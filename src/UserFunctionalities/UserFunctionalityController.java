@@ -183,7 +183,7 @@ public class UserFunctionalityController {
 	 * @param String schoolName - name of the school
 	 */	
 	public boolean addToSavedSchoolsList3(String userName, String school) {	
-		if (unc.addToSavedSchoolsList2(userName, school)) {
+		if (unc.addToSavedSchoolsList2(userName, school) == 4) {
 			return true;
 		}
 		else 

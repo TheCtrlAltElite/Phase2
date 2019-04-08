@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import CMCDatabase.DBController;
 import UserFunctionalities.User;
+import UserFunctionalities.UserFunctionalityController;
 
 /**
  * @author CtrlAltElite
@@ -22,6 +23,7 @@ public class UniversityController {
 	private DBController dbc;
 	private List<University> listUnis;
 	private TreeMap<Float, University> scores;
+	//private UserFunctionalityController ufc;
 	
 
 	/**
@@ -29,6 +31,7 @@ public class UniversityController {
 	 */
 	public UniversityController() {
 		dbc = new DBController();
+		//ufc = new UserFunctionalityController();
 	}
 	
 
@@ -36,36 +39,51 @@ public class UniversityController {
 	 * Saves a University to the specified user's saved school
 	 * @param user that school will be added to
 	 */
-	public boolean addToSavedSchoolsList2(String user, String schoolName) {	
+	public int addToSavedSchoolsList2(String user, String schoolName) {	
 		String uniToFind = schoolName.toUpperCase();
 		Map<String, String> savedSchools = dbc.getSavedSchoolsList(user);
-    	int i = 0;  		
-    	boolean e = false;
-    	
-    	//searches through list of universities retrieved through loadUniversities() method
-    	while(i<dbc.loadUniversities().size()) {
-    		
-    		String name = dbc.loadUniversities().get(i).getSchoolName();
-    		
-    		//confirms that the uniToFind exists
-    		if (name.toUpperCase().equals(uniToFind) && !savedSchools.containsKey(schoolName)){
-   				e= true;
-   				System.out.println("YES, " + uniToFind + " exists.");   			
-   				break;
-    		}
-    		
-    		//if the while loop reaches the end of the list, uniToFind does not exist
-    		if(i == (dbc.loadUniversities().size())-1) {
-		   		System.out.print(uniToFind + " does NOT exist. \n");
-    		}
-   			i++;    			
-   		}
-    	
-    	//if uniToFind exists, calls addToSavedSchoolsList1() from DBController 
-   		if(e) {
-   			dbc.addToSavedSchoolsList1(user, uniToFind);
-    	}
-   		return e;
+		int result2 = 3;
+		int i = 0;  		
+
+		//searches through list of universities retrieved through loadUniversities() method
+		while(i<dbc.loadUniversities().size()) {
+
+			String name = dbc.loadUniversities().get(i).getSchoolName();
+
+			//confirms that the uniToFind exists
+			if (name.toUpperCase().equals(uniToFind) && !savedSchools.containsKey(schoolName)){
+				//e= true;
+				result2 = 4;
+				System.out.println("YES, " + uniToFind + " exists.");   			
+				break;
+			}
+
+			//if the while loop reaches the end of the list, uniToFind does not exist
+			if(i == (dbc.loadUniversities().size())-1) {
+				result2 = 5;
+				System.out.print(uniToFind + " does NOT exist. \n");
+			}
+			i++;    			
+		}
+
+		//if uniToFind exists, calls addToSavedSchoolsList1() from DBController 
+		if(result2 == 4) {
+
+			Map<String, String> savedList = dbc.getSavedSchoolsList(user);
+
+			for (Map.Entry entry : savedList.entrySet()){
+
+				if(schoolName.toUpperCase().equals(entry.getKey().toString().toUpperCase())) {
+					result2 = 6;
+					System.out.println("School is already in the list.");
+					break;
+				} 
+			}
+			if(result2 == 4) {
+				dbc.addToSavedSchoolsList1(user, uniToFind);
+			}
+		}
+		return result2;
 	}
 	
 	/**

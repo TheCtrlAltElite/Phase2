@@ -30,36 +30,41 @@ public class AdminFunctionalityController {
 	/**
 	 * adds a university to a User's saves schools list
 	 */
-	public boolean addToSavedSchoolsList3(String username, String schoolName){
+	public int addToSavedSchoolsList3(String username, String schoolName){
 		
 		DBController dbc = new DBController();
     	String userToFind = username;
+    	int result = 0;
+    	int i = 0;  	
     	
-    	int i = 0;  		
-    	boolean e = false;
     	outerloop:
-    		
     	while(i<dbc.loadUsers().size()) {
     		String name = dbc.loadUsers().get(i).getEmail().toUpperCase();
    			
     		if (name.equals(userToFind.toUpperCase())){
-   				e= true;
+   				result = 1;
    				System.out.println("YES, " + userToFind + " exists.");   			
    				break outerloop;
     		}
     			
     		if(i == (dbc.loadUsers().size())-1) {
 		   		System.out.print(userToFind + " does NOT exist.");
+		   		result = 2;
     		}
-    		
    			i++;    			
    		}
 	
-   		if(e) {
+   		if(result == 1) {
    			UniversityController unc = new UniversityController();
-   			unc.addToSavedSchoolsList2(userToFind, schoolName);
+   			result = unc.addToSavedSchoolsList2(userToFind, schoolName);
+   			
+   			if(result == 4) {
+   				System.out.println("Successfully added " + schoolName + " to " + username + "'s SavedSchool list.");
+   			}
+   				
     	}	
-   		return e;
+   		System.out.print(result);
+   		return result;
 	}
 
 	
