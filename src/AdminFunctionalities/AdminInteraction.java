@@ -2,15 +2,9 @@ package AdminFunctionalities;
 
 import java.util.List;
 import java.util.Scanner;
-
 import CMCDatabase.DBController;
 import UniversityFunctionalities.University;
 import UniversityFunctionalities.UniversityController;
-
-//imports
-//import java.util.*;
-
-//import UserFunctionalities.*;
 
 /**
  * 
@@ -28,19 +22,21 @@ public class AdminInteraction {
 	// constructor
 	public AdminInteraction() {
 		adminFController = new AdminFunctionalityController();
+		dbController = new DBController();
+		uc = new UniversityController();
 	}
 
-	public void addToSavedSchoolsList4(String username, String schoolName) {
+	public void addToSavedSchoolsList4() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter username to add a school to their saved school list");
+		String username = sc.nextLine();
+		System.out.println("Enter school to add to " + username + "'s saved school list.");
+		String schoolName = sc.nextLine();
+		sc.close();
 		adminFController.addToSavedSchoolsList3(username, schoolName);
 	}
 
-	/**
-	 * shows the admin the list of universities by calling viewUniversities() in the
-	 * AdminFunctionalityController
-	 */
-	public void viewUniversities() {
-		adminFController.viewUniversities();
-	}
+
 
 	/**
 	 * Adds a new university to the database by calling addUniversity() in
@@ -51,14 +47,13 @@ public class AdminInteraction {
 		DBController dbc = new DBController();
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter School Name or 'q' to quit");
+		System.out.println("Enter school name to be added or 'q' to quit");
 		String schoolName = sc.nextLine();
 
 		boolean success = false;
 
 		int i = 0;
 		// searches through list of universities retrieved through loadUniversities()
-		// method
 		while (i < dbc.loadUniversities().size()) {
 
 			String name = dbc.loadUniversities().get(i).getSchoolName();
@@ -71,7 +66,6 @@ public class AdminInteraction {
 				
 				addUniversity();
 
-				//break;
 			}
 
 			else if(schoolName.equals("q")) {
@@ -117,24 +111,31 @@ public class AdminInteraction {
 			adminFController.addUniversity(schoolName, schoolState, schoolLocation, schoolControl, numberStudents,
 					percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants,
 					percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
-			
 			success = true;
 			break;
-			
 			}
 		}
-		
 		return success;
 	}
 
-	/**
-	 * Displays all users and their information in the database by calling
-	 * viewUsers() in AdminFunctionalityController
-	 */
-	public void viewUsers() {
-		adminFController.viewUsers();
-	}
 
+
+	/**
+	 * Removes a stored university from the database by calling
+	 * removeUniversityDB(String) in AdminFunctionalityController
+	 * 
+	 * @param schoolName
+	 */
+	public void removeUniversityDB() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter school to be removed: \n");
+		String schoolName = scan.nextLine();
+		adminFController.removeUniversityDB(schoolName);
+		scan.close();
+	}
+	
+	
+	
 	// /**
 	// * Updates the status of users in database
 	// * @param status
@@ -151,22 +152,26 @@ public class AdminInteraction {
 	// //TODO
 	// }
 
+	
+	
 	/**
 	 * Adds a new user to the database by calling addUser() in
 	 * AdminFunctionalityController
 	 */
 	public void addUser() {
-		adminFController.addUser();
-	}
-
-	/**
-	 * Removes a stored university from the database by calling
-	 * removeUniversityDB(String) in AdminFunctionalityController
-	 * 
-	 * @param schoolName
-	 */
-	public void removeUniversityDB(String schoolName) {
-		adminFController.removeUniversityDB(schoolName);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter first name: ");
+		String firstName = sc.nextLine();
+		System.out.println("Please enter last name: ");
+		String lastName = sc.nextLine();
+		System.out.println("Please enter email/username: ");
+		String username = sc.nextLine();
+		System.out.println("Please enter password: ");
+		String password = sc.nextLine();
+		System.out.println("Please enter type: ");
+		char type = sc.next().charAt(0); 
+		sc.close();
+		adminFController.addUser(firstName, lastName, username, password, type);
 	}
 
 	public boolean editUniversity() {
@@ -234,5 +239,25 @@ public class AdminInteraction {
 		}
 		scan.close();
 		return e;
+	}
+	
+	
+	
+	/**
+	 * shows the admin the list of universities by calling viewUniversities() in the
+	 * AdminFunctionalityController
+	 */
+	public void viewUniversities() {
+		adminFController.viewUniversities();
+	}
+
+	
+
+	/**
+	 * Displays all users and their information in the database by calling
+	 * viewUsers() in AdminFunctionalityController
+	 */
+	public void viewUsers() {
+		adminFController.viewUsers();
 	}
 }
