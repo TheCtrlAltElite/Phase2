@@ -37,13 +37,14 @@ public class DBLibraryDriver{
      
      DBController dbc = new DBController();
 
-     //List<University> listUnis = dbc.loadUniversities();
+     List<University> listUnis = dbc.loadUniversities();
      //unc.recommendedSchools(listUnis.get(4));
 
      //List<University> listUnis = dbc.loadUniversities();
      //unc.recommendedSchools(listUnis.get(0));
 
-     dbc.sendRecoverEmail("juser");
+     //dbc.sendRecoverEmail("juser");
+     dbc.maxNumStudents();
      
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready

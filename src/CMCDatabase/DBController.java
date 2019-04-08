@@ -423,6 +423,7 @@ public class DBController {
 		}
 		Collections.sort(listOfStudents);
 		float maxStudents = listOfStudents.get(listOfStudents.size() - 1);	//Subtracts 1 to ensure that the 
+		System.out.println(maxStudents);
 		return maxStudents;		//index of the array is realigned
 	}
 	
