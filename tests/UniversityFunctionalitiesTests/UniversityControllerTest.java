@@ -92,7 +92,7 @@ public class UniversityControllerTest {
 	public void editUniversityChangesSATMath() {
 		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(7).equals("500"));
+		assertTrue(details.get(7).equals("23451"));
 	}
 	
 	@Test
