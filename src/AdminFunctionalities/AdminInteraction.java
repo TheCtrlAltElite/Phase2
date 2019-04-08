@@ -165,8 +165,12 @@ public class AdminInteraction {
 	 * 
 	 * @param schoolName
 	 */
-	public void removeUniversityDB(String schoolName) {
+	public void removeUniversityDB() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter school to be removed: \n");
+		String schoolName = scan.nextLine();
 		adminFController.removeUniversityDB(schoolName);
+		scan.close();
 	}
 
 	public boolean editUniversity() {
