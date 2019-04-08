@@ -45,7 +45,6 @@ public class DBLibraryDriver{
 
      //dbc.sendRecoverEmail("juser");
 
-     
      //unc.compareUniversity(listUnis.get(5)); 	 //not ready
      //unc.recommendedSchools(University university;	//not ready
      //unc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
@@ -67,10 +66,9 @@ public class DBLibraryDriver{
  
      
      AdminInteraction aic = new AdminInteraction();
-
-     //aic.addToSavedSchoolsList4("luser", "some university);  //works 100%
+     //aic.addToSavedSchoolsList4("FBaggins@gmail.com", "BOSTON UNIVERSITY");  //works 100%
      //aic.addUniversity();    //works 100%
-
+     //aic.removeUniversityDB();
      //aic.addToSavedSchoolsList4("luser", "yanktown");
      //aic.addUniversity();   //this works 100%
 
@@ -86,7 +84,6 @@ public class DBLibraryDriver{
      UserFunctionalityController ufc = new UserFunctionalityController();
      
      //ufc.searchSchools(String schoolName, String schoolState, String schoolLocation,String schoolControl, String numberStudents1, String numberStudents2, String percentFemale1, String percentFemale2, String verbalSAT1, String verbalSAT2, String mathSAT1, String mathSAT2, String schoolExpenses1, String schoolExpenses2, String percentFinancialAid1, String percentFinancialAid2, String numApplicants1, String numApplicants2, String percentAdmitted1, String percentAdmitted2, String percentEnrolled1, String percentEnrolled2, String academicScale1, String academicScale2, String socialScale1, String socialScale2, String qualityScale1, String qualityScale2);
-     //ufc.addToSavedSchoolsList3("juser", "YALE");
      //ufc.viewSchool(String schoolName);
      //ufc.removeSavedSchool("luser", "BARUCH");
      //ufc.updateSavedSchoolsList(List<UserSchool> list);
