@@ -131,6 +131,7 @@ public class DBController {
 		int academicScale;
 		int socialScale;
 		int qualityScale;
+		List<String> emphases = new ArrayList<String>();
 		for(int i = 0; i < arrayUnis.length; i++) {
 			schoolName = arrayUnis[i][0];
 			schoolState = arrayUnis[i][1];
@@ -148,7 +149,13 @@ public class DBController {
 			academicScale = Integer.parseInt(arrayUnis[i][13]);
 			socialScale = Integer.parseInt(arrayUnis[i][14]);
 			qualityScale = Integer.parseInt(arrayUnis[i][15]);
-			University uni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
+			
+			Map<String, List<String>> allEmphases = this.getUniversityNamesWithEmphases();
+			if(allEmphases.containsKey(schoolName)) {
+				emphases = allEmphases.get(schoolName);
+			}
+			
+			University uni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale, emphases);
 			listUnis.add(uni);
 			//System.out.println(listUnis.get(i).getSchoolName());    //prints all universities
 		}

@@ -170,7 +170,7 @@ public class AccountInteraction {
 	 * calling addProfile picture in Account Controller
 	 * @param jpeg
 	 */
-	public void addProfilePicture(String jpeg) {
-		accController.addProfilePicture(jpeg);
+	public void addProfilePicture(String email, String jpeg) {
+		accController.addProfilePicture(email, jpeg);
 	}
 }

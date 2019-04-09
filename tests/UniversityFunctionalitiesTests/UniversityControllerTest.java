@@ -176,7 +176,7 @@ public class UniversityControllerTest {
 	@Test
 	public void addUniversityAddsTheSchoolCompletely(){
 		uc.addUniversityInfo("ZZZZZUNIVERSITY", "ARIZONA", "URBAN", "STATE", 10000, 544, 677, 23, 54, 12, 31451, 54, 77, 5, 5, 5);
-		List<University> school = ufc.searchSchools("ZZZZZUNIVERSITY", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);		
+		List<University> school = ufc.searchSchools("ZZZZZUNIVERSITY", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);		
 		assertTrue(school.get(0).getSchoolName().equals("ZZZZZUNIVERSITY"));
 	}
 
