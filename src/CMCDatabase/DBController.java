@@ -155,6 +155,32 @@ public class DBController {
 		//System.out.println(listUnis.get(54).getSchoolName());   //will return university at index 54 which is Harvard
 		return listUnis;
 	}
+	
+//	public List<String> getUniversityEmphases() {
+//		String[][] listEmphases	= library.university_getEmphases();
+//		List<String> emphases= new ArrayList<String>();
+//		for (int i = 0; i < listEmphases.length; i++) {
+//			emphases.add(listEmphases[i][0]);
+//		}
+//		return emphases;
+//	}
+	
+	public Map<String, List<String>> getUniversityNamesWithEmphases() {
+		String[][] listEmphases	= library.university_getNamesWithEmphases();
+		Map<String, List<String>> emphasesMap = new TreeMap<>();
+		for (int i = 0; i < listEmphases.length; i++) {
+			if(!emphasesMap.containsKey(listEmphases[i][0])) {
+				List<String> list = new ArrayList<String>();
+				list.add(listEmphases[i][1]);
+			emphasesMap.put(listEmphases[i][0], list);
+			}
+			else {
+				List<String> list = emphasesMap.get(listEmphases[i][0]);
+				list.add(listEmphases[i][1]);
+			}
+		}
+		return emphasesMap;
+	}
 
 	/**
 	 * Updates the information for a university in the database.
