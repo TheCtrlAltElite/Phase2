@@ -88,22 +88,25 @@ public class AdminFunctionalityController {
 	 * Adds a user to the database
 	 * by getting the information from the user
 	 */
-	public boolean addUser(String firstName, String lastName, String username, String password, char type) {
+	public int addUser(String firstName, String lastName, String username, String password, char type) {
 		
 		DBController dbc = new DBController();
 		List<Account> users = dbc.loadUsers();
 
-		boolean added = false;
+		int result = 0;
+		//boolean added = false;
 		//this.database.checkPasswordRequirements(password);
 		
 		if((this.database.checkPasswordRequirements(password)== false)) {
-			System.out.println("This username is taken or password does not meet requirements.\n ");
-			return added;
+			result = 1;
+			return result;
+			//return added;
 		}
 		
 		for (int i = 0; i < users.size(); i ++) {
 			
 			if(username.toUpperCase().equals(users.get(i).getEmail().toUpperCase()) ) {
+				result = 2;
 				break;
 			}
 		
@@ -111,17 +114,21 @@ public class AdminFunctionalityController {
 			else {
 				dbc.addUser(firstName, lastName, username, password, type);
 //				Account acc = new Account(username, firstName, lastName,  password,  type, 'Y');
-
-				added = true;
+				result = 3;
+				//added = true;
 			}
 		}	
-		if(!added) {
+		if(result != 3) {
 			System.out.println("This username is taken or password does not meet requirements.\n ");
 		}
-	
-		System.out.println("User was added: " + added + "\n");
+		else {
+			System.out.println("User was added. \n");
 
-		return added;
+		}
+	
+		
+
+		return result;
 	}
 	
 	

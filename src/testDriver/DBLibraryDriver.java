@@ -69,7 +69,7 @@ public class DBLibraryDriver{
      AdminInteraction aic = new AdminInteraction();
      //aic.addToSavedSchoolsList4();    //works 100%
      //aic.addUniversity();     //works 100%
-     aic.removeUniversityDB();    //works 100%
+     //aic.removeUniversityDB();    //works 100%
      //aic.addUser();     //works 100%
      //aic.editUniversity();     //works 100%
      //aic.viewUniversities();     //works 100%
@@ -91,7 +91,7 @@ public class DBLibraryDriver{
      //ufc.removeSavedSchool("luser", "BARUCH");
      //ufc.updateSavedSchoolsList(List<UserSchool> list);
      //ufc.emailSavedSchools();
-     ufc.getSavedSchoolsList("juser");
+     //ufc.getSavedSchoolsList("juser");
 
     
     }
