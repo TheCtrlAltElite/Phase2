@@ -3,6 +3,8 @@
  */
 package testDriver;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -91,15 +93,12 @@ public class DBLibraryDriver{
      //emphases.add("BIOLOGY");
      //ufc.searchSchools(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, emphases);
      //ufc.searchSchools(String schoolName, String schoolState, String schoolLocation,String schoolControl, String numberStudents1, String numberStudents2, String percentFemale1, String percentFemale2, String verbalSAT1, String verbalSAT2, String mathSAT1, String mathSAT2, String schoolExpenses1, String schoolExpenses2, String percentFinancialAid1, String percentFinancialAid2, String numApplicants1, String numApplicants2, String percentAdmitted1, String percentAdmitted2, String percentEnrolled1, String percentEnrolled2, String academicScale1, String academicScale2, String socialScale1, String socialScale2, String qualityScale1, String qualityScale2);
-
+     
      //ufc.viewSchool(String schoolName);
      //ufc.removeSavedSchool("luser", "BARUCH");
      //ufc.updateSavedSchoolsList(List<UserSchool> list);
      //ufc.emailSavedSchools();
-     Map<String, String> details = ufc.getSavedSchoolsList("luser");
-     if (details.containsKey("YANKTOWN COLLEGE")) {
-    	 System.out.println("yo");
-     }
+     //ufc.addToSavedSchoolsList3(String username, String schoolName);
 
     
     }

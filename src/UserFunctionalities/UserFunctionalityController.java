@@ -270,7 +270,10 @@ public class UserFunctionalityController {
 	/**
 	 * Email's the user's savedSchoolsList to the user's email
 	 */		
-	public void emailSavedSchools(String username) throws MessagingException {
+	public boolean emailSavedSchools(String username) throws MessagingException {
+		boolean status = false;
+		if(dbc.isUserReal(username)) {
+			status = true;
 		Map<String, String> savedSchoolsList = getSavedSchoolsList(username);
 		String mail_body = "Your saved schools list: \n";
 		
@@ -294,7 +297,7 @@ public class UserFunctionalityController {
 		
 		MimeMessage message= new MimeMessage(session);  				//creates MimeMessage object to send email
 		message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com"));  					//sets from email which is cmcdatabase2019@gmail.com
-		message.addRecipient(Message.RecipientType.TO, new InternetAddress("rclintsma001@csbsju.edu"));	//receiver of the email
+		message.addRecipient(Message.RecipientType.TO, new InternetAddress(username));	//receiver of the email
 		message.setSubject("Your Saved Schools List");  						//subject of the email
 		message.setText(mail_body); 									//sets the body of the email to mail_body
 
@@ -305,7 +308,8 @@ public class UserFunctionalityController {
     } catch (Exception e) {
         e.printStackTrace();
     	}
-	   
+		}
+		return status;
 	}
 	
 	/**
