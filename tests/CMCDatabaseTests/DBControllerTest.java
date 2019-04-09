@@ -13,14 +13,18 @@ import org.junit.Test;
 import AccountFunctionalities.Account;
 import CMCDatabase.DBController;
 import UniversityFunctionalities.University;
+import UniversityFunctionalities.UniversityController;
+import UserFunctionalities.User;
 
 public class DBControllerTest {
 	
 	private DBController dbc;
+	private UniversityController unc;
 	
 	@Before
 	public void setUp() throws Exception{
 		dbc = new DBController();
+		unc = new UniversityController();
 		dbc.loadUniversities();
 	}
 
@@ -29,6 +33,11 @@ public class DBControllerTest {
 		this.dbc = new DBController();
 		dbc.addUniversity("BARD", "NEW YORK","SMALL-CITY", "PRIVATE", 10000, 55, 560, 520, 32239, 80, 4000, 70, 30, 3, 4, 4);
 		dbc.removeUserFromDB("rcCOOLguy247@gmail.com");
+		dbc.addToSavedSchoolsList1("fuser", "QUEENS");
+		dbc.removeFromSavedSchoolsList("fuser", "REED");
+		dbc.removeUniversityDB("TESTUNI");
+		dbc.updateUniversity("TEMPLE", "PENNSYLVANIA", "URBAN", "STATE", 35000, 50, 475, 500, 15366, 60, 11500, 70, 60, 2, 2, 2);
+		dbc.addUser("Rigby", "tux", "tux420@csbsju.edu", "PenguinPower420",'u');
 	}
 	
 	
@@ -452,12 +461,410 @@ public class DBControllerTest {
 		for(String key : keys) {
 			if(key.equals("QUEENS")) {
 				result = false;
+				break;
+			}
+			else {
+				result = true;
 			}
 		}
-		result = true;
 		assertTrue("School removed from saved Schools list.", result);
 	}
 	
+	@Test
+	public void addToSavedSchoolsListPasses() {
+		dbc.addToSavedSchoolsList1("fuser", "REED");
+		Map<String, String> list = dbc.getSavedSchoolsList("fuser");
+		Set<String> keys = list.keySet();
+		boolean result = false;
+		for(String key : keys) {
+			if(key.equals("QUEENS")) {
+				result = true;
+				break;
+			}
+			else {
+				result = false;
+			}
+		}
+		assertTrue("School added to saved Schools list.", result);
+	}
+	
+	@Test
+	public void addUniversityPassesForUniversityName() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(0).equals("TESTUNI"));
+	}
+	
+	@Test
+	public void addUniversityPassesForUniversityState() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(1).equals("COLORADO"));
+	}
+	
+	@Test
+	public void addUniversityPassesForUniversityLocal() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(2).equals("SUBURBAN"));
+	}
+	
+	@Test
+	public void addUniversityPassesForUniversityControl() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(3).equals("PRIVATE"));
+	}
+	
+	@Test
+	public void addUniversityPassesForUniversityEnrollment() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(4).equals("10000"));
+	}
+	
+	@Test
+	public void addUniversityPassesForUniversityPercentFemale() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(5).equals("50"));
+	}
+	
+	@Test
+	public void addUniversityPassesForUniversitySATVerbal() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(6).equals("500"));
+	}
+	
+	@Test
+	public void addUniversityPassesForUniversitySATMath() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(7).equals("500"));
+	}
+	
+	@Test
+	public void addUniversityPassesForUniversityExpenses() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(8).equals("23451"));
+	}
+	
+	
+	@Test
+	public void addUniversityPassesForUniversityPercentFinancialAid() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(9).equals("25"));
+	}
+	
+	@Test
+	public void addUniversityPassesForUniversityNumApplicants() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(10).equals("12355"));
+	}
+	@Test
+	public void addUniversityPassesForUniversityPercentAdmitted() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(11).equals("23"));
+	}
+	@Test
+	public void addUniversityPassesForUniversityPercentEnrolled() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(12).equals("65"));
+	}
+	@Test
+	public void addUniversityPassesForUniversitySocialScale() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(13).equals("5"));
+	}
+	@Test
+	public void addUniversityPassesForUniversityAcademciScale() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(14).equals("5"));
+	}
+	@Test
+	public void addUniversityPassesForUniversityQualityScale() {
+		dbc.addUniversity("TESTUNI", "COLORADO", "SUBURBAN", "PRIVATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
+		List<String> uni = unc.getDetailsUni("TESTUNI");
+		assertTrue(uni.get(15).equals("5"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForState() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(1).equals("PENN"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForLocal() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(2).equals("SUBURBAN"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForControl() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(3).equals("PRIVATE"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForEnrollment() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(4).equals("40000"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForFemales() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(5).equals("60"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForVerbal() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(6).equals("500"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForMath() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(7).equals("550"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForExpenses() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(8).equals("16745"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForPercentFinAid() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(9).equals("70"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForNumApplicants() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(10).equals("1200"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForPercentAdmitted() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(11).equals("65"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForPercentEnrolled() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(12).equals("70"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForSocial() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(13).equals("3"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForAcademic() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(14).equals("3"));
+	}
+	
+	@Test
+	public void updateUniversityPassesForQuality() {
+		dbc.updateUniversity("TEMPLE","PENN", "SUBURBAN", "PRIVATE", 40000, 60,	500, 550, 16745, 70, 1200,	65, 70, 3, 3, 3);
+		List<String> uni = unc.getDetailsUni("TEMPLE");
+		assertTrue(uni.get(15).equals("3"));
+	}
+	
+	@Test
+	public void loadUniversitiesWorksForFirstUni() {
+		List<University> listUnis = dbc.loadUniversities();
+		assertTrue(listUnis.get(0).getSchoolName().equals("ABILENE CHRISTIAN UNIVERSITY"));
+	}
+	
+	@Test
+	public void loadUniversitiesWorksForLastUni() {
+		List<University> listUnis = dbc.loadUniversities();
+		assertTrue(listUnis.get(listUnis.size()-1).getSchoolName().equals("ZZZZZUNIVERSITY"));
+	}
+
+	@Test
+	public void loadUniversitiesWorksForAMiddleIndex() {
+		List<University> listUnis = dbc.loadUniversities();
+		assertTrue(listUnis.get(listUnis.size()-6).getSchoolName().equals("WESLEYAN"));
+	}
+	
+	@Test
+	public void loadUniversitiesWorksForAnotherMiddleIndex() {
+		List<University> listUnis = dbc.loadUniversities();
+		assertTrue(listUnis.get(5).getSchoolName().equals("AUGSBURG"));
+	}
+	
+	@Test
+	public void removeUserFromBDPasses() {
+		int num = dbc.removeUserFromDB("tux420@csbsju.edu");
+		boolean result= false;
+		if(num == -1) {
+			result = false;
+		}
+		else {
+			result = true;
+		}
+		assertTrue("User removed", result);
+	}
+	
+	@Test
+	public void isUserRealPasses() {
+		boolean result= dbc.isUserReal("juser");
+		assertTrue("User Exists", result);
+	}
+	
+	@Test
+	public void isUserRealFails() {
+		boolean result= dbc.isUserReal("jib");
+		assertFalse("User Does Not Exist", result);
+	}
+	//test for fails as well
+	@Test
+	public void getUniversityReturnsUniversityName() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getSchoolName().equals("REED"));
+	}
+	@Test
+	public void getUniversityReturnsUniversityState() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getSchoolState().equals("OREGON"));
+	}
+	@Test
+	public void getUniversityReturnsUniversityLocal() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getSchoolLocation().equals("SUBURBAN"));
+	}
+	@Test
+	public void getUniversityReturnsUniversityControl() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getSchoolControl().equals("PRIVATE"));
+	}
+	@Test
+	public void getUniversityReturnsUniversityEnrollment() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getNumberStudents() == 10000);
+	}
+	@Test
+	public void getUniversityReturnsUniversityFemale() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getPercentFemale() == 40);
+	}
+	@Test
+	public void getUniversityReturnsUniversityVerbal() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getVerbalSAT() == 625);
+	}
+	@Test
+	public void getUniversityReturnsUniversityMath() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getMathSAT() == 625);
+	}
+	@Test
+	public void getUniversityReturnsUniversityExpenses() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getSchoolExpenses() == 37915);
+	}
+	@Test
+	public void getUniversityReturnsUniversityPercentAid() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getPercentFinancialAid() == 40);
+	}
+	@Test
+	public void getUniversityReturnsUniversityNumApplicants() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getNumApplicants() == 4000);
+	}
+	@Test
+	public void getUniversityReturnsUniversityPercentAdmitted() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getPercentAdmitted() == 80);
+	}
+	@Test
+	public void getUniversityReturnsUniversityPercentEnrolled() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getPercentEnrolled() == 40);
+	}
+	@Test
+	public void getUniversityReturnsUniversityAcademic() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getAcademicScale() == 4);
+	}
+	@Test
+	public void getUniversityReturnsUniversitySocial() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getSocialScale() == 3);
+	}
+	@Test
+	public void getUniversityReturnsUniversityQuality() {
+		University uni = dbc.getUniversity("REED");
+		assertTrue(uni.getQualityScale() == 4);
+	}
+	@Test (expected=IllegalArgumentException.class)
+	public void getUniversityFailsForInvalidUni() {
+		dbc.getUniversity("JIB");
+	}
+	
+	@Test
+	public void getDetailsProfile2WorksForFistName() {
+		List<String> user = dbc.getDetailsProfile2("juser");
+		assertTrue(user.get(0).equals("John"));
+	}
+	@Test
+	public void getDetailsProfile2WorksForLastName() {
+		List<String> user = dbc.getDetailsProfile2("juser");
+		assertTrue(user.get(1).equals("User"));
+	}
+	@Test
+	public void getDetailsProfile2WorksForUserName() {
+		List<String> user = dbc.getDetailsProfile2("juser");
+		assertTrue(user.get(2).equals("juser"));
+	}
+	@Test
+	public void getDetailsProfile2WorksForPassword() {
+		List<String> user = dbc.getDetailsProfile2("juser");
+		assertTrue(user.get(3).equals("JohnMiller5"));
+	}
+	@Test
+	public void getDetailsProfile2WorksForType() {
+		List<String> user = dbc.getDetailsProfile2("juser");
+		assertTrue(user.get(4).equals("u"));
+	}
+	@Test
+	public void getDetailsProfile2WorksForStatus() {
+		List<String> user = dbc.getDetailsProfile2("juser");
+		assertTrue(user.get(5).equals("Y"));
+	}
 	
 	
 	

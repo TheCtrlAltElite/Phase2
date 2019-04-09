@@ -50,7 +50,7 @@ public class DBLibraryDriver{
      //unc.recommendedSchools(University university;	//not ready
      //unc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
      //dbc.addUniversity("TESTUNIDONTDELETE", "-1", "-1", "-1", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
-     //unc.getDetailsUni("YALE"); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
+     //unc.getDetailsUni("TESTUNI"); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
      
      AccountController acc = new AccountController();
      
@@ -69,7 +69,7 @@ public class DBLibraryDriver{
      AdminInteraction aic = new AdminInteraction();
      //aic.addToSavedSchoolsList4();    //works 100%
      //aic.addUniversity();     //works 100%
-     aic.removeUniversityDB();    //works 100%
+     //aic.removeUniversityDB();    //works 100%
      //aic.addUser();     //works 100%
      //aic.editUniversity();     //works 100%
      //aic.viewUniversities();     //works 100%
@@ -91,7 +91,7 @@ public class DBLibraryDriver{
      //ufc.removeSavedSchool("luser", "BARUCH");
      //ufc.updateSavedSchoolsList(List<UserSchool> list);
      //ufc.emailSavedSchools();
-     ufc.getSavedSchoolsList("juser");
+     //ufc.getSavedSchoolsList("juser");
 
     
     }

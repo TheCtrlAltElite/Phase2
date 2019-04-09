@@ -106,9 +106,7 @@ public class DBController {
 	public int removeUserFromDB(String username) {
 		return this.library.user_deleteUser(username);
 	}
-	
-	
-	
+
 	/**
 	 * Returns a list of all of the universities in the database.
 	 * 
