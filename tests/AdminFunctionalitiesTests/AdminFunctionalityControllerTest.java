@@ -40,6 +40,7 @@ public class AdminFunctionalityControllerTest {
 	private String lastName;
 	private String username2;
 	private String password;
+	private String password2;
 	char type;
 	
 	@Before
@@ -68,6 +69,7 @@ public class AdminFunctionalityControllerTest {
 		this.lastName = "test";
 		this.username2 = "ztest";
 		this.password = "PenguinPower911";
+		this.password2 = "lol";
 		this.type = 'a';
 	}
 	
@@ -76,6 +78,7 @@ public class AdminFunctionalityControllerTest {
 		this.dbc = new DBController();
 		dbc.removeFromSavedSchoolsList(this.username, this.schoolTest1);
 		dbc.removeUniversityDB(this.schoolName);
+		dbc.removeUserFromDB(username2);
 		
 	}
 	
@@ -240,14 +243,20 @@ public class AdminFunctionalityControllerTest {
 	
 	@Test
 	public void addUserSuceess() {
-		boolean result = afc.addUser(this.firstName, this.lastName, this.username2, this.password, this.type);
-		assertTrue("User was added",result);
+		int result = afc.addUser(this.firstName, this.lastName, this.username2, this.password, this.type);
+		assertEquals("User was added", 3, result);
 	}
 	
 	@Test
-	public void addUserFail() {
-		boolean result = afc.addUser(this.firstName, this.lastName, this.username2, this.password, this.type);
-		assertFalse("User was not added",result);
+	public void addUserInvalidPassword() {
+		int result = afc.addUser(this.firstName, this.lastName, this.username2, this.password2, this.type);
+		assertEquals("User was not added", 1, result);
+	}
+	
+	@Test
+	public void addUserFailBecasueUsernameExists() {
+		int result = afc.addUser(this.firstName, this.lastName, "fuser", this.password, this.type);
+		assertEquals("User was not added", 2, result);
 	}
 	
 	@Test
