@@ -75,35 +75,35 @@ public class AdminInteraction {
 
 			else {
 				
-			System.out.println("Enter School State");
+			System.out.println("Enter School State: \n");
 			String schoolState = sc.nextLine();
-			System.out.println("Enter School Location");
+			System.out.println("Enter School Location: \n");
 			String schoolLocation = sc.nextLine();
-			System.out.println("Enter School Control");
+			System.out.println("Enter School Control: \n");
 			String schoolControl = sc.nextLine();
-			System.out.println("Enter Number of Students");
+			System.out.println("Enter Number of Students: \\n");
 			int numberStudents = sc.nextInt();
-			System.out.println("Enter Percent Female Students");
+			System.out.println("Enter Percent Female Students: \n");
 			int percentFemale = sc.nextInt();
-			System.out.println("Enter Average Verbal SAT Score");
+			System.out.println("Enter Average Verbal SAT Score: \n");
 			int verbalSAT = sc.nextInt();
-			System.out.println("Enter Average Math SAT Score");
+			System.out.println("Enter Average Math SAT Score: \n");
 			int mathSAT = sc.nextInt();
-			System.out.println("Enter School Cost");
+			System.out.println("Enter School Cost: \n");
 			int schoolExpenses = sc.nextInt();
-			System.out.println("Enter Percent of Students Receiving Financial Aid");
+			System.out.println("Enter Percent of Students Receiving Financial Aid: \n");
 			int percentFinancialAid = sc.nextInt();
-			System.out.println("Enter Number of Applicants");
+			System.out.println("Enter Number of Applicants: \n");
 			int numApplicants = sc.nextInt();
-			System.out.println("Enter Percent of Students Admitted");
+			System.out.println("Enter Percent of Students Admitted: \n");
 			int percentAdmitted = sc.nextInt();
-			System.out.println("Enter Percent of Students Enrolled");
+			System.out.println("Enter Percent of Students Enrolled: \n");
 			int percentEnrolled = sc.nextInt();
-			System.out.println("Enter Academic Scale Rating (1-5)");
+			System.out.println("Enter Academic Scale Rating (1-5): \n");
 			int academicScale = sc.nextInt();
-			System.out.println("Enter Social Scale Rating (1-5)");
+			System.out.println("Enter Social Scale Rating (1-5): \n");
 			int socialScale = sc.nextInt();
-			System.out.println("Enter Quality Scale Rating (1-5)");
+			System.out.println("Enter Quality Scale Rating (1-5): \n");
 			int qualityScale = sc.nextInt();
 			// List<String> emphasis = sc.nextLine();
 			sc.close();
@@ -160,15 +160,15 @@ public class AdminInteraction {
 	 */
 	public void addUser() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter first name: ");
+		System.out.println("Please enter first name: \n");
 		String firstName = sc.nextLine();
-		System.out.println("Please enter last name: ");
+		System.out.println("Please enter last name: \n");
 		String lastName = sc.nextLine();
-		System.out.println("Please enter email/username: ");
+		System.out.println("Please enter email/username: \n");
 		String username = sc.nextLine();
-		System.out.println("Please enter password: ");
+		System.out.println("Please enter password: \n");
 		String password = sc.nextLine();
-		System.out.println("Please enter type: ");
+		System.out.println("Please enter type: \n");
 		char type = sc.next().charAt(0); 
 		sc.close();
 		adminFController.addUser(firstName, lastName, username, password, type);
@@ -189,12 +189,12 @@ public class AdminInteraction {
 			
 			if (name.equals(nameToFind)) {
 				e = true;
-				System.out.println("YES, " + nameToFind + " exists.");
+				System.out.println("YES, " + nameToFind + " exists.\n ");
 				break;
 			}
 
 			if (i == (uniList.size()) - 1) {
-				System.out.print(nameToFind + " does NOT exist.");
+				System.out.print(nameToFind + " does NOT exist.\n ");
 				System.out.print(uniList.get(i).getSchoolName());
 			}
 			i++;
@@ -202,33 +202,33 @@ public class AdminInteraction {
 		if (e) {
 			System.out.println("Enter state: \n");
 			String editstate = scan.nextLine();
-			System.out.println("Enter location: ");
+			System.out.println("Enter location: \n");
 			String editlocation = scan.nextLine();
 			System.out.println("Enter control: ");
 			String editcontrol = scan.nextLine();
-			System.out.println("Enter number of students: ");
+			System.out.println("Enter number of students: \n");
 			int editnumberOfStudents = scan.nextInt();
-			System.out.println("Enter percent females: ");
+			System.out.println("Enter percent females: \n");
 			double editpercentFemales = scan.nextDouble();
-			System.out.println("Enter SATVerbal: ");
+			System.out.println("Enter SATVerbal: \n");
 			double editSATVerbal = scan.nextDouble();
-			System.out.println("Enter SATMath: ");
+			System.out.println("Enter SATMath: \n");
 			double editSATMath = scan.nextDouble();
-			System.out.println("Enter expenses: ");
+			System.out.println("Enter expenses: \n");
 			double editexpenses = scan.nextDouble();
-			System.out.println("Enter percent Financal Aid: ");
+			System.out.println("Enter percent Financal Aid: \n");
 			double editpercentFinancialAid = scan.nextDouble();
-			System.out.println("Enter number of applicants: ");
+			System.out.println("Enter number of applicants: \n");
 			int editnumberOfApplicants = scan.nextInt();
-			System.out.println("Enter percent admitted: ");
+			System.out.println("Enter percent admitted: \n");
 			double editpercentAdmitted = scan.nextDouble();
-			System.out.println("Enter percent enrolled: ");
+			System.out.println("Enter percent enrolled: \n");
 			double editpercentEnrolled = scan.nextDouble();
-			System.out.println("Enter academics scale: ");
+			System.out.println("Enter academics scale: \n");
 			int editacademicsScale = scan.nextInt();
-			System.out.println("Enter social scale: ");
+			System.out.println("Enter social scale: \n");
 			int editsocialScale = scan.nextInt();
-			System.out.println("Enter quality of life: ");
+			System.out.println("Enter quality of life: \n");
 			int editqualityOfLifeScale = scan.nextInt();
 
 			uc.editUniversity(nameToFind, editstate, editlocation, editcontrol, editnumberOfStudents,
