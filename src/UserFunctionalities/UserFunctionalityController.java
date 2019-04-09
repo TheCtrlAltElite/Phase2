@@ -58,6 +58,8 @@ public class UserFunctionalityController {
 		List<University> listUnis = dbc.loadUniversities();
 		List<University> matchingUnis = new ArrayList<University>();
 		int counter =0;
+		Map<String, List<String>> emphasesMapDB = dbc.getUniversityNamesWithEmphases();
+		Set<String> keys = emphasesMapDB.keySet();
 		for(int i = 0; i < listUnis.size(); i++){
 			if(schoolName != null) {
 				counter++;
@@ -182,8 +184,6 @@ public class UserFunctionalityController {
 //					continue;
 //				}
 				int emphasesCounter = 0;
-				Map<String, List<String>> emphasesMapDB = dbc.getUniversityNamesWithEmphases();
-				Set<String> keys = emphasesMapDB.keySet();
 				if (keys.contains(listUnis.get(i).getSchoolName())) {
 					for (int j = 0; j < emphases.size(); j++) {
 					//	for (String key : keys) {

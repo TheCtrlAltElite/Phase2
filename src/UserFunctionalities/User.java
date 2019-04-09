@@ -54,7 +54,8 @@ public class User extends Account{
 	 * @return List<UserSchool> - A list of the schools the user has saved.  
 	 */	
 	public Map<String, String> getSavedSchoolsList(){
-		return uControl.getSavedSchoolsList(this.getEmail());
+		Map<String, String> details = uControl.getSavedSchoolsList(this.getEmail());
+		return details;
 	}
 
 	/**
