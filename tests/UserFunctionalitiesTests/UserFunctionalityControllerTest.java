@@ -9,26 +9,165 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
+
+import CMCDatabase.DBController;
+import UniversityFunctionalities.University;
 import UserFunctionalities.UserFunctionalityController;
 
 public class UserFunctionalityControllerTest {
 
 	private UserFunctionalityController uc;
+	private DBController db;
+	private String username;
+	private String schoolTest1;
+	private String schoolTest2;
 
 	@Before
 	public void setUp() throws Exception {
 		uc = new UserFunctionalityController();
+		db = new DBController();
+		this.username = "FBaggins@gmail.com";
+		this.schoolTest1 = "BOSTON UNIVERSITY";
+		this.schoolTest2 = "HARVARD";
+	}
+
+	@After
+	public void tearDown() {
+		this.db = new DBController();
+		db.addToSavedSchoolsList1(username, schoolTest2);
+		db.removeFromSavedSchoolsList(username, schoolTest1);
+	}
+
+	// @Test
+	// public void searchSchoolsAllNull() {
+	// List<University> result = uc.searchSchools(null, null, null,null, null, null,
+	// null, null, null, null, null, null, null, null, null, null, null, null, null,
+	// null, null, null, null, null, null, null, null, null);
+	// assertNull("University was not found.", result);
+	// }
+
+	@Test
+	public void searchSchoolsSchoolName() {
+		List<University> result = uc.searchSchools("YALE", null, null, null, null, null, null, null, null, null, null,
+				null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("YALE"));
+	}
+
+	@Test
+	public void searchSchoolsSchoolState() {
+		List<University> result = uc.searchSchools(null, "MAINE", null, null, null, null, null, null, null, null, null,
+				null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("UNIVERSITY OF MAINE"));
+	}
+
+	@Test
+	public void searchSchoolsSchoolLocation() {
+		List<University> result = uc.searchSchools(null, null, "-1", null, null, null, null, null, null, null, null,
+				null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}
+
+	@Test
+	public void searchSchoolsSchoolControl() {
+		List<University> result = uc.searchSchools(null, null, null, "-1", null, null, null, null, null, null, null,
+				null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}
+
+	@Test
+	public void searchSchoolsNumStudents() {
+		List<University> result = uc.searchSchools(null, null, null, null, "-1", "-1", null, null, null, null, null,
+				null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}
+
+	@Test
+	public void searchSchoolsPercentFemale() {
+		List<University> result = uc.searchSchools(null, null, null, null, null, null, "-1", "-1", null, null, null,
+				null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}
+
+	@Test
+	public void searchSchoolsVerbalSAT() {
+		List<University> result = uc.searchSchools(null, null, null, null, null, null, null, null, "-1", "-1", null,
+				null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}
+
+	@Test
+	public void searchSchoolsMathSAT() {
+		List<University> result = uc.searchSchools(null, null, null, null, null, null, null, null, null, null, "-1",
+				"-1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
 	}
 	
 	@Test
+	public void searchSchoolsSchoolExpenses() {
+		List<University> result = uc.searchSchools(null, null, null, null, null, null, null, null, null, null, null,
+				null, "-1", "-1", null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}
+	 
+	@Test
+	public void searchSchoolsPercentFinAid() {
+		List<University> result = uc.searchSchools(null, null, null, null, null, null, null, null, null, null, null,
+				null, null, null, "-1", "-1", null, null, null, null, null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	} 
+	    
+	@Test
+	public void searchSchoolsNumApplicants() {
+		List<University> result = uc.searchSchools(null, null, null, null, null, null, null, null, null, null, null,
+				null, null, null, null, null, "-1", "-1", null, null, null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}  
+	
+	@Test
+	public void searchSchoolsPercentAdmit() {
+		List<University> result = uc.searchSchools(null, null, null, null, null, null, null, null, null, null, null,
+				null, null, null, null, null, null, null, "-1", "-1", null, null, null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}  
+	    
+	@Test
+	public void searchSchoolsPercentEnrolled() {
+		List<University> result = uc.searchSchools(null, null, null, null, null, null, null, null, null, null, null,
+				null, null, null, null, null, null, null, null, null, "-1", "-1", null, null, null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}   
+	    
+	@Test
+	public void searchSchoolsAcademicScale() {
+		List<University> result = uc.searchSchools(null, null, null, null, null, null, null, null, null, null, null,
+				null, null, null, null, null, null, null, null, null, null, null, "-1", "-1", null, null, null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}   
+	      
+	@Test
+	public void searchSchoolsSocialScale() {
+		List<University> result = uc.searchSchools(null, null, null, null, null, null, null, null, null, null, null,
+				null, null, null, null, null, null, null, null, null, null, null, null, null, "-1", "-1", null, null);
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}   
+	    
+	@Test
+	public void searchSchoolsQualityOfLife() {
+		List<University> result = uc.searchSchools(null, null, null, null, null, null, null, null, null, null, null,
+				null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "-1", "-1");
+		assertTrue("University was found.", result.get(0).getSchoolName().equals("TESTUNIDONTDELETE"));
+	}   
+	    
+	
+	@Test
 	public void addToSavedSchoolsListSuccess() {
-		boolean result = uc.addToSavedSchoolsList3("FBaggins@gmail.com", "YALE");
+		boolean result = uc.addToSavedSchoolsList3(username, schoolTest1);
 		assertTrue("University was successfully added to users list.", result);
 	}
 	
 	@Test
 	public void addToSavedSchoolsListInvalidUni() {
-		boolean result = uc.addToSavedSchoolsList3("FBaggins@gmail.com", "NOTAUNI");
+		boolean result = uc.addToSavedSchoolsList3(username, "NOTAUNI");
 		assertFalse("University does not exist, University not added to list.", result);
 	}
 
@@ -156,7 +295,7 @@ public class UserFunctionalityControllerTest {
 	
 	@Test 
 	public void removeSavedSchoolsSuccess() {
-		boolean result = uc.removeSavedSchool("FBaggins@gmail.com", "BOSTON UNIVERSITY");
+		boolean result = uc.removeSavedSchool(username, schoolTest2);
 		assertTrue("University has been removed from users list.", result);
 	}
 	
@@ -168,13 +307,13 @@ public class UserFunctionalityControllerTest {
 	
 	@Test
 	public void removeSavedSchoolsInvalidUniversity() {
-		boolean result = uc.removeSavedSchool("FBaggins@gmail.com", "NOTAUNI");
+		boolean result = uc.removeSavedSchool(username, "NOTAUNI");
 		assertFalse("University does not exist in the system", result); 
 	}
 	
 	@Test
 	public void removeSavedSchoolsInvalidUniversityAndUser() {
-		boolean result = uc.removeSavedSchool("FBaggins@gmail.com", "NOTAUNI");
+		boolean result = uc.removeSavedSchool(username, "NOTAUNI");
 		assertFalse("University does not exist in the system", result);
 	}
 }
