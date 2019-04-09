@@ -50,7 +50,10 @@ public class UserFunctionalityController {
 	 * Searches schools based on the criteria the user gave.
 	 * @param the search criteria that can be used to find a specific school
 	 */
-	public List<University> searchSchools(String schoolName, String schoolState, String schoolLocation,String schoolControl, String numberStudents1, String numberStudents2, String percentFemale1, String percentFemale2, String verbalSAT1, String verbalSAT2, String mathSAT1, String mathSAT2, String schoolExpenses1, String schoolExpenses2, String percentFinancialAid1, String percentFinancialAid2, String numApplicants1, String numApplicants2, String percentAdmitted1, String percentAdmitted2, String percentEnrolled1, String percentEnrolled2, String academicScale1, String academicScale2, String socialScale1, String socialScale2, String qualityScale1, String qualityScale2) {
+	public List<University> searchSchools(String schoolName, String schoolState, String schoolLocation,String schoolControl, String numberStudents1, String numberStudents2, 
+											String percentFemale1, String percentFemale2, String verbalSAT1, String verbalSAT2, String mathSAT1, String mathSAT2, String schoolExpenses1, String schoolExpenses2, 
+											String percentFinancialAid1, String percentFinancialAid2, String numApplicants1, String numApplicants2, String percentAdmitted1, String percentAdmitted2, String percentEnrolled1, String percentEnrolled2, String academicScale1, String academicScale2, 
+											String socialScale1, String socialScale2, String qualityScale1, String qualityScale2, List<String> emphases) {
 		DBController dbc = new DBController();
 		List<University> listUnis = dbc.loadUniversities();
 		List<University> matchingUnis = new ArrayList<University>();
@@ -161,6 +164,36 @@ public class UserFunctionalityController {
 				counter++;
 				if(!((Integer.parseInt(qualityScale1) <= (listUnis.get(i).getQualityScale()) && 
 						   (listUnis.get(i).getQualityScale()) <= Integer.parseInt(qualityScale2)))){
+					continue;
+				}
+			}
+			if(emphases != null) {
+				counter++;
+//				List<String> emphasesInDB = dbc.getUniversityEmphases();
+//				int emphasesCounter = 0;
+//				for (int j = 0; j < emphases.size(); j++) {
+//					for (int k = 0; k < emphasesInDB.size(); k++) {
+//						if (emphases.get(j).equals(emphasesInDB.get(k))) {
+//							emphasesCounter++;
+//						}
+//					}
+//				}
+//				if(emphasesCounter == 0) {
+//					continue;
+//				}
+				int emphasesCounter = 0;
+				Map<String, List<String>> emphasesMapDB = dbc.getUniversityNamesWithEmphases();
+				Set<String> keys = emphasesMapDB.keySet();
+				if (keys.contains(listUnis.get(i).getSchoolName())) {
+					for (int j = 0; j < emphases.size(); j++) {
+					//	for (String key : keys) {
+							if(emphasesMapDB.get(listUnis.get(i).getSchoolName()).contains(emphases.get(j))) {
+								emphasesCounter++;
+					//		}
+						}
+					}
+				}
+				if(emphasesCounter == 0) {
 					continue;
 				}
 			}
