@@ -70,7 +70,7 @@ public class UniversityController {
 			}
 			i++;    			
 		}
-
+		outerloop:
 		//if uniToFind exists, calls addToSavedSchoolsList1() from DBController 
 		if(result2 == 4) {
 
@@ -79,9 +79,9 @@ public class UniversityController {
 			for (Map.Entry entry : savedList.entrySet()){
 
 				if(schoolName.toUpperCase().equals(entry.getKey().toString().toUpperCase())) {
-					result2 = 6;
 					System.out.println("School is already in the list.");
-					return result2;
+					result2 = 6;
+					break outerloop;
 				} 
 			}
 			if(result2 == 4) {
