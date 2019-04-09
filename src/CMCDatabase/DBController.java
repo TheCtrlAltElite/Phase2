@@ -294,6 +294,7 @@ public class DBController {
 		return false;
 		}
 	}
+	//TESTING FOR METHODS BENEATH ARE COMPLETE==========================================================================================
 	/**
 	 * Sends the account an email to recover their new password
 	 */
@@ -309,7 +310,7 @@ public class DBController {
 				if (i == 0 || i == 3 || i == 6 || i == 9) {
 					int random = 0 + ran.nextInt(25 - 0 + 1);
 					newPassword += lowerCaseLetters[random];
-				} else if (i == 1 || i == 4 || i == 7 || i == 10) {
+				} else if (i == 1 || i == 4 || i == 7) {
 					int random = 0 + ran.nextInt(25 - 0 + 1);
 					newPassword += upperCaseLetters[random];
 				} else {
@@ -324,14 +325,6 @@ public class DBController {
 		}
 	}
 	/**
-	 * Emails the user their saved schools list
-	 * 
-	 * @param list of Universities
-	 */
-	public void emailSavedSchoolsList(List<University> list) {
-		//TODO
-	}
-	/**
 	 * Sets the account's new profile picture
 	 * 
 	 * @param jpeg the name of the new image for the profile
@@ -339,6 +332,7 @@ public class DBController {
 	public void updateProfilePic(String jpeg) {
 		
 	}
+	//TESTING FOR METHODS BENEATH ARE COMPLETE==========================================================================================
 	/**
 	 * Checks the new password against the systems password requirements
 	 * 
@@ -426,6 +420,7 @@ public class DBController {
 		library.university_deleteUniversity(schoolName);
 	}
 	
+	//TESTING FOR METHODS BENEATH ARE COMPLETE==========================================================================================
 	/**
 	 * Gets the max number of students of the universities in the database
 	 * 
