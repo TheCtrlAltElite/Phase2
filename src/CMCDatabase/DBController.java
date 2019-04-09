@@ -103,7 +103,9 @@ public class DBController {
 		return this.library.user_editUser(account.getEmail(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getType(), account.getStatus());
 	}
 	
-	
+	public int removeUserFromDB(String username) {
+		return this.library.user_deleteUser(username);
+	}
 	
 	
 	
@@ -256,7 +258,8 @@ public class DBController {
 				return users.get(i).getPassword();
 			}
 		}
-		return "That user does not exist.";
+		throw new IllegalArgumentException();
+		//return "That user does not exist.";
 	}
 	
 	/**

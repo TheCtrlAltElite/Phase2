@@ -3,11 +3,14 @@ package CMCDatabaseTests;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import AccountFunctionalities.Account;
 import CMCDatabase.DBController;
 import UniversityFunctionalities.University;
 
@@ -25,6 +28,7 @@ public class DBControllerTest {
 	public void  tearDown() {
 		this.dbc = new DBController();
 		dbc.addUniversity("BARD", "NEW YORK","SMALL-CITY", "PRIVATE", 10000, 55, 560, 520, 32239, 80, 4000, 70, 30, 3, 4, 4);
+		dbc.removeUserFromDB("rcCOOLguy247@gmail.com");
 	}
 	
 	
@@ -319,6 +323,139 @@ public class DBControllerTest {
 		dbc.addUser("Randall", "Clintsman", "rcCOOLguy247@gmail.com", "RandallIsBoss5", 'u');
 		List<String> profile = dbc.getDetailsProfile2("rcCOOLguy247@gmail.com");
 		assertTrue(profile.get(0).equals("Randall"));
+	}
+	
+	@Test
+	public void addUserPassesForLastName(){
+		dbc.addUser("Randall", "Clintsman", "rcCOOLguy247@gmail.com", "RandallIsBoss5", 'u');
+		List<String> profile = dbc.getDetailsProfile2("rcCOOLguy247@gmail.com");
+		assertTrue(profile.get(1).equals("Clintsman"));
+	}
+	
+	@Test
+	public void addUserPassesForUserName(){
+		dbc.addUser("Randall", "Clintsman", "rcCOOLguy247@gmail.com", "RandallIsBoss5", 'u');
+		List<String> profile = dbc.getDetailsProfile2("rcCOOLguy247@gmail.com");
+		assertTrue(profile.get(2).equals("rcCOOLguy247@gmail.com"));
+	}
+	
+	@Test
+	public void addUserPassesForPassword(){
+		dbc.addUser("Randall", "Clintsman", "rcCOOLguy247@gmail.com", "RandallIsBoss5", 'u');
+		List<String> profile = dbc.getDetailsProfile2("rcCOOLguy247@gmail.com");
+		assertTrue(profile.get(3).equals("RandallIsBoss5"));
+	}
+	
+	@Test
+	public void addUserPassesForType(){
+		dbc.addUser("Randall", "Clintsman", "rcCOOLguy247@gmail.com", "RandallIsBoss5", 'u');
+		List<String> profile = dbc.getDetailsProfile2("rcCOOLguy247@gmail.com");
+		assertTrue(profile.get(4).equals("u"));
+	}
+	
+	@Test
+	public void getPasswordReturnsCorectPassword() {
+		String pass = dbc.getPassword("juser");
+		assertTrue(pass.equals("JohnMiller5"));	
+	}
+	
+	@Test (expected=IllegalArgumentException.class)
+	public void getPasswordFailsForInvalidUsername() {
+		dbc.getPassword("jibberish");
+	}
+	
+	@Test
+	public void loadUsersWorksForFirstIndexFirstName() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(0).getFirstName().equals("Frodo"));
+ 	}
+	
+	@Test
+	public void loadUsersWorksForFirstIndexLastName() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(0).getLastName().equals("Baggins"));
+ 	}
+	
+	@Test
+	public void loadUsersWorksForFirstIndexUserName() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(0).getEmail().equals("FBaggins@gmail.com"));
+ 	}
+	
+	@Test
+	public void loadUsersWorksForFirstIndexPassword() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(0).getPassword().equals("Gandalf2020"));
+ 	}
+	
+	@Test
+	public void loadUsersWorksForFirstIndexType() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(0).getType() == 'u');
+ 	}
+	
+	@Test
+	public void loadUsersWorksForFirstIndexStatus() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(0).getStatus() == 'Y');
+ 	}
+	
+	public void loadUsersWorksForLastIndexFirstName() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(users.size() - 1).getFirstName().equals("Eli"));
+ 	}
+	
+	@Test
+	public void loadUsersWorksForLastIndexLastName() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(users.size() - 1).getLastName().equals("tux"));
+ 	}
+	
+	@Test
+	public void loadUsersWorksForLastIndexUserName() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(users.size() - 1).getEmail().equals("tux69@csbsju.edu"));
+ 	}
+	
+	@Test
+	public void loadUsersWorksForLastIndexPassword() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(users.size() - 1).getPassword().equals("TuxIsOurSavior1"));
+ 	}
+	
+	@Test
+	public void loadUsersWorksForLastIndexType() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(users.size() - 1).getType() == 'a');
+ 	}
+	
+	@Test
+	public void loadUsersWorksForLastIndexStatus() {
+		List<Account> users = dbc.loadUsers();
+		assertTrue(users.get(users.size() - 1).getStatus() == 'Y');
+ 	}
+	
+	@Test
+	public void getSavedSchoolsListPasses() {
+		Map<String, String> list = dbc.getSavedSchoolsList("juser");
+		assertTrue(list.get("BARD").equals("2019-04-07 15:35:52.0"));
+		assertTrue(list.get("QUEENS").equals("2019-03-20 15:06:21.0"));
+		assertTrue(list.get("YALE").equals("2019-04-05 14:29:31.0"));
+	}
+	
+	@Test
+	public void removeFromSavedSchoolsListPasses() {
+		dbc.removeFromSavedSchoolsList("fuser", "QUEENS");
+		Map<String, String> list = dbc.getSavedSchoolsList("fuser");
+		Set<String> keys = list.keySet();
+		boolean result = false;
+		for(String key : keys) {
+			if(key.equals("QUEENS")) {
+				result = false;
+			}
+		}
+		result = true;
+		assertTrue("School removed from saved Schools list.", result);
 	}
 	
 	

@@ -91,7 +91,7 @@ public class DBLibraryDriver{
      //ufc.removeSavedSchool("luser", "BARUCH");
      //ufc.updateSavedSchoolsList(List<UserSchool> list);
      //ufc.emailSavedSchools();
-     //ufc.getSavedSchoolsList("juser");
+     ufc.getSavedSchoolsList("juser");
 
     
     }

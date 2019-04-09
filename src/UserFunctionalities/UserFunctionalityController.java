@@ -279,7 +279,8 @@ public class UserFunctionalityController {
 	 * Fetches the user's savedSchoolsList
 	 */	
 	public Map<String, String> getSavedSchoolsList(String username){
-		Map<String, String> savedSchoolsList = dbc.getSavedSchoolsList(username);	
+		Map<String, String> savedSchoolsList = dbc.getSavedSchoolsList(username);
+		System.out.println(savedSchoolsList);
 		return savedSchoolsList;
 	}
 }
