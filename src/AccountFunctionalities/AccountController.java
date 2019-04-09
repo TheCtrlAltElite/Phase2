@@ -190,7 +190,7 @@ public class AccountController {
 	 *            security purposes.
 	 * @throws MessagingException
 	 */
-	public void recoverPassword(String email) throws MessagingException {
+	public boolean recoverPassword(String email) throws MessagingException {
 
 		String newPassword = database.sendRecoverEmail(email);
 		boolean statusOfReset = this.resetPassword(database.getPassword(email), newPassword, newPassword); // Resets the
@@ -219,7 +219,7 @@ public class AccountController {
 				MimeMessage message = new MimeMessage(session); // creates MimeMessage object to send email
 				message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com")); // sets from email which is
 																					// cmcdatabase2019@gmail.com
-				message.addRecipient(Message.RecipientType.TO, new InternetAddress("jmuehls@gmail.com")); // receiver of
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(email)); // receiver of
 																											// the email
 				message.setSubject("Password Recovery"); // subject of the email
 				message.setText(mail_body); // sets the body of the email to mail_body
@@ -232,11 +232,9 @@ public class AccountController {
 				e.printStackTrace();
 			}
 		}
-		else {
-			throw new Error("resetPassword Failed");
-		}
+		return statusOfReset;
 	}
-
+	
 	/**
 	 * Sets a jpeg the user wants as their profile pic. Will be named their email to
 	 * simplify process.
@@ -245,9 +243,15 @@ public class AccountController {
 	 *            - the name of the jpeg the user wants as their profile pic. Will
 	 *            be named their email to simplify process.
 	 */
-	public void addProfilePicture(String jpeg) {
-		Account TestAccount = new Account("eli@csbsju.edu", "ELi3", "tux3", "Penguin", 'a', 'Y');
-		TestAccount.setProfilePic(jpeg);
+	public boolean addProfilePicture(String email, String jpeg) {
+		List<Account> accounts = database.loadUsers();
+		for (int i = 0; i < accounts.size(); i++) {
+			if (accounts.get(i).getEmail().equals(email)) {
+				accounts.get(i).setProfilePic(jpeg);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

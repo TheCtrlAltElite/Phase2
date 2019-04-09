@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -170,6 +172,24 @@ public class AccountControllerTest {
 	public void passwordRequirementsTest() {
 		boolean requirements = acc.passwordRequirements("ThisIsAValidPassword1");
 		assertTrue(requirements);
+	}
+	
+	@Test
+	public void recoverPasswordSuccessTest() throws MessagingException {
+		boolean result = acc.recoverPassword("jmuehls@gmail.com");
+		assertTrue("Recover Password returned TRUE and was successful.", result);
+	}
+	
+	@Test
+	public void addProfilePictureCorrectEmailTest() {
+		boolean result = acc.addProfilePicture("joettinge001@gmail.com", "Tux-icon.png");
+		assertTrue("Add Profile Picture returned TRUE and was successful.", result);
+	}
+	
+	@Test
+	public void addProfilePictureIncorrectEmailTest() {
+		boolean result = acc.addProfilePicture("joe777", "Tux-icon.png");
+		assertFalse("Add Profile Picture returned FALSE and was NOT successful.", result);
 	}
 	
 	@After
