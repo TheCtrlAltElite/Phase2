@@ -40,6 +40,7 @@ public class UniversityControllerTest {
 	public void  tearDown() {
 		this.dbc = new DBController();
 		dbc.removeFromSavedSchoolsList(this.username, this.schoolTest1);
+		uc.editUniversity("CSBSJU", "MINNESOTA", "SMALL-CITY", "PRIVATE", 15000, 60, 620, 600, 35462, 34, 11111, 40, 50, 4, 3, 2);
 	}
 
 	@Test
@@ -100,14 +101,14 @@ public class UniversityControllerTest {
 	public void editUniversityChangesSATMath() {
 		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(7).equals("23451"));
+		assertTrue(details.get(7).equals("500"));
 	}
 	
 	@Test
 	public void editUniversityChangesExpenses() {
 		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");
-		assertTrue(details.get(8).equals("78"));
+		assertTrue(details.get(8).equals("23451"));
 	}
 	
 	@Test
@@ -160,7 +161,7 @@ public class UniversityControllerTest {
 	}
 	
 	
-	@Test//This does not work
+	@Test
 	public void editUniversityFailsForInvalidUniversity() {
 		boolean result = uc.editUniversity("IDKWHATSGOINGON", "MINNESOTA", "URBAN", "STATE", 200, 200, 200, 200, 200, 200, 200, 200, 200, 5, 5, 5);
 		assertFalse("Edit University value is FALSE", result);
