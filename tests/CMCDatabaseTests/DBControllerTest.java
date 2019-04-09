@@ -15,6 +15,7 @@ import CMCDatabase.DBController;
 import UniversityFunctionalities.University;
 import UniversityFunctionalities.UniversityController;
 import UserFunctionalities.User;
+import dblibrary.project.csci230.UniversityDBLibrary;
 
 public class DBControllerTest {
 	
@@ -40,6 +41,15 @@ public class DBControllerTest {
 		dbc.addUser("Rigby", "tux", "tux420@csbsju.edu", "PenguinPower420",'u');
 	}
 	
+	@Test
+	public void  constructorTest() {
+		UniversityDBLibrary library = dbc.getUnivDBlib();
+		boolean result = false;
+		if(library != null) {
+			result = true;
+		}
+		assertTrue("Database library was created.", result);
+	}
 	
 	@Test
 	public void testMaxNumStudents() {
@@ -866,16 +876,17 @@ public class DBControllerTest {
 		assertTrue(user.get(5).equals("Y"));
 	}
 	
+	@Test
+	public void edituserEditsTheUser() {
+		boolean result = false;
+		List<Account> users = dbc.loadUsers();
+		int num = dbc.editUser(users.get(1));
+		if(num != -1) {
+			result = true;
+		}
+		assertTrue("The user was updated.", result);
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

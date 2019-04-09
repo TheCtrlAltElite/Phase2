@@ -97,6 +97,7 @@ public class AccountController {
 	 */
 	public String getPassword(String username) {
 		String pass = database.getPassword(username);
+	    
 		System.out.println(pass);
 		return pass;
 	}

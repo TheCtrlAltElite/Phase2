@@ -24,7 +24,7 @@ public class UniversityControllerTest {
 	private DBController dbc;
 	private UserFunctionalityController ufc;
 	private String username;
-	private String schoolTest1;
+	private String schoolTest1, schoolTest2;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -34,6 +34,7 @@ public class UniversityControllerTest {
 		ufc = new UserFunctionalityController();
 		this.username = "juser";
 		this.schoolTest1 = "reed";
+		this.schoolTest2 = "QUEENS";
 	}
 	
 	@After
