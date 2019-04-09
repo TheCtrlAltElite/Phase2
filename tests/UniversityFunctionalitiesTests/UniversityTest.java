@@ -16,27 +16,32 @@ public class UniversityTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		uni = new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400, 15736, 95, 4000, 95, 90, 1, 2, 2);
+		List<String> emptyEmphases = new ArrayList<String>();
+		uni = new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400, 15736, 95, 4000, 95, 90, 1, 2, 2, emptyEmphases);
 	}
 	
 	@Test
 	public void UniversityConstructerTest() {
-		University university = new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40, 11500, 20, 60, 5, 3, 4);
+		List<String> emptyEmphases = new ArrayList<String>();
+		University university = new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40, 11500, 20, 60, 5, 3, 4, emptyEmphases);
 	}
 
 	@Test(expected=IllegalArgumentException.class)
 	public void UniversityConstructerNullNametest() {
-		new University(null, "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400, 15736, 95, 4000, 95, 90, 1, 2, 2);
+		List<String> emptyEmphases = new ArrayList<String>();
+		new University(null, "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400, 15736, 95, 4000, 95, 90, 1, 2, 2, emptyEmphases);
 	}
 
 	@Test(expected=IllegalArgumentException.class)
 	public void UniversityConstructerBlankNametest() {
-		new University("", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400, 15736, 95, 4000, 95, 90, 1, 2, 2);
+		List<String> emptyEmphases = new ArrayList<String>();
+		new University("", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400, 15736, 95, 4000, 95, 90, 1, 2, 2, emptyEmphases);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void UniversityConstructerNumbersInNametest() {
-		new University("YANKTOWN COLLEGE420", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400, 15736, 95, 4000, 95, 90, 1, 2, 2);
+		List<String> emptyEmphases = new ArrayList<String>();
+		new University("YANKTOWN COLLEGE420", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400, 15736, 95, 4000, 95, 90, 1, 2, 2, emptyEmphases);
 	}
 	
 	//SchoolName contains Special Character??
@@ -148,13 +153,12 @@ public class UniversityTest {
 		assertTrue("The Quality Scale received is 2.", quality == 2);
 		assertFalse("The Quality Scale received is not equal to 2.", quality != 2);
 	}
-	
-	//Yo we need to write emphasis?
+
 	
 	@Test
 	public void getEmphasisTest() {
 		List<String> emphasis = uni.getEmphasis();
-		assertTrue("The emphasis receiver is null.", emphasis == null);
+		assertTrue("The emphasis received is empty.", emphasis.isEmpty());
 	}
 	
 	@Test

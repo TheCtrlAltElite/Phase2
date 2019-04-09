@@ -132,6 +132,7 @@ public class DBController {
 		int socialScale;
 		int qualityScale;
 		List<String> emphases = new ArrayList<String>();
+		Map<String, List<String>> allEmphases = this.getUniversityNamesWithEmphases();
 		for(int i = 0; i < arrayUnis.length; i++) {
 			schoolName = arrayUnis[i][0];
 			schoolState = arrayUnis[i][1];
@@ -150,7 +151,7 @@ public class DBController {
 			socialScale = Integer.parseInt(arrayUnis[i][14]);
 			qualityScale = Integer.parseInt(arrayUnis[i][15]);
 			
-			Map<String, List<String>> allEmphases = this.getUniversityNamesWithEmphases();
+
 			if(allEmphases.containsKey(schoolName)) {
 				emphases = allEmphases.get(schoolName);
 			}
