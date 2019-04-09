@@ -51,7 +51,7 @@ public class DBLibraryDriver{
      //unc.recommendedSchools(University university;	//not ready
      //unc.editUniversity("CSBSJU", "MN", "URBAN", "STATE", 20000, 50, 70, 600, 600, 31500, 20, 1000, 3, 5, 5, 5);
      //dbc.addUniversity("TESTUNIDONTDELETE", "-1", "-1", "-1", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
-     //unc.getDetailsUni("YALE"); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
+     //unc.getDetailsUni("TESTUNI"); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
      
      AccountController acc = new AccountController();
      
@@ -86,10 +86,12 @@ public class DBLibraryDriver{
      //afc.viewUsers();    //call from AdminInteraction
      
      UserFunctionalityController ufc = new UserFunctionalityController();
+     
      List<String> emphases = new ArrayList<String>();
      emphases.add("BIOLOGY");
      ufc.searchSchools(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, emphases);
      //ufc.searchSchools(String schoolName, String schoolState, String schoolLocation,String schoolControl, String numberStudents1, String numberStudents2, String percentFemale1, String percentFemale2, String verbalSAT1, String verbalSAT2, String mathSAT1, String mathSAT2, String schoolExpenses1, String schoolExpenses2, String percentFinancialAid1, String percentFinancialAid2, String numApplicants1, String numApplicants2, String percentAdmitted1, String percentAdmitted2, String percentEnrolled1, String percentEnrolled2, String academicScale1, String academicScale2, String socialScale1, String socialScale2, String qualityScale1, String qualityScale2);
+
      //ufc.viewSchool(String schoolName);
      //ufc.removeSavedSchool("luser", "BARUCH");
      //ufc.updateSavedSchoolsList(List<UserSchool> list);
