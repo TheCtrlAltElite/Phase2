@@ -325,14 +325,7 @@ public class DBController {
 			throw new IllegalArgumentException("The email is invalid");
 		}
 	}
-	/**
-	 * Sets the account's new profile picture
-	 * 
-	 * @param jpeg the name of the new image for the profile
-	 */
-	public void updateProfilePic(String jpeg) {
-		
-	}
+	
 	//TESTING FOR METHODS BENEATH ARE COMPLETE==========================================================================================
 	/**
 	 * Checks the new password against the systems password requirements

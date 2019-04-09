@@ -76,7 +76,7 @@ public class UniversityController {
 				if(schoolName.toUpperCase().equals(entry.getKey().toString().toUpperCase())) {
 					result2 = 6;
 					System.out.println("School is already in the list.");
-					break;
+					return result2;
 				} 
 			}
 			if(result2 == 4) {
