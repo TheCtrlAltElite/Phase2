@@ -43,12 +43,12 @@ public class AdminFunctionalityController {
    			
     		if (name.equals(userToFind.toUpperCase())){
    				result = 1;
-   				System.out.println("YES, " + userToFind + " exists.");   			
+   				System.out.println("YES, " + userToFind + " exists.\n ");   			
    				break outerloop;
     		}
     			
     		if(i == (dbc.loadUsers().size())-1) {
-		   		System.out.print(userToFind + " does NOT exist.");
+		   		System.out.print(userToFind + " does NOT exist.\n ");
 		   		result = 2;
     		}
    			i++;    			
@@ -59,7 +59,7 @@ public class AdminFunctionalityController {
    			result = unc.addToSavedSchoolsList2(userToFind, schoolName);
    			
    			if(result == 4) {
-   				System.out.println("Successfully added " + schoolName + " to " + username + "'s SavedSchool list.");
+   				System.out.println("Successfully added " + schoolName + " to " + username + "'s SavedSchool list.\n ");
    			}
    				
     	}	
@@ -97,7 +97,7 @@ public class AdminFunctionalityController {
 		//this.database.checkPasswordRequirements(password);
 		
 		if((this.database.checkPasswordRequirements(password)== false)) {
-			System.out.println("This username is taken or password does not meet requirements.");
+			System.out.println("This username is taken or password does not meet requirements.\n ");
 			return added;
 		}
 		
@@ -116,10 +116,10 @@ public class AdminFunctionalityController {
 			}
 		}	
 		if(!added) {
-			System.out.println("This username is taken or password does not meet requirements.");
+			System.out.println("This username is taken or password does not meet requirements.\n ");
 		}
 	
-		System.out.println("User was added: " + added);
+		System.out.println("User was added: " + added + "\n");
 
 		return added;
 	}
@@ -132,9 +132,9 @@ public class AdminFunctionalityController {
 	 * saved schools list of any users
 	 * then calls removeUniversity() in DBController
 	 */
-	public boolean removeUniversityDB(String schoolName) {		
+	public int removeUniversityDB(String schoolName) {		
 		int j = 0;  		
-		boolean e = false;
+		int result = 0;
 		
 		//searches through list of universities retrieved through loadUniversities() method
 		while(j<database.loadUniversities().size()) {
@@ -143,46 +143,46 @@ public class AdminFunctionalityController {
 			
 			//confirms that the uniToFind exists
 			if (name.toUpperCase().equals(schoolName.toUpperCase())){
-					e= true;
-					System.out.println("YES, " + schoolName + " exists.");   			
+				result = 1;
+					System.out.println("YES, " + schoolName + " exists.\n ");   			
 					break;
 			}
 			
 			//if the while loop reaches the end of the list, uniToFind does not exist
 			if(j == (database.loadUniversities().size())-1) {
-		   		System.out.println("School does not exist, did not remove school.");
-				return e;
+		   		System.out.println("School does not exist, did not remove school.\n ");
+				result = 2;
+		   		return result;
 			}
 				j++;    			
 			}
 		
-		boolean success = true;
 		//if uniToFind exists, 
-			if(e) {
+				if (result == 1) {
 				
 				List<Account> users = database.loadUsers();	
 				
-				
+				outerloop:
 				for (int i = 0; i < users.size(); i++) {
 					 Map<String, String> savedList = ufc.getSavedSchoolsList(users.get(i).getEmail());
 					 
 					 for (Map.Entry entry : savedList.entrySet()){
 						 
 						 if(schoolName.toUpperCase().equals(entry.getKey().toString().toUpperCase())) {
-							 success = false;
-							 System.out.println("School was removed: " + success);
-							 break;
+							 result = 3;
+							 System.out.println("School was not removed becasue it is in someone's savedSchool list.\n ");
+							 break outerloop;
 						 } 
 					 }
 				}
 				
-				if(success) {
+				if(result == 1) {
 					database.removeUniversityDB(schoolName);
-					System.out.println("School was removed: " + success );
+					System.out.println("School was removed.\n ");
+					result = 4;
 				}
-				
 		}
-			return success;
+			return result;
 		
 	}
 	
