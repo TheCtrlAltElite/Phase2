@@ -65,12 +65,6 @@ public class AccountControllerTest {
 	}
 	
 	@Test
-	public void getPasswordFailTest() {
-		String pass = acc.getPassword("Nobody");
-		assertTrue("The user Nobody is not a user", pass.equals("That user does not exist."));
-	}
-	
-	@Test
 	public void viewProfileTest() {
 		List<String> details = acc.viewProfile("juser");
 		assertTrue(details.get(0).equals("John"));

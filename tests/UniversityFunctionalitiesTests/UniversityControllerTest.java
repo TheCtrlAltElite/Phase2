@@ -24,7 +24,7 @@ public class UniversityControllerTest {
 	private DBController dbc;
 	private UserFunctionalityController ufc;
 	private String username;
-	private String schoolTest1;
+	private String schoolTest1, schoolTest2;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -34,6 +34,7 @@ public class UniversityControllerTest {
 		ufc = new UserFunctionalityController();
 		this.username = "juser";
 		this.schoolTest1 = "reed";
+		this.schoolTest2 = "QUEENS";
 	}
 	
 	@After
@@ -53,6 +54,12 @@ public class UniversityControllerTest {
 	public void addToSavedSchoolsListInvalidSchool() {
 		int result = uc.addToSavedSchoolsList2("tux69@csbsju.edu","NOTASCHOOL");
 		assertEquals("Universtiy is not in the Database", 5, result);
+	}
+	
+	@Test
+	public void addToSavedSchoolsSchoolAlreadyExistsInUsersSavedSchoolList() {
+		int result = uc.addToSavedSchoolsList2("fuser","bard");
+		assertEquals("Universtiy is not in the Database", 6, result);
 	}
 	
 	@Test
@@ -176,7 +183,7 @@ public class UniversityControllerTest {
 	@Test
 	public void addUniversityAddsTheSchoolCompletely(){
 		uc.addUniversityInfo("ZZZZZUNIVERSITY", "ARIZONA", "URBAN", "STATE", 10000, 544, 677, 23, 54, 12, 31451, 54, 77, 5, 5, 5);
-		List<University> school = ufc.searchSchools("ZZZZZUNIVERSITY", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);		
+		List<University> school = ufc.searchSchools("ZZZZZUNIVERSITY", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);		
 		assertTrue(school.get(0).getSchoolName().equals("ZZZZZUNIVERSITY"));
 	}
 

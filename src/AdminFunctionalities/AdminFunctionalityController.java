@@ -50,6 +50,7 @@ public class AdminFunctionalityController {
     		if(i == (dbc.loadUsers().size())-1) {
 		   		System.out.print(userToFind + " does NOT exist.\n ");
 		   		result = 2;
+		   		break outerloop;
     		}
    			i++;    			
    		}
@@ -142,6 +143,7 @@ public class AdminFunctionalityController {
 	public int removeUniversityDB(String schoolName) {		
 		int j = 0;  		
 		int result = 0;
+		String uniName = schoolName.toUpperCase();
 		
 		//searches through list of universities retrieved through loadUniversities() method
 		while(j<database.loadUniversities().size()) {
@@ -149,7 +151,7 @@ public class AdminFunctionalityController {
 			String name = database.loadUniversities().get(j).getSchoolName();
 			
 			//confirms that the uniToFind exists
-			if (name.toUpperCase().equals(schoolName.toUpperCase())){
+			if (name.toUpperCase().equals(uniName)){
 				result = 1;
 					System.out.println("YES, " + schoolName + " exists.\n ");   			
 					break;

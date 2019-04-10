@@ -25,18 +25,18 @@ public class UserTest {
 
 	@Test
 	public void searchSchoolsTest() {
-		boolean works = user.searchSchools(null, "MINNESOTA", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		boolean works = user.searchSchools(null, "MINNESOTA", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 		assertTrue("The method found schools that are similar.", works);
 	}
 	
 	@Test(expected=NullPointerException.class)
 	public void searchSchoolsTestFailsWithNoArguments() {
-		user.searchSchools(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		user.searchSchools(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 	}
 	
 	@Test
 	public void searchSchoolsFailsWithAnEmptyListFromNoSimilaritiesToAnySchools() {
-		boolean works = user.searchSchools(null, "asdf", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		boolean works = user.searchSchools(null, "asdf", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 		assertFalse("There are no matching schools.", works);
 	}
 	

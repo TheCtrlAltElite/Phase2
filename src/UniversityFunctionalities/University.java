@@ -50,7 +50,7 @@ public class University {
 	 * @param socialScale  the school's score in social
 	 * @param qualityScale  the school's score in quality
 	 */
-	public University(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
+	public University(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents, int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants, int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale, List<String> emphases) {
 		if(schoolName == null || schoolName.equals("") || this.containsNumber(schoolName)) {
 			throw new IllegalArgumentException("School name must contain a valid name (Letters only, no numbers).");
 		}
@@ -71,7 +71,7 @@ public class University {
 			this.academicScale = academicScale;
 			this.socialScale = socialScale;
 			this.qualityScale = qualityScale;
-			this.emphasis = null;
+			this.emphasis = emphases;
 		}
 	}
 

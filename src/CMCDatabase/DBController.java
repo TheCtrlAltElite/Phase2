@@ -106,9 +106,7 @@ public class DBController {
 	public int removeUserFromDB(String username) {
 		return this.library.user_deleteUser(username);
 	}
-	
-	
-	
+
 	/**
 	 * Returns a list of all of the universities in the database.
 	 * 
@@ -133,6 +131,8 @@ public class DBController {
 		int academicScale;
 		int socialScale;
 		int qualityScale;
+		List<String> emphases = new ArrayList<String>();
+		Map<String, List<String>> allEmphases = this.getUniversityNamesWithEmphases();
 		for(int i = 0; i < arrayUnis.length; i++) {
 			schoolName = arrayUnis[i][0];
 			schoolState = arrayUnis[i][1];
@@ -150,12 +150,44 @@ public class DBController {
 			academicScale = Integer.parseInt(arrayUnis[i][13]);
 			socialScale = Integer.parseInt(arrayUnis[i][14]);
 			qualityScale = Integer.parseInt(arrayUnis[i][15]);
-			University uni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
+			
+
+			if(allEmphases.containsKey(schoolName)) {
+				emphases = allEmphases.get(schoolName);
+			}
+			
+			University uni = new University(schoolName, schoolState, schoolLocation, schoolControl, numberStudents, percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale, emphases);
 			listUnis.add(uni);
 			//System.out.println(listUnis.get(i).getSchoolName());    //prints all universities
 		}
 		//System.out.println(listUnis.get(54).getSchoolName());   //will return university at index 54 which is Harvard
 		return listUnis;
+	}
+	
+//	public List<String> getUniversityEmphases() {
+//		String[][] listEmphases	= library.university_getEmphases();
+//		List<String> emphases= new ArrayList<String>();
+//		for (int i = 0; i < listEmphases.length; i++) {
+//			emphases.add(listEmphases[i][0]);
+//		}
+//		return emphases;
+//	}
+	
+	public Map<String, List<String>> getUniversityNamesWithEmphases() {
+		String[][] listEmphases	= library.university_getNamesWithEmphases();
+		Map<String, List<String>> emphasesMap = new TreeMap<>();
+		for (int i = 0; i < listEmphases.length; i++) {
+			if(!emphasesMap.containsKey(listEmphases[i][0])) {
+				List<String> list = new ArrayList<String>();
+				list.add(listEmphases[i][1]);
+			emphasesMap.put(listEmphases[i][0], list);
+			}
+			else {
+				List<String> list = emphasesMap.get(listEmphases[i][0]);
+				list.add(listEmphases[i][1]);
+			}
+		}
+		return emphasesMap;
 	}
 
 	/**
@@ -327,14 +359,7 @@ public class DBController {
 			throw new IllegalArgumentException("The email is invalid");
 		}
 	}
-	/**
-	 * Sets the account's new profile picture
-	 * 
-	 * @param jpeg the name of the new image for the profile
-	 */
-	public void updateProfilePic(String jpeg) {
-		
-	}
+	
 	//TESTING FOR METHODS BENEATH ARE COMPLETE==========================================================================================
 	/**
 	 * Checks the new password against the systems password requirements
