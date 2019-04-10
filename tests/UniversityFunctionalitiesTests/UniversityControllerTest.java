@@ -47,19 +47,19 @@ public class UniversityControllerTest {
 	@Test
 	public void addToSavedSchoolsListSuccess() {
 		int result = uc.addToSavedSchoolsList2(username, schoolTest1);
-		assertEquals("Universtiy was successfully added.", 4, result);
+		assertEquals("University was successfully added.", 4, result);
 	}//CREATE A METHOD THAT CHECKS TO MAKE SURE THE UNIVERSITY IS ADDED TO THE LIST
 	
 	@Test
 	public void addToSavedSchoolsListInvalidSchool() {
 		int result = uc.addToSavedSchoolsList2("tux69@csbsju.edu","NOTASCHOOL");
-		assertEquals("Universtiy is not in the Database", 5, result);
+		assertEquals("University is not in the Database", 5, result);
 	}
 	
 	@Test
 	public void addToSavedSchoolsSchoolAlreadyExistsInUsersSavedSchoolList() {
 		int result = uc.addToSavedSchoolsList2("fuser","bard");
-		assertEquals("Universtiy is not in the Database", 6, result);
+		assertEquals("University is already in list", 6, result);
 	}
 	
 	@Test

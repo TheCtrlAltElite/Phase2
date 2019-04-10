@@ -43,7 +43,7 @@ public class AccountController {
 	 *            - password associated with the profile to be logged in.
 	 * @throws Exception
 	 */
-	public void login(String username, String password) throws Exception {
+	public Account login(String username, String password) throws Exception {
 		String msg = "Your username or password is incorrect. Please try again.";
 		if (database.isUserReal(username)) { // makes sure user is real
 			String pw = database.getPassword(username);
@@ -62,14 +62,16 @@ public class AccountController {
 		} else {
 			throw new IllegalArgumentException(msg);
 		}
+		return this.account;
 	}
 
 	/**
-	 * Logs the account out.
+	 * Logs the account out of the system.
 	 */
-	public void logOut() {
+	public Account logOut() {
 		this.account.setLoginStatus(false);
 		System.out.println("You have successfully logged out.");
+		return this.account;
 	}
 
 	/**
@@ -92,7 +94,7 @@ public class AccountController {
 	 * The method returns the password associated with the username.
 	 * 
 	 * @param username
-	 *            - returns the password for the associated username.
+	 * 
 	 * @return String which is the password for the profile.
 	 */
 	public String getPassword(String username) {
@@ -178,8 +180,7 @@ public class AccountController {
 	}
 
 	/**
-	 * Sends an email to the user's email with instructions for resetting their
-	 * password.
+	 * Sends an email to the user's email with a randomly generated password.
 	 * 
 	 * @param email
 	 *            - same as the username.
@@ -263,9 +264,6 @@ public class AccountController {
 	 *            - the new password that will replace the old password.
 	 */
 	public boolean passwordRequirements(String password) {
-		if (database.checkPasswordRequirements(password)) {
-			return true; // returns true if checkPasswordRequirements(password) returned true
-		}
-		return false;
+		return database.checkPasswordRequirements(password); // returns true if checkPasswordRequirements(password) returned true
 	}
 }

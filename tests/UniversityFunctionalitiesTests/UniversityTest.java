@@ -270,6 +270,17 @@ public class UniversityTest {
 		uni.setEmphasis(testEmphasis);
 		assertTrue("The University's Emphasis was set to: BIOLOGY", uni.getEmphasis().get(0).equals("BIOLOGY"));
 		assertFalse("The University's Emphasis was NOT set to: BIOLOGY", uni.getEmphasis().get(0).equals("ACCOUNTING"));
-
+	}
+	
+	@Test
+	public void containsNumberPasses() {
+		boolean result = uni.containsNumber("CSBSJU");
+		assertFalse("Does NOT contain a number", result);
+	}
+	
+	@Test
+	public void containsNumberFails() {
+		boolean result = uni.containsNumber("CSBSJU2020");
+		assertTrue("Contain a number", result);
 	}
 }

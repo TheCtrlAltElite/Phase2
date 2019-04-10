@@ -36,8 +36,9 @@ public class UniversityController {
 	
 
 	/**
-	 * Saves a University to the specified user's saved school
-	 * @param user that school will be added to
+	 * Saves a University to the specified user's saved schools list
+	 * @param String user - user that school will be added to
+	 * @param String schoolName - the name of the school that will be added to the user's Saved Schools List
 	 */
 	public int addToSavedSchoolsList2(String user, String schoolName) {	
 		String uniToFind = schoolName.toUpperCase();
@@ -110,7 +111,7 @@ public class UniversityController {
 //	}
 	
 	/**
-	 * compares a University To the rest of the universities and returns map with the score between each
+	 * compares a University To the rest of the universities and returns a map with the score between each University
 	 * @param university that will be used to compare to the rest of the universities
 	 * @return map of score and university associated with that score
 	 */
@@ -146,7 +147,7 @@ public class UniversityController {
 					float students = (Integer.valueOf(listUnis.get(i).getNumberStudents()).floatValue());					                    //int students is the numberOfStudents for listUnis.get(i)
 					score += (Math.abs(Integer.valueOf(university.getNumberStudents()).floatValue() - students)) / (dbc.maxNumStudents() - dbc.minNumStudents()); //
 					float temp = (Math.abs(Integer.valueOf(university.getNumberStudents()).floatValue() - students)) / (dbc.maxNumStudents() - dbc.minNumStudents());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "num students: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "num students: " + temp);
 				}
 				if(university.getPercentFemale() == -1 || listUnis.get(i).getPercentFemale() == -1) {			//PercentFemale with -1 field
 					score += 1;
@@ -155,7 +156,7 @@ public class UniversityController {
 					float percent = (Integer.valueOf(listUnis.get(i).getPercentFemale()).floatValue());						 //int percent is the PercentFemale for listUnis[i][5]
 					score += (Math.abs(Integer.valueOf(university.getPercentFemale()).floatValue() - percent)) / (dbc.maxFemale() - dbc.minFemale()); 
 					float temp = (Math.abs(Integer.valueOf(university.getPercentFemale()).floatValue() - percent)) / (dbc.maxFemale() - dbc.minFemale());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "percentfe: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "percentfe: " + temp);
 				}
 				if(university.getVerbalSAT() == -1 || listUnis.get(i).getVerbalSAT() == -1) {		//VerbalSAT with -1 field
 					score += 1;
@@ -164,7 +165,7 @@ public class UniversityController {
 					float verbSat = (Integer.valueOf(listUnis.get(i).getVerbalSAT()).floatValue());					 //int verbSat is the math SAT score for listUnis[i][7]
 					score += (Math.abs(Integer.valueOf(university.getVerbalSAT()).floatValue()  - verbSat)) / (dbc.maxSATVerbal() - dbc.minSATVerbal()); 
 					float temp = (Math.abs(Integer.valueOf(university.getVerbalSAT()).floatValue() - verbSat)) / (dbc.maxSATVerbal() - dbc.minSATVerbal());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "verb sat: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "verb sat: " + temp);
 				}
 				if(university.getMathSAT() == -1 || listUnis.get(i).getMathSAT() == -1) {		//MathSAT with -1 field
 					score += 1;
@@ -173,7 +174,7 @@ public class UniversityController {
 					float mathSat = (Integer.valueOf(listUnis.get(i).getMathSAT()).floatValue());					 //int mathSAT is the math SAT score for listUnis[i][7]
 					score += (Math.abs(Integer.valueOf(university.getMathSAT()).floatValue() - mathSat)) / (dbc.maxSATMath() - dbc.minSATMath()); 
 					float temp = (Math.abs(Integer.valueOf(university.getMathSAT()).floatValue() - mathSat)) / (dbc.maxSATMath() - dbc.minSATMath());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "math sat: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "math sat: " + temp);
 				}
 				if(university.getSchoolExpenses() == -1 || listUnis.get(i).getSchoolExpenses() == -1) {		//School Expenses with -1 field
 					score += 1;
@@ -182,7 +183,7 @@ public class UniversityController {
 					float exp = (Integer.valueOf(listUnis.get(i).getSchoolExpenses()).floatValue());					      //int exp is the expenses for listUnis[i][8]
 					score += (Math.abs(Integer.valueOf(university.getSchoolExpenses()).floatValue() - exp)) / (dbc.maxExpenses() - dbc.minExpenses());
 					float temp = (Math.abs(Integer.valueOf(university.getSchoolExpenses()).floatValue() - exp)) / (dbc.maxExpenses() - dbc.minExpenses());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "school exp: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "school exp: " + temp);
 				}
 				if(university.getPercentFinancialAid() == -1 || listUnis.get(i).getPercentFinancialAid() == -1) {		//PercentFinancialAid with -1 field
 					score += 1;
@@ -191,7 +192,7 @@ public class UniversityController {
 					float aid = (Integer.valueOf(listUnis.get(i).getPercentFinancialAid()).floatValue());					      //int aid is the percent financial aid for listUnis[i][9]
 					score += (Math.abs(Integer.valueOf(university.getPercentFinancialAid()).floatValue() - aid)) / (dbc.maxFinancialAid() - dbc.minFinancialAid()); 
 					float temp = (Math.abs(Integer.valueOf(university.getPercentFinancialAid()).floatValue() - aid)) / (dbc.maxFinancialAid() - dbc.minFinancialAid());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "percent fin aid: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "percent fin aid: " + temp);
 				}
 				if(university.getNumApplicants() == -1 || listUnis.get(i).getNumApplicants() == -1) {		//NumApplicants with -1 field
 					score += 1;
@@ -200,7 +201,7 @@ public class UniversityController {
 					float numApplicants = (Integer.valueOf(listUnis.get(i).getNumApplicants()).floatValue());			           
 					score += (Math.abs(Integer.valueOf(university.getNumApplicants()).floatValue() - numApplicants)) / (dbc.maxNumApplicants() - dbc.minNumApplicants());
 					float temp = (Math.abs(Integer.valueOf(university.getNumApplicants()).floatValue() - numApplicants)) / (dbc.maxNumApplicants() - dbc.minNumApplicants());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "num applicants: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "num applicants: " + temp);
 				}
 				if(university.getPercentAdmitted() == -1 || listUnis.get(i).getPercentAdmitted() == -1) {		//PercentAdmitted with -1 field
 					score += 1;
@@ -209,7 +210,7 @@ public class UniversityController {
 					float percentAdmitted = (Integer.valueOf(listUnis.get(i).getPercentAdmitted()).floatValue());			           
 					score += (Math.abs(Integer.valueOf(university.getPercentAdmitted()).floatValue() - percentAdmitted)) / (dbc.maxPercentAdmitted() - dbc.minPercentAdmitted()); 
 					float temp = (Math.abs(Integer.valueOf(university.getPercentAdmitted()).floatValue() - percentAdmitted)) / (dbc.maxPercentAdmitted() - dbc.minPercentAdmitted());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "percent admitted: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "percent admitted: " + temp);
 				}
 				if(university.getPercentEnrolled() == -1 || listUnis.get(i).getPercentEnrolled() == -1) {		//PercentEnrolled with -1 field
 					score += 1;
@@ -218,7 +219,7 @@ public class UniversityController {
 					float percentEnrolled = (Integer.valueOf(listUnis.get(i).getPercentEnrolled()).floatValue());			           
 					score += (Math.abs(Integer.valueOf(university.getPercentEnrolled()).floatValue()  - percentEnrolled)) / (dbc.maxPercentEnrolled() - dbc.minPercentEnrolled());
 					float temp = (Math.abs(Integer.valueOf(university.getPercentEnrolled()).floatValue() - percentEnrolled)) / (dbc.maxPercentEnrolled() - dbc.minPercentEnrolled());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "percent enrolled: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "percent enrolled: " + temp);
 				}
 				if(university.getAcademicScale() == -1 || listUnis.get(i).getAcademicScale() == -1) {		//AcademicScale with -1 field
 					score += 1;
@@ -227,7 +228,7 @@ public class UniversityController {
 					float academicScale = (Integer.valueOf(listUnis.get(i).getAcademicScale()).floatValue());			           
 					score += (Math.abs(Integer.valueOf(university.getAcademicScale()).floatValue() - academicScale)) / (dbc.maxAcademicScale() - dbc.minAcademicScale()); 
 					float temp = (Math.abs(Integer.valueOf(university.getAcademicScale()).floatValue() - academicScale)) / (dbc.maxAcademicScale() - dbc.minAcademicScale());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "academic scale: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "academic scale: " + temp);
 				}
 				if(university.getSocialScale() == -1 || listUnis.get(i).getSocialScale() == -1) {		//SocialScale with -1 field
 					score += 1;
@@ -236,7 +237,7 @@ public class UniversityController {
 					float socialScale = (Integer.valueOf(listUnis.get(i).getSocialScale()).floatValue());			           
 					score += (Math.abs(Integer.valueOf(university.getSocialScale()).floatValue() - socialScale)) / (dbc.maxSocialScale() - dbc.minSocialScale());
 					float temp = (Math.abs(Integer.valueOf(university.getSocialScale()).floatValue() - socialScale)) / (dbc.maxSocialScale() - dbc.minSocialScale());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "social scale: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "social scale: " + temp);
 				}
 				if(university.getQualityScale() == -1 || listUnis.get(i).getQualityScale() == -1) {		//QualityScale with -1 field
 					score += 1;
@@ -245,7 +246,7 @@ public class UniversityController {
 					float qualityScale = (Integer.valueOf(listUnis.get(i).getQualityScale()).floatValue());			           
 					score += (Math.abs(Integer.valueOf(university.getQualityScale()).floatValue() - qualityScale)) / (dbc.maxQualityOfLifeScale() - dbc.minQualityOfLifeScale());
 					float temp = (Math.abs(Integer.valueOf(university.getQualityScale()).floatValue() - qualityScale)) / (dbc.maxQualityOfLifeScale() - dbc.minQualityOfLifeScale());
-					System.out.println(listUnis.get(i).getSchoolName() + " " + "quality scale: " + temp);
+//					System.out.println(listUnis.get(i).getSchoolName() + " " + "quality scale: " + temp);
 				}
 			scores.put(score, listUnis.get(i));
 //			for(Entry<Float, University> entry : scores.entrySet()) {
@@ -257,8 +258,8 @@ public class UniversityController {
 	}
 
 	/**
-	 * returns list of 5 recommended schools
-	 * @param university that will be used to compare to the rest of the universities
+	 * returns a list of 5 recommended schools
+	 * @param University university - university that will be used to compare to the rest of the universities
 	 * @return list of 5 recommendedSchools
 	 */
 	public List<University> recommendedSchools(University university) {
@@ -312,7 +313,8 @@ public class UniversityController {
     }
 	
 	/**
-	 * gets details of one University
+	 * gets details of a specific University
+	 * @param String schoolName - name of the Univeristy to get details on.
 	 * @return string of all details of a university
 	 */
 	public List<String> getDetailsUni(String schoolName) {
