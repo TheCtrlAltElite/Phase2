@@ -53,18 +53,22 @@ public class UserFunctionalityController {
 	 * @param the
 	 *            search criteria that can be used to find a specific school
 	 */
-	public List<University> searchSchools(String schoolName, String schoolState, String schoolLocation,String schoolControl, String numberStudents1, String numberStudents2, 
-											String percentFemale1, String percentFemale2, String verbalSAT1, String verbalSAT2, String mathSAT1, String mathSAT2, String schoolExpenses1, String schoolExpenses2, 
-											String percentFinancialAid1, String percentFinancialAid2, String numApplicants1, String numApplicants2, String percentAdmitted1, String percentAdmitted2, String percentEnrolled1, String percentEnrolled2, String academicScale1, String academicScale2, 
-											String socialScale1, String socialScale2, String qualityScale1, String qualityScale2, List<String> emphases) {
+	public List<University> searchSchools(String schoolName, String schoolState, String schoolLocation,
+			String schoolControl, String numberStudents1, String numberStudents2, String percentFemale1,
+			String percentFemale2, String verbalSAT1, String verbalSAT2, String mathSAT1, String mathSAT2,
+			String schoolExpenses1, String schoolExpenses2, String percentFinancialAid1, String percentFinancialAid2,
+			String numApplicants1, String numApplicants2, String percentAdmitted1, String percentAdmitted2,
+			String percentEnrolled1, String percentEnrolled2, String academicScale1, String academicScale2,
+			String socialScale1, String socialScale2, String qualityScale1, String qualityScale2,
+			List<String> emphases) {
 		DBController dbc = new DBController();
 		List<University> listUnis = dbc.loadUniversities();
 		List<University> matchingUnis = new ArrayList<University>();
-		int counter =0;
+		int counter = 0;
 		Map<String, List<String>> emphasesMapDB = dbc.getUniversityNamesWithEmphases();
 		Set<String> keys = emphasesMapDB.keySet();
-		for(int i = 0; i < listUnis.size(); i++){
-			if(schoolName != null) {
+		for (int i = 0; i < listUnis.size(); i++) {
+			if (schoolName != null) {
 
 				counter++;
 				if (!(listUnis.get(i).getSchoolName()).contains(schoolName)) {
@@ -173,31 +177,31 @@ public class UserFunctionalityController {
 					continue;
 				}
 			}
-			if(emphases != null) {
+			if (emphases != null) {
 				counter++;
-//				List<String> emphasesInDB = dbc.getUniversityEmphases();
-//				int emphasesCounter = 0;
-//				for (int j = 0; j < emphases.size(); j++) {
-//					for (int k = 0; k < emphasesInDB.size(); k++) {
-//						if (emphases.get(j).equals(emphasesInDB.get(k))) {
-//							emphasesCounter++;
-//						}
-//					}
-//				}
-//				if(emphasesCounter == 0) {
-//					continue;
-//				}
+				// List<String> emphasesInDB = dbc.getUniversityEmphases();
+				// int emphasesCounter = 0;
+				// for (int j = 0; j < emphases.size(); j++) {
+				// for (int k = 0; k < emphasesInDB.size(); k++) {
+				// if (emphases.get(j).equals(emphasesInDB.get(k))) {
+				// emphasesCounter++;
+				// }
+				// }
+				// }
+				// if(emphasesCounter == 0) {
+				// continue;
+				// }
 				int emphasesCounter = 0;
 				if (keys.contains(listUnis.get(i).getSchoolName())) {
 					for (int j = 0; j < emphases.size(); j++) {
-					//	for (String key : keys) {
-							if(emphasesMapDB.get(listUnis.get(i).getSchoolName()).contains(emphases.get(j))) {
-								emphasesCounter++;
-					//		}
+						// for (String key : keys) {
+						if (emphasesMapDB.get(listUnis.get(i).getSchoolName()).contains(emphases.get(j))) {
+							emphasesCounter++;
+							// }
 						}
 					}
 				}
-				if(emphasesCounter == 0) {
+				if (emphasesCounter == 0) {
 					continue;
 				}
 			}
@@ -278,21 +282,16 @@ public class UserFunctionalityController {
 
 	/**
 	 * Email's the user's savedSchoolsList to the user's email
-<<<<<<< HEAD
 	 */
-	public void emailSavedSchools(String username) throws MessagingException {
-=======
-	 */		
 	public boolean emailSavedSchools(String username) throws MessagingException {
 		boolean status = false;
-		if(dbc.isUserReal(username)) {
+		if (dbc.isUserReal(username)) {
 			status = true;
->>>>>>> 8a474b18bf5134f75752c149e2317a263d9bcef3
+		}
 		Map<String, String> savedSchoolsList = getSavedSchoolsList(username);
 		String mail_body = "Your saved schools list: \n";
 
 		try {
-<<<<<<< HEAD
 			Properties props = new Properties();
 			props.put("mail.smtp.user", "cmcdatabase2019@gmail.com"); // sets email to be sent from
 																		// cmcdatabase2019@gmail.com
@@ -326,41 +325,8 @@ public class UserFunctionalityController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-=======
-            Properties props = new Properties();
-            props.put("mail.smtp.user", "cmcdatabase2019@gmail.com");	//sets email to be sent from cmcdatabase2019@gmail.com
-            props.put("mail.smtp.host", "smtp.gmail.com");				//sets server host as gmail
-            props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.port", "587");							//sets the port
-            
-            System.out.println(props);									//displays server information
-            
-            Authenticator auth = new SMTPAuthenticator();
-            Session session = Session.getInstance(props, auth);
-        
-            for (Map.Entry entry : savedSchoolsList.entrySet())
-    		{
-            	mail_body += entry.getKey() + " " + entry.getValue() + " \n"; //body of email
-    		}
-		
-		MimeMessage message= new MimeMessage(session);  				//creates MimeMessage object to send email
-		message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com"));  					//sets from email which is cmcdatabase2019@gmail.com
-		message.addRecipient(Message.RecipientType.TO, new InternetAddress(username));	//receiver of the email
-		message.setSubject("Your Saved Schools List");  						//subject of the email
-		message.setText(mail_body); 									//sets the body of the email to mail_body
-
-        	System.out.println(message);									//shows email has begun to send out
-        	Transport.send(message);									//Sends out email
-        	System.out.println("Message sent!");						//Informs message is sent
-        	
-    } catch (Exception e) {
-        e.printStackTrace();
-    	}
-		}
 		return status;
->>>>>>> 8a474b18bf5134f75752c149e2317a263d9bcef3
+
 	}
 
 	/**
