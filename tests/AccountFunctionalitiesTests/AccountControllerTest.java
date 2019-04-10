@@ -71,7 +71,7 @@ public class AccountControllerTest {
 	public void getPasswordFailTest() {
 		acc.getPassword("Nobody");
 	}
-	
+
 	@Test
 	public void viewProfileTest() {
 		List<String> details = acc.viewProfile("juser");

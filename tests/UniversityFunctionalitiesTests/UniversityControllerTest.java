@@ -57,6 +57,12 @@ public class UniversityControllerTest {
 	}
 	
 	@Test
+	public void addToSavedSchoolsSchoolAlreadyExistsInUsersSavedSchoolList() {
+		int result = uc.addToSavedSchoolsList2("fuser","bard");
+		assertEquals("Universtiy is not in the Database", 6, result);
+	}
+	
+	@Test
 	public void editUniversityChangesUniversityState() {
 		uc.editUniversity("CSBSJU", "MINNESOTA", "URBAN", "STATE", 10000, 50, 500, 500, 23451, 25, 12355, 23, 65, 5, 5, 5);
 		List<String> details = uc.getDetailsUni("CSBSJU");

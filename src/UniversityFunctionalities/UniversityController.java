@@ -43,29 +43,34 @@ public class UniversityController {
 		String uniToFind = schoolName.toUpperCase();
 		Map<String, String> savedSchools = dbc.getSavedSchoolsList(user);
 		int result2 = 3;
-		int i = 0;  		
+		int i = 0;  	
+		int uniSize = dbc.loadUniversities().size();
 
+		
 		//searches through list of universities retrieved through loadUniversities() method
 		while(i<dbc.loadUniversities().size()) {
 
 			String name = dbc.loadUniversities().get(i).getSchoolName();
 
 			//confirms that the uniToFind exists
-			if (name.toUpperCase().equals(uniToFind) && !savedSchools.containsKey(schoolName)){
+			//if (name.toUpperCase().equals(uniToFind) && !savedSchools.containsKey(uniToFind)){
+			if (name.toUpperCase().equals(uniToFind)){
 				//e= true;
 				result2 = 4;
-				System.out.println("YES, " + uniToFind + " exists.");   			
+				System.out.println("YES, " + uniToFind + " exists. \n");   			
 				break;
 			}
 
 			//if the while loop reaches the end of the list, uniToFind does not exist
-			if(i == (dbc.loadUniversities().size())-1) {
+			if(i == uniSize-1) {
 				result2 = 5;
 				System.out.print(uniToFind + " does NOT exist. \n");
+				break;
+				
 			}
 			i++;    			
 		}
-
+		outerloop:
 		//if uniToFind exists, calls addToSavedSchoolsList1() from DBController 
 		if(result2 == 4) {
 
@@ -74,15 +79,16 @@ public class UniversityController {
 			for (Map.Entry entry : savedList.entrySet()){
 
 				if(schoolName.toUpperCase().equals(entry.getKey().toString().toUpperCase())) {
-					result2 = 6;
 					System.out.println("School is already in the list.");
-					return result2;
+					result2 = 6;
+					break outerloop;
 				} 
 			}
 			if(result2 == 4) {
 				dbc.addToSavedSchoolsList1(user, uniToFind);
 			}
 		}
+		//System.out.println(result2);
 		return result2;
 	}
 	
