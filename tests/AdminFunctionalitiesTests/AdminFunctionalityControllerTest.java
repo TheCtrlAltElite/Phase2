@@ -244,19 +244,19 @@ public class AdminFunctionalityControllerTest {
 	@Test
 	public void addUserSuceess() {
 		int result = afc.addUser(this.firstName, this.lastName, this.username2, this.password, this.type);
-		assertEquals("User was added", 3, result);
+		assertEquals("User was added. \n", 3, result);
 	}
 	
 	@Test
 	public void addUserInvalidPassword() {
 		int result = afc.addUser(this.firstName, this.lastName, this.username2, this.password2, this.type);
-		assertEquals("User was not added", 1, result);
+		assertEquals("User was not added becasue password is invalid. \n", 1, result);
 	}
 	
 	@Test
 	public void addUserFailBecasueUsernameExists() {
 		int result = afc.addUser(this.firstName, this.lastName, "fuser", this.password, this.type);
-		assertEquals("User was not added", 2, result);
+		assertEquals("User was not added because username already exists. \n", 2, result);
 	}
 	
 	@Test
