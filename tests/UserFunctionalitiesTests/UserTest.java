@@ -69,7 +69,7 @@ public class UserTest {
 	}
 	
 	@Test
-	public void viewSchoolTest() {
+	public void viewSchoolsTest() {
 		Map<String, String> details = realUser.getSavedSchoolsList();
 		assertTrue("The saved schools list is correct.", details.containsKey("YANKTOWN COLLEGE"));
 	}
