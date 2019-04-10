@@ -312,7 +312,7 @@ public class UserFunctionalityController {
 			MimeMessage message = new MimeMessage(session); // creates MimeMessage object to send email
 			message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com")); // sets from email which is
 																				// cmcdatabase2019@gmail.com
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress("rclintsma001@csbsju.edu")); // receiver
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(username)); // receiver
 																											// of the
 																											// email
 			message.setSubject("Your Saved Schools List"); // subject of the email

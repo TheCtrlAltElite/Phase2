@@ -43,7 +43,7 @@ public class FunctionalTestingClass {
     	/**
     	 * LogIn
     	 */
-        acc.login("juser", "JohnMiller5");
+     //   acc.login("juser", "JohnMiller5");
         
         /**
          * Logout
@@ -62,9 +62,27 @@ public class FunctionalTestingClass {
         
         /**
          * Edit Profile
+         * INCLUDES DEACTIVATE PROFILE AND TYPE
          */
      //   acc.editProfile("Rigby", "Tux", "tux420@csbsju.edu", "PenguinPower420", 'u', 'Y');  
+   
+        /**
+         * View All Users
+         */
+     //   aic.viewUsers();   
+    	
+    	/**
+    	 * Add New User
+    	 */
+     //   aic.addUser();     //Not hard coded, asks for parameters
+     //   afc.addUser("BEEBOOPBOPBOOP", "Robot", "zuser259@gmail.com", "Zpasswordis99", 'a'); //call from AdminInteraction	
         
+    	/**
+    	 * Reset Password
+    	 * INCLUDES MEETS PASSWORD REQUIREMENTS **ADDITIONAL FUNCTIONALITY**
+    	 */
+     //   acc.resetPassword("Gandalf1010", "Gandalf2020", "Gandalf2020");  	   	
+    	
         /**
          * Search Schools with emphases
          * INCLUDES SEARCH SCHOOL RESULTS
@@ -78,7 +96,7 @@ public class FunctionalTestingClass {
          * INCLUDES SEARCH SCHOOL RESULTS
          */
      //   ufc.searchSchools(String schoolName, String schoolState, String schoolLocation,String schoolControl, String numberStudents1, String numberStudents2, String percentFemale1, String percentFemale2, String verbalSAT1, String verbalSAT2, String mathSAT1, String mathSAT2, String schoolExpenses1, String schoolExpenses2, String percentFinancialAid1, String percentFinancialAid2, String numApplicants1, String numApplicants2, String percentAdmitted1, String percentAdmitted2, String percentEnrolled1, String percentEnrolled2, String academicScale1, String academicScale2, String socialScale1, String socialScale2, String qualityScale1, String qualityScale2, List<String> emphases);
-  
+    	
         /**
          * Save school from search
          */        
@@ -88,6 +106,11 @@ public class FunctionalTestingClass {
          * Get saved school list
          */
      //   ufc.getSavedSchoolsList("jmuehls@gmail.com");
+        
+        /**
+         * remove save school
+         */
+     //   ufc.removeSavedSchool("FBaggins@gmail.com", "YANKTOWN COLLEGE");  
         
         /**
          * View school information
@@ -117,82 +140,28 @@ public class FunctionalTestingClass {
      //   aic.addUniversity();     //Not hard coded, asks for parameters
      //   afc.addUniversity("zootoopa", "-1", "-1", "-1", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);  //call from AdminInteraction
 
+    	/**
+    	 * Remove University from Database ***ADDITIONAL FUNCTIONALITY
+    	 */
+     //   afc.removeUniversityDB("zootoopa");     //call from AdminInteraction	
         
+        /**
+         * Send Recovery Password  ****ADDITIONAL FUNCTIONALITY
+         * INCLUDES RANDOM PASSWORD GENERATOR ***ADDITIONAL FUNCTIONALITY
+         */
+     //   acc.recoverPassword("jmuehls@gmail.com");	    
         
-        
-        
-        
-     //unc.addToSavedSchoolsList2("luser", "YALE"); 
-     //unc.removeFromList("juser", "HARVARD"); 
-     //unc.compareUniversity(University university);
-
-     //unc.addToSavedSchoolsList2("luser", "YALE"); 
-     //unc.removeFromList("luser", "AUBURN");                 	<<<<<<<<<<<<<<< //PROBABLY GOING TO DELETE
-     //unc.compareUniversity(realUni);
-
-     
-
-     //List<University> listUnis = dbc.loadUniversities();
-     //unc.recommendedSchools(listUnis.get(4));
-
-     //List<University> listUnis = dbc.loadUniversities();
-     //unc.recommendedSchools(listUnis.get(0));
-
-     //dbc.sendRecoverEmail("juser");
-
-     //unc.compareUniversity(listUnis.get(5)); 	 //not ready
-     //unc.recommendedSchools(University university;	//not ready
-
-     //dbc.addUniversity("TESTUNIDONTDELETE", "-1", "-1", "-1", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
-     //unc.getDetailsUni("TESTUNI"); 							//Make sure school being searched is in DB as all caps, otherwise remove toUpperCase() in UniversityController.
-     
-
-     
-
-     //acc.isUserReal("jmuehls");
-     //acc.getPassword("juser");
-
-									
-     //acc.resetPassword("Maren", "Maren300000", "Maren300000");
-     //acc.recoverPassword("joettinge001@gmail.com");		
-     //acc.addProfilePicture(String jpeg);							//not ready
-     //acc.passwordRequirements(String password);
- 
-     
-
-     //aic.addToSavedSchoolsList4();    //works 100%
-
-     //aic.removeUniversityDB();    //works 100%
-     //aic.addUser();     //works 100%
-     //aic.editUniversity();     //works 100%
-
-     //aic.viewUsers();     //works 100%
-
-
-
-     //afc.addToSavedSchoolsList3("luser", "baruch");  //call from AdminInteraction
-
-     //afc.addUser("z", "u", "zuser", "zpass", 'a'); //call from AdminInteraction
-     //afc.removeUniversityDB("yale");     //call from AdminInteraction
-
-     //afc.viewUsers();    //call from AdminInteraction
-   
-     
-     
-     
-     
-     //List<String> emphases = new ArrayList<String>();
-     //emphases.add("BIOLOGY");
-     //ufc.searchSchools(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, emphases);
-
-     
-     //ufc.viewSchool(String schoolName);
-     //ufc.removeSavedSchool("luser", "BARUCH");
-     //ufc.updateSavedSchoolsList(List<UserSchool> list);
-     //ufc.emailSavedSchools();
-
-
-    
+    	/**
+    	 * Email saved schools list   ***ADDITIONAL FUNCTIONALITY
+    	 * needs fix
+    	 */
+     //	  ufc.emailSavedSchools("jmuehls@gmail.com")
+    	
+    	/**
+    	 * Set profile pic	****ADDITIONAL FUNCTIONALITY
+    	 */
+     //	  acc.addProfilePicture("joettinge001@gmail.com", "joettinge001@gmail.com");
+    	
     }
     catch(Exception e){
       e.printStackTrace();
