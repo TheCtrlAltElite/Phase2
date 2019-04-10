@@ -292,7 +292,6 @@ public class DBController {
 			}
 		}
 		throw new IllegalArgumentException();
-		//return "That user does not exist.";
 	}
 	
 	/**
