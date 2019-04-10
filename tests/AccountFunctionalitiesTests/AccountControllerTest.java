@@ -9,6 +9,8 @@ import javax.mail.MessagingException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import AccountFunctionalities.Account;
 import AccountFunctionalities.AccountController;
 
 public class AccountControllerTest {
@@ -22,13 +24,13 @@ public class AccountControllerTest {
 	
 	@Test
 	public void loginTest_correctArguments() throws Exception {
-		acc.login("juser", "JohnMiller5");
-		
+		Account account = acc.login("juser", "JohnMiller5");
+		assertTrue("The account has been logged in", account.getLoginStatus());
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void loginTest_invalidUserName() throws Exception {
-		acc.login("jjjjjjjj", "JohnMiller5");
+		acc.login("NotAUser", "JohnMiller5");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -43,7 +45,8 @@ public class AccountControllerTest {
 	
 	@Test
 	public void logOutTest() {
-		acc.logOut();
+		Account account = acc.logOut();
+		assertFalse("The account has been logged out", account.getLoginStatus());
 	}
 	
 	@Test
@@ -64,16 +67,11 @@ public class AccountControllerTest {
 		assertTrue("The user juser's password is: ", pass.equals("JohnMiller5"));
 	}
 	
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void getPasswordFailTest() {
-		String pass = acc.getPassword("Nobody");
-		boolean result = false;
-		if(pass != null) {
-			result = true;
-		}
-		assertTrue("The user Nobody is not a user", result);//pass.equals("That user does not exist."));
+		acc.getPassword("Nobody");
 	}
-	
+
 	@Test
 	public void viewProfileTest() {
 		List<String> details = acc.viewProfile("juser");
@@ -93,7 +91,7 @@ public class AccountControllerTest {
 	
 	@Test
 	public void editProfileFirstNameTest() {
-		boolean result = acc.editProfile("Rigby", "tux", "tux420@csbsju.edu", "PenguinPower420", 'u', 'Y');
+		boolean result = acc.editProfile("Rigby", "tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y');
 		assertTrue(result);
 		List<String> details = acc.viewProfile("tux420@csbsju.edu");
 		assertTrue("The first name is now Rigby for username tux420@csbsju.edu", details.get(0).equals("Rigby"));
@@ -101,7 +99,7 @@ public class AccountControllerTest {
 	
 	@Test
 	public void editProfileLastNameTest() {
-		boolean result = acc.editProfile("Eli2", "Neuenschwander", "tux420@csbsju.edu", "PenguinPower420", 'u', 'Y');
+		boolean result = acc.editProfile("Eli2", "Neuenschwander", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y');
 		assertTrue(result);
 		List<String> details = acc.viewProfile("tux420@csbsju.edu");
 		assertTrue("The last name is now Neuenschwander for username tux420@csbsju.edu", details.get(1).equals("Neuenschwander"));
@@ -109,7 +107,7 @@ public class AccountControllerTest {
 	
 	@Test
 	public void editProfileUsernameFailsTest() {
-		boolean result = acc.editProfile("Eli2", "Tux", "fakeUserName@csbsju.edu", "PenguinPower420", 'u', 'Y');
+		boolean result = acc.editProfile("Eli2", "Tux", "fakeUserName@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y');
 		assertFalse(result);
 		List<String> details = acc.viewProfile("fakeUserName@csbsju.edu");
 		assertTrue("The username has not changed so this user does not exist.", details.isEmpty());
@@ -117,15 +115,15 @@ public class AccountControllerTest {
 	
 	@Test
 	public void editProfilePasswordTest() {
-		boolean result = acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y');
+		boolean result = acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "PenguinPower420", 'u', 'Y');
 		assertTrue(result);
 		List<String> details = acc.viewProfile("tux420@csbsju.edu");
-		assertTrue("This user's password is now TuxIsOurSavior1", details.get(3).equals("TuxIsOurSavior1"));
+		assertTrue("This user's password is now TuxIsOurSavior1", details.get(3).equals("PenguinPower420"));
 	}
 	
 	@Test
 	public void editProfileTypeTest() {
-		boolean result = acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "PenguinPower420", 'a', 'Y');
+		boolean result = acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'a', 'Y');
 		assertTrue(result);
 		List<String> details = acc.viewProfile("tux420@csbsju.edu");
 		assertTrue("This user's type is now admin", details.get(4).equals("a"));
@@ -133,7 +131,7 @@ public class AccountControllerTest {
 	
 	@Test
 	public void editProfileStatusTest() {
-		boolean result = acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "PenguinPower420", 'u', 'N');
+		boolean result = acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'N');
 		assertTrue(result);
 		List<String> details = acc.viewProfile("tux420@csbsju.edu");
 		assertTrue("This user's status is now inactive.", details.get(5).equals("N"));
@@ -197,7 +195,7 @@ public class AccountControllerTest {
 	}
 	
 	@After
-	public void reset() {
+	public void tearDown() {
 		acc.resetPassword("SuperPenguinTux1", "TuxIsOurSavior1", "TuxIsOurSavior1");
 		//acc.editProfile("Eli2", "Tux", "tux420@csbsju.edu", "TuxIsOurSavior1", 'u', 'Y');
 	}
