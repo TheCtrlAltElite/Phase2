@@ -205,14 +205,22 @@ public class DBController {
 	 * 
 	 * @param newUni
 	 */
-	public void addUniversity(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents,
+	public int addUniversity(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents,
 			int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants,
 			int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {
 		
-		library.university_addUniversity(schoolName, schoolState, schoolLocation, schoolControl, numberStudents,
+		return library.university_addUniversity(schoolName, schoolState, schoolLocation, schoolControl, numberStudents,
 				percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants,
 				percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
 	}
+	
+	/**
+	 * Adds Emphasis for a school to the database
+	 */
+	public int addUniversityEmphasis(String schoolName, String emphasis) {
+			return library.university_addUniversityEmphasis(schoolName, emphasis);
+	}
+	
 
 	/**
 	 * Adds a university to a saved schools list

@@ -303,18 +303,35 @@ public class UniversityController {
 	/**
 	 * adds a University by taking information and calling addUniversity() from DBController()
 	 */
-	public void addUniversityInfo(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents,
+	public int addUniversityInfo(String schoolName, String schoolState, String schoolLocation, String schoolControl, int numberStudents,
 			int percentFemale, int verbalSAT, int mathSAT, int schoolExpenses, int percentFinancialAid, int numApplicants,
-			int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale) {		
+			int percentAdmitted, int percentEnrolled, int academicScale, int socialScale, int qualityScale, List<String> emphases) {		
 
-		dbc.addUniversity(schoolName, schoolState, schoolLocation, schoolControl, numberStudents,
+
+		int addUniNum = dbc.addUniversity(schoolName, schoolState, schoolLocation, schoolControl, numberStudents,
 				percentFemale, verbalSAT, mathSAT, schoolExpenses, percentFinancialAid, numApplicants,
 				percentAdmitted, percentEnrolled, academicScale, socialScale, qualityScale);
+		if(addUniNum != -1) {
+			int counter = 0;
+			for (int i = 0; i < emphases.size(); i++) {
+				int num = dbc.addUniversityEmphasis(schoolName, emphases.get(i));
+				if (num != -1) {
+					counter++;
+				}
+			}
+			if(counter != emphases.size()) {
+				return -2;
+			}
+			return 0;
+		}
+		else {
+			return -1;
+		}
     }
 	
 	/**
 	 * gets details of a specific University
-	 * @param String schoolName - name of the Univeristy to get details on.
+	 * @param String schoolName - name of the University to get details on.
 	 * @return string of all details of a university
 	 */
 	public List<String> getDetailsUni(String schoolName) {
