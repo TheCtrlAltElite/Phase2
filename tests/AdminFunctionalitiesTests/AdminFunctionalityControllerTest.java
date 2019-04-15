@@ -244,19 +244,19 @@ public class AdminFunctionalityControllerTest {
 	@Test
 	public void addUserSuceess() {
 		int result = afc.addUser(this.firstName, this.lastName, this.username2, this.password, this.type);
-		assertEquals("User was added", 3, result);
+		assertEquals("User was added. \n", 3, result);
 	}
 	
 	@Test
 	public void addUserInvalidPassword() {
 		int result = afc.addUser(this.firstName, this.lastName, this.username2, this.password2, this.type);
-		assertEquals("User was not added", 1, result);
+		assertEquals("User was not added becasue password is invalid. \n", 1, result);
 	}
 	
 	@Test
 	public void addUserFailBecasueUsernameExists() {
 		int result = afc.addUser(this.firstName, this.lastName, "fuser", this.password, this.type);
-		assertEquals("User was not added", 2, result);
+		assertEquals("User was not added because username already exists. \n", 2, result);
 	}
 	
 	@Test
@@ -278,16 +278,58 @@ public class AdminFunctionalityControllerTest {
 		assertEquals("University was removed.\n ", 4, result);
 	}
 	
+//	@Test
+//	public void viewUniversitiesTest() {
+//		List<University> listUnis = afc.viewUniversities();
+//		assertTrue(listUnis.size() == 181);
+//	}
+	
 	@Test
-	public void viewUniversitiesTest() {
+	public void viewUniversitiesWorksForLastUni() {
 		List<University> listUnis = afc.viewUniversities();
-		assertTrue(listUnis.size() == 181);
+		assertTrue(listUnis.get(listUnis.size()-1).getSchoolName().equals("ZZZZZUNIVERSITY"));
+	}
+
+	@Test
+	public void viewUniversitiesWorksForAMiddleIndex() {
+		List<University> listUnis = afc.viewUniversities();
+		assertTrue(listUnis.get(listUnis.size()-6).getSchoolName().equals("WESLEYAN"));
 	}
 	
 	@Test
-	public void viewUsersTest() {
+	public void viewUniversitiesWorksForAnotherMiddleIndex() {
+		List<University> listUnis = afc.viewUniversities();
+		assertTrue(listUnis.get(5).getSchoolName().equals("AUGSBURG"));
+	}
+	
+	@Test
+	public void viewUniversitiesWorksForFirstIndex() {
+		List<University> listUnis = afc.viewUniversities();
+		assertTrue(listUnis.get(0).getSchoolName().equals("ABILENE CHRISTIAN UNIVERSITY"));
+	}
+	
+//	@Test
+//	public void viewUsersTest() {
+//		List<Account> listUsers = afc.viewUsers();
+//		assertTrue(listUsers.size() == 9);
+//	}
+	
+	@Test
+	public void viewUserWorksForLastUni() {
 		List<Account> listUsers = afc.viewUsers();
-		assertTrue(listUsers.size() == 9);
+		assertTrue(listUsers.get(listUsers.size()-1).getEmail().equals("tux69@csbsju.edu"));
+	}
+
+	@Test
+	public void viewUserWorksForAMiddleIndex() {
+		List<Account> listUsers = afc.viewUsers();
+		assertTrue(listUsers.get(4).getEmail().equals("juser"));
+	}
+	
+	@Test
+	public void viewUserWorksForFirstIndex() {
+		List<Account> listUsers = afc.viewUsers();
+		assertTrue(listUsers.get(0).getEmail().equals("FBaggins@gmail.com"));
 	}
 	
 	

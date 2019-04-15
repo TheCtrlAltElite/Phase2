@@ -100,6 +100,7 @@ public class DBController {
 	 * @param username the user of which to get the details for
 	 */
 	public int editUser(Account account) {
+		System.out.println(this.library.user_editUser(account.getEmail(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getType(), account.getStatus()));
 		return this.library.user_editUser(account.getEmail(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getType(), account.getStatus());
 	}
 	
@@ -291,7 +292,6 @@ public class DBController {
 			}
 		}
 		throw new IllegalArgumentException();
-		//return "That user does not exist.";
 	}
 	
 	/**
@@ -463,7 +463,7 @@ public class DBController {
 		}
 		Collections.sort(listOfStudents);
 		float maxStudents = listOfStudents.get(listOfStudents.size() - 1);	//Subtracts 1 to ensure that the 
-		System.out.println(maxStudents);
+//		System.out.println(maxStudents);
 		return maxStudents;		//index of the array is realigned
 	}
 	

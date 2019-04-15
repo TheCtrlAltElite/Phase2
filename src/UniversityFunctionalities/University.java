@@ -122,7 +122,7 @@ public class University {
 
 
 	/**
-	 * A get method to get the university's percent of female's
+	 * A get method to get the university's percent of females
 	 * @return the percentFemale
 	 */
 	public int getPercentFemale() {
@@ -194,7 +194,7 @@ public class University {
 
 
 	/**
-	 * A get method to get the schoool's score in terms of academics
+	 * A get method to get the school's score in terms of academics
 	 * @return the academicScale
 	 */
 	public int getAcademicScale() {
@@ -203,7 +203,7 @@ public class University {
 
 
 	/**
-	 * A get method to get the schoool's score in terms of social life
+	 * A get method to get the school's score in terms of social life
 	 * @return the socialScale
 	 */
 	public int getSocialScale() {
@@ -212,7 +212,7 @@ public class University {
 
 
 	/**
-	 * A get method to get the schoool's score in terms of quality of life
+	 * A get method to get the school's score in terms of quality of life
 	 * @return the qualityScale
 	 */
 	public int getQualityScale() {
@@ -221,7 +221,7 @@ public class University {
 
 
 	/**
-	 * A get method that gets all of the school's emphasizes
+	 * A get method that gets all of the school's emphases
 	 * @return the emphasis
 	 */
 	public List<String> getEmphasis() {
@@ -275,7 +275,7 @@ public class University {
 
 
 	/**
-	 * A set method to set the university's percent of female's
+	 * A set method to set the university's percent of females
 	 * @param percentFemale the percentFemale to set
 	 */
 	public void setPercentFemale(int percentFemale) {
@@ -347,7 +347,7 @@ public class University {
 
 
 	/**
-	 * A set method to set the schoool's score in terms of academics
+	 * A set method to set the school's score in terms of academics
 	 * @param academicScale the academicScale to set
 	 */
 	public void setAcademicScale(int academicScale) {
@@ -356,7 +356,7 @@ public class University {
 
 
 	/**
-	 * A set method to set the schoool's score in terms of social life
+	 * A set method to set the school's score in terms of social life
 	 * @param socialScale the socialScale to set
 	 */
 	public void setSocialScale(int socialScale) {
@@ -365,7 +365,7 @@ public class University {
 
 
 	/**
-	 * A set method to set the schoool's score in terms of quality of life
+	 * A set method to set the school's score in terms of quality of life
 	 * @param qualityScale the qualityScale to set
 	 */
 	public void setQualityScale(int qualityScale) {
@@ -374,13 +374,17 @@ public class University {
 
 
 	/**
-	 *  A set method to set the schoool's emphasis
+	 *  A set method to set the school's emphasis
 	 * @param emphasis the emphasis to set
 	 */
 	public void setEmphasis(List<String> emphasis) {
 		this.emphasis = emphasis;
 	}
 	
+	/**
+	 *  Checks to make sure the school name being set does not contain a number.
+	 * @param String schoolName - school name to be set to a new University.
+	 */
 	public boolean containsNumber(String schoolName) {
 		for(int i = 0; i < schoolName.length(); i++) {
 			if(Character.isDigit(schoolName.charAt(i))){

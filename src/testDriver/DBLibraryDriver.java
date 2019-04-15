@@ -86,6 +86,7 @@ public class DBLibraryDriver{
      //afc.removeUniversityDB("yale");     //call from AdminInteraction
      //afc.viewUniversities();     //call from AdminInteraction
      //afc.viewUsers();    //call from AdminInteraction
+     //afc.addUser("asdf", "tatyj", "flasdjfljJLKJLKJLKJ342", "asgaGRHWHJR34", 'a');
      
      UserFunctionalityController ufc = new UserFunctionalityController();
      

@@ -404,7 +404,7 @@ public class DBControllerTest {
 	@Test
 	public void loadUsersWorksForFirstIndexPassword() {
 		List<Account> users = dbc.loadUsers();
-		assertTrue(users.get(0).getPassword().equals("Gandalf2020"));
+		assertTrue(users.get(0).getPassword().equals("Gandalf1010"));
  	}
 	
 	@Test
