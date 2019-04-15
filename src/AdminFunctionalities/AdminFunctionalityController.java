@@ -204,7 +204,11 @@ public class AdminFunctionalityController {
 	public List<University> viewUniversities() {
 		List<University> listUnis = database.loadUniversities();
 		for(int i = 0; i < listUnis.size(); i++) {
-			System.out.println(listUnis.get(i).getSchoolName());
+			University uni = listUnis.get(i);
+			System.out.println(uni.getSchoolName() + " " + uni.getSchoolState() + " " + uni.getSchoolLocation() + " " + uni.getSchoolControl() + " " + uni.getNumberStudents() + 
+					" " + uni.getNumberStudents() + " " + uni.getPercentFemale() + " " + uni.getVerbalSAT() + " " + uni.getMathSAT() + " " 
+					+ uni.getSchoolExpenses() + " " + uni.getPercentFinancialAid() + " " + uni.getNumApplicants() + " " + uni.getPercentAdmitted() + " " + uni.getPercentEnrolled() +
+					" " + uni.getAcademicScale() + " " + uni.getSocialScale() + " " + uni.getQualityScale() );
 		}		
 		return listUnis;
 	}

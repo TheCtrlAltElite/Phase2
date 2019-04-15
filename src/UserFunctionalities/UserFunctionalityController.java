@@ -313,8 +313,8 @@ public class UserFunctionalityController {
 			message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com")); // sets from email which is
 																				// cmcdatabase2019@gmail.com
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(username)); // receiver
-																											// of the
-																											// email
+																							// of the
+																							// email
 			message.setSubject("Your Saved Schools List"); // subject of the email
 			message.setText(mail_body); // sets the body of the email to mail_body
 
@@ -326,7 +326,6 @@ public class UserFunctionalityController {
 			e.printStackTrace();
 		}
 		return status;
-
 	}
 
 	/**
