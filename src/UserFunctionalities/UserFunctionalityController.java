@@ -278,21 +278,15 @@ public class UserFunctionalityController {
 
 	/**
 	 * Email's the user's savedSchoolsList to the user's email
-<<<<<<< HEAD
-	 */
-	public void emailSavedSchools(String username) throws MessagingException {
-=======
-	 */		
+	 */	
 	public boolean emailSavedSchools(String username) throws MessagingException {
 		boolean status = false;
 		if(dbc.isUserReal(username)) {
 			status = true;
->>>>>>> 8a474b18bf5134f75752c149e2317a263d9bcef3
 		Map<String, String> savedSchoolsList = getSavedSchoolsList(username);
 		String mail_body = "Your saved schools list: \n";
 
 		try {
-<<<<<<< HEAD
 			Properties props = new Properties();
 			props.put("mail.smtp.user", "cmcdatabase2019@gmail.com"); // sets email to be sent from
 																		// cmcdatabase2019@gmail.com
@@ -326,41 +320,8 @@ public class UserFunctionalityController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-=======
-            Properties props = new Properties();
-            props.put("mail.smtp.user", "cmcdatabase2019@gmail.com");	//sets email to be sent from cmcdatabase2019@gmail.com
-            props.put("mail.smtp.host", "smtp.gmail.com");				//sets server host as gmail
-            props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.port", "587");							//sets the port
-            
-            System.out.println(props);									//displays server information
-            
-            Authenticator auth = new SMTPAuthenticator();
-            Session session = Session.getInstance(props, auth);
-        
-            for (Map.Entry entry : savedSchoolsList.entrySet())
-    		{
-            	mail_body += entry.getKey() + " " + entry.getValue() + " \n"; //body of email
-    		}
-		
-		MimeMessage message= new MimeMessage(session);  				//creates MimeMessage object to send email
-		message.setFrom(new InternetAddress("cmcdatabase2019@gmail.com"));  					//sets from email which is cmcdatabase2019@gmail.com
-		message.addRecipient(Message.RecipientType.TO, new InternetAddress(username));	//receiver of the email
-		message.setSubject("Your Saved Schools List");  						//subject of the email
-		message.setText(mail_body); 									//sets the body of the email to mail_body
-
-        	System.out.println(message);									//shows email has begun to send out
-        	Transport.send(message);									//Sends out email
-        	System.out.println("Message sent!");						//Informs message is sent
-        	
-    } catch (Exception e) {
-        e.printStackTrace();
-    	}
 		}
 		return status;
->>>>>>> 8a474b18bf5134f75752c149e2317a263d9bcef3
 	}
 
 	/**

@@ -192,7 +192,7 @@ public class UserFunctionalityControllerTest {
 	@Test
 	public void addToSavedSchoolsListInvalidUniAndUser() {
 		boolean result = uc.addToSavedSchoolsList3("NOTAUSER", "NOTAUNI");
-		assertFalse("User does not exist, University does not exist.", result);
+		assertFalse("User does not exist, University does not exist, University not added to list.", result);
 	}
 
 	@Test
